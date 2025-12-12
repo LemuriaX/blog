@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长嬴漫游</title>
+    <style>
+        /* --- 极简风格定义 --- */
+        :root {
+            --bg-color: #fcfcf9;      /* 纸张般的米白色 */
+            --text-color: #2c2c2c;    /* 墨色 */
+            --sub-color: #8c8c8c;     /* 淡墨色 */
+            --accent-color: #7a9e9f;  /* 像旧瓷器一样的青色，用于链接交互 */
+        }
+
+        /* 重置样式 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            /* 优先使用衬线体（宋体），营造文雅感 */
+            font-family: "Songti SC", "Noto Serif SC", "STSong", "Times New Roman", serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 2;
+        }
+
+        /* 页面容器：控制整体宽度，保持呼吸感 */
+        .container {
+            max-width: 600px;
+            width: 80%;
+            text-align: center;
+            animation: slowFadeIn 2s ease-out; /* 缓慢浮现 */
+        }
+
+        /* 名字样式 */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: 0.5rem; /* 字间距拉大，显得舒展 */
+            margin-bottom: 3rem;
+            color: #000;
+        }
+
+        /* 装饰线：极细，简约 */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: var(--sub-color);
+            margin: 0 auto 3rem auto;
+            opacity: 0.5;
+        }
+
+        /* 描述文字 */
+        .intro p {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--sub-color);
+            font-style: italic;
+            margin-top: 10px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; /* 英文用无衬线体对比 */
+        }
+
+        /* 底部链接区 */
+        .links {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .links a {
+            text-decoration: none;
+            color: var(--sub-color);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        /* 链接悬停效果：文字变色 */
+        .links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 简单的淡入动画 */
+        @keyframes slowFadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 移动端微调 */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; letter-spacing: 0.2rem; }
+            .container { width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>长嬴漫游</h1>
+        
+        <div class="divider"></div>
+
+        <div class="intro">
+            <p>于喧嚣中寻一隅静谧，<br>记录光阴的刻度与漫游的足迹。</p>
+            <span>Roaming in the endless summer.</span>
+        </div>
+
+        <div class="links">
+            <a href="#" title="阅读我的文字">文字</a>
+            <a href="#" title="查看我的摄影">影像</a>
+            <a href="mailto:your@email.com" title="给我写信">来信</a>
+        </div>
+    </div>
+
+</body>
+</html>
