@@ -28,7 +28,6 @@
             animation: slowFadeIn 2s ease-out;
         }
 
-        /* ---- Hero ---- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -84,9 +83,7 @@
             transition: all 0.5s ease;
         }
 
-        .links a:hover {
-            color: var(--accent-color);
-        }
+        .links a:hover { color: var(--accent-color); }
 
         .scroll-hint {
             margin-top: 4rem;
@@ -102,7 +99,6 @@
             50% { transform: translateY(6px); }
         }
 
-        /* ---- Articles Section ---- */
         .articles {
             padding: 60px 0 80px;
             border-top: 1px solid #e8e8e0;
@@ -117,9 +113,7 @@
             letter-spacing: 0.3rem;
         }
 
-        .year-group {
-            margin-bottom: 2.5rem;
-        }
+        .year-group { margin-bottom: 2.5rem; }
 
         .year-label {
             font-size: 1.1rem;
@@ -149,9 +143,7 @@
             transition: border-color 0.3s;
         }
 
-        .article-item:hover {
-            border-left-color: var(--accent-color);
-        }
+        .article-item:hover { border-left-color: var(--accent-color); }
 
         .article-item a {
             text-decoration: none;
@@ -162,9 +154,7 @@
             font-size: 0.95rem;
         }
 
-        .article-item a:hover {
-            color: var(--accent-color);
-        }
+        .article-item a:hover { color: var(--accent-color); }
 
         .article-date {
             font-size: 0.8rem;
@@ -174,9 +164,7 @@
             min-width: 3rem;
         }
 
-        .article-title {
-            flex: 1;
-        }
+        .article-title { flex: 1; }
 
         .article-arrow {
             color: var(--sub-color);
@@ -185,11 +173,8 @@
             transition: opacity 0.3s;
         }
 
-        .article-item:hover .article-arrow {
-            opacity: 1;
-        }
+        .article-item:hover .article-arrow { opacity: 1; }
 
-        /* ---- Footer ---- */
         .site-footer {
             text-align: center;
             padding: 40px 0;
@@ -215,37 +200,30 @@
 
 <div class="container">
 
-    <!-- ====== HERO ====== -->
     <section class="hero">
         <h1>长嬴漫游</h1>
-
         <div class="divider"></div>
-
         <div class="intro">
             <p>人是会思考的芦苇</p>
             <span>Roaming in the endless summer.</span>
         </div>
-
         <div class="links">
             <a href="#articles" title="阅读我的文字">文字</a>
             <a href="#" title="查看我的摄影">影像</a>
             <a href="mailto:yuki@acgnx.top" title="给我写信">来信</a>
         </div>
-
         <div class="scroll-hint">↓ 文字</div>
     </section>
 
-    <!-- ====== ARTICLES ====== -->
     <section class="articles" id="articles">
         <h2>文 字</h2>
 
         <div class="year-group">
             <div class="year-label">2026</div>
-
             <div class="month-group">
                 <div class="month-label">05 月</div>
                 <div class="article-item">
-                    <a href="/2026/05/25/">
+                    <a href="/daily/2026/05/25/">
                         <span class="article-date">25</span>
                         <span class="article-title">5月25日 指数晚报 &amp; 交易计划</span>
                         <span class="article-arrow">→</span>
@@ -256,7 +234,6 @@
 
     </section>
 
-    <!-- ====== FOOTER ====== -->
     <div class="site-footer">
         <p>长嬴漫游 &copy; 2026</p>
     </div>
