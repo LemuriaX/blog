@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5月25日 指数晚报 &amp; 交易计划 — 长嬴漫游</title>
+<style>
+:root {
+  --bg-color: #fcfcf9;
+  --text-color: #2c2c2c;
+  --sub-color: #8c8c8c;
+  --accent-color: #7a9e9f;
+  --up-color: #4a7c59;
+  --down-color: #c85a5a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ---- Header ---- */
+.header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e8e8e0;
+}
+
+.header-date {
+  font-size: 14px;
+  color: var(--sub-color);
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.header-brand {
+  font-size: 14px;
+}
+
+.header-brand a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.header-brand a:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+/* ---- Title ---- */
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.meta-bar {
+  font-size: 13px;
+  color: var(--sub-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.8;
+}
+
+.meta-bar span {
+  margin-right: 16px;
+}
+
+/* ---- Sections ---- */
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 56px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  letter-spacing: 0.3px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 36px 0 14px;
+  color: var(--text-color);
+}
+
+p {
+  margin-bottom: 14px;
+  text-align: justify;
+}
+
+/* ---- Links ---- */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+a:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+/* ---- Numbers ---- */
+.num {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Up/Down Colors ---- */
+.up {
+  color: var(--up-color);
+  font-weight: 600;
+}
+
+.down {
+  color: var(--down-color);
+  font-weight: 600;
+}
+
+/* ---- Tables ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 28px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+thead {
+  border-bottom: 2px solid #d0d0d0;
+}
+
+th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--sub-color);
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e8e8e0;
+}
+
+td.num-cell {
+  text-align: right;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+tbody tr:nth-child(even) {
+  background: #f6f6f0;
+}
+
+/* ---- Compact key-value tables ---- */
+table.kv-table {
+  margin: 12px 0 20px;
+  font-size: 13px;
+}
+
+table.kv-table td {
+  padding: 6px 12px;
+}
+
+table.kv-table td:first-child {
+  color: var(--sub-color);
+  width: 160px;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+table.kv-table td:last-child {
+  text-align: right;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Blockquote ---- */
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  margin: 20px 0;
+  padding: 10px 0 10px 20px;
+  font-style: italic;
+  color: #555;
+}
+
+/* ---- List ---- */
+ul, ol {
+  margin: 10px 0 18px 20px;
+}
+
+li {
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+/* ---- Strong ---- */
+strong {
+  font-weight: 700;
+}
+
+/* ---- Divider ---- */
+hr {
+  border: none;
+  border-top: 1px solid #e8e8e0;
+  margin: 36px 0;
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e0;
+  font-size: 13px;
+  color: var(--sub-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.footer a {
+  color: var(--accent-color);
+}
+
+.footer p {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.footer .disclaimer {
+  margin-top: 16px;
+  font-style: italic;
+  color: #aaa;
+  font-size: 12px;
+}
+
+/* ---- Section badge ---- */
+.section-tag {
+  display: inline-block;
+  background: #eef3f3;
+  color: var(--accent-color);
+  padding: 1px 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Priority badges ---- */
+.badge-p1 { background: #e8f0e8; color: var(--up-color); }
+.badge-p2 { background: #f0f0e8; color: #7a7a3c; }
+.badge-p3 { background: #f0e8e0; color: #b8903c; }
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .container { padding: 32px 16px 60px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 19px; margin-top: 40px; }
+  table { font-size: 12px; }
+  td, th { padding: 8px 6px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ====== HEADER ====== -->
+  <div class="header">
+    <div class="header-date">2026年5月25日</div>
+    <div class="header-brand"><a href="/">&larr; 长嬴漫游</a></div>
+  </div>
+
+  <!-- ====== TITLE ====== -->
+  <h1>5月25日 指数晚报 &amp; 交易计划</h1>
+  <div class="meta-bar">
+    <span>数据时间：2026年5月25日</span>
+    <span>美股：5月22日（周五）收盘</span>
+    <span>A股 / 港股 / 日股：5月25日（周一）收盘</span><br>
+    <span>用户状态：空仓</span>
+    <span>交易风格：中长线稳健</span>
+  </div>
+
+  <hr>
+
+  <!-- ====== 一、今日行情回顾 ====== -->
+  <h2>一、今日行情回顾</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>指数</th>
+        <th class="num-cell">收盘价</th>
+        <th class="num-cell">涨跌幅</th>
+        <th class="num-cell">距52周高</th>
+        <th>技术信号</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🇺🇸 纳斯达克</td>
+        <td class="num-cell">26,343.97</td>
+        <td class="num-cell up">+0.19%</td>
+        <td class="num-cell down">−1.4%</td>
+        <td>🟡 中性偏多</td>
+      </tr>
+      <tr>
+        <td>🇺🇸 标普500</td>
+        <td class="num-cell">7,473.47</td>
+        <td class="num-cell up">+0.37%</td>
+        <td class="num-cell down">−0.6%</td>
+        <td>🟢 强势</td>
+      </tr>
+      <tr>
+        <td>🇺🇸 道琼斯</td>
+        <td class="num-cell">50,579.70</td>
+        <td class="num-cell up">+0.58%</td>
+        <td class="num-cell down">−0.5%</td>
+        <td>🟢 强势</td>
+      </tr>
+      <tr>
+        <td>🇭🇰 恒生科技</td>
+        <td class="num-cell">4,824</td>
+        <td class="num-cell down">−0.74%</td>
+        <td class="num-cell">—</td>
+        <td>🔴 弱势</td>
+      </tr>
+      <tr>
+        <td>🇨🇳 科创50</td>
+        <td class="num-cell">1,896.04</td>
+        <td class="num-cell up"><strong>+5.88%</strong></td>
+        <td class="num-cell">—</td>
+        <td>🟢 放量突破</td>
+      </tr>
+      <tr>
+        <td>🇨🇳 沪深300</td>
+        <td class="num-cell">4,921.60</td>
+        <td class="num-cell up">+1.58%</td>
+        <td class="num-cell">—</td>
+        <td>🟢 偏强</td>
+      </tr>
+      <tr>
+        <td>🇯🇵 日经225</td>
+        <td class="num-cell">65,158.19</td>
+        <td class="num-cell up">+2.87%</td>
+        <td class="num-cell down">−0.4%</td>
+        <td>🟢 极强势</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>盘面点评</strong>：</p>
+  <ul>
+    <li><strong>美股</strong>三大指数均在历史高位附近窄幅震荡，标普500距历史高点仅0.6%，道指仅0.5%。市场处于"高位的焦虑"状态——趋势完好但追高风险加大</li>
+    <li><strong>科创50暴涨5.88%</strong>，今日A股最大亮点，半导体/AI板块爆发，成交量2.15B，放量突破</li>
+    <li><strong>恒生科技继续弱势</strong>，YTD跌12.88%，6个月跌14.16%，与A股科技形成鲜明背离</li>
+    <li><strong>日经225大涨2.87%</strong>，距历史新高仅0.4%，日元贬值+全球资金流入日本</li>
+  </ul>
+
+  <hr>
+
+  <!-- ====== 二、重大新闻摘要 ====== -->
+  <h2>二、重大新闻摘要</h2>
+
+  <h3>🌍 本周核心主题</h3>
+
+  <ol>
+    <li><strong>🇺🇸🇮🇷 美伊和平谈判</strong> — 特朗普推迟对伊军事打击，双方外交接触。伊朗被指在霍尔木兹海峡问题上"眨眼"（Petraeus）。油价回落利好全球风险资产。</li>
+    <li><strong>🛢️ 亚洲原油库存告急</strong> — 资深市场人士Jeff Currie警告亚洲"油罐见底"，欧洲也接近。油价若再次飙升将直接冲击通胀预期。</li>
+    <li><strong>🤖 AI/芯片热潮持续</strong> — Nvidia带动全球芯片股上涨。科创50暴涨5.88%反映A股AI/半导体板块爆发。</li>
+    <li><strong>🇬🇧 英国政治动荡</strong> — 首相Starmer面临压力，英国国债波动加剧。英镑走弱。</li>
+    <li><strong>🇨🇳 中美关系</strong> — Trump-Xi会面、市场关注后续贸易政策走向。</li>
+  </ol>
+
+  <h3>📅 本周关键事件关注</h3>
+  <ul>
+    <li>美伊和谈进展（最大变数）</li>
+    <li>美国PCE通胀数据</li>
+    <li>Nvidia财报后市场反应</li>
+    <li>A股科技板块持续性</li>
+  </ul>
+
+  <hr>
+
+  <!-- ====== 三、技术面深度分析 ====== -->
+  <h2>三、技术面深度分析</h2>
+
+  <!-- --- 纳斯达克 --- -->
+  <h3>🇺🇸 纳斯达克 (^IXIC) — <span class="num">26,343.97</span> 🟡</h3>
+
+  <table class="kv-table">
+    <thead>
+      <tr><th>指标</th><th class="num-cell">数值</th><th>信号</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>RSI(14)</td><td class="num-cell">67.59</td><td>🟡 中性偏高</td></tr>
+      <tr><td>Stoch %K</td><td class="num-cell">76.07</td><td>🟡 偏强</td></tr>
+      <tr><td>MACD</td><td class="num-cell">649.97</td><td>🔴 卖出信号</td></tr>
+      <tr><td>Momentum(10)</td><td class="num-cell">96.89</td><td>🔴 动能回落</td></tr>
+      <tr><td>ADX(14)</td><td class="num-cell">32.87</td><td>🟡 趋势中</td></tr>
+      <tr><td>EMA10</td><td class="num-cell">26,123.88</td><td>🟢 价格在上</td></tr>
+      <tr><td>EMA20</td><td class="num-cell">25,679.36</td><td>🟢 价格在上</td></tr>
+      <tr><td>EMA50</td><td class="num-cell">24,591.99</td><td>🟢 价格在上</td></tr>
+      <tr><td>EMA200</td><td class="num-cell">22,884.98</td><td>🟢 价格在上</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>综合</strong>: 振荡器 Neutral (S:2, N:9, B:0)，均线 Strong Buy (S:0, N:1, B:14)</p>
+
+  <p><strong>关键价位</strong> (Classic Pivot):</p>
+  <ul>
+    <li>阻力: R1 26,095 → R2 27,297</li>
+    <li>支撑: P 23,733 → S1 22,531 → S2 20,169</li>
+  </ul>
+
+  <blockquote>价格在全部均线上方，趋势完美。但RSI接近70超买区，MACD和Momentum均给出卖出信号，说明短期动能衰减。价格已突破R1(26,095)，下一阻力R2(27,297)还有3.6%空间。当前位置追高风险大，但趋势尚未破坏。</blockquote>
+
+  <!-- --- 标普500 --- -->
+  <h3>🇺🇸 标普500 (^GSPC) — <span class="num">7,473.47</span> 🟢</h3>
+  <p><strong>距历史高点仅0.6%</strong>。美股三大指数共振向上，市场广度健康。</p>
+
+  <!-- --- 道琼斯 --- -->
+  <h3>🇺🇸 道琼斯 (^DJI) — <span class="num">50,579.70</span> 🟢</h3>
+  <p><strong>距历史高点仅0.5%</strong>。传统蓝筹继续受资金青睐。</p>
+
+  <!-- --- 恒生科技 --- -->
+  <h3>🇭🇰 恒生科技 (HKEX-HTI1!) — <span class="num">4,824</span> 🔴</h3>
+
+  <table class="kv-table">
+    <thead>
+      <tr><th>周期</th><th class="num-cell">涨跌幅</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1日</td><td class="num-cell down">−0.74%</td></tr>
+      <tr><td>5日</td><td class="num-cell down">−0.60%</td></tr>
+      <tr><td>1月</td><td class="num-cell down">−1.53%</td></tr>
+      <tr><td>6月</td><td class="num-cell down"><strong>−14.16%</strong></td></tr>
+      <tr><td>YTD</td><td class="num-cell down"><strong>−12.88%</strong></td></tr>
+      <tr><td>1年</td><td class="num-cell down">−7.87%</td></tr>
+      <tr><td>5年</td><td class="num-cell down">−38.45%</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>恒生科技处于明确的下降趋势中。所有时间周期均为负收益。与A股科技板块（科创50+5.88%）形成鲜明对比，资金选择了A股而非港股。在趋势反转前不建议抄底。</blockquote>
+
+  <!-- --- 科创50 --- -->
+  <h3>🇨🇳 科创50 (SSE-000688) — <span class="num">1,896.04</span> <span class="up">(+5.88%!)</span> 🟢</h3>
+
+  <table class="kv-table">
+    <thead>
+      <tr><th>项目</th><th class="num-cell">数据</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>今日涨幅</td><td class="num-cell up"><strong>+5.88%</strong>（放量）</td></tr>
+      <tr><td>昨收</td><td class="num-cell">1,790.77</td></tr>
+      <tr><td>今日开</td><td class="num-cell">1,791.67</td></tr>
+      <tr><td>成交量</td><td class="num-cell">2.15B</td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>今日科创50暴涨5.88%，是近期最大的单日涨幅之一。放量突破，表明机构资金大举流入AI/半导体板块。单日暴涨后通常会有回踩，追高需谨慎。</blockquote>
+
+  <!-- --- 沪深300 --- -->
+  <h3>🇨🇳 沪深300 (SSE-000300) — <span class="num">4,921.60</span> 🟢</h3>
+
+  <table class="kv-table">
+    <thead>
+      <tr><th>指标</th><th class="num-cell">数值</th><th>信号</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>RSI(14)</td><td class="num-cell">60.02</td><td>🟡 中性偏强</td></tr>
+      <tr><td>Stoch %K</td><td class="num-cell">33.71</td><td>🟡 中低位</td></tr>
+      <tr><td>MACD</td><td class="num-cell">43.94</td><td>🔴 卖出信号</td></tr>
+      <tr><td>Momentum(10)</td><td class="num-cell down">−30.24</td><td>🔴 动能减弱</td></tr>
+      <tr><td>Bull Bear Power</td><td class="num-cell">62.61</td><td>🟢 买入</td></tr>
+      <tr><td>EMA10</td><td class="num-cell">4,863.99</td><td>🟢 价格在上</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>综合</strong>: 振荡器 Neutral (S:2, N:8, B:1)，均线 Strong Buy (S:0, N:1, B:14)</p>
+
+  <table class="kv-table">
+    <thead>
+      <tr><th>周期</th><th class="num-cell">涨跌幅</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1月</td><td class="num-cell up">+3.14%</td></tr>
+      <tr><td>6月</td><td class="num-cell up">+9.61%</td></tr>
+      <tr><td>YTD</td><td class="num-cell up">+5.58%</td></tr>
+      <tr><td>1年</td><td class="num-cell up"><strong>+25.86%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <blockquote>沪深300趋势健康，RSI 60处于中性偏强区间，未超买。Stoch %K在33.71低位，存在反弹空间。当前处于"涨势中的正常回调后反弹"阶段。估值合理（PE≈14x）。</blockquote>
+
+  <!-- --- 日经225 --- -->
+  <h3>🇯🇵 日经225 (^N225) — <span class="num">65,158.19</span> <span class="up">(+2.87%!)</span> 🟢</h3>
+
+  <p><strong>距历史新高仅0.4%</strong>（52周高65,408.87）。单日暴涨2.87%，受日元走弱+全球资金流入日本+美伊缓和三重利好驱动。但逼近历史高点的回落风险不可忽视。</p>
+
+  <hr>
+
+  <!-- ====== 四、综合交易计划 ====== -->
+  <h2>四、综合交易计划</h2>
+
+  <h3>总体判断：🟡 中性偏多（结构性行情为主）</h3>
+
+  <p><strong>核心逻辑</strong>:</p>
+  <ul>
+    <li>美股三大指数均处历史高位，趋势完好但追高风险极大</li>
+    <li>美伊缓和是短期利好，但油价/通胀风险未消除</li>
+    <li>A股科技板块爆发，成为当前最具性价比的机会</li>
+    <li>恒生科技持续弱势，不值得左侧抄底</li>
+    <li>日经过度延伸，不宜追高</li>
+  </ul>
+
+  <h3>各指数具体计划</h3>
+
+  <!-- 科创50 plan -->
+  <h4>🥇 1. 🇨🇳 科创50 → <strong>回调买入</strong></h4>
+  <ul>
+    <li><strong>方向</strong>: 做多</li>
+    <li><strong>入场区间</strong>: <span class="num">1,800 – 1,840</span>（回踩5-10日线）</li>
+    <li><strong>止损</strong>: <span class="num">1,740</span>（跌破前低）</li>
+    <li><strong>第一目标</strong>: <span class="num">1,950 – 2,000</span></li>
+    <li><strong>仓位建议</strong>: 15%（首次）</li>
+    <li><strong>一句话理由</strong>: A股AI/半导体主线明确，放量突破信号可靠，但需等回调不追高</li>
+  </ul>
+
+  <!-- 沪深300 plan -->
+  <h4>🥈 2. 🇨🇳 沪深300 → <strong>逢低定投</strong></h4>
+  <ul>
+    <li><strong>方向</strong>: 做多（分批）</li>
+    <li><strong>入场区间</strong>: <span class="num">4,750 – 4,850</span></li>
+    <li><strong>止损</strong>: <span class="num">4,550</span></li>
+    <li><strong>第一目标</strong>: <span class="num">5,200</span></li>
+    <li><strong>仓位建议</strong>: 20%</li>
+    <li><strong>一句话理由</strong>: 趋势稳健、估值合理(PE≈14x)、MAs全Buy；等回踩EMA10(4,864)附近入场</li>
+  </ul>
+
+  <!-- 纳斯达克 plan -->
+  <h4>🥉 3. 🇺🇸 纳斯达克 → <strong>观望 / 轻仓</strong></h4>
+  <ul>
+    <li><strong>方向</strong>: 观望，等回调</li>
+    <li><strong>入场区间</strong>: <span class="num">25,200 – 25,700</span>（回踩EMA20-EMA50）</li>
+    <li><strong>止损</strong>: <span class="num">24,500</span></li>
+    <li><strong>第一目标</strong>: <span class="num">26,700 → 27,300</span></li>
+    <li><strong>仓位建议</strong>: 10%（仅在回调到位后）</li>
+    <li><strong>一句话理由</strong>: 趋势完好但位置太高，RSI≈68接近超买，MACD Sell；等回调3-5%后入场更安全</li>
+  </ul>
+
+  <!-- 日经 plan -->
+  <h4>4. 🇯🇵 日经225 → <strong>不建议追高</strong></h4>
+  <p>距历史新高仅0.4%，单日涨2.87%透支短期空间。等回调至62,000–63,000区间再考虑。</p>
+
+  <!-- 恒生科技 plan -->
+  <h4>5. 🇭🇰 恒生科技 → <strong>暂不参与</strong></h4>
+  <p>持续下跌趋势中，YTD −12.88%。等出现明确反转信号再考虑。</p>
+
+  <hr>
+
+  <!-- ====== 五、建仓优先级排序 ====== -->
+  <h2>五、建仓优先级排序</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>优先级</th>
+        <th>指数</th>
+        <th>操作</th>
+        <th>等待条件</th>
+        <th class="num-cell">仓位</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🥇 1</td>
+        <td>科创50</td>
+        <td>回调买入</td>
+        <td>回踩<span class="num">1,800–1,840</span></td>
+        <td class="num-cell">15%</td>
+      </tr>
+      <tr>
+        <td>🥈 2</td>
+        <td>沪深300</td>
+        <td>分批买入</td>
+        <td>回踩<span class="num">4,750–4,850</span></td>
+        <td class="num-cell">20%</td>
+      </tr>
+      <tr>
+        <td>🥉 3</td>
+        <td>纳斯达克</td>
+        <td>等回调买入</td>
+        <td>跌至<span class="num">25,200–25,700</span></td>
+        <td class="num-cell">10%</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>日经225</td>
+        <td>等深度回调</td>
+        <td>跌至<span class="num">62,000</span>附近</td>
+        <td class="num-cell">10%</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>恒生科技</td>
+        <td>观望</td>
+        <td>趋势反转信号</td>
+        <td class="num-cell">0%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>总建议仓位</strong>: <span class="num">35%–45%</span>（首次建仓），保留<span class="num">55%–65%</span>现金应对波动</p>
+
+  <hr>
+
+  <!-- ====== 六、关键风险提示 ====== -->
+  <h2>六、关键风险提示</h2>
+
+  <h3>⚠️ 高风险事件</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>风险</th>
+        <th>影响</th>
+        <th class="num-cell">概率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>美伊和谈破裂，油价飙升</td>
+        <td>全球股市承压</td>
+        <td class="num-cell">30%</td>
+      </tr>
+      <tr>
+        <td>A股科技单日暴涨后获利回吐</td>
+        <td>科创50短期回调5–8%</td>
+        <td class="num-cell">60%</td>
+      </tr>
+      <tr>
+        <td>美股高位闪崩</td>
+        <td>纳斯达克回调5–10%</td>
+        <td class="num-cell">40%</td>
+      </tr>
+      <tr>
+        <td>中美贸易摩擦升级</td>
+        <td>A股/港股承压</td>
+        <td class="num-cell">25%</td>
+      </tr>
+      <tr>
+        <td>日元剧烈升值</td>
+        <td>日经承压</td>
+        <td class="num-cell">20%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>📊 仓位管理原则</h3>
+
+  <ol>
+    <li><strong>首次建仓不超过总资金35%</strong>，分2-3次入场</li>
+    <li><strong>单一指数最大仓位20%</strong>，防范黑天鹅</li>
+    <li><strong>止损严格执行</strong>：科创50跌破1,740、沪深300跌破4,550必须离场</li>
+    <li><strong>不追高</strong>：所有买入都等回调，宁可错过不做错</li>
+    <li><strong>优先A股</strong>：当前A股科技主线清晰，估值合理</li>
+  </ol>
+
+  <hr>
+
+  <!-- ====== FOOTER ====== -->
+  <div class="footer">
+    <p><a href="/">&larr; 返回首页</a></p>
+    <p class="disclaimer">⚠️ 免责声明：以上分析基于公开数据和历史技术指标，不构成投资建议。股市有风险，投资需谨慎。数据截至2026年5月25日收盘。</p>
+  </div>
+
+</div>
+</body>
+</html>
