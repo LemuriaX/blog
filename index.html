@@ -5,47 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>长嬴漫游</title>
     <style>
-        /* --- 极简风格定义 --- */
         :root {
-            --bg-color: #fcfcf9;      /* 纸张般的米白色 */
-            --text-color: #2c2c2c;    /* 墨色 */
-            --sub-color: #8c8c8c;     /* 淡墨色 */
-            --accent-color: #7a9e9f;  /* 像旧瓷器一样的青色，用于链接交互 */
+            --bg-color: #fcfcf9;
+            --text-color: #2c2c2c;
+            --sub-color: #8c8c8c;
+            --accent-color: #7a9e9f;
         }
 
-        /* 重置样式 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            /* 优先使用衬线体（宋体），营造文雅感 */
             font-family: "Songti SC", "Noto Serif SC", "STSong", "Times New Roman", serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             line-height: 2;
         }
 
-        /* 页面容器：控制整体宽度，保持呼吸感 */
         .container {
             max-width: 600px;
             width: 80%;
-            text-align: center;
-            animation: slowFadeIn 2s ease-out; /* 缓慢浮现 */
+            margin: 0 auto;
+            animation: slowFadeIn 2s ease-out;
         }
 
-        /* 名字样式 */
+        /* ---- Hero ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+        }
+
         h1 {
             font-size: 2.5rem;
             font-weight: 500;
-            letter-spacing: 0.5rem; /* 字间距拉大，显得舒展 */
+            letter-spacing: 0.5rem;
             margin-bottom: 3rem;
             color: #000;
         }
 
-        /* 装饰线：极细，简约 */
         .divider {
             width: 40px;
             height: 1px;
@@ -54,7 +55,6 @@
             opacity: 0.5;
         }
 
-        /* 描述文字 */
         .intro p {
             font-size: 1rem;
             color: var(--text-color);
@@ -67,10 +67,9 @@
             color: var(--sub-color);
             font-style: italic;
             margin-top: 10px;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif; /* 英文用无衬线体对比 */
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        /* 底部链接区 */
         .links {
             margin-top: 4rem;
             display: flex;
@@ -83,32 +82,143 @@
             text-decoration: none;
             color: var(--sub-color);
             transition: all 0.5s ease;
-            position: relative;
         }
 
-        /* 链接悬停效果：文字变色 */
         .links a:hover {
             color: var(--accent-color);
         }
 
-        /* 简单的淡入动画 */
+        .scroll-hint {
+            margin-top: 4rem;
+            font-size: 0.75rem;
+            color: var(--sub-color);
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* ---- Articles Section ---- */
+        .articles {
+            padding: 60px 0 80px;
+            border-top: 1px solid #e8e8e0;
+        }
+
+        .articles h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--sub-color);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            letter-spacing: 0.3rem;
+        }
+
+        .year-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .year-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .month-group {
+            margin-bottom: 1.2rem;
+            padding-left: 0.5rem;
+        }
+
+        .month-label {
+            font-size: 0.85rem;
+            color: var(--sub-color);
+            margin-bottom: 0.4rem;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .article-item {
+            padding: 0.5rem 0;
+            padding-left: 1rem;
+            border-left: 1px solid #e8e8e0;
+            margin-left: 0.3rem;
+            transition: border-color 0.3s;
+        }
+
+        .article-item:hover {
+            border-left-color: var(--accent-color);
+        }
+
+        .article-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .article-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--sub-color);
+            white-space: nowrap;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            min-width: 3rem;
+        }
+
+        .article-title {
+            flex: 1;
+        }
+
+        .article-arrow {
+            color: var(--sub-color);
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .article-item:hover .article-arrow {
+            opacity: 1;
+        }
+
+        /* ---- Footer ---- */
+        .site-footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.75rem;
+            color: var(--sub-color);
+            opacity: 0.5;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
         @keyframes slowFadeIn {
             0% { opacity: 0; transform: translateY(10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 移动端微调 */
         @media (max-width: 768px) {
             h1 { font-size: 1.8rem; letter-spacing: 0.2rem; }
             .container { width: 90%; }
+            .article-item a { font-size: 0.9rem; flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
         <h1>长嬴漫游</h1>
-        
+
         <div class="divider"></div>
 
         <div class="intro">
@@ -117,11 +227,41 @@
         </div>
 
         <div class="links">
-            <a href="#" title="阅读我的文字">文字</a>
+            <a href="#articles" title="阅读我的文字">文字</a>
             <a href="#" title="查看我的摄影">影像</a>
             <a href="mailto:yuki@acgnx.top" title="给我写信">来信</a>
         </div>
+
+        <div class="scroll-hint">↓ 文字</div>
+    </section>
+
+    <!-- ====== ARTICLES ====== -->
+    <section class="articles" id="articles">
+        <h2>文 字</h2>
+
+        <div class="year-group">
+            <div class="year-label">2026</div>
+
+            <div class="month-group">
+                <div class="month-label">05 月</div>
+                <div class="article-item">
+                    <a href="/2026/05/25/">
+                        <span class="article-date">25</span>
+                        <span class="article-title">5月25日 指数晚报 &amp; 交易计划</span>
+                        <span class="article-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <div class="site-footer">
+        <p>长嬴漫游 &copy; 2026</p>
     </div>
+
+</div>
 
 </body>
 </html>
