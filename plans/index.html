@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资计划 — 长嬴漫游</title>
+<style>
+:root {
+  --bg-color: #fcfcf9;
+  --text-color: #2c2c2c;
+  --sub-color: #8c8c8c;
+  --accent-color: #7a9e9f;
+  --up-color: #4a7c59;
+  --down-color: #c85a5a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Songti SC", "Noto Serif SC", "STSong", serif;
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.header {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e8e8e0;
+}
+
+.header-date {
+  font-size: 14px;
+  color: var(--sub-color);
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.header-brand { font-size: 14px; }
+
+.header-brand a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.header-brand a:hover { border-bottom-color: var(--accent-color); }
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--sub-color);
+  margin-bottom: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ---- Controls ---- */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e8e8e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  background: none;
+  border: 1px solid #e0e0d8;
+  color: var(--sub-color);
+  padding: 4px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.filter-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+.filter-btn.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+
+.entry-count {
+  font-size: 13px;
+  color: var(--sub-color);
+}
+
+/* ---- Entry List ---- */
+.year-group { margin-bottom: 36px; }
+
+.year-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.month-group { margin-bottom: 20px; padding-left: 4px; }
+
+.month-label {
+  font-size: 13px;
+  color: var(--sub-color);
+  margin-bottom: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.entry-item {
+  padding: 10px 0 10px 16px;
+  border-left: 1px solid #e8e8e0;
+  margin-left: 6px;
+  transition: border-color 0.3s;
+}
+
+.entry-item:hover { border-left-color: var(--accent-color); }
+
+.entry-item a {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.entry-item a:hover { color: var(--accent-color); }
+
+.entry-date {
+  font-size: 13px;
+  color: var(--sub-color);
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-width: 48px;
+}
+
+.entry-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.badge-daily { background: #e8f0e8; color: var(--up-color); }
+.badge-weekly { background: #f0e8e0; color: #b8903c; }
+
+.entry-title {
+  flex: 1;
+  font-size: 15px;
+}
+
+.entry-arrow {
+  color: var(--sub-color);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.entry-item:hover .entry-arrow { opacity: 1; }
+
+.empty-state {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--sub-color);
+  font-size: 15px;
+}
+
+/* ---- Pagination ---- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.page-btn {
+  background: none;
+  border: 1px solid #e0e0d8;
+  color: var(--text-color);
+  min-width: 36px;
+  height: 36px;
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.page-btn:hover:not(:disabled) { border-color: var(--accent-color); color: var(--accent-color); }
+.page-btn.active { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+.page-btn:disabled { opacity: 0.3; cursor: default; }
+
+.page-info {
+  font-size: 13px;
+  color: var(--sub-color);
+  margin: 0 8px;
+}
+
+/* ---- Footer ---- */
+.footer {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e0;
+  font-size: 13px;
+  color: var(--sub-color);
+}
+
+.footer a { color: var(--accent-color); text-decoration: none; }
+.footer a:hover { border-bottom: 1px solid var(--accent-color); }
+
+@media (max-width: 600px) {
+  .container { padding: 32px 16px 60px; }
+  h1 { font-size: 22px; }
+  .controls { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .entry-item a { font-size: 14px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-date">投资计划</div>
+    <div class="header-brand"><a href="/">&larr; 长嬴漫游</a></div>
+  </div>
+
+  <h1>投资计划</h1>
+  <p class="subtitle">指数晚报 &amp; 交易周报 · 归档</p>
+
+  <div class="controls">
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="filterEntries('all')">全部</button>
+      <button class="filter-btn" onclick="filterEntries('daily')">日报</button>
+      <button class="filter-btn" onclick="filterEntries('weekly')">周报</button>
+    </div>
+    <span class="entry-count" id="entryCount"></span>
+  </div>
+
+  <div id="entryList"></div>
+
+  <div class="pagination" id="pagination"></div>
+
+  <div class="footer">
+    <p><a href="/">&larr; 返回首页</a></p>
+  </div>
+
+</div>
+
+<script>
+const ENTRIES = [
+  { date: "2026-05-25", type: "daily", title: "5月25日 指数晚报 & 交易计划", path: "/daily/2026/05/25/" }
+];
+
+const PER_PAGE = 15;
+let currentFilter = "all";
+let currentPage = 1;
+let filteredEntries = [];
+
+function filterEntries(type) {
+  currentFilter = type;
+  currentPage = 1;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  document.querySelector(`.filter-btn[onclick*="${type}"]`).classList.add("active");
+  render();
+}
+
+function render() {
+  filteredEntries = currentFilter === "all"
+    ? ENTRIES
+    : ENTRIES.filter(e => e.type === currentFilter);
+
+  const totalPages = Math.ceil(filteredEntries.length / PER_PAGE) || 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  document.getElementById("entryCount").textContent = `共 ${filteredEntries.length} 篇`;
+
+  // Group entries by year and month
+  const start = (currentPage - 1) * PER_PAGE;
+  const end = start + PER_PAGE;
+  const pageEntries = filteredEntries.slice(start, end);
+
+  if (pageEntries.length === 0) {
+    document.getElementById("entryList").innerHTML =
+      '<div class="empty-state">暂无记录</div>';
+    document.getElementById("pagination").innerHTML = "";
+    return;
+  }
+
+  // Group by year-month
+  const groups = {};
+  pageEntries.forEach(e => {
+    const [y, m] = e.date.split("-");
+    if (!groups[y]) groups[y] = {};
+    if (!groups[y][m]) groups[y][m] = [];
+    groups[y][m].push(e);
+  });
+
+  let html = "";
+  const monthNames = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+  for (const year of Object.keys(groups).sort().reverse()) {
+    html += `<div class="year-group"><div class="year-label">${year}</div>`;
+    for (const month of Object.keys(groups[year]).sort().reverse()) {
+      html += `<div class="month-group"><div class="month-label">${parseInt(month)} 月</div>`;
+      for (const e of groups[year][month]) {
+        const badgeClass = e.type === "daily" ? "badge-daily" : "badge-weekly";
+        const badgeText = e.type === "daily" ? "日报" : "周报";
+        const d = e.date.split("-")[2];
+        html += `
+          <div class="entry-item">
+            <a href="${e.path}">
+              <span class="entry-date">${parseInt(month)}/${parseInt(d)}</span>
+              <span class="entry-badge ${badgeClass}">${badgeText}</span>
+              <span class="entry-title">${e.title}</span>
+              <span class="entry-arrow">→</span>
+            </a>
+          </div>`;
+      }
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
+  document.getElementById("entryList").innerHTML = html;
+
+  // Pagination
+  let pagHtml = "";
+  pagHtml += `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""}>←</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    if (totalPages <= 7 || i === 1 || i === totalPages || Math.abs(i - currentPage) <= 1) {
+      pagHtml += `<button class="page-btn${i === currentPage ? " active" : ""}" onclick="goPage(${i})">${i}</button>`;
+    } else if (i === 2 && currentPage > 4) {
+      pagHtml += `<span class="page-info">…</span>`;
+    } else if (i === totalPages - 1 && currentPage < totalPages - 3) {
+      pagHtml += `<span class="page-info">…</span>`;
+    }
+  }
+  pagHtml += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""}>→</button>`;
+  document.getElementById("pagination").innerHTML = pagHtml;
+
+  // Update URL hash
+  window.location.hash = `page=${currentPage}`;
+}
+
+function goPage(n) {
+  const totalPages = Math.ceil(filteredEntries.length / PER_PAGE) || 1;
+  if (n < 1 || n > totalPages) return;
+  currentPage = n;
+  render();
+  window.scrollTo({ top: 200, behavior: "smooth" });
+}
+
+// Init from URL hash
+const hash = window.location.hash;
+const pageMatch = hash.match(/page=(\d+)/);
+if (pageMatch) currentPage = parseInt(pageMatch[1]) || 1;
+
+render();
+</script>
+
+</body>
+</html>
