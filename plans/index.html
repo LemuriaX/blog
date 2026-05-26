@@ -76,7 +76,6 @@ h1 {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ---- Controls ---- */
 .controls {
   display: flex;
   justify-content: space-between;
@@ -112,7 +111,6 @@ h1 {
   color: var(--sub-color);
 }
 
-/* ---- Entry List ---- */
 .year-group { margin-bottom: 36px; }
 
 .year-label {
@@ -193,7 +191,6 @@ h1 {
   font-size: 15px;
 }
 
-/* ---- Pagination ---- */
 .pagination {
   display: flex;
   justify-content: center;
@@ -228,7 +225,6 @@ h1 {
   margin: 0 8px;
 }
 
-/* ---- Footer ---- */
 .footer {
   margin-top: 56px;
   padding-top: 24px;
@@ -280,8 +276,8 @@ h1 {
 
 <script>
 const ENTRIES = [
-  { date: "2026-05-26", type: "daily", title: "5月26日 指数晚报 & 交易计划", path: "/daily/2026/05/26/" },
-  { date: "2026-05-25", type: "daily", title: "5月25日 指数晚报 & 交易计划", path: "/daily/2026/05/25/" }
+  { date: "2026-05-26", type: "daily", title: "5月26日 指数晚报 & 持仓评估", path: "/daily/2026/05/26/" },
+  { date: "2026-05-25", type: "daily", title: "5月25日 指数晚报", path: "/daily/2026/05/25/" }
 ];
 
 const PER_PAGE = 15;
@@ -307,7 +303,6 @@ function render() {
 
   document.getElementById("entryCount").textContent = `共 ${filteredEntries.length} 篇`;
 
-  // Group entries by year and month
   const start = (currentPage - 1) * PER_PAGE;
   const end = start + PER_PAGE;
   const pageEntries = filteredEntries.slice(start, end);
@@ -319,7 +314,6 @@ function render() {
     return;
   }
 
-  // Group by year-month
   const groups = {};
   pageEntries.forEach(e => {
     const [y, m] = e.date.split("-");
@@ -329,7 +323,6 @@ function render() {
   });
 
   let html = "";
-  const monthNames = ["01","02","03","04","05","06","07","08","09","10","11","12"];
   for (const year of Object.keys(groups).sort().reverse()) {
     html += `<div class="year-group"><div class="year-label">${year}</div>`;
     for (const month of Object.keys(groups[year]).sort().reverse()) {
@@ -354,7 +347,6 @@ function render() {
   }
   document.getElementById("entryList").innerHTML = html;
 
-  // Pagination
   let pagHtml = "";
   pagHtml += `<button class="page-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? "disabled" : ""}>←</button>`;
   for (let i = 1; i <= totalPages; i++) {
@@ -369,7 +361,6 @@ function render() {
   pagHtml += `<button class="page-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? "disabled" : ""}>→</button>`;
   document.getElementById("pagination").innerHTML = pagHtml;
 
-  // Update URL hash
   window.location.hash = `page=${currentPage}`;
 }
 
@@ -381,7 +372,6 @@ function goPage(n) {
   window.scrollTo({ top: 200, behavior: "smooth" });
 }
 
-// Init from URL hash
 const hash = window.location.hash;
 const pageMatch = hash.match(/page=(\\d+)/);
 if (pageMatch) currentPage = parseInt(pageMatch[1]) || 1;
