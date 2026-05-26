@@ -280,6 +280,7 @@ h1 {
 
 <script>
 const ENTRIES = [
+  { date: "2026-05-26", type: "daily", title: "5月26日 指数晚报 & 交易计划", path: "/daily/2026/05/26/" },
   { date: "2026-05-25", type: "daily", title: "5月25日 指数晚报 & 交易计划", path: "/daily/2026/05/25/" }
 ];
 
@@ -382,7 +383,7 @@ function goPage(n) {
 
 // Init from URL hash
 const hash = window.location.hash;
-const pageMatch = hash.match(/page=(\d+)/);
+const pageMatch = hash.match(/page=(\\d+)/);
 if (pageMatch) currentPage = parseInt(pageMatch[1]) || 1;
 
 render();
