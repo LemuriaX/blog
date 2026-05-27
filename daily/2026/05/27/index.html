@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>daily-report — 长嬴漫游</title>
+<style>
+
+:root {
+  --bg: #fcfcf9; --text: #2c2c2c; --sub: #8c8c8c; --accent: #7a9e9f;
+  --up: #4a7c59; --down: #c85a5a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Songti SC", "Noto Serif SC", "STSong", "SimSun", serif;
+  background: var(--bg); color: var(--text); line-height: 1.8;
+  max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem;
+}
+nav { margin-bottom: 2rem; }
+nav a { color: var(--accent); text-decoration: none; font-size: 0.95rem; }
+h1 { font-size: 1.5rem; margin-bottom: 0.5rem; line-height: 1.4; }
+h2 { font-size: 1.3rem; border-bottom: 1px solid #e8e4dc; padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+h3 { font-size: 1.05rem; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+blockquote {
+  border-left: 3px solid var(--accent); padding-left: 1rem;
+  color: var(--sub); margin: 1rem 0; background: #f7f5f0; padding: 0.75rem 1rem;
+  border-radius: 0 4px 4px 0;
+}
+table { width: 100%; border-collapse: collapse; margin: 0.75rem 0 1.5rem; font-size: 0.9rem; }
+th, td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #e8e4dc; }
+th { text-align: left; font-weight: 600; color: var(--sub); font-size: 0.85rem; background: #fafaf7; }
+tr:nth-child(even) td { background: #f7f5f0; }
+.num { text-align: right; font-family: "SF Mono", "Menlo", "Consolas", monospace; }
+.up { color: var(--up); }
+.down { color: var(--down); }
+.card {
+  border: 1px dashed #e0dcd3; border-radius: 6px; padding: 1rem;
+  background: #fafaf7; margin: 0.75rem 0;
+}
+.card h3 { margin-top: 0; }
+.risk-high { border-left: 3px solid var(--down); }
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #e8e4dc; color: var(--sub); font-size: 0.85rem; text-align: center; }
+footer a { color: var(--accent); text-decoration: none; }
+p { margin: 0.5rem 0; }
+hr { border: none; border-top: 1px solid #e8e4dc; margin: 1.5rem 0; }
+ul, ol { padding-left: 1.5rem; margin: 0.5rem 0; }
+li { margin: 0.25rem 0; }
+strong { color: var(--text); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+article { animation: fadeIn 0.6s ease; }
+.table-wrap { overflow-x: auto; }
+@media (max-width: 640px) {
+  body { padding: 1rem 0.8rem; }
+  h1 { font-size: 1.3rem; }
+  table { font-size: 0.8rem; }
+  th, td { padding: 0.35rem 0.5rem; }
+}
+
+</style>
+</head>
+<body>
+<article>
+<nav><a href="/">← 长嬴漫游</a></nav>
+<h1>📊 多指数周线日报 — 2026年5月27日</h1>
+
+<blockquote>**核心原则：周线定方向，日线找买点。不追高。「观望等待」是合法常态。**</blockquote>
+
+<hr>
+
+<h2>一、周线结构图（6指数完整数据）</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指数</th>
+<th>价格</th>
+<th>周Δ%</th>
+<th>RSI(14)</th>
+<th>ADX</th>
+<th>Osc</th>
+<th>MA</th>
+<th>EMA10</th>
+<th>EMA50</th>
+<th>EMA200</th>
+<th>周线判断</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>**纳斯达克**</td>
+<td class="num">26,656</td>
+<td class="num"><span class="up">+1.19</span></td>
+<td>**73.52**</td>
+<td class="num">23.33</td>
+<td>S1/N7/B3</td>
+<td>S1/N1/**B13**</td>
+<td class="num">25,087</td>
+<td class="num">22,701</td>
+<td class="num">18,220</td>
+<td>🔶 周线超买多头</td>
+</tr>
+<tr>
+<td>**标普500**</td>
+<td class="num">7,519</td>
+<td class="num"><span class="up">+0.61</span></td>
+<td>**71.88**</td>
+<td class="num">20.10</td>
+<td>S1/N7/B3</td>
+<td>S1/N1/**B13**</td>
+<td class="num">7,216</td>
+<td class="num">6,719</td>
+<td class="num">5,597</td>
+<td>🔶 周线超买多头</td>
+</tr>
+<tr>
+<td>**道琼斯**</td>
+<td class="num">50,462</td>
+<td>-0.23</td>
+<td class="num">62.95</td>
+<td class="num">18.68</td>
+<td>S1/N8/B2</td>
+<td>S1/N1/**B12**</td>
+<td class="num">49,302</td>
+<td class="num">47,113</td>
+<td class="num">41,034</td>
+<td>🟢 周线多头（未超买）</td>
+</tr>
+<tr>
+<td>**日经225**</td>
+<td class="num">65,000</td>
+<td class="num"><span class="up">+0.01</span></td>
+<td>**74.66**</td>
+<td class="num">31.10</td>
+<td>S2/N7/B2</td>
+<td>S0/N1/**B13**</td>
+<td class="num">60,369</td>
+<td class="num">51,782</td>
+<td class="num">40,368</td>
+<td>🔴 周线超买+强趋势</td>
+</tr>
+<tr>
+<td>**沪深300**</td>
+<td class="num">4,908</td>
+<td>-0.80</td>
+<td class="num">66.23</td>
+<td class="num">21.07</td>
+<td>S1/N8/B2</td>
+<td>S1/N1/**B13**</td>
+<td class="num">4,786</td>
+<td class="num">4,513</td>
+<td class="num">4,147</td>
+<td>🟢 周线多头</td>
+</tr>
+<tr>
+<td>**创业板指**</td>
+<td class="num">4,046</td>
+<td class="num"><span class="up">+0.07</span></td>
+<td>**76.48**</td>
+<td class="num">33.30</td>
+<td>S2/N7/B2</td>
+<td>S1/N1/**B13**</td>
+<td class="num">3,731</td>
+<td class="num">3,139</td>
+<td class="num">2,541</td>
+<td>🔴 周线超买+强趋势</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>周线趋势阶段判断</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指数</th>
+<th>阶段</th>
+<th>价格vs关键位</th>
+<th>距离EMA200</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>**纳斯达克**</td>
+<td>加速赶顶</td>
+<td>突破R1(26,576)</td>
+<td class="num"><span class="up">+46.3%</span></td>
+</tr>
+<tr>
+<td>**标普500**</td>
+<td>加速赶顶</td>
+<td class="num">逼近R1(7,591)差0.96%</td>
+<td class="num"><span class="up">+34.4%</span></td>
+</tr>
+<tr>
+<td>**道琼斯**</td>
+<td>稳健上行</td>
+<td>P-R1中轨(44,627-52,642)</td>
+<td class="num"><span class="up">+23.0%</span></td>
+</tr>
+<tr>
+<td>**日经225**</td>
+<td>加速赶顶</td>
+<td>突破R1(58,387)</td>
+<td class="num"><span class="up">+61.1%</span></td>
+</tr>
+<tr>
+<td>**沪深300**</td>
+<td>缓慢上行</td>
+<td>P-R1中轨(4,302-5,090)</td>
+<td class="num"><span class="up">+18.3%</span></td>
+</tr>
+<tr>
+<td>**创业板指**</td>
+<td>加速赶顶</td>
+<td>突破R1(3,771)</td>
+<td class="num"><span class="up">+59.3%</span></td>
+</tr>
+</tbody>
+</table></div>
+
+<blockquote>⚠️ **6个指数中4个周线RSI超买，2个严重超买。全线EMA多头排列但动能衰竭风险上升。**</blockquote>
+
+<hr>
+
+<h2>二、宏观快照</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指标</th>
+<th>数值</th>
+<th>方向</th>
+<th>信号</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>VIX</td>
+<td class="num">16.87</td>
+<td class="num"><span class="up">+1.69%</span></td>
+<td>低波动，无恐慌</td>
+</tr>
+<tr>
+<td>DXY</td>
+<td class="num">99.14</td>
+<td class="num">-0.03%</td>
+<td>美元弱势，利好风险资产</td>
+</tr>
+<tr>
+<td>纳斯达克</td>
+<td class="num">26,656</td>
+<td class="num"><span class="up">+1.19%</span></td>
+<td>继续新高</td>
+</tr>
+<tr>
+<td>标普500</td>
+<td class="num">7,519</td>
+<td class="num"><span class="up">+0.61%</span></td>
+<td>逼近历史高点</td>
+</tr>
+<tr>
+<td>日经225</td>
+<td class="num">65,000</td>
+<td class="num"><span class="up">+0.01%</span></td>
+<td>高位横盘</td>
+</tr>
+<tr>
+<td>A股情绪</td>
+<td class="num">科创-2.8%沪深300-0.8%</td>
+<td>回调</td>
+<td>AI板块获利回吐</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2>三、重大事件</h2>
+
+<li><strong>Goldman上调标普500年终目标</strong> — 理由简单直接：盈利增长超预期</li>
+
+<li><strong>美伊和平谈判陷入僵局</strong> — 伊朗最高领袖要求保留铀浓缩，油价持稳$100以下</li>
+
+<li><strong>Lululemon与创始人Chip Wilson达成代理权和解</strong> — 同意两名董事会提名人</li>
+
+<li><strong>Micron/ZScaler/MGM等盘前异动</strong> — 财报季尾声，个股分化加剧</li>
+
+<li><strong>欧洲股市：多乐士母公司因收购要约飙升17%</strong></li>
+
+<li><strong>共和党面临中期选举通胀困境</strong> — 政策不确定性上升</li>
+
+<li><strong>中国A股：AI/地产对冲强劲利润数据，沪深港股市收低</strong></li>
+
+<hr>
+
+<h2>四、日线健康检查</h2>
+
+<h3>恒生科技期货（仅日线，周线不可用）</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指标</th>
+<th>数值</th>
+<th>信号</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>RSI(14)</td>
+<td class="num">46</td>
+<td>中性偏弱</td>
+</tr>
+<tr>
+<td>ADX(14)</td>
+<td>**13**</td>
+<td>⛔ 无趋势（不交易）</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-23</td>
+<td>卖出</td>
+</tr>
+<tr>
+<td>Momentum(10)</td>
+<td>-229</td>
+<td>卖出</td>
+</tr>
+<tr>
+<td>EMA10</td>
+<td class="num">4,907</td>
+<td>价格4,877 **< EMA10**</td>
+</tr>
+<tr>
+<td>Summary</td>
+<td>S2/N9/B0</td>
+<td>看空</td>
+</tr>
+<tr>
+<td>Oscillators</td>
+<td>S16/N10/B0</td>
+<td>**强烈卖出**</td>
+</tr>
+<tr>
+<td>MA</td>
+<td>S14/N1/B0</td>
+<td>**强烈卖出**</td>
+</tr>
+<tr>
+<td>Pivot</td>
+<td>P=4,887 / R1=5,156 / S1=4,608</td>
+<td>价格刚好在P下方</td>
+</tr>
+</tbody>
+</table></div>
+
+<blockquote>🔴 **恒生科技：日线全指标看空！ADX=13无趋势，不适合建仓。价格紧贴周枢轴P(4,887)下方，若无法收复则下看S1(4,608)。**</blockquote>
+
+<h3>科创50（无Technicals标签）</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指标</th>
+<th>数值</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>价格</td>
+<td class="num">1,815.45</td>
+</tr>
+<tr>
+<td>日涨跌</td>
+<td class="num">**-2.80%**</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td class="num">2.16B</td>
+</tr>
+<tr>
+<td>前收</td>
+<td class="num">1,867.71</td>
+</tr>
+<tr>
+<td>日内区间</td>
+<td class="num">1,875-1,815（低开低走）</td>
+</tr>
+</tbody>
+</table></div>
+
+<blockquote>🔴 **科创50今日大跌2.80%，AI板块获利回吐。年内涨幅仍大但短期动能转弱。**</blockquote>
+
+<h3>日线ADX+RSI辅助（基于日线technicals snapshot）</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指数</th>
+<th>日RSI</th>
+<th>日ADX</th>
+<th>日线判断</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>NASDAQ</td>
+<td class="num">70.83</td>
+<td class="num">32.91</td>
+<td>日线超买，趋势中等</td>
+</tr>
+<tr>
+<td>SPX</td>
+<td class="num">70.47</td>
+<td class="num">26.59</td>
+<td>日线超买，趋势弱</td>
+</tr>
+<tr>
+<td>DJI</td>
+<td class="num">63.03</td>
+<td class="num">21.56</td>
+<td>日线中性，趋势弱</td>
+</tr>
+<tr>
+<td>NI225</td>
+<td class="num">68.14</td>
+<td class="num">35.15</td>
+<td>日线偏强，趋势中等</td>
+</tr>
+<tr>
+<td>沪深300</td>
+<td class="num">57.53</td>
+<td class="num">34.37</td>
+<td>日线中性，趋势中等</td>
+</tr>
+<tr>
+<td>创业板指</td>
+<td class="num">67.44</td>
+<td class="num">42.67</td>
+<td>日线偏强，强趋势</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2>五、持仓评估 & 观察清单</h2>
+
+<h3>当前持仓假设评估</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>指数</th>
+<th>周线方向</th>
+<th>仓位建议</th>
+<th>原因</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>**纳斯达克**</td>
+<td>多头（超买）</td>
+<td>⚠️ 减仓/持盈</td>
+<td>RSI 73.5超买；MACD周线1,015高位</td>
+</tr>
+<tr>
+<td>**标普500**</td>
+<td>多头（超买）</td>
+<td>⚠️ 减仓/持盈</td>
+<td>RSI 71.9超买；逼近R1(7,591)</td>
+</tr>
+<tr>
+<td>**道琼斯**</td>
+<td>多头（正常）</td>
+<td>🟢 持有</td>
+<td>RSI 62.95，唯一未超买的美指</td>
+</tr>
+<tr>
+<td>**日经225**</td>
+<td>多头（严重超买）</td>
+<td>🔴 减仓</td>
+<td>RSI 74.7，突破R1大幅偏离</td>
+</tr>
+<tr>
+<td>**沪深300**</td>
+<td>多头（正常）</td>
+<td>🟢 可小仓</td>
+<td class="num">RSI 66.2，距R1还有3.7%空间</td>
+</tr>
+<tr>
+<td>**创业板指**</td>
+<td>多头（严重超买）</td>
+<td>🔴 减仓</td>
+<td class="num">RSI 76.5，突破R1已7.3%</td>
+</tr>
+<tr>
+<td>**恒生科技**</td>
+<td>日线空头</td>
+<td>⛔ 不持有</td>
+<td>ADX=13无趋势，全指标卖出</td>
+</tr>
+<tr>
+<td>**科创50**</td>
+<td>无数据</td>
+<td>⛔ 观望</td>
+<td class="num">大跌2.8%，无技术指标支持</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>🛑 FOMO检查清单</h3>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>检查项</th>
+<th>状态</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>纳斯达克RSI>70？</td>
+<td>✅ 是 → **禁买**</td>
+</tr>
+<tr>
+<td>日经RSI>70？</td>
+<td>✅ 是 → **禁买**</td>
+</tr>
+<tr>
+<td>创业板RSI>70？</td>
+<td>✅ 是 → **禁买**</td>
+</tr>
+<tr>
+<td>恒生科技ADX>20？</td>
+<td>❌ 否(13) → **不交易**</td>
+</tr>
+<tr>
+<td>有指数满足ADX>20+RSI<70+周线多头？</td>
+<td>🟢 沪深300、道琼斯</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>📋 下周观察清单</h3>
+
+<li><strong>道琼斯</strong> — 唯一美指周线RSI未超买。ADX偏低(18.7)但EMA多头排列完整。等ADX回升至20+可考虑建仓。</li>
+
+<li>入场区：48,500-49,500（回调至EMA20附近）</li>
+
+<li>止损：46,500（EMA50下方，约-5.5%）</li>
+
+<li>仓位 = 2% ÷ 5.5% = <strong>18%</strong></li>
+
+<li><strong>沪深300</strong> — 周线RSI 66，趋势健康。等日线回踩EMA20(4,714)或日线RSI回到50附近再考虑。</li>
+
+<li>入场区：4,650-4,750</li>
+
+<li>止损：4,450（S1附近，约-5.3%）</li>
+
+<li>仓位 = 2% ÷ 5.3% = <strong>15%</strong></li>
+
+<li><strong>恒生科技</strong> — 日线全空头但ADX极低。需等ADX回升至20+确认趋势再判断方向。</li>
+
+<li>⛔ 暂不交易</li>
+
+<hr>
+
+<h2>六、风险矩阵</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>风险</th>
+<th>概率</th>
+<th>影响</th>
+<th>应对</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>美股周线RSI超买回调</td>
+<td>🔴高</td>
+<td class="num">纳斯达克-3~5%</td>
+<td>减仓至半仓，不追高</td>
+</tr>
+<tr class="risk-high">
+<td>美伊谈判破裂油价飙升</td>
+<td>🟡中</td>
+<td>通胀预期上升</td>
+<td>关注能源股对冲</td>
+</tr>
+<tr>
+<td>A股AI板块获利回吐扩散</td>
+<td>🟡中</td>
+<td class="num">科创/创业板-5%+</td>
+<td>科创50观望，创业板减仓</td>
+</tr>
+<tr>
+<td>DXY继续走弱</td>
+<td>🟢低</td>
+<td>利好全球风险资产</td>
+<td>已Price In</td>
+</tr>
+<tr>
+<td>道琼斯补涨</td>
+<td>🟢中概率</td>
+<td>DJI突破52,642(R1)</td>
+<td>回调布局</td>
+</tr>
+</tbody>
+</table></div>
+
+<h3>明日关注</h3>
+
+<li>🕐 <strong>美盘</strong>：Micron(ZScaler)财报后走势、Goldman目标价上调后资金流向</li>
+
+<li>🕐 <strong>亚洲盘</strong>：日本开盘反应（日经超买是否引发获利盘）、恒生科技能否守住4,877(P)</li>
+
+<li>🕐 <strong>A股</strong>：科创50是否延续跌势、沪深300能否守住4,900</li>
+
+<hr>
+
+<h2>七、交易纪律检查</h2>
+
+<div class="table-wrap"><table>
+<thead><tr>
+<th>规则</th>
+<th>检查结果</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>周线空头不做多</td>
+<td>✅ NAS/SPX/DJI/NI225/沪深300/创业板 6个周线多头，恒生日线空头(已避开)</td>
+</tr>
+<tr>
+<td class="num">入场≥3%距离止损</td>
+<td class="num">✅ 道琼斯止损5.5%, 沪深300止损5.3%</td>
+</tr>
+<tr>
+<td>RSI>70禁买</td>
+<td>✅ NAS(73.5)/NI225(74.7)/创业板(76.5)已标记禁买</td>
+</tr>
+<tr>
+<td>ADX<20不交易</td>
+<td>✅ 恒生ADX=13不交易; DJI ADX=18.7等回升</td>
+</tr>
+<tr>
+<td class="num">仓位=2%÷止损%</td>
+<td class="num">✅ 道琼斯18%, 沪深30015%</td>
+</tr>
+</tbody>
+</table></div>
+
+<hr>
+
+<h2>总结</h2>
+
+<blockquote>**一句话：全球股市周线普遍超买，唯有道琼斯和沪深300仍处于"可买但不急"的健康多头区间。**</blockquote>
+
+<li>🟢 <strong>可布局</strong>：道琼斯（等ADX>20）、沪深300（等日线回调）</li>
+
+<li>🟡 <strong>持有观望</strong>：纳斯达克、标普500（超买但不空，持盈）</li>
+
+<li>🔴 <strong>减仓观望</strong>：日经225、创业板指（严重超买）</li>
+
+<li>⛔ <strong>远离</strong>：恒生科技（日线空头+无趋势）、科创50（大跌+无技术数据）</li>
+
+<p><strong>明天不是买入日。耐心等待回调，不追高。</strong></p>
+
+<hr>
+
+<p>*报告自动生成于 2026-05-27 · 数据来源：Yahoo Finance / TradingView / CNBC*</p>
+
+<p>*博客：www.acgnx.top/daily/2026/05/27/*</p>
+
+<footer>
+<p><a href="/">返回首页</a> | 免责声明：以上分析仅供参考，不构成投资建议。市场有风险，投资需谨慎。</p>
+<p style="margin-top:0.5rem">数据来源：Yahoo Finance · TradingView · CNBC | 生成时间：2026-05-27 08:08 </p>
+</footer>
+</article>
+</body>
+</html>
