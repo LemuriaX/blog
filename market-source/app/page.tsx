@@ -2096,6 +2096,12 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap items-center gap-4 text-[10px] text-[#26382e]/34">
               <a
+                href="https://www.acgnx.top/market/"
+                className="transition-colors hover:text-[#26382e]/66"
+              >
+                周报目录
+              </a>
+              <a
                 href="./weekly-market-prompt.md"
                 target="_blank"
                 rel="noreferrer"

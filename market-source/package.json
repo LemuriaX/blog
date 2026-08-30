@@ -10,7 +10,7 @@
     "build": "vinext build",
     "build:pages": "vite build --config vite.pages.config.ts",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "lint": "oxlint",
+    "lint": "oxlint app/page.tsx app/layout.tsx lib/market-history.ts pages/main.tsx",
     "format": "oxfmt"
   },
   "dependencies": {

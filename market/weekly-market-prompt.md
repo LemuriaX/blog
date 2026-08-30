@@ -5,7 +5,10 @@
 ## 项目与发布位置
 
 - GitHub 仓库：`https://github.com/LemuriaX/blog`
-- 网页发布目录：`/market/`
+- 周报目录页：`/market/`
+- 每期快照目录：`/market/YYYY-MM-DD/`，日期使用本期数据截止日
+- 最新一期入口：`/market/latest/`
+- 本地周报库：项目根目录下的 `weekly-reports/`
 - 网页源代码目录：`/market-source/`
 - 每周情绪历史：`market-source/lib/market-history.ts`
 - 保留仓库原有的 `CNAME`、首页、`daily/`、`plans/` 和其他无关内容，不覆盖、不删除。
@@ -109,9 +112,13 @@
 2. 向 `market-source/lib/market-history.ts` 追加本周记录，让情绪折线图自然增长。
 3. 更新页面显示的数据截止日。
 4. 运行格式检查、代码检查、本地构建和 GitHub Pages 静态构建；修复全部错误。
-5. 将静态构建结果同步到仓库的 `/market/`，但保留 `/market/weekly-market-prompt.md`。
-6. 提交信息使用 `Weekly market update: YYYY-MM-DD`，推送到 `main`。
-7. 验证 GitHub Pages 实际页面可访问，再汇报结果。
+5. 先将本周静态构建完整复制到本地 `weekly-reports/YYYY-MM-DD/`，并同步更新本地 `weekly-reports/index.html` 与 `weekly-reports/latest/index.html`。本地旧日期永久保留。
+6. 再将同一份静态构建复制到 GitHub 的 `/market/YYYY-MM-DD/`。旧日期目录永久保留，不覆盖、不删除；若是同日纠错，可以同时更新本地与 GitHub 的当日目录，但要在提交说明中写明。
+7. 更新 `/market/index.html`：把本周放在目录首位，保留全部往期链接，并显示两地周期位置与情绪分。
+8. 更新 `/market/latest/index.html`，使它跳转到本周日期目录。
+9. 检查本期页面中的“周报目录”链接能返回 `/market/`，提示词链接能打开本期目录内的 `weekly-market-prompt.md`。
+10. 提交信息使用 `Weekly market update: YYYY-MM-DD`，推送到 `main`。
+11. 分别验证本地快照、线上目录页、本期快照、脚本、样式和提示词均可访问，再汇报结果。
 
 ## 最终回复
 
