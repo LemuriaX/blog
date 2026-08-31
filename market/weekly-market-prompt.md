@@ -11,7 +11,7 @@
 - 本地周报库：项目根目录下的 `weekly-reports/`
 - 网页源代码目录：`/market-source/`
 - 每周情绪历史：`market-source/lib/market-history.ts`
-- 保留仓库原有的 `CNAME`、首页、`daily/`、`plans/` 和其他无关内容，不覆盖、不删除。
+- 保留仓库原有的 `CNAME`、首页、`daily/`、`market/`、`travel/` 和其他无关内容，不覆盖、不删除。
 - 网站沿用米白、淡色、宋体气质；文字精简、自然，不写报告腔，不要有 AI 味。
 
 ## 本周任务
