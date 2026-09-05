@@ -1,13 +1,14 @@
+// Generated from data/reports and immutable legacy history.
 export type WeeklyMarketSnapshot = {
   date: string;
   label: string;
-  cnSentiment: number;
-  usSentiment: number;
+  cnSentiment: number | null;
+  usSentiment: number | null;
   cnCycle: number;
   usCycle: number;
+  methodVersion: string;
+  comparable: boolean;
 };
-
-// 每周只追加，不回改历史分数。若评分口径变化，请在当周分析中单独说明。
 export const marketHistory: WeeklyMarketSnapshot[] = [
   {
     date: '2026-08-28',
@@ -16,6 +17,8 @@ export const marketHistory: WeeklyMarketSnapshot[] = [
     usSentiment: 73,
     cnCycle: 64,
     usCycle: 78,
+    methodVersion: 'legacy-unrecorded',
+    comparable: false,
   },
   {
     date: '2026-09-04',
@@ -24,5 +27,7 @@ export const marketHistory: WeeklyMarketSnapshot[] = [
     usSentiment: 67,
     cnCycle: 62,
     usCycle: 77,
+    methodVersion: 'legacy-v1',
+    comparable: false,
   },
 ];

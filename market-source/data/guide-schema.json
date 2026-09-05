@@ -1,0 +1,102 @@
+[
+  {
+    "category": "经济现状",
+    "leftPole": "生机勃勃",
+    "rightPole": "停滞不前"
+  },
+  {
+    "category": "经济展望",
+    "leftPole": "正面有利",
+    "rightPole": "负面不利"
+  },
+  {
+    "category": "贷款机构",
+    "leftPole": "急于放贷",
+    "rightPole": "缄默谨慎"
+  },
+  {
+    "category": "资本市场",
+    "leftPole": "宽松",
+    "rightPole": "紧缩"
+  },
+  {
+    "category": "资本供给",
+    "leftPole": "充足",
+    "rightPole": "短缺"
+  },
+  {
+    "category": "融资条款",
+    "leftPole": "宽松",
+    "rightPole": "严格"
+  },
+  {
+    "category": "利率水平",
+    "leftPole": "低",
+    "rightPole": "高"
+  },
+  {
+    "category": "利差水平",
+    "leftPole": "窄",
+    "rightPole": "宽"
+  },
+  {
+    "category": "投资者",
+    "leftPole": "乐观／自信／渴望买进",
+    "rightPole": "悲观／忧虑／无心买进"
+  },
+  {
+    "category": "资产持有人",
+    "leftPole": "乐于持有",
+    "rightPole": "急于卖出离场"
+  },
+  {
+    "category": "卖家",
+    "leftPole": "稀少",
+    "rightPole": "众多"
+  },
+  {
+    "category": "市场",
+    "leftPole": "人群拥挤",
+    "rightPole": "乏人问津"
+  },
+  {
+    "category": "基金",
+    "leftPole": "申购门槛高／每天都发新基金／基金管理人说了算",
+    "rightPole": "向所有人开放申购／只有最好的基金才能募资／基金投资人有话语权"
+  },
+  {
+    "category": "近期业绩",
+    "leftPole": "强劲",
+    "rightPole": "萎靡"
+  },
+  {
+    "category": "资产价格",
+    "leftPole": "高",
+    "rightPole": "低"
+  },
+  {
+    "category": "预期收益",
+    "leftPole": "低",
+    "rightPole": "高"
+  },
+  {
+    "category": "风险",
+    "leftPole": "高",
+    "rightPole": "低"
+  },
+  {
+    "category": "流行风格",
+    "leftPole": "激进／四处投资",
+    "rightPole": "审慎且自律／精挑细选"
+  },
+  {
+    "category": "正确风格",
+    "leftPole": "审慎且自律／精挑细选",
+    "rightPole": "激进／四处投资"
+  },
+  {
+    "category": "易犯错误",
+    "leftPole": "买进太多／高价追涨／承受太多风险",
+    "rightPole": "买进太少／离开市场／承受太少风险"
+  }
+]

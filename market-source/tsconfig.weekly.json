@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "lib/**/*.ts",
+    "pages/**/*.tsx",
+    "components/market-review.tsx"
+  ],
+  "exclude": ["node_modules", "work", "dist", "dist-pages", "weekly-reports"]
+}
