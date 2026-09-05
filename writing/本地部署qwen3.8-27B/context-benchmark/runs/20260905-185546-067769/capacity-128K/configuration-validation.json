@@ -1,0 +1,111 @@
+{
+  "verdict": "unknown",
+  "checks": [
+    {
+      "name": "loaded_model_file",
+      "expected": true,
+      "actual": true,
+      "source": "backend model-load path compared with preflight-hashed GGUF",
+      "status": "pass"
+    },
+    {
+      "name": "reported_quant_variant",
+      "expected": "UD-Q3_K_XL",
+      "actual": "UD-Q3_K_XL",
+      "source": "native reported GGUF variant; paired with file identity",
+      "status": "pass"
+    },
+    {
+      "name": "context_per_sequence",
+      "expected": 131072,
+      "actual": 131072,
+      "source": "llama.cpp startup log (n_ctx_per_seq or n_ctx_slot)",
+      "status": "pass"
+    },
+    {
+      "name": "status_context",
+      "expected": 131072,
+      "actual": 131072,
+      "source": "native status",
+      "status": "pass"
+    },
+    {
+      "name": "parallel_slots",
+      "expected": 1,
+      "actual": 1,
+      "source": "native effective parallel_slots",
+      "status": "pass"
+    },
+    {
+      "name": "all_layers_on_gpu",
+      "expected": true,
+      "actual": true,
+      "source": "llama.cpp offloaded N/N log (including output layer)",
+      "status": "pass"
+    },
+    {
+      "name": "n_batch",
+      "expected": 256,
+      "actual": 256,
+      "source": "llama.cpp startup log",
+      "status": "pass"
+    },
+    {
+      "name": "n_ubatch",
+      "expected": 128,
+      "actual": 128,
+      "source": "llama.cpp startup log",
+      "status": "pass"
+    },
+    {
+      "name": "cache_type_k",
+      "expected": "q8_0",
+      "actual": "q8_0",
+      "source": "native cache dtype or startup log",
+      "status": "pass"
+    },
+    {
+      "name": "cache_type_v",
+      "expected": "q8_0",
+      "actual": "q8_0",
+      "source": "native cache dtype or startup log",
+      "status": "pass"
+    },
+    {
+      "name": "flash_attention",
+      "expected": true,
+      "actual": true,
+      "source": "llama.cpp startup log",
+      "status": "pass"
+    },
+    {
+      "name": "context_shift",
+      "expected": false,
+      "actual": null,
+      "source": "explicit effective backend log; missing is unknown",
+      "status": "unknown"
+    },
+    {
+      "name": "prompt_cache",
+      "expected": false,
+      "actual": null,
+      "source": "explicit effective backend log; missing is unknown",
+      "status": "unknown"
+    },
+    {
+      "name": "vision_projector_loaded",
+      "expected": false,
+      "actual": null,
+      "source": "effective mmproj_path, if backend exposes it",
+      "status": "unknown"
+    },
+    {
+      "name": "speculative_decoding",
+      "expected": "off",
+      "actual": null,
+      "source": "effective_speculative_type, if exposed",
+      "status": "unknown"
+    }
+  ],
+  "note": "Requested flags are stored separately. Unknown settings permit diagnostic results, not a verified configuration claim."
+}

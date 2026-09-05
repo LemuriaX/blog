@@ -1,0 +1,29 @@
+{
+  "id": "performance-quality",
+  "stage": {
+    "name": "performance",
+    "label": "性能优先候选",
+    "quant": "UD-Q4_K_S",
+    "batch": 1024,
+    "ubatch": 512,
+    "kv": "q8_0",
+    "thinking": false,
+    "effort": "medium",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "max_tokens": 1024,
+    "id": "performance-quality",
+    "kind": "quality",
+    "context": 8192,
+    "target": 4600,
+    "output_budget": 1024
+  },
+  "started_at": "2026-09-05T18:27:22.989+08:00",
+  "status": "failed",
+  "verdict": "unverified",
+  "error": "Port 8001 is occupied; select another port. Existing processes are left alone.",
+  "error_type": "ValueError",
+  "finished_at": "2026-09-05T18:27:22.991+08:00"
+}

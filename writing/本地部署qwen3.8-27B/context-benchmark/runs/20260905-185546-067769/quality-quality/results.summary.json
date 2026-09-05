@@ -1,0 +1,1738 @@
+{
+  "profile": "quality-quality",
+  "status": "completed",
+  "planned_requests": 63,
+  "completed_requests": 63,
+  "valid_requests": 62,
+  "task_success_rate": 0.9682539682539683,
+  "content_correct_rate": 0.9682539682539683,
+  "format_compliance_rate": 0.9841269841269841,
+  "run_success_rate": 1.0,
+  "tasks": [
+    {
+      "task_id": "A_short_qa",
+      "task_name": "A1：权重单位换算",
+      "family": "A",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 174.198686,
+          "n": 3,
+          "minimum": 153.278671,
+          "maximum": 203.722567,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.694587,
+          "n": 3,
+          "minimum": 31.493916,
+          "maximum": 31.695082,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 105.203329,
+          "n": 3,
+          "minimum": 94.44467817116413,
+          "maximum": 108.14887746372736,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.735941,
+          "n": 3,
+          "minimum": 31.539481026707303,
+          "maximum": 31.79271442541384,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.731916,
+          "n": 3,
+          "minimum": 0.7119815000005474,
+          "maximum": 0.8152921000000788,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 21.246572,
+          "n": 3,
+          "minimum": 10.915150700002414,
+          "maximum": 23.87318039999809,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 22.197369,
+          "n": 3,
+          "minimum": 11.79559700000027,
+          "maximum": 24.81766389999757,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 677,
+          "n": 3,
+          "minimum": 349,
+          "maximum": 765,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "A_block_padding",
+      "task_name": "A2：量化块与填充",
+      "family": "A",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 314.523738,
+          "n": 3,
+          "minimum": 249.643138,
+          "maximum": 316.178617,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.717461,
+          "n": 3,
+          "minimum": 30.088972,
+          "maximum": 31.809281,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 146.00524,
+          "n": 3,
+          "minimum": 120.93304495472198,
+          "maximum": 149.1819378920121,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.850327,
+          "n": 3,
+          "minimum": 30.179150936071427,
+          "maximum": 31.909843477268286,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.534227,
+          "n": 3,
+          "minimum": 0.5228515000017069,
+          "maximum": 0.6449849999989965,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.899659,
+          "n": 3,
+          "minimum": 7.492037500000151,
+          "maximum": 10.601670599997306,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 10.249432,
+          "n": 3,
+          "minimum": 7.838223300001118,
+          "maximum": 10.94875200000024,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 310,
+          "n": 3,
+          "minimum": 233,
+          "maximum": 311,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "A_kv",
+      "task_name": "A3：KV 理论容量",
+      "family": "A",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 202.635178,
+          "n": 3,
+          "minimum": 188.114981,
+          "maximum": 206.937096,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.565358,
+          "n": 3,
+          "minimum": 31.478435,
+          "maximum": 31.59274,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 123.278583,
+          "n": 3,
+          "minimum": 118.80971031754449,
+          "maximum": 128.75532084987253,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.602609,
+          "n": 3,
+          "minimum": 31.551912602457026,
+          "maximum": 31.664353897899055,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.71383,
+          "n": 3,
+          "minimum": 0.6834669000018039,
+          "maximum": 0.7406802000004973,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 13.864154,
+          "n": 3,
+          "minimum": 13.135492400000658,
+          "maximum": 26.4752135000017,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 14.542135,
+          "n": 3,
+          "minimum": 13.804323500000464,
+          "maximum": 27.13564700000279,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 437,
+          "n": 3,
+          "minimum": 414,
+          "maximum": 835,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "A_headroom",
+      "task_name": "A4：统一显存单位",
+      "family": "A",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 2,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 0.3333333333333333,
+      "content_correct_rate": 0.3333333333333333,
+      "format_compliance_rate": 0.6666666666666666,
+      "budget_exhausted": 1,
+      "metrics": {
+        "prompt_tps": {
+          "median": 176.631095,
+          "n": 2,
+          "minimum": 173.926941,
+          "maximum": 179.335248,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.470284,
+          "n": 2,
+          "minimum": 31.351873,
+          "maximum": 31.588695,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 104.712545,
+          "n": 2,
+          "minimum": 102.76540311007746,
+          "maximum": 106.659686703235,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.484685,
+          "n": 2,
+          "minimum": 31.36716523129083,
+          "maximum": 31.60220549509749,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.706941,
+          "n": 2,
+          "minimum": 0.6937953999986348,
+          "maximum": 0.7200867000028666,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 68.161408,
+          "n": 2,
+          "minimum": 64.95318830000178,
+          "maximum": 71.3696271000008,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 68.934829,
+          "n": 2,
+          "minimum": 65.72524560000238,
+          "maximum": 72.14441299999817,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 2148.5,
+          "n": 2,
+          "minimum": 2039,
+          "maximum": 2258,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 2,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "A_latency",
+      "task_name": "A5：计时范围",
+      "family": "A",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 206.461147,
+          "n": 3,
+          "minimum": 199.957062,
+          "maximum": 238.298299,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.576728,
+          "n": 3,
+          "minimum": 31.421816,
+          "maximum": 31.685638,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 123.268083,
+          "n": 3,
+          "minimum": 113.04053455090434,
+          "maximum": 129.72037067315782,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.720934,
+          "n": 3,
+          "minimum": 31.571746092978632,
+          "maximum": 31.798035044449826,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.770678,
+          "n": 3,
+          "minimum": 0.7323444999965432,
+          "maximum": 0.8404064999995171,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 7.500278,
+          "n": 3,
+          "minimum": 7.06504589999895,
+          "maximum": 8.82606400000077,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 8.188484,
+          "n": 3,
+          "minimum": 7.766452500000014,
+          "maximum": 9.513210000000981,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 233,
+          "n": 3,
+          "minimum": 222,
+          "maximum": 278,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "B_code_debug",
+      "task_name": "B1：平均值分母",
+      "family": "B",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 208.101501,
+          "n": 3,
+          "minimum": 203.325985,
+          "maximum": 352.305935,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.687402,
+          "n": 3,
+          "minimum": 31.317098,
+          "maximum": 31.701883,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 127.248481,
+          "n": 3,
+          "minimum": 125.31272119351961,
+          "maximum": 175.28635794227094,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.768771,
+          "n": 3,
+          "minimum": 31.427035814410942,
+          "maximum": 31.80374532241095,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.746571,
+          "n": 3,
+          "minimum": 0.5419703000006848,
+          "maximum": 0.758103399999527,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.716757,
+          "n": 3,
+          "minimum": 9.43997490000038,
+          "maximum": 13.47227280000152,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 10.358864,
+          "n": 3,
+          "minimum": 10.100480099998094,
+          "maximum": 14.139454000000114,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 304,
+          "n": 3,
+          "minimum": 302,
+          "maximum": 425,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "B_range",
+      "task_name": "B2：循环边界",
+      "family": "B",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 218.401855,
+          "n": 3,
+          "minimum": 205.165752,
+          "maximum": 355.639855,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.646193,
+          "n": 3,
+          "minimum": 29.90077,
+          "maximum": 31.69794,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 137.65171,
+          "n": 3,
+          "minimum": 131.51035908373402,
+          "maximum": 161.69673776859352,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.729764,
+          "n": 3,
+          "minimum": 30.004063569208995,
+          "maximum": 31.81578161107914,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.741001,
+          "n": 3,
+          "minimum": 0.6308104999989155,
+          "maximum": 0.7756043000008503,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 8.508356,
+          "n": 3,
+          "minimum": 8.164721200002532,
+          "maximum": 11.521597399998427,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 9.493907,
+          "n": 3,
+          "minimum": 9.105083200000081,
+          "maximum": 12.46511499999906,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 266,
+          "n": 3,
+          "minimum": 265,
+          "maximum": 372,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "B_units",
+      "task_name": "B3：单位常量",
+      "family": "B",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 201.146535,
+          "n": 3,
+          "minimum": 188.500658,
+          "maximum": 214.354451,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.60135,
+          "n": 3,
+          "minimum": 31.461206,
+          "maximum": 31.743642,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 124.191992,
+          "n": 3,
+          "minimum": 112.7967965710419,
+          "maximum": 124.33541727419978,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.722987,
+          "n": 3,
+          "minimum": 31.55803774511607,
+          "maximum": 31.866429630811357,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.756893,
+          "n": 3,
+          "minimum": 0.7560195000005479,
+          "maximum": 0.8333569999995234,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 8.680139,
+          "n": 3,
+          "minimum": 7.942134900000383,
+          "maximum": 9.976476699997875,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 9.536248,
+          "n": 3,
+          "minimum": 8.727726499997516,
+          "maximum": 10.832804699999542,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 276,
+          "n": 3,
+          "minimum": 254,
+          "maximum": 318,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "B_zero",
+      "task_name": "B4：保留零值",
+      "family": "B",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 380.070617,
+          "n": 3,
+          "minimum": 237.840975,
+          "maximum": 414.185008,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.287412,
+          "n": 3,
+          "minimum": 30.9983,
+          "maximum": 31.755619,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 169.54831,
+          "n": 3,
+          "minimum": 132.39975617266174,
+          "maximum": 182.64229706969138,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.396417,
+          "n": 3,
+          "minimum": 31.12750472607193,
+          "maximum": 31.845179082177424,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.589802,
+          "n": 3,
+          "minimum": 0.5475183000016841,
+          "maximum": 0.7552883999996993,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.133752,
+          "n": 3,
+          "minimum": 8.582027199998265,
+          "maximum": 10.948106599997118,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 9.833337,
+          "n": 3,
+          "minimum": 9.290518900001189,
+          "maximum": 11.643732599997747,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 285,
+          "n": 3,
+          "minimum": 272,
+          "maximum": 352,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "B_inclusive",
+      "task_name": "B5：包含端点",
+      "family": "B",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 191.861075,
+          "n": 3,
+          "minimum": 187.944045,
+          "maximum": 213.866508,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.506523,
+          "n": 3,
+          "minimum": 31.485667,
+          "maximum": 31.60602,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 117.913647,
+          "n": 3,
+          "minimum": 102.76423852274583,
+          "maximum": 120.36808560554044,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.655002,
+          "n": 3,
+          "minimum": 31.633791009708492,
+          "maximum": 31.771928926186188,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.729347,
+          "n": 3,
+          "minimum": 0.7144751000014367,
+          "maximum": 0.8368670000018028,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 6.631033,
+          "n": 3,
+          "minimum": 5.930149800002255,
+          "maximum": 6.689935500002321,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 7.352891,
+          "n": 3,
+          "minimum": 6.677564500001608,
+          "maximum": 7.407540500000323,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 208,
+          "n": 3,
+          "minimum": 189,
+          "maximum": 210,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "C_constraint_reasoning",
+      "task_name": "C1：位置约束",
+      "family": "C",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 173.076795,
+          "n": 3,
+          "minimum": 164.392569,
+          "maximum": 254.111392,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.565826,
+          "n": 3,
+          "minimum": 30.954134,
+          "maximum": 31.681969,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 108.349194,
+          "n": 3,
+          "minimum": 104.9772118697923,
+          "maximum": 138.97579825545264,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.625854,
+          "n": 3,
+          "minimum": 31.016328678424586,
+          "maximum": 31.747445689333745,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.719895,
+          "n": 3,
+          "minimum": 0.5612488000006124,
+          "maximum": 0.7430184000004374,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 15.555315,
+          "n": 3,
+          "minimum": 15.321865800000523,
+          "maximum": 16.431719600001088,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 16.100741,
+          "n": 3,
+          "minimum": 15.863125600000785,
+          "maximum": 16.972300099998392,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 482,
+          "n": 3,
+          "minimum": 480,
+          "maximum": 514,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "C_schedule",
+      "task_name": "C2：依赖调度",
+      "family": "C",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 238.269362,
+          "n": 3,
+          "minimum": 197.921239,
+          "maximum": 261.363489,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.335551,
+          "n": 3,
+          "minimum": 31.268631,
+          "maximum": 31.647276,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 125.390542,
+          "n": 3,
+          "minimum": 116.59662980332554,
+          "maximum": 145.88905585072337,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.442458,
+          "n": 3,
+          "minimum": 31.384102460249764,
+          "maximum": 31.75453322423771,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.805483,
+          "n": 3,
+          "minimum": 0.6923069000004034,
+          "maximum": 0.8662342999996326,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.34795,
+          "n": 3,
+          "minimum": 9.339522999998735,
+          "maximum": 9.623875100001896,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 9.888755,
+          "n": 3,
+          "minimum": 9.88354420000178,
+          "maximum": 10.157036600001447,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 289,
+          "n": 3,
+          "minimum": 285,
+          "maximum": 295,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "C_knapsack",
+      "task_name": "C3：容量选择",
+      "family": "C",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 195.717246,
+          "n": 3,
+          "minimum": 194.584448,
+          "maximum": 234.858532,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.537907,
+          "n": 3,
+          "minimum": 31.390836,
+          "maximum": 31.765843,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 127.880476,
+          "n": 3,
+          "minimum": 124.33449049762633,
+          "maximum": 147.44633784478765,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.63115,
+          "n": 3,
+          "minimum": 31.458758135316046,
+          "maximum": 31.818482950413014,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.79762,
+          "n": 3,
+          "minimum": 0.6917771000007633,
+          "maximum": 0.8203676999983145,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 14.557352,
+          "n": 3,
+          "minimum": 11.661363999999594,
+          "maximum": 18.89650520000214,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 15.091982,
+          "n": 3,
+          "minimum": 12.203950600000098,
+          "maximum": 19.43431739999869,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 453,
+          "n": 3,
+          "minimum": 360,
+          "maximum": 593,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "C_count",
+      "task_name": "C4：可行排列计数",
+      "family": "C",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 171.127133,
+          "n": 3,
+          "minimum": 151.82253,
+          "maximum": 178.212605,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.403986,
+          "n": 3,
+          "minimum": 31.141004,
+          "maximum": 31.555277,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 98.59588,
+          "n": 3,
+          "minimum": 88.69276504817958,
+          "maximum": 105.02060915308452,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.415987,
+          "n": 3,
+          "minimum": 31.156670783530327,
+          "maximum": 31.574570013537123,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.699826,
+          "n": 3,
+          "minimum": 0.6570138999995834,
+          "maximum": 0.7779665000016394,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 64.006528,
+          "n": 3,
+          "minimum": 55.289469800001825,
+          "maximum": 87.56394559999899,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 64.488496,
+          "n": 3,
+          "minimum": 55.778759900000296,
+          "maximum": 88.03517179999835,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 1985,
+          "n": 3,
+          "minimum": 1739,
+          "maximum": 2745,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "C_unsat",
+      "task_name": "C5：不可满足约束",
+      "family": "C",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 157.793348,
+          "n": 3,
+          "minimum": 155.331428,
+          "maximum": 159.799008,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.608758,
+          "n": 3,
+          "minimum": 31.302726,
+          "maximum": 31.856523,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 89.382457,
+          "n": 3,
+          "minimum": 86.94364819895917,
+          "maximum": 92.54542727267386,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.771565,
+          "n": 3,
+          "minimum": 31.57536771885407,
+          "maximum": 32.13223689495651,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.805527,
+          "n": 3,
+          "minimum": 0.7779962999993586,
+          "maximum": 0.8281225999999151,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 4.316565,
+          "n": 3,
+          "minimum": 4.018699299998843,
+          "maximum": 6.477911099998892,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 4.662387,
+          "n": 3,
+          "minimum": 4.357138600000326,
+          "maximum": 6.849003999999695,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 121,
+          "n": 3,
+          "minimum": 115,
+          "maximum": 192,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "E_instruction_following",
+      "task_name": "E1：筛选排序",
+      "family": "E",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 265.13378,
+          "n": 3,
+          "minimum": 203.027266,
+          "maximum": 344.535628,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.531053,
+          "n": 3,
+          "minimum": 31.064204,
+          "maximum": 31.761273,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 141.632645,
+          "n": 3,
+          "minimum": 126.73357030720089,
+          "maximum": 154.28514685361552,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.647689,
+          "n": 3,
+          "minimum": 31.1755244144662,
+          "maximum": 31.889149399222724,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.663689,
+          "n": 3,
+          "minimum": 0.609261500001594,
+          "maximum": 0.7417134999996051,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 8.701255,
+          "n": 3,
+          "minimum": 8.667238999998517,
+          "maximum": 8.88424550000127,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 9.173204,
+          "n": 3,
+          "minimum": 9.149062099997536,
+          "maximum": 9.356234400001995,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 271,
+          "n": 3,
+          "minimum": 268,
+          "maximum": 271,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "E_ties",
+      "task_name": "E2：并列与边界",
+      "family": "E",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 190.700047,
+          "n": 3,
+          "minimum": 182.819631,
+          "maximum": 336.593595,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.478471,
+          "n": 3,
+          "minimum": 31.459916,
+          "maximum": 31.683941,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 121.533727,
+          "n": 3,
+          "minimum": 112.91662459621531,
+          "maximum": 153.07203106969249,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.614291,
+          "n": 3,
+          "minimum": 31.580705373910675,
+          "maximum": 31.789141702588232,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.707622,
+          "n": 3,
+          "minimum": 0.5618270000013581,
+          "maximum": 0.7616239000017231,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 8.355573,
+          "n": 3,
+          "minimum": 8.107895699999062,
+          "maximum": 9.721415200001502,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 8.763584,
+          "n": 3,
+          "minimum": 8.523289799999475,
+          "maximum": 10.136197800002265,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 259,
+          "n": 3,
+          "minimum": 247,
+          "maximum": 298,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "E_versions",
+      "task_name": "E3：版本与缺失",
+      "family": "E",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 349.147808,
+          "n": 3,
+          "minimum": 210.873282,
+          "maximum": 366.692893,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 30.244773,
+          "n": 3,
+          "minimum": 29.870071,
+          "maximum": 31.539434,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 178.536204,
+          "n": 3,
+          "minimum": 133.83946307289077,
+          "maximum": 186.84346290885517,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 30.335934,
+          "n": 3,
+          "minimum": 29.959819273158594,
+          "maximum": 31.600366899810336,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.576914,
+          "n": 3,
+          "minimum": 0.5512636000021303,
+          "maximum": 0.7695786999975098,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 10.867248,
+          "n": 3,
+          "minimum": 10.56122619999951,
+          "maximum": 16.245275400000537,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 11.290544,
+          "n": 3,
+          "minimum": 10.997206399999413,
+          "maximum": 16.655180599998857,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 325,
+          "n": 3,
+          "minimum": 313,
+          "maximum": 502,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "E_nested",
+      "task_name": "E4：类型与嵌套",
+      "family": "E",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 287.622046,
+          "n": 3,
+          "minimum": 258.032296,
+          "maximum": 339.09429,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 30.861182,
+          "n": 3,
+          "minimum": 27.221696,
+          "maximum": 31.088036,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 142.319978,
+          "n": 3,
+          "minimum": 128.86853289567412,
+          "maximum": 154.57815621097865,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.042876,
+          "n": 3,
+          "minimum": 27.347302674267006,
+          "maximum": 31.23256229089892,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.653457,
+          "n": 3,
+          "minimum": 0.6016374000028009,
+          "maximum": 0.7216656999989937,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 6.352638,
+          "n": 3,
+          "minimum": 5.062016299998504,
+          "maximum": 6.381406600001355,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 7.261071,
+          "n": 3,
+          "minimum": 5.936175399998319,
+          "maximum": 7.444620300000679,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 184,
+          "n": 3,
+          "minimum": 164,
+          "maximum": 208,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "E_empty",
+      "task_name": "E5：空结果",
+      "family": "E",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 200.956829,
+          "n": 3,
+          "minimum": 189.892128,
+          "maximum": 359.378765,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.58854,
+          "n": 3,
+          "minimum": 31.340212,
+          "maximum": 31.786018,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 118.075905,
+          "n": 3,
+          "minimum": 114.68135004963541,
+          "maximum": 169.0921786794919,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.758038,
+          "n": 3,
+          "minimum": 31.48160110292855,
+          "maximum": 31.945673386623383,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.745283,
+          "n": 3,
+          "minimum": 0.5204262000006565,
+          "maximum": 0.7673436000004585,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 7.188736,
+          "n": 3,
+          "minimum": 6.58726839999872,
+          "maximum": 7.222798499999044,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 7.599905,
+          "n": 3,
+          "minimum": 7.004718000000139,
+          "maximum": 7.63834279999719,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 217,
+          "n": 3,
+          "minimum": 198,
+          "maximum": 226,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    },
+    {
+      "task_id": "D_long_context",
+      "task_name": "D：长文档检索",
+      "family": "D",
+      "planned_runs": 3,
+      "completed_runs": 3,
+      "valid_runs": 3,
+      "status": "completed",
+      "run_success_rate": 1.0,
+      "task_success_rate": 1.0,
+      "content_correct_rate": 1.0,
+      "format_compliance_rate": 1.0,
+      "budget_exhausted": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 720.789086,
+          "n": 3,
+          "minimum": 682.603127,
+          "maximum": 750.953028,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.145841,
+          "n": 3,
+          "minimum": 30.875186,
+          "maximum": 31.204741,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 689.170216,
+          "n": 3,
+          "minimum": 653.6535122779482,
+          "maximum": 717.7950432574498,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.165473,
+          "n": 3,
+          "minimum": 30.895866684382188,
+          "maximum": 31.226081702796076,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 6.621006,
+          "n": 3,
+          "minimum": 6.348608899999817,
+          "maximum": 6.997591100000136,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 54.142592,
+          "n": 3,
+          "minimum": 53.49666129999969,
+          "maximum": 54.68562589999783,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 56.670053,
+          "n": 3,
+          "minimum": 55.873948599997675,
+          "maximum": 57.00536529999954,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 1551,
+          "n": 3,
+          "minimum": 1535,
+          "maximum": 1565,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 3,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "prompt_tps": {
+      "median": 206.699121,
+      "n": 62,
+      "minimum": 151.82253,
+      "maximum": 750.953028,
+      "source": "backend"
+    },
+    "decode_tps": {
+      "median": 31.518788,
+      "n": 62,
+      "minimum": 27.221696,
+      "maximum": 31.856523,
+      "source": "backend"
+    },
+    "client_prompt_tps_est": {
+      "median": 125.351632,
+      "n": 62,
+      "minimum": 86.94364819895917,
+      "maximum": 717.7950432574498,
+      "source": "client_estimate"
+    },
+    "client_decode_tps_est": {
+      "median": 31.602407,
+      "n": 62,
+      "minimum": 27.347302674267006,
+      "maximum": 32.13223689495651,
+      "source": "client_estimate"
+    },
+    "ttft_client_s": {
+      "median": 0.73213,
+      "n": 62,
+      "minimum": 0.5204262000006565,
+      "maximum": 6.997591100000136,
+      "source": "client"
+    },
+    "ttfa_client_s": {
+      "median": 9.670316,
+      "n": 62,
+      "minimum": 4.018699299998843,
+      "maximum": 87.56394559999899,
+      "source": "client"
+    },
+    "total_s": {
+      "median": 10.146617,
+      "n": 62,
+      "minimum": 4.357138600000326,
+      "maximum": 88.03517179999835,
+      "source": "client"
+    },
+    "output_tokens": {
+      "median": 300.0,
+      "n": 62,
+      "minimum": 115,
+      "maximum": 2745,
+      "source": "backend"
+    },
+    "reasoning_tokens": {
+      "median": 0.0,
+      "n": 62,
+      "minimum": 0,
+      "maximum": 0,
+      "source": "backend"
+    }
+  },
+  "primary_attempt_policy": "first_attempt_per_planned_request"
+}

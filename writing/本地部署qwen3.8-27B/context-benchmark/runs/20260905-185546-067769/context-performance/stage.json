@@ -1,0 +1,143 @@
+{
+  "id": "context-performance",
+  "stage": {
+    "name": "context",
+    "label": "上下文优先候选",
+    "quant": "UD-Q3_K_XL",
+    "batch": 256,
+    "ubatch": 128,
+    "kv": "q8_0",
+    "thinking": false,
+    "effort": "medium",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "max_tokens": 1024,
+    "id": "context-performance",
+    "kind": "performance",
+    "context": 8192,
+    "target": 6800,
+    "also_capacity": true,
+    "output_budget": 192
+  },
+  "started_at": "2026-09-05T19:23:04.612+08:00",
+  "status": "completed",
+  "verdict": "unverified",
+  "model_ready_at": "2026-09-05T19:23:19.455+08:00",
+  "startup_to_ready_s": 14.84394121170044,
+  "configuration_verdict": "unknown",
+  "unverified_checks": [
+    "context_shift",
+    "prompt_cache",
+    "vision_projector_loaded",
+    "speculative_decoding"
+  ],
+  "measurement_started_at": "2026-09-05T19:23:19.494+08:00",
+  "runner_exit_code": 0,
+  "summary": {
+    "status": "completed",
+    "planned_requests": 6,
+    "completed_requests": 6,
+    "valid_requests": 6,
+    "task_success_rate": 0.0,
+    "run_success_rate": 1.0,
+    "overall_accuracy": 1.0,
+    "total_items": 30,
+    "correct_items": 30,
+    "positions": {
+      "pos_10": 6,
+      "pos_30": 6,
+      "pos_50": 6,
+      "pos_70": 6,
+      "pos_90": 6
+    },
+    "capacity_verdict": "fail",
+    "performance_verdict": "pass",
+    "failure_reasons": [
+      "json_format_invalid"
+    ],
+    "metrics": {
+      "prompt_tps": {
+        "median": 649.658331,
+        "n": 6,
+        "minimum": 646.095389,
+        "maximum": 658.381627,
+        "source": "backend"
+      },
+      "decode_tps": {
+        "median": 33.335946,
+        "n": 6,
+        "minimum": 33.045357,
+        "maximum": 33.418471,
+        "source": "backend"
+      },
+      "client_prompt_tps_est": {
+        "median": 634.324929,
+        "n": 6,
+        "minimum": 624.0848534550908,
+        "maximum": 641.4857665921005,
+        "source": "client_estimate"
+      },
+      "client_decode_tps_est": {
+        "median": 33.656064,
+        "n": 6,
+        "minimum": 33.3361688919862,
+        "maximum": 33.73559225146292,
+        "source": "client_estimate"
+      },
+      "ttft_client_s": {
+        "median": 10.691681,
+        "n": 6,
+        "minimum": 10.566095700000005,
+        "maximum": 10.867111999999906,
+        "source": "client"
+      },
+      "ttfa_client_s": {
+        "median": 10.691681,
+        "n": 6,
+        "minimum": 10.566095700000005,
+        "maximum": 10.867111999999906,
+        "source": "client"
+      },
+      "total_s": {
+        "median": 13.914932,
+        "n": 6,
+        "minimum": 13.781266699999833,
+        "maximum": 14.050898100002087,
+        "source": "client"
+      },
+      "output_tokens": {
+        "median": 107.0,
+        "n": 6,
+        "minimum": 106,
+        "maximum": 113,
+        "source": "backend"
+      },
+      "reasoning_tokens": {
+        "median": 0.0,
+        "n": 6,
+        "minimum": 0,
+        "maximum": 0,
+        "source": "backend"
+      }
+    },
+    "measured_prompt_tokens": [
+      6778,
+      6778,
+      6786,
+      6786,
+      6782,
+      6782
+    ],
+    "configured_contexts": [
+      8192
+    ],
+    "primary_attempt_policy": "first_attempt_per_planned_request"
+  },
+  "measurement_verdict": "fail",
+  "finished_at": "2026-09-05T19:24:56.493+08:00",
+  "cleanup_status": "completed",
+  "cleanup_duration_s": 0.3041980000016338,
+  "cleanup_finished_at": "2026-09-05T19:24:56.800+08:00"
+}

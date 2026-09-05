@@ -1,0 +1,543 @@
+test_interrupt_tail_and_retry_preserve_primary_failure (test_benchmark.JournalTests.test_interrupt_tail_and_retry_preserve_primary_failure) ... ok
+test_resume_fingerprint_rejects_changes (test_benchmark.JournalTests.test_resume_fingerprint_rejects_changes) ... ok
+test_consecutive_launchers_can_reuse_descendants_port (test_benchmark.OwnershipTests.test_consecutive_launchers_can_reuse_descendants_port) ... ok
+test_exited_launcher_descendant_is_closed (test_benchmark.OwnershipTests.test_exited_launcher_descendant_is_closed) ... ok
+test_hidden_process_forwards_output_for_readiness (test_benchmark.OwnershipTests.test_hidden_process_forwards_output_for_readiness) ... ok
+22:33:42  [加载] 服务进程已启动 | 端口 4090 | 就绪时限 5.00s
+22:33:42  [就绪] 模型和接口已就绪 | 加载用时 2.07s
+22:33:42  [核验] 通过 14 项 | 不一致 0 项 | 待确认 0 项
+22:33:42  [准备] 生成或复用测试文本，校验输入预算
+22:33:43  [语料] 1/3 | 寻找接近 1,800 Token 的输入长度
+22:33:43  [语料] 1/3 完成 | 1,745 Token | 偏差 -55 | case-01.json
+22:33:43  [语料] 2/3 | 寻找接近 1,800 Token 的输入长度
+22:33:43  [语料] 2/3 完成 | 1,746 Token | 偏差 -54 | case-02.json
+22:33:43  [语料] 3/3 | 寻找接近 1,800 Token 的输入长度
+22:33:43  [语料] 3/3 完成 | 1,741 Token | 偏差 -59 | case-03.json
+22:33:43  [开始] 预热与正式测试
+22:33:43  [题集] 计划 6 次 | 本次执行 6 次 | Thinking 关闭
+22:33:43  [预热] 1 次长输入预热，最多输出 32 Token，不计入统计
+22:33:43  [预热] 完成 | 用时 0.00s
+22:33:43  [请求] 01/6  case-01.json
+                 ID case-01-r1
+22:33:43  [结果] [##--------------] 1/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,745 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [请求] 02/6  case-01.json
+                 ID case-01-r2
+22:33:43  [结果] [#####-----------] 2/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,745 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [请求] 03/6  case-02.json
+                 ID case-02-r1
+22:33:43  [结果] [########--------] 3/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,746 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [请求] 04/6  case-02.json
+                 ID case-02-r2
+22:33:43  [结果] [##########------] 4/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,746 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [请求] 05/6  case-03.json
+                 ID case-03-r1
+22:33:43  [结果] [#############---] 5/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,741 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [请求] 06/6  case-03.json
+                 ID case-03-r2
+22:33:43  [结果] [################] 6/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,741 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:43  [清理] 停止本阶段服务，等待子进程退出和端口释放
+22:33:46  [加载] 服务进程已启动 | 端口 4090 | 就绪时限 5.00s
+22:33:46  [就绪] 模型和接口已就绪 | 加载用时 2.05s
+22:33:46  [核验] 通过 14 项 | 不一致 0 项 | 待确认 0 项
+22:33:46  [准备] 生成或复用测试文本，校验输入预算
+22:33:46  [语料] 1/3 | 寻找接近 1,800 Token 的输入长度
+22:33:46  [语料] 1/3 完成 | 1,762 Token | 偏差 -38 | case-01.json
+22:33:46  [语料] 2/3 | 寻找接近 1,800 Token 的输入长度
+22:33:46  [语料] 2/3 完成 | 1,864 Token | 偏差 +64 | case-02.json
+22:33:46  [语料] 3/3 | 寻找接近 1,800 Token 的输入长度
+22:33:46  [语料] 3/3 完成 | 1,753 Token | 偏差 -47 | case-03.json
+22:33:46  [开始] 质量测试
+22:33:46  [题集] 计划 63 次 | 本次执行 63 次 | Thinking 开启 / xhigh
+22:33:46  [请求] 01/63  A1：权重单位换算 | seed 3407
+                 ID A_short_qa-s3407
+22:33:46  [结果] [----------------] 1/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 117 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 02/63  A2：量化块与填充 | seed 3407
+                 ID A_block_padding-s3407
+22:33:46  [结果] [----------------] 2/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 116 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 03/63  A3：KV 理论容量 | seed 3407
+                 ID A_kv-s3407
+22:33:46  [结果] [----------------] 3/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 140 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 04/63  A4：统一显存单位 | seed 3407
+                 ID A_headroom-s3407
+22:33:46  [结果] [#---------------] 4/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 124 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 05/63  A5：计时范围 | seed 3407
+                 ID A_latency-s3407
+22:33:46  [结果] [#---------------] 5/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 178 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 06/63  B1：平均值分母 | seed 3407
+                 ID B_code_debug-s3407
+22:33:46  [结果] [#---------------] 6/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 215 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 07/63  B2：循环边界 | seed 3407
+                 ID B_range-s3407
+22:33:46  [结果] [#---------------] 7/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 208 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 08/63  B3：单位常量 | seed 3407
+                 ID B_units-s3407
+22:33:46  [结果] [##--------------] 8/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 189 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 09/63  B4：保留零值 | seed 3407
+                 ID B_zero-s3407
+22:33:46  [结果] [##--------------] 9/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 207 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 10/63  B5：包含端点 | seed 3407
+                 ID B_inclusive-s3407
+22:33:46  [结果] [##--------------] 10/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 11/63  C1：位置约束 | seed 3407
+                 ID C_constraint_reasoning-s3407
+22:33:46  [结果] [##--------------] 11/63  通过
+                 总耗时 0.01s | 首输出 0.01s | 最终答案 0.01s
+                 Token 输入 98 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 12/63  C2：依赖调度 | seed 3407
+                 ID C_schedule-s3407
+22:33:46  [结果] [###-------------] 12/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 163 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 13/63  C3：容量选择 | seed 3407
+                 ID C_knapsack-s3407
+22:33:46  [结果] [###-------------] 13/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 157 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 14/63  C4：可行排列计数 | seed 3407
+                 ID C_count-s3407
+22:33:46  [结果] [###-------------] 14/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 119 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 15/63  C5：不可满足约束 | seed 3407
+                 ID C_unsat-s3407
+22:33:46  [结果] [###-------------] 15/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 125 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 16/63  E1：筛选排序 | seed 3407
+                 ID E_instruction_following-s3407
+22:33:46  [结果] [####------------] 16/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 145 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 17/63  E2：并列与边界 | seed 3407
+                 ID E_ties-s3407
+22:33:46  [结果] [####------------] 17/63  通过
+                 总耗时 0.03s | 首输出 0.03s | 最终答案 0.03s
+                 Token 输入 149 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 18/63  E3：版本与缺失 | seed 3407
+                 ID E_versions-s3407
+22:33:46  [结果] [####------------] 18/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 179 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 19/63  E4：类型与嵌套 | seed 3407
+                 ID E_nested-s3407
+22:33:46  [结果] [####------------] 19/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 190 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 20/63  E5：空结果 | seed 3407
+                 ID E_empty-s3407
+22:33:46  [结果] [#####-----------] 20/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 21/63  D：长文档检索 | seed 3407
+                 ID D_long_context-s3407
+22:33:46  [结果] [#####-----------] 21/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,762 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 22/63  A1：权重单位换算 | seed 3413
+                 ID A_short_qa-s3413
+22:33:46  [结果] [#####-----------] 22/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 117 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 23/63  A2：量化块与填充 | seed 3413
+                 ID A_block_padding-s3413
+22:33:46  [结果] [#####-----------] 23/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 116 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 24/63  A3：KV 理论容量 | seed 3413
+                 ID A_kv-s3413
+22:33:46  [结果] [######----------] 24/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 140 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 25/63  A4：统一显存单位 | seed 3413
+                 ID A_headroom-s3413
+22:33:46  [结果] [######----------] 25/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 124 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 26/63  A5：计时范围 | seed 3413
+                 ID A_latency-s3413
+22:33:46  [结果] [######----------] 26/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 178 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 27/63  B1：平均值分母 | seed 3413
+                 ID B_code_debug-s3413
+22:33:46  [结果] [######----------] 27/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 215 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 28/63  B2：循环边界 | seed 3413
+                 ID B_range-s3413
+22:33:46  [结果] [#######---------] 28/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 208 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 29/63  B3：单位常量 | seed 3413
+                 ID B_units-s3413
+22:33:46  [结果] [#######---------] 29/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 189 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 30/63  B4：保留零值 | seed 3413
+                 ID B_zero-s3413
+22:33:46  [结果] [#######---------] 30/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 207 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 31/63  B5：包含端点 | seed 3413
+                 ID B_inclusive-s3413
+22:33:46  [结果] [#######---------] 31/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 32/63  C1：位置约束 | seed 3413
+                 ID C_constraint_reasoning-s3413
+22:33:46  [结果] [########--------] 32/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 98 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 33/63  C2：依赖调度 | seed 3413
+                 ID C_schedule-s3413
+22:33:46  [结果] [########--------] 33/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 163 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 34/63  C3：容量选择 | seed 3413
+                 ID C_knapsack-s3413
+22:33:46  [结果] [########--------] 34/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 157 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 35/63  C4：可行排列计数 | seed 3413
+                 ID C_count-s3413
+22:33:46  [结果] [########--------] 35/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 119 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 36/63  C5：不可满足约束 | seed 3413
+                 ID C_unsat-s3413
+22:33:46  [结果] [#########-------] 36/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 125 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 37/63  E1：筛选排序 | seed 3413
+                 ID E_instruction_following-s3413
+22:33:46  [结果] [#########-------] 37/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 145 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 38/63  E2：并列与边界 | seed 3413
+                 ID E_ties-s3413
+22:33:46  [结果] [#########-------] 38/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 149 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:46  [请求] 39/63  E3：版本与缺失 | seed 3413
+                 ID E_versions-s3413
+22:33:47  [结果] [#########-------] 39/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 179 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 40/63  E4：类型与嵌套 | seed 3413
+                 ID E_nested-s3413
+22:33:47  [结果] [##########------] 40/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 190 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 41/63  E5：空结果 | seed 3413
+                 ID E_empty-s3413
+22:33:47  [结果] [##########------] 41/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 42/63  D：长文档检索 | seed 3413
+                 ID D_long_context-s3413
+22:33:47  [结果] [##########------] 42/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,864 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 43/63  A1：权重单位换算 | seed 3433
+                 ID A_short_qa-s3433
+22:33:47  [结果] [##########------] 43/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 117 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 44/63  A2：量化块与填充 | seed 3433
+                 ID A_block_padding-s3433
+22:33:47  [结果] [###########-----] 44/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 116 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 45/63  A3：KV 理论容量 | seed 3433
+                 ID A_kv-s3433
+22:33:47  [结果] [###########-----] 45/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 140 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 46/63  A4：统一显存单位 | seed 3433
+                 ID A_headroom-s3433
+22:33:47  [结果] [###########-----] 46/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 124 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 47/63  A5：计时范围 | seed 3433
+                 ID A_latency-s3433
+22:33:47  [结果] [###########-----] 47/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 178 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 48/63  B1：平均值分母 | seed 3433
+                 ID B_code_debug-s3433
+22:33:47  [结果] [############----] 48/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 215 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 49/63  B2：循环边界 | seed 3433
+                 ID B_range-s3433
+22:33:47  [结果] [############----] 49/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 208 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 50/63  B3：单位常量 | seed 3433
+                 ID B_units-s3433
+22:33:47  [结果] [############----] 50/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 189 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 51/63  B4：保留零值 | seed 3433
+                 ID B_zero-s3433
+22:33:47  [结果] [############----] 51/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 207 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 52/63  B5：包含端点 | seed 3433
+                 ID B_inclusive-s3433
+22:33:47  [结果] [#############---] 52/63  通过
+                 总耗时 0.03s | 首输出 0.03s | 最终答案 0.03s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 53/63  C1：位置约束 | seed 3433
+                 ID C_constraint_reasoning-s3433
+22:33:47  [结果] [#############---] 53/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 98 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 54/63  C2：依赖调度 | seed 3433
+                 ID C_schedule-s3433
+22:33:47  [结果] [#############---] 54/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 163 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 55/63  C3：容量选择 | seed 3433
+                 ID C_knapsack-s3433
+22:33:47  [结果] [#############---] 55/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 157 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 56/63  C4：可行排列计数 | seed 3433
+                 ID C_count-s3433
+22:33:47  [结果] [##############--] 56/63  通过
+                 总耗时 0.01s | 首输出 0.01s | 最终答案 0.01s
+                 Token 输入 119 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 57/63  C5：不可满足约束 | seed 3433
+                 ID C_unsat-s3433
+22:33:47  [结果] [##############--] 57/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 125 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 58/63  E1：筛选排序 | seed 3433
+                 ID E_instruction_following-s3433
+22:33:47  [结果] [##############--] 58/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 145 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 59/63  E2：并列与边界 | seed 3433
+                 ID E_ties-s3433
+22:33:47  [结果] [##############--] 59/63  通过
+                 总耗时 0.02s | 首输出 0.02s | 最终答案 0.02s
+                 Token 输入 149 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 60/63  E3：版本与缺失 | seed 3433
+                 ID E_versions-s3433
+22:33:47  [结果] [###############-] 60/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 179 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 61/63  E4：类型与嵌套 | seed 3433
+                 ID E_nested-s3433
+22:33:47  [结果] [###############-] 61/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 190 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 62/63  E5：空结果 | seed 3433
+                 ID E_empty-s3433
+22:33:47  [结果] [###############-] 62/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 167 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [请求] 63/63  D：长文档检索 | seed 3433
+                 ID D_long_context-s3433
+22:33:47  [结果] [################] 63/63  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,753 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:47  [清理] 停止本阶段服务，等待子进程退出和端口释放
+22:33:49  [加载] 服务进程已启动 | 端口 4090 | 就绪时限 5.00s
+22:33:50  [就绪] 模型和接口已就绪 | 加载用时 2.07s
+22:33:50  [核验] 通过 14 项 | 不一致 0 项 | 待确认 0 项
+22:33:50  [准备] 生成或复用测试文本，校验输入预算
+22:33:50  [语料] 复用 3 份相同文本，文件哈希核对通过
+22:33:50  [开始] 预热与正式测试
+22:33:50  [题集] 计划 6 次 | 本次执行 6 次 | Thinking 关闭
+22:33:50  [预热] 1 次长输入预热，最多输出 32 Token，不计入统计
+22:33:50  [预热] 完成 | 用时 0.02s
+22:33:50  [请求] 01/6  case-01.json
+                 ID case-01-r1
+22:33:50  [结果] [##--------------] 1/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,745 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [请求] 02/6  case-01.json
+                 ID case-01-r2
+22:33:50  [结果] [#####-----------] 2/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,745 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [请求] 03/6  case-02.json
+                 ID case-02-r1
+22:33:50  [结果] [########--------] 3/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,746 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [请求] 04/6  case-02.json
+                 ID case-02-r2
+22:33:50  [结果] [##########------] 4/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,746 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [请求] 05/6  case-03.json
+                 ID case-03-r1
+22:33:50  [结果] [#############---] 5/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,741 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [请求] 06/6  case-03.json
+                 ID case-03-r2
+22:33:50  [结果] [################] 6/6  通过
+                 总耗时 0.00s | 首输出 0.00s | 最终答案 0.00s
+                 Token 输入 1,741 / 输出 100 | 生成 20.00 Token/s（引擎）
+
+22:33:50  [清理] 停止本阶段服务，等待子进程退出和端口释放
+test_generator_both_runners_and_stage_aggregation (test_benchmark.PipelineTests.test_generator_both_runners_and_stage_aggregation) ... ok
+test_actual_partial_offload_is_failure (test_benchmark.PlanValidationTests.test_actual_partial_offload_is_failure) ... ok
+test_backend_log_capture_rejects_paths_outside_expected_directory (test_benchmark.PlanValidationTests.test_backend_log_capture_rejects_paths_outside_expected_directory) ... ok
+test_cli_help_avoids_rich_truncation_without_changing_parent_environment (test_benchmark.PlanValidationTests.test_cli_help_avoids_rich_truncation_without_changing_parent_environment) ... ok
+test_cli_help_distinguishes_native_and_passthrough_flags (test_benchmark.PlanValidationTests.test_cli_help_distinguishes_native_and_passthrough_flags) ... ok
+test_cli_help_reports_process_failure_separately_from_missing_options (test_benchmark.PlanValidationTests.test_cli_help_reports_process_failure_separately_from_missing_options) ... ok
+test_dry_run_never_launches_cli (test_benchmark.PlanValidationTests.test_dry_run_never_launches_cli) ... ok
+test_effective_evidence_can_pass_without_hardcoded_layer_count (test_benchmark.PlanValidationTests.test_effective_evidence_can_pass_without_hardcoded_layer_count) ... ok
+test_external_backend_log_uses_latest_announced_file_and_current_log_format (test_benchmark.PlanValidationTests.test_external_backend_log_uses_latest_announced_file_and_current_log_format) ... ok
+test_full_plan_reuses_8k_and_keeps_quality_budget (test_benchmark.PlanValidationTests.test_full_plan_reuses_8k_and_keeps_quality_budget) ... ok
+test_port_release_waits_and_leaves_unrelated_listener_alone (test_benchmark.PlanValidationTests.test_port_release_waits_and_leaves_unrelated_listener_alone) ... ok
+test_quality_only_selection_and_rejected_thinking_settings (test_benchmark.PlanValidationTests.test_quality_only_selection_and_rejected_thinking_settings) ... ok
+test_request_echo_is_not_gpu_proof (test_benchmark.PlanValidationTests.test_request_echo_is_not_gpu_proof) ... ok
+test_shards_and_ambiguity (test_benchmark.PlanValidationTests.test_shards_and_ambiguity) ... ok
+test_standalone_quality_runner_defaults_to_xhigh (test_benchmark.PlanValidationTests.test_standalone_quality_runner_defaults_to_xhigh) ... ok
+test_entry_decodes_utf8_and_restores_legacy_console_settings (test_benchmark.PowerShellEncodingTests.test_entry_decodes_utf8_and_restores_legacy_console_settings) ... ok
+test_all_wrong_never_high_score (test_benchmark.ScoringTests.test_all_wrong_never_high_score) ... ok
+test_ast_parentheses_and_spaces (test_benchmark.ScoringTests.test_ast_parentheses_and_spaces) ... ok
+test_backend_and_estimates_never_mix (test_benchmark.ScoringTests.test_backend_and_estimates_never_mix) ... ok
+test_duplicate_keys_nonfinite_and_surrounding_prose (test_benchmark.ScoringTests.test_duplicate_keys_nonfinite_and_surrounding_prose) ... ok
+test_failures_remain_in_denominator (test_benchmark.ScoringTests.test_failures_remain_in_denominator) ... ok
+test_nested_types_bool_int_and_null (test_benchmark.ScoringTests.test_nested_types_bool_int_and_null) ... ok
+test_task_counts_and_ground_truth_constraints (test_benchmark.ScoringTests.test_task_counts_and_ground_truth_constraints) ... ok
+test_complete_multiline_sse_and_reasoning_alias (test_benchmark.TransportTests.test_complete_multiline_sse_and_reasoning_alias) ... ok
+test_eof_and_missing_done_retain_partial (test_benchmark.TransportTests.test_eof_and_missing_done_retain_partial) ... ok
+test_keepalive_cannot_extend_absolute_deadline (test_benchmark.TransportTests.test_keepalive_cannot_extend_absolute_deadline) ... ok
+test_output_length_is_not_input_truncation (test_benchmark.TransportTests.test_output_length_is_not_input_truncation) ... ok
+test_progress_follows_received_reasoning_and_answer_without_changing_result (test_benchmark.TransportTests.test_progress_follows_received_reasoning_and_answer_without_changing_result) ... ok
+test_socket_read_timeout_is_classified (test_benchmark.TransportTests.test_socket_read_timeout_is_classified) ... ok
+test_success_survives_later_timeout (test_benchmark.TransportTests.test_success_survives_later_timeout) ... ok
+test_heartbeat_reports_phase_and_stops_without_slowing_short_requests (test_console.ConsoleTests.test_heartbeat_reports_phase_and_stops_without_slowing_short_requests) ... C:\Users\Yuki\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\mock.py:2217: ResourceWarning: unclosed <socket.socket [closed] fd=1384, family=2, type=1, proto=0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Yuki\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\mock.py:2217: ResourceWarning: unclosed <socket.socket [closed] fd=1228, family=2, type=1, proto=0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\Yuki\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\mock.py:2217: ResourceWarning: unclosed <socket.socket [closed] fd=1372, family=2, type=1, proto=0>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_live_relay_arrives_before_child_exit_and_redacts_both_destinations (test_console.ConsoleTests.test_live_relay_arrives_before_child_exit_and_redacts_both_destinations) ... ok
+test_relay_interrupt_stops_owned_runner (test_console.ConsoleTests.test_relay_interrupt_stops_owned_runner) ... ok
+test_results_distinguish_format_budget_and_transport_without_dumping_answers (test_console.ConsoleTests.test_results_distinguish_format_budget_and_transport_without_dumping_answers) ... ok
+test_terminal_control_sequences_and_log_file_are_plain_text (test_console.ConsoleTests.test_terminal_control_sequences_and_log_file_are_plain_text) ... ok
+test_unknown_configuration_and_partial_execution_are_not_reported_as_passed (test_console.ConsoleTests.test_unknown_configuration_and_partial_execution_are_not_reported_as_passed) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 13.639s
+
+OK

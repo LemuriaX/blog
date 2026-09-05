@@ -1,0 +1,26 @@
+{
+  "models": {
+    "UD-Q4_K_S": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_S.gguf",
+        "bytes": 15358213024,
+        "sha256": "75bc9c8adba2842e72f0ab5201aaa07133c5010b566305c09187fcbdcd364017"
+      }
+    ],
+    "UD-Q4_K_XL": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_XL.gguf",
+        "bytes": 17559178144,
+        "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
+      }
+    ],
+    "UD-Q3_K_XL": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf",
+        "bytes": 13146393504,
+        "sha256": "8c2a45ff85e7674ca185ec8eb6cdeab0e617ed9d8018caed0b64380eb2a67a5e"
+      }
+    ]
+  },
+  "missing": {}
+}

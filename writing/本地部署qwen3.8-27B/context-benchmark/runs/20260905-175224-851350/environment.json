@@ -1,0 +1,21 @@
+{
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "python_path": "C:\\Users\\Yuki\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "gpu_vram_bytes": null,
+  "gpu_vram_source": "unmeasured",
+  "note": "Win32_VideoController.AdapterRAM is uint32; it is not used to measure a 20 GiB GPU.",
+  "gpus": [
+    {
+      "Name": "GameViewer Virtual Display Adapter",
+      "DriverVersion": "15.6.5.199"
+    },
+    {
+      "Name": "AMD Radeon RX 7900 XT",
+      "DriverVersion": "32.0.31035.1003"
+    }
+  ],
+  "ram_bytes": 34138931200,
+  "ram_gib": 31.794357299804688
+}

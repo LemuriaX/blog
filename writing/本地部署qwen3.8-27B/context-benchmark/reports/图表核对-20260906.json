@@ -1,0 +1,16 @@
+{
+  "figures": 5,
+  "formats": [
+    "PNG",
+    "SVG"
+  ],
+  "png_dimensions": [
+    2560,
+    1440
+  ],
+  "requests_checked": 225,
+  "checks": 4218,
+  "errors": [],
+  "source_files_unchanged": true,
+  "visual_review": "All five figures inspected; Chinese labels and chart layout checked."
+}

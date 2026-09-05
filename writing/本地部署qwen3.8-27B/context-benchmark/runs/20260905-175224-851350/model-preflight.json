@@ -1,0 +1,12 @@
+{
+  "models": {
+    "UD-Q4_K_S": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_S.gguf",
+        "bytes": 15358213024,
+        "sha256": "75bc9c8adba2842e72f0ab5201aaa07133c5010b566305c09187fcbdcd364017"
+      }
+    ]
+  },
+  "missing": {}
+}

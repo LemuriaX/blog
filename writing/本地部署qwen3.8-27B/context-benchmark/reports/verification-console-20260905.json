@@ -1,0 +1,13 @@
+{
+  "issues": [],
+  "tests_passed": 41,
+  "dry_run_stages": 3,
+  "planned_quality_requests": 189,
+  "thinking_xhigh_plan_unchanged": true,
+  "original_task_set_unchanged": true,
+  "original_evidence_hashes_checked": 46,
+  "gpu_inference_started": false,
+  "preview": "console-preview.txt",
+  "regression_log": "console-regression-20260905.log",
+  "test_note": "Timeout tests emitted the previously observed closed-socket ResourceWarning; all assertions passed."
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">本地推理请求的路径</title><desc id="desc">应用 API 到 Unsloth、llama.cpp、硬件后端和 GPU，架构与权重为侧向输入</desc>
+<rect width="1280" height="720" fill="#f1f5f9"/>
+<g font-family="Microsoft YaHei, Segoe UI, sans-serif"><defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748b"/></marker></defs>
+<text x="70" y="77" font-size="38" font-weight="700" fill="#0f172a">请求如何从应用到达 GPU</text><text x="72" y="120" font-size="22" fill="#475569">软件负责组织与执行；模型架构、权重和模板决定计算内容</text>
+<rect x="80" y="160" width="720" height="78" rx="16" fill="#312e81"/><text x="112" y="189" fill="#dbeafe" font-size="18">应用与接口</text><text x="112" y="220" fill="#fff" font-size="27" font-weight="700">聊天界面 · API · Agent</text>
+<path d="M440 240v13" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="256" width="720" height="78" rx="16" fill="#4338ca"/><text x="112" y="285" fill="#dbeafe" font-size="18">模型管理与服务</text><text x="112" y="316" fill="#fff" font-size="27" font-weight="700">Unsloth Desktop / Run</text>
+<path d="M440 336v13" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="352" width="720" height="78" rx="16" fill="#2563eb"/><text x="112" y="381" fill="#dbeafe" font-size="18">推理运行时</text><text x="112" y="412" fill="#fff" font-size="27" font-weight="700">llama.cpp · 缓存 · 批处理 · 卸载</text>
+<path d="M440 432v13" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="448" width="720" height="78" rx="16" fill="#0891b2"/><text x="112" y="477" fill="#dbeafe" font-size="18">硬件后端</text><text x="112" y="508" fill="#fff" font-size="27" font-weight="700">HIP / Vulkan · 以实际日志为准</text>
+<path d="M440 528v13" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="80" y="544" width="720" height="78" rx="16" fill="#0f766e"/><text x="112" y="573" fill="#dbeafe" font-size="18">执行设备</text><text x="112" y="604" fill="#fff" font-size="27" font-weight="700">AMD GPU · 显存与计算资源</text>
+<rect x="870" y="190" width="330" height="295" rx="20" fill="#fff" stroke="#cbd5e1"/><text x="896" y="233" font-size="24" font-weight="700" fill="#0f172a">运行时读取的材料</text><text x="896" y="287" font-size="21" fill="#334155">模型结构与计算规则</text><text x="896" y="328" font-size="21" fill="#334155">GGUF 权重与量化类型</text><text x="896" y="369" font-size="21" fill="#334155">分词器与聊天模板</text><text x="896" y="439" font-size="18" fill="#64748b">引擎据此读取并运行模型</text><path d="M865 390H810" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/><text x="80" y="675" font-size="21" fill="#475569">实际使用的后端和 GPU 层数，需要查看运行日志。</text></g></svg>

@@ -1,0 +1,857 @@
+﻿job_id,task_id,task_name,family,repeat,seed,configured_context,expected,safety_margin,code_fields,needles,messages,request_id,attempt,request_started_at,request_finished_at,counted_prompt_tokens,tokens_evaluated,usage_matches_count,output_tokens,reasoning_tokens,prompt_tps,decode_tps,client_prompt_tps_est,client_decode_tps_est,ttft_client_s,ttfa_client_s,total_s,stream_complete,truncated,budget_exhausted,finish_reason,effective_n_ctx,measurement_valid,validation_errors,content_correct,format_valid,matched_fields,expected_fields,score_error,parsed_answer,run_status,answer,reasoning,runtime_error,error_kind,task_success,pos_10,pos_30,pos_50,pos_70,pos_90
+A_short_qa-s3407,A_short_qa,A1：权重单位换算,A,1,3407,16384,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",0,[],[],"[{""role"": ""user"", ""content"": ""某稠密模型有 270 亿个参数，每参数占 2 字节，只计算权重。求字节数、十进制 GB 和二进制 GiB，GiB 保留 1 位小数。只输出 JSON：{\""bytes\"":整数,\""GB\"":数字,\""GiB\"":数字}""}]",b6d056cfcd33406b85409e61fab1c9a5,1,2026-09-05T23:20:36.837+08:00,2026-09-05T23:20:51.294+08:00,119,119,True,434,0,193.076817,32.040953,153.15666176135937,32.11399248037171,0.7769822000000204,13.372176399999944,14.291538700000046,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",completed,"{""bytes"":54000000000,""GB"":54.0,""GiB"":50.3}","We need answer user in Chinese. Need compute bytes, decimal GB, binary GiB. Model 270 billion params, each 2 bytes, weights only. 270亿 = 27,000,000,000? In Chinese, 亿=100,000,000, 270亿=270*100,000,000=27,000,000,000. times 2 = 54,000,000,000 bytes. Decimal GB likely 1 GB=10^9 bytes => 54.0 GB. Binary GiB=1024^3=1,073,741,824 bytes. 54,000,000,000 / 1,073,741,824 =? Let's calculate. 1,073,741,824 * 50 = 53,687,091,200. Remainder 312,908,800. /1,073,741,824 ≈0.29143. So 50.291... GiB, one decimal 50.3. JSON bytes integer, GB number, GiB number. Need only output JSON. Ensure GB maybe 54.0? JSON number can be 54.0 or 54. User asks GB:数字, GiB保留1位小数. Could output {""bytes"":54000000000,""GB"":54.0,""GiB"":50.3}. Need ensure no extra. Final only JSON.
+",,,True,,,,,
+A_block_padding-s3407,A_block_padding,A2：量化块与填充,A,1,3407,16384,"{""blocks"": 4, ""bytes"": 136}",0,[],[],"[{""role"": ""user"", ""content"": ""一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{\""blocks\"":整数,\""bytes\"":整数}""}]",e61a66321d0b481c9813ce80b34f4f45,1,2026-09-05T23:20:51.302+08:00,2026-09-05T23:20:59.200+08:00,120,120,True,224,0,301.250188,31.723356,176.96651085749482,31.8614782940109,0.6780943999999636,7.370428499999889,7.708448200000021,True,False,False,stop,16384,True,[],True,True,2,2,,"{""blocks"": 4, ""bytes"": 136}",completed,"{""blocks"":4,""bytes"":136}","We need answer in Chinese? User asks: ""一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{""blocks"":整数,""bytes"":整数}""
+
+Need compute. Format: every 32 elements uses 34 bytes, if not full block still occupies full block. Two tensors have 17 and 65 elements, cannot share blocks across tensors. Total blocks and bytes.
+
+For 17 elements: ceil(17/32)=1 block. 65 elements: ceil(65/32)=ceil(2.03125)=3 blocks. Total blocks 4. Bytes 4*34=136. Output only JSON.
+
+Need final {""blocks"":4,""bytes"":136}. Ensure no extra.
+",,,True,,,,,
+A_kv-s3407,A_kv,A3：KV 理论容量,A,1,3407,16384,"{""bytes"": 4294967296, ""GiB"": 4.0}",0,[],[],"[{""role"": ""user"", ""content"": ""只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{\""bytes\"":整数,\""GiB\"":数字}""}]",289fca2ff0554da0b0c373f1a146d637,1,2026-09-05T23:20:59.208+08:00,2026-09-05T23:21:14.453+08:00,130,130,True,464,0,262.898721,32.381644,164.18932342503854,32.45104843450025,0.7917689000000792,14.506084800000053,15.090308499999992,True,False,False,stop,16384,True,[],True,True,2,2,,"{""bytes"": 4294967296, ""GiB"": 4}",completed,"{""bytes"":4294967296,""GiB"":4}","We need answer user's request in Chinese maybe JSON only. Need compute bytes: 65536 tokens * 16 layers * 4 KV heads per layer * 256 elements per head * K and V both * 2 bytes. Let's calculate carefully.
+65536*16=1,048,576. *4=4,194,304. *256=1,073,741,824? 4,194,304*256 = 1,073,741,824 yes. *2 (K/V) = 2,147,483,648 bytes. *2 bytes? Wait I included 2 for K/V but not element size. Let's re-evaluate: tokens 65536; layers 16; kv heads 4; elements 256; K and V both => 2; element 2 bytes. Multiply all: 65536 * 16 * 4 * 256 * 2 * 2.
+We did up to *256 = 1,073,741,824. Then *2 (K/V) = 2,147,483,648. Then *2 bytes = 4,294,967,296 bytes. That is 4 GiB exactly if GiB = 1024^3 = 1,073,741,824. 4,294,967,296 / 1,073,741,824 = 4. So JSON {""bytes"":4294967296,""GiB"":4}. Need only output JSON. Ensure no extra. Could be number GiB maybe 4.0? User says 数字, integer okay. Final only JSON.
+",,,True,,,,,
+A_headroom-s3407,A_headroom,A4：统一显存单位,A,1,3407,16384,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",0,[],[],"[{""role"": ""user"", ""content"": ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{\""file_GiB\"":数字,\""difference_GiB\"":数字}""}]",e33736458c564ea6a84fc58f654121ed,1,2026-09-05T23:21:14.461+08:00,2026-09-05T23:21:47.832+08:00,116,116,True,1036,0,295.034768,31.850381,170.05977454473884,31.88053008222475,0.6821130999999241,32.432302500000105,33.178750400000126,True,False,False,stop,16384,True,[],True,True,2,2,,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",completed,"{""file_GiB"":16.391,""difference_GiB"":3.609}","We need answer user's request in Chinese likely. Need compute JSON only. Let's parse: ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{""file_GiB"":数字,""difference_GiB"":数字}""
+
+Need output JSON only with file_GiB and difference_GiB. Total capacity exactly 20 GiB. Weight file exactly 17.6 decimal GB. Compute capacity minus file arithmetic difference, not runtime. Both retain 3 decimals.
+
+Need convert file 17.6 decimal GB to GiB. Decimal GB = 10^9 bytes. GiB = 2^30 bytes. So GiB = decimal GB * 1e9 / 2^30. 17.6e9 / 1073741824. Let's compute accurately. 17.6 / 1.073741824 = ? Because GiB = GB * (1e9/2^30) = GB /1.073741824. 17.6 / 1.073741824.
+
+Let's calculate. 1/1.073741824 = 0.9313225746154785 (since 1 GiB = 1.073741824 GB, 1 GB=0.931322574615 GiB). Multiply by 17.6: 0.9313225746154785*17.6 = 0.9313225746154785*(10+7+0.6?) Let's do: *17 = 15.832483768463135? 0.9313225746154785*17 = 15.8324837684631345. *0.6 = 0.5587935447692871. Sum = 16.391277313232422. Alternatively *17.6 = 16.391277313232424. Round to 3 decimals: 16.391? 16.391277 -> 16.391 (fourth decimal 2). So file_GiB = 16.391.
+
+Difference = 20 - file exact? ""只计算容量减文件的算术差"" capacity minus file. Should we use exact file_GiB before rounding or rounded? ""两项都保留 3 位小数"" likely output both rounded. Difference should be capacity minus file; to be consistent maybe use exact difference then round: 20 - 16.391277313232422 = 3.608722686767578 -> 3.609. If using rounded file 16.391, difference 3.609. Same. So difference_GiB=3.609.
+
+Need output JSON only: {""file_GiB"":16.391,""difference_GiB"":3.609}. Ensure no markdown. Numeric with 3 decimals. Could JSON numbers don't preserve trailing zeros but here 3 decimals exact. Fine.
+
+Double-check units: 17.6 decimal GB (十进制 GB) exactly. GiB conversion factor: 1 GiB = 1,073,741,824 bytes = 1.073741824 decimal GB. 17.6 / 1.073741824 = 16.391277... yes.
+
+Potential trick: ""总容量假设精确为 20 GiB"" means total capacity is GiB. ""权重文件精确为 17.6 十进制 GB"" file decimal GB. ""只计算容量减文件的算术差，不计运行时。"" arithmetic difference not runtime. Both keep 3 decimals. So output as above.
+
+Need ensure final only JSON. No extra.
+",,,True,,,,,
+A_latency-s3407,A_latency,A5：计时范围,A,1,3407,16384,"{""TTFT_s"": 2.0, ""total_s"": 8.5, ""estimated_decode_tps"": 20.0}",0,[],[],"[{""role"": ""user"", ""content"": ""请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{\""TTFT_s\"":数字,\""total_s\"":数字,\""estimated_decode_tps\"":数字}""}]",e1a0038634564c1c9b574538b787e23a,1,2026-09-05T23:21:47.844+08:00,2026-09-05T23:21:55.330+08:00,137,137,True,209,0,290.896428,31.821584,176.23851941120162,31.971458341335786,0.7773555999999644,6.633379800000057,7.313941600000135,True,False,False,stop,16384,True,[],True,True,3,3,,"{""TTFT_s"": 2, ""total_s"": 8.5, ""estimated_decode_tps"": 20}",completed,"{""TTFT_s"":2,""total_s"":8.5,""estimated_decode_tps"":20}","We need answer user's request in Chinese likely. Need output only JSON. Need compute.
+
+User: 请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{""TTFT_s"":数字,""total_s"":数字,""estimated_decode_tps"":数字}
+
+Need calculate TTFT_s = 2. total_s likely 8.5? Request sent to end event. estimated_decode_tps = (121-1)/(8-2)=120/6=20. Need JSON only. Ensure numbers numeric. Could be 20.0? likely 20. final only JSON no markdown.
+",,,True,,,,,
+B_code_debug-s3407,B_code_debug,B1：平均值分母,B,1,3407,16384,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python 函数：\n1 def average(values):\n2     total = sum(values)\n3     return total / (len(values) - 1)\n只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""完整语句\"",\""result\"":数字}""}]",8f2f92972b264e40b2028bbda236b358,1,2026-09-05T23:21:55.337+08:00,2026-09-05T23:22:07.813+08:00,137,137,True,364,0,278.49604,31.527946,177.6508258753582,31.618817610918583,0.7711756999999579,11.63465169999995,12.285240299999941,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5.0}",completed,"{""bug_line"":3,""replacement"":""return total / len(values)"",""result"":5.0}","We need answer user's request in Chinese maybe output only JSON. User: Python function:
+1 def average(values):
+2     total = sum(values)
+3     return total / (len(values) - 1)
+只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{""bug_line"":整数,""replacement"":""完整语句"",""result"":数字}
+
+Need fix bug: line 3 currently divides by len-1 (sample standard deviation denominator?) Arithmetic average should total / len(values). Need preserve variables and expression structure? ""保留变量和表达式结构"" likely replace line 3 with return total / len(values) maybe keep total and values. Input [2,4,6,8] average = 5.0. JSON only. bug_line integer 3. replacement full statement: ""return total / len(values)"" maybe indentation? Full statement likely no indentation? They ask complete statement. Could include four spaces? JSON string can include. Usually line 3 statement includes indentation? The original line: ""    return total / (len(values) - 1)"". To preserve structure maybe ""return total / len(values)""? They specifically ""完整语句"" could be ""return total / len(values)"". If they want replace line 3 only, maybe include indentation? But JSON replacement maybe code statement. Need choose. They said 保留变量和表达式结构. So use total and values, expression structure: return total / len(values). Could remove parentheses. Result numeric: 5.0. JSON only no markdown. Ensure valid JSON.
+",,,True,,,,,
+B_range-s3407,B_range,B2：循环边界,B,1,3407,16384,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n + 1):\n    total += i"", ""result"": 10}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 total = 0\n2 for i in range(1, n):\n3     total += i\n目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",241c5b073cc143c8a1e521e910c8531f,1,2026-09-05T23:22:07.820+08:00,2026-09-05T23:22:22.993+08:00,144,144,True,454,0,361.57375,31.631525,212.06608921858765,31.698965685141868,0.6790335999999115,14.035102399999914,15.000458499999922,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n+1):\n    total += i"", ""result"": 10}",completed,"{""bug_line"":2,""replacement"":""for i in range(1, n+1):\n    total += i"",""result"":10}","We need answer user's request. Need solve puzzle. User Chinese: Python:
+1 total = 0
+2 for i in range(1, n):
+3     total += i
+目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}
+
+Need output JSON only. Need identify bug line? The code is for i in range(1, n): to sum 1 to n inclusive, should range(1, n+1). Only modify range end parameter. replacement returns complete lines 2-3 loop block (with indentation), other structure unchanged. n=4 result sum 1..4=10. bug_line likely 2 (where range end param). Replacement must be lines 2 and 3? ""完整的第 2～3 行循环块（含缩进）"" means return full loop block lines 2-3 including indentation. Since only modify range end parameter, line 2 becomes for i in range(1, n+1): line 3 unchanged:     total += i. Need JSON string. Need ensure valid JSON: escape newlines? replacement can contain newline. JSON string can include \n. Example {""bug_line"":2,""replacement"":""for i in range(1, n+1):\n    total += i"",""result"":10}. But note original lines have line 2 no leading indent, line 3 4 spaces. That's fine.
+
+Need maybe if replacement is ""for i in range(1, n+1):\n    total += i"". Ensure result integer 10.
+
+Double-check bug_line: integer line number with bug. It's line 2. Could they expect bug_line 2? Yes.
+
+Need only output JSON. No markdown. Ensure no extra. final JSON.
+",,,True,,,,,
+B_units-s3407,B_units,B3：单位常量,B,1,3407,16384,"{""bug_line"": 2, ""replacement"": ""return n_bytes / (1024 ** 3)"", ""result"": 1.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def gib(n_bytes):\n2     return n_bytes / (1000 ** 3)\n目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":数字}""}]",8bd449dae7d04fd48965eda66072a299,1,2026-09-05T23:22:22.999+08:00,2026-09-05T23:23:03.405+08:00,136,136,True,1275,0,299.900989,32.258213,178.1565175745272,32.283219335136785,0.763373700000102,39.398100500000055,40.25822010000002,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""    return n_bytes / (1024 ** 3)"", ""result"": 1.0}",completed,"{""bug_line"":2,""replacement"":""    return n_bytes / (1024 ** 3)"",""result"":1.0}","We need answer user's request. Need parse. User Chinese:
+Python：
+1 def gib(n_bytes):
+2     return n_bytes / (1000 ** 3)
+目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":数字}
+
+Need output only JSON. Need determine bug line integer, replacement code line 2 full statement, result number for n_bytes=1073741824. Goal binary GiB. Change 1000 to correct constant. Binary GiB = 1024^3 bytes = 1073741824. Correct constant 1024. Replacement line: ""    return n_bytes / (1024 ** 3)""? They ask 给出第 2 行完整语句. In JSON replacement string likely full line including indentation? They want line 2 complete statement. Need probably include spaces? JSON string can include leading spaces. bug_line integer: 2. result: 1073741824 / (1024**3) = 1.0. JSON number 1.0? They said 数字. Could be 1.0. If using Python division returns float 1.0. Need output only JSON. Ensure valid.
+
+Potential nuance: ""只将 1000 改为正确的常量"" only change 1000 to correct constant. So line 2 becomes `    return n_bytes / (1024 ** 3)`. If they want complete statement maybe without indentation? ""return n_bytes / (1024 ** 3)""? They explicitly line 2 full statement; in code line includes indentation. JSON replacement can be ""    return n_bytes / (1024 ** 3)"". But if they compare maybe expect no indent? They ask 给出第 2 行完整语句, in original line 2 is `    return n_bytes / (1000 ** 3)` with 4 spaces. Complete statement might be `return n_bytes / (1024 ** 3)`? Need decide. They also says only output JSON. The replacement value likely should be code line, maybe exactly as line. I'd include indentation because ""第 2 行完整语句"" and line 2 in snippet has indentation. However JSON might trim? No, string includes. Could cause if expected no indent? Many such tasks expect replacement as code statement without line number, maybe include indentation? Let's inspect: Python:
+1 def gib(n_bytes):
+2     return n_bytes / (1000 ** 3)
+They ask only change 1000 to correct constant, give line 2 complete statement. Since line 2 complete statement is with indentation. If they wanted just statement maybe `return n_bytes / (1024 ** 3)`. But ""完整语句"" could be the full line content. I'd output with 4 leading spaces. But JSON string with spaces is fine.
+
+Need maybe constant: binary GiB: 1024 ** 3. But ""只将 1000 改为正确的常量"" means replace `1000` with `1024` only, not replace `1000 ** 3` with `1024 ** 3`? That's equivalent. Could also use `2 ** 30`? They say only change 1000 to correct constant, so 1024. Result: 1073741824 / (1024**3) = 1.0. If integer? In Python 3 / returns float. If they want number maybe 1.0. JSON can output 1.0. If output 1 maybe also accepted? They ask result数字. Use 1.0 to reflect division.
+
+Need final only JSON no markdown. Ensure valid: {""bug_line"":2,""replacement"":""    return n_bytes / (1024 ** 3)"",""result"":1.0}
+
+Double-check if bug_line should be 2? yes.
+
+Need maybe if replacement should not include indentation: If include spaces, it's still code. But some autograders may expect exact string? We don't know. Let's reason from prompt: ""只将 1000 改为正确的常量，给出第 2 行完整语句。"" In similar bug fix tasks, they ask replacement line as code without line number, often no indentation? Example: They provide line numbers. ""给出第 2 行完整语句"" means give complete line 2. If line has indentation, complete line includes it. But JSON value can't represent newline? It can. If they test replacement maybe they strip? To be safe? Which is more likely? In Python source, a line with leading spaces is a complete statement line. I'd include indent. But if they expect statement (not line) they might not want indent. The phrase ""完整语句"" not ""完整行""? They said 第 2 行完整语句. Could mean line 2's full statement, not just expression. The statement begins with return. In code indentation is not part of logical statement? It is syntactically part of line but not statement. Usually ""line"" includes indentation. They ask ""第 2 行"" (line 2), so include indentation.
+
+Could use 1024 ** 3 or 1024**3? Original has spaces around **: `1000 ** 3`. Keep style: `1024 ** 3`. Good.
+
+Need final only JSON. Ensure no extra.
+",,,True,,,,,
+B_zero-s3407,B_zero,B4：保留零值,B,1,3407,16384,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def limit(d):\n2     return d.get(\""limit\"") or 10\n要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={\""limit\"":0}。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",6f07aacac0e24addbf3207e04602dd86,1,2026-09-05T23:23:03.427+08:00,2026-09-05T23:23:55.517+08:00,142,142,True,1637,0,345.369375,32.047595,174.11667362111368,32.06761672600248,0.8155451000000085,51.17619289999993,51.86512649999986,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",completed,"{""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}","We need answer user's request. Need parse carefully.
+
+User: Python：
+1 def limit(d):
+2     return d.get(""limit"") or 10
+要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={""limit"":0}。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}
+
+Need output only JSON with keys bug_line integer, replacement string code, result integer.
+
+Need identify bug line: line 2? They ask replace line 2 with dict.get call with default value, no other expressions. Current line: return d.get(""limit"") or 10. Need only when key missing default 10; if key exists and 0 keep 0. Use d.get(""limit"", 10). The replacement code should be the code for line 2? They say 请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。 So replacement should probably be `return d.get(""limit"", 10)` or just `d.get(""limit"", 10)`? They want line 2 replacement. The original line includes return. ""将第 2 行替换为带默认值的 dict.get 调用"" maybe replace entire line with a dict.get call with default, no other expressions. But if replace whole line with just `d.get(""limit"", 10)`, function no longer returns? Original line is return expression. They likely expect `return d.get(""limit"", 10)`? ""带默认值的 dict.get 调用"" is `d.get(""limit"", 10)`. ""不增加其他表达式"" means don't do `d.get(""limit"") or 10` or conditional. But need line 2 replacement maybe code string should be `return d.get(""limit"", 10)` because line includes return. They ask result for d={""limit"":0}. With fixed line returns 0. So result 0.
+
+Need only JSON. Ensure valid. bug_line integer: 2. replacement: maybe ""return d.get('limit', 10)"" or with double quotes. Since Python code can use double quotes. JSON string needs escape double quotes if used. Could output replacement: ""return d.get(\""limit\"", 10)"" or ""return d.get('limit', 10)"". Which is preferred? Original uses double quotes. JSON allows escaped. Maybe simpler: ""return d.get('limit', 10)"". Does that count as code? Yes. But maybe they expect exact double quotes? Not specified. Use single quotes to avoid escaping. Need only JSON.
+
+Double-check: ""不增加其他表达式"" if replacement is `return d.get(""limit"", 10)`, the `return` is not an expression? It's a statement. But original line had return. If they strictly mean line 2 should be a dict.get call, maybe replacement is `d.get(""limit"", 10)`. But then function limit doesn't return value; result? They ask result integer for d={""limit"":0}. If line replaced with just `d.get(""limit"", 10)`, function returns None, result not integer. But maybe result is value of expression? The prompt: Python code def limit(d): return ... d={""limit"":0}. Only output JSON bug_line, replacement, result. Likely result is limit(d) after fix. So must include return. ""将第 2 行替换为带默认值的 dict.get 调用"" could mean replace the expression on line 2 with dict.get call with default, i.e., return d.get(...). In many code edit tasks, replacement is the full line content. Need decide.
+
+The phrase: ""请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。"" Chinese: Please replace line 2 with a dict.get call with default value, without adding other expressions. If literally line 2 becomes `d.get(""limit"", 10)`, then no return. But line 2 is `return d.get(""limit"") or 10`. To make function correct, line 2 should be `return d.get(""limit"", 10)`. Is `return` an ""other expression""? No, it's keyword. They likely mean replace the right-hand expression `d.get(""limit"") or 10` with `d.get(""limit"", 10)`. But ""第 2 行"" full line maybe includes return. The required output replacement string probably full line. They test maybe string matching? Need infer from similar tasks. They ask only JSON: bug_line integer, replacement code, result integer. Usually bug_line is line number with bug, replacement is replacement code (maybe entire line). If they say replace line 2, replacement should be full line after replacement. For Python, line 2 originally `    return d.get(""limit"") or 10` with indentation? The displayed code lacks leading spaces? It shows:
+1 def limit(d):
+2     return d.get(""limit"") or 10
+Actually line 2 has indentation 5? In prompt: ""2     return..."" maybe 5 spaces? Need include indentation? Replacement code likely without indentation? They may expect code snippet. Could include spaces? JSON string. Need consider.
+
+They ask ""只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}"". They likely parse values. replacement code could be `return d.get(""limit"", 10)` or with indentation? Usually no indentation unless line. But ""第 2 行"" includes indentation. However they might not require exact whitespace. If output JSON only, maybe they check semantic? We need best.
+
+Potential replacement: `    return d.get(""limit"", 10)` with four spaces. The prompt line shows `2     return` maybe 5 spaces due to numbering? It may be markdown list? Actually user wrote:
+Python：
+1 def limit(d):
+2     return d.get(""limit"") or 10
+It uses manual line numbers, not code fence. There is a space after number? ""1 def"" no indentation for def, ""2     return"" likely 5 spaces after 2? Could be tab? In final, maybe no indentation expected.
+
+""带默认值的 dict.get 调用"" = `d.get(""limit"", 10)`. ""不增加其他表达式"" = no `or`. If replacement includes `return`, that's not expression but necessary. Maybe replacement should be exactly `return d.get(""limit"", 10)`. result 0.
+
+Need ensure JSON valid. If use double quotes inside replacement, escape. Could output:
+{""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}
+Or with single quotes:
+{""bug_line"":2,""replacement"":""return d.get('limit', 10)"",""result"":0}
+Which is more likely accepted? Original uses double quotes; Python accepts single. If they expect exact code maybe double. But JSON escaping okay. I'd use double quotes escaped to match original: ""return d.get(\""limit\"", 10)"". But some parsers accept. It is valid JSON. Need no extra whitespace? Fine.
+
+Need final only JSON. Ensure no markdown.
+
+Double-check edge: If key missing, d.get(""limit"",10) returns 10. If key exists 0, returns 0. Correct.
+
+Could there be bug_line 2? yes.
+
+Now final.
+",,,True,,,,,
+B_inclusive-s3407,B_inclusive,B5：包含端点,B,1,3407,16384,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def valid(x):\n2     return 0 < x < 100\n要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":布尔值}""}]",a8646dade2ef475e9e1c752608515bc5,1,2026-09-05T23:23:55.536+08:00,2026-09-05T23:24:27.307+08:00,128,128,True,1000,0,286.313755,32.384148,172.80136253874204,32.415980026824215,0.7407349000000067,30.754846300000054,31.590366200000062,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",completed,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}","We need answer user's request in Chinese likely. Need output only JSON: {""bug_line"":integer,""replacement"":""code"",""result"":boolean}. User: Python:
+1 def valid(x):
+2     return 0 < x < 100
+要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":布尔值}
+
+Need infer bug_line is line 2. Need replacement: line 2 full statement, only change comparison operators to include 0 and 100. Original: return 0 < x < 100. To include endpoints: return 0 <= x <= 100. Only change comparison operators (two < to <=). result for x=100: valid(100) true. Output JSON only. Ensure valid JSON. Could replacement include indentation? ""给出第 2 行完整语句"" likely include spaces? In JSON string: ""    return 0 <= x <= 100"" or ""return 0 <= x <= 100""? They ask complete statement line 2, likely including leading spaces? In code line 2 is indented. But examples often expect code without indentation? ""第 2 行完整语句"" maybe line content includes indentation? Let's reason.
+
+They want JSON only. bug_line: 2. replacement: code. If only change comparison operators, keep indentation? To be safe include exactly line 2 as it should be, with 4 spaces? JSON string can contain spaces. But maybe tests expect no indentation? The prompt: ""1 def valid(x):
+2     return 0 < x < 100
+... 给出第 2 行完整语句"". The line as shown includes four spaces. But ""完整语句"" in Python could be ""return 0 <= x <= 100"" without indentation. If they ask only change comparison operators, not change whitespace, so replacement should be ""    return 0 <= x <= 100""? But if output JSON, leading spaces may be trimmed? We can include 4 spaces. However if autograder compares exact string maybe likely expects ""return 0 <= x <= 100"" (statement not including indentation). Let's inspect typical tasks: They ask ""Python: ... 要求... 只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON: {""bug_line"":整数,""replacement"":""代码"",""result"":布尔值}"". In many bug-fix datasets, replacement is the corrected line without line number, maybe preserving indentation? Since line is inside function, to be a valid standalone line, indentation isn't part of statement? In Python line content includes indentation, but the statement is return expression. ""完整语句"" could be ""return 0 <= x <= 100"".
+
+Need decide. Could include indentation to be exact line. But if only output JSON, maybe human. Let's think of likely expected: bug_line integer = 2. replacement = ""return 0 <= x <= 100"". result true. If they wanted line exact with indent, replacement = ""    return 0 <= x <= 100"". Which is more likely? The prompt says ""第 2 行完整语句"" not ""第2行代码"". Complete statement: return ... Usually no indentation. Also ""只改变比较运算符"" means from line: return 0 < x < 100 to return 0 <= x <= 100. I'd output no leading spaces to avoid extra whitespace concerns. But ""只改变比较运算符"" also means don't remove indentation if preserving line. Yet JSON replacement code often used to replace line; if replace line exactly, need include indentation. But many evaluation frameworks strip? Hard.
+
+Let's examine wording: ""给出第 2 行完整语句及 x=100 的结果"". They show numbered lines with spaces after number. The line 2 is ""    return 0 < x < 100"". If asked give line 2 complete statement, I'd probably answer ""return 0 <= x <= 100"". If they ask only change comparison operators, not indentation, but the statement doesn't include indentation semantically. I lean no indentation.
+
+Need ensure JSON booleans lower-case true. {""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}. Only JSON no markdown. final.
+",,,True,,,,,
+C_constraint_reasoning-s3407,C_constraint_reasoning,C1：位置约束,C,1,3407,16384,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",0,[],[],"[{""role"": ""user"", ""content"": ""林、赵、陈、王排在第 1 到 4 位。林紧挨在赵前；陈在赵后；王不在第 1 位或第 4 位。给出唯一顺序。只输出 JSON，键为位置字符串 \""1\"" 到 \""4\""，值为姓名。""}]",50c97801109945599e26204ef5faaf71,1,2026-09-05T23:24:27.319+08:00,2026-09-05T23:24:39.159+08:00,120,120,True,352,0,277.033251,32.044912,165.30353241252334,32.13385819123262,0.7259372999999414,11.138921799999935,11.680078999999978,True,False,False,stop,16384,True,[],True,True,4,4,,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",completed,"{""1"":""林"",""2"":""赵"",""3"":""王"",""4"":""陈""}","We need answer in Chinese? User asks: Lin, Zhao, Chen, Wang positions 1-4. Lin immediately before Zhao; Chen after Zhao; Wang not pos1 or pos4. Give unique order. Only output JSON keys ""1"" to ""4"" values names.
+
+Solve: positions 1-4. Let L immediately before Z: (L,Z) adjacent. Chen after Zhao (陈在赵后) could mean anywhere after, not necessarily immediately? Usually ""在赵后"" means after Zhao (position greater than Zhao). Wang not 1 or 4, so Wang 2 or 3.
+
+Enumerate:
+LZ adjacent positions: (1,2), (2,3), (3,4).
+Case (1,2): L1 Z2. Chen after Z => C3 or C4. W not 1/4 => W must 3? If C3 then W4 invalid. If C4 then W3 valid: L Z W C. Works.
+Case (2,3): L2 Z3. Chen after Z => C4. W not 1/4 => W1? invalid (not 1). So no.
+Case (3,4): L3 Z4. Chen after Z impossible. So unique: 1 Lin, 2 Zhao, 3 Wang, 4 Chen.
+
+Need output only JSON. Ensure keys strings, values names Chinese? 林、赵、陈、王. Output:
+{""1"":""林"",""2"":""赵"",""3"":""王"",""4"":""陈""}
+No extra.
+",,,True,,,,,
+C_schedule-s3407,C_schedule,C2：依赖调度,C,1,3407,16384,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",0,[],[],"[{""role"": ""user"", ""content"": ""有足够多的处理器，任务开始后不可中断，全部从时刻 0 起尽早执行。A 耗时 3；B 耗时 5；C 耗时 4，依赖 A 和 B 完成；D 耗时 2，依赖 A 完成；E 耗时 1，依赖 C 和 D 完成。只输出 JSON：{\""C_start\"":整数,\""D_start\"":整数,\""E_finish\"":整数}""}]",46af51e840a14a649451fa86569c1f18,1,2026-09-05T23:24:39.167+08:00,2026-09-05T23:24:46.594+08:00,143,143,True,207,0,277.08936,31.928891,182.0204061422539,32.08107054719297,0.7856262000000243,6.716819299999997,7.238223699999935,True,False,False,stop,16384,True,[],True,True,3,3,,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",completed,"{""C_start"":5,""D_start"":3,""E_finish"":10}","We need answer user in Chinese? They request only output JSON: {""C_start"":integer,""D_start"":integer,""E_finish"":integer}. Need solve scheduling with infinite processors, non-preemptive, as early as possible from time 0. Tasks: A duration 3, B 5, C duration 4 depends on A and B, D duration 2 depends on A, E duration 1 depends on C and D. Infinite processors means each task starts as soon as all predecessors complete. Start times: A=0 finish3. B=0 finish5. C depends A,B => start max(3,5)=5 finish9. D depends A => start 3 finish5. E depends C,D => start max(9,5)=9 finish10. Output JSON C_start 5 D_start 3 E_finish 10. Need only JSON no explanation. Ensure valid JSON.
+",,,True,,,,,
+C_knapsack-s3407,C_knapsack,C3：容量选择,C,1,3407,16384,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",0,[],[],"[{""role"": ""user"", ""content"": ""每件物品最多选一次，容量为 10。物品 A 重 6 价值 13；B 重 5 价值 12；C 重 4 价值 10；D 重 3 价值 7。选择总重量不超过 10 且总价值最高的组合，物品按字母排序。只输出 JSON：{\""items\"":[字符串],\""weight\"":整数,\""value\"":整数}""}]",1710ea2ca77c4aeab25e97fece852795,1,2026-09-05T23:24:46.601+08:00,2026-09-05T23:24:56.112+08:00,144,144,True,262,0,286.285721,30.568042,179.60518290670737,30.68854946020565,0.8017585999998573,8.820952899999838,9.340137599999935,True,False,False,stop,16384,True,[],True,True,3,3,,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",completed,"{""items"":[""A"",""C""],""weight"":10,""value"":23}","We need answer user in Chinese likely. Need solve 0/1 knapsack capacity 10 items: A w6 v13, B w5 v12, C w4 v10, D w3 v7. Each at most once. Need choose total weight <=10 max value. Output only JSON {""items"":[strings],""weight"":int,""value"":int}. Items sorted alphabetically.
+
+Let's enumerate combos:
+A+B=11 >10 no
+A+C=10 value 23
+A+D=9 value20
+B+C=9 value22
+B+D=8 value19
+C+D=7 value17
+A alone 13, B 12, C10,D7
+A+C best 23? What about B+C+D=12 >10. A+B? no. A+C best. A+D value20, B+C 22. So best A,C weight10 value23. JSON items [""A"",""C""], weight 10, value 23. Ensure only JSON no extra.
+",,,True,,,,,
+C_count-s3407,C_count,C4：可行排列计数,C,1,3407,16384,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",0,[],[],"[{""role"": ""user"", ""content"": ""A、B、C、D 四个不同任务串行排列。A 必须在 B 前，C 必须在 D 前，除此之外无限制。计算可行排列总数，并给出按字母字典序最小的排列。只输出 JSON：{\""count\"":整数,\""first\"":[字符串]}""}]",af195451fc31451e9c33707c9e007202,1,2026-09-05T23:24:56.117+08:00,2026-09-05T23:25:29.526+08:00,111,111,True,1039,0,308.952096,31.859263,166.5090830704368,31.88945490350133,0.666630300000179,32.78034840000009,33.24773860000005,True,False,False,stop,16384,True,[],True,True,2,2,,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",completed,"{""count"":6,""first"":[""A"",""B"",""C"",""D""]}","We need answer user in Chinese? They request output only JSON: {""count"":integer,""first"":[string]}. Need solve combinatorics. Need produce final only JSON.
+
+Problem: A,B,C,D four different tasks serially arranged. A must be before B, C before D, no other restrictions. Count feasible permutations. First lexicographically smallest arrangement by alphabet. Output JSON with count integer and first array of strings? They specify ""first"":[字符串] likely array of characters? Example maybe [""A"",""B"",""C"",""D""]? Need decide. ""按字母字典序最小的排列"" means lexicographically smallest sequence of tasks. Need output first as array of strings maybe [""A"",""B"",""C"",""D""]? Could be string ""ABCD""? They say [字符串] singular string? In JSON {""count"":整数,""first"":[字符串]} weird: first is array? It says first:[字符串] maybe value is a string? Chinese format: {""count"":整数,""first"":[字符串]} could mean first: [string] (array of strings). But if ""排列"" maybe string? The bracket after first indicates array? Actually in prompt: 只输出 JSON：{""count"":整数,""first"":[字符串]}. In JSON syntax, [字符串] means an array whose element is a string? They likely want first as array of characters? Let's parse: They want JSON object with keys count and first. count integer. first: [字符串] perhaps means a string? The notation [字符串] sometimes in Chinese means a string? But with square brackets maybe type array. They explicitly says ""first"":[字符串] not ""first"":""字符串"". Since JSON: value of first is [string] e.g. [""A"",""B"",""C"",""D""]. Need comply. Could also be [""ABCD""]? The wording ""first"":[字符串] maybe placeholder, not exact. If they ask ""排列"" maybe list of tasks. I'll output first as array of task strings: [""A"",""B"",""C"",""D""].
+
+Count: total permutations of 4 with A before B and C before D. For two independent constraints, probability each 1/2, independent? For random permutation, relative order A/B equally likely, C/D equally likely, independent? Yes. Count=24/4=6. List? ABCD, ACBD, CABD, CDAB, CBAD? Let's list all with constraints:
+Positions choose A before B, C before D. Permutations of 4 satisfying:
+A B C D (ABCD)
+A C B D (ACBD)
+A C D B? C before D? In ACDB, C at 2 D at 3 yes A before B yes -> ACDB
+C A B D (CABD)
+C A D B (CADB)
+C D A B (CDAB)
+Also? B cannot before A. D cannot before C. Let's systematically: 6.
+Lexicographically smallest: compare strings:
+ABCD, ACBD, ACDB, CABD, CADB, CDAB. Lex smallest is ABCD (A first, then B? But check ACBD starts A C; ABCD starts A B; B<C so ABCD). Is ABCD valid? yes. So first [""A"",""B"",""C"",""D""].
+
+Need only JSON. Ensure no extra. Final: {""count"":6,""first"":[""A"",""B"",""C"",""D""]}
+But maybe they expect first as string ""ABCD"". The prompt: ""first"":[字符串] could mean first is a string? In JSON schema, [string] means array of string. But they wrote [字符串] with Chinese. If they wanted string they'd write ""first"":""字符串"". Since they use [字符串], array. We'll output array.
+
+Double-check: If output first as [""A"",""B"",""C"",""D""] maybe accepted. If expected string, fail? Could output first: [""ABCD""]? That's array with one string. The type [字符串] could mean first value is a string, but bracket in description not JSON syntax? They wrote {""count"":整数,""first"":[字符串]}. In many Chinese prompts, they use [字符串] to denote a string? Actually JSON type placeholders: 整数 for integer, 字符串 for string. They might include brackets around 字符串 to indicate it's an array? Let's examine: ""只输出 JSON：{""count"":整数,""first"":[字符串]}"" If they wanted first string, they'd likely write {""count"":整数,""first"":""字符串""} (with quotes around placeholder). But they wrote [字符串] no quotes. Could be they intend first to be an array of strings (the permutation). Since a排列 can be represented as list. The output key first: [字符串] means first is array of strings. So [""A"",""B"",""C"",""D""] is right.
+
+Need no markdown. Final only JSON.
+",,,True,,,,,
+C_unsat-s3407,C_unsat,C5：不可满足约束,C,1,3407,16384,"{""satisfiable"": false, ""order"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{\""satisfiable\"":布尔值,\""order\"":数组或null}""}]",51390175554c48578d7ee1fcd46a9283,1,2026-09-05T23:25:29.538+08:00,2026-09-05T23:25:33.756+08:00,114,114,True,108,0,257.164513,32.631532,147.37541832318053,32.93562995840837,0.7735347000000274,3.712467800000013,4.053330200000119,True,False,False,stop,16384,True,[],True,True,2,2,,"{""satisfiable"": false, ""order"": null}",completed,"{""satisfiable"":false,""order"":null}","We need answer user in Chinese likely. Task: three different tasks A, B, C serial execution, requirements A before B, B before C, C before A. Determine satisfiable; if unsatisfiable order must be null. Output only JSON: {""satisfiable"": boolean, ""order"": array or null}. This is impossible due cycle. So {""satisfiable"":false,""order"":null}. Need only JSON no extra. Ensure valid JSON.
+",,,True,,,,,
+E_instruction_following-s3407,E_instruction_following,E1：筛选排序,E,1,3407,16384,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",8ab9c31604d54c99a3e866d779e1d842,1,2026-09-05T23:25:33.760+08:00,2026-09-05T23:25:41.566+08:00,136,136,True,224,0,321.662047,32.283263,186.99777005158236,32.42675871251773,0.727281400000038,7.171444900000097,7.635550899999998,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",completed,"{""nodes"":[""N-7"",""N-2""],""count"":2}","We need answer user in Chinese likely. User: ""记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{""nodes"":[字符串],""count"":整数}""
+
+Need parse records:
+N-2 latency 70 status normal -> >50 and not archived yes
+N-7 latency 95 status pending review -> yes
+N-4 latency 60 status archived -> no (status is archived)
+N-1 latency 40 -> no
+Sort descending latency: N-7 (95), N-2 (70). count 2.
+Output only JSON: {""nodes"":[""N-7"",""N-2""],""count"":2}. Ensure no extra.
+",,,True,,,,,
+E_ties-s3407,E_ties,E2：并列与边界,E,1,3407,16384,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",0,[],[],"[{""role"": ""user"", ""content"": ""记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",a517b146445e40e6a1cd85b9afba4737,1,2026-09-05T23:25:41.571+08:00,2026-09-05T23:25:48.889+08:00,128,128,True,204,0,296.779938,31.725839,165.64921810981036,31.87742336137364,0.7727171999999882,6.766651000000138,7.171585999999934,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",completed,"{""nodes"":[""C"",""D"",""A""],""count"":3}","We need answer user in Chinese likely. Task: Given records A delay 50 enabled true; B delay 80 enabled false; C delay 80 true; D delay 80 true; E delay 0 true. Keep enabled and delay >=50. Then sort by delay descending, then id letter ascending. Output only JSON: {""nodes"":[strings],""count"":integer}. Need determine strings? likely node identifiers? They say nodes strings. Records: A,B,C,D,E. Filter enabled true and delay >=50: A (50 true), C (80 true), D (80 true). B false excluded, E delay 0 excluded. Sort delay desc: C,D (80), then A (50). For same delay, id ascending: C,D. So nodes [""C"",""D"",""A""], count 3. Output only JSON no markdown. Ensure valid JSON.
+",,,True,,,,,
+E_versions-s3407,E_versions,E3：版本与缺失,E,1,3407,16384,"{""P"": ""B"", ""Q"": null, ""R"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。""}]",f649e086ae6445aea948cc8879e16ae6,1,2026-09-05T23:25:48.895+08:00,2026-09-05T23:25:59.271+08:00,145,145,True,285,0,279.873073,30.323563,171.5481785369323,30.456875546889982,0.8452436000000034,9.78707159999999,10.211491900000055,True,False,False,stop,16384,True,[],True,True,3,3,,"{""P"": ""B"", ""Q"": null, ""R"": null}",completed,"{""P"":""B"",""Q"":null,""R"":null}","We need answer user in Chinese likely. User asks: ""记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。""
+
+Need output JSON only. Need parse records:
+- P version1 valid code A
+- P version3 invalid code C
+- P version2 valid code B
+- P-OLD version9 valid code X
+- Q version1 invalid code Y
+
+Query P, Q, R. Exact project name. Only among valid records choose max version. If no valid records return null.
+For P: valid records v1 A, v2 B. Max v2 -> B. P-OLD doesn't count exact. Q: only invalid -> no valid -> null. R: no records -> null.
+Output JSON with keys P,Q,R. Values likely strings or null. {""P"":""B"",""Q"":null,""R"":null}. Only JSON, no markdown. Ensure valid JSON.
+",,,True,,,,,
+E_nested-s3407,E_nested,E4：类型与嵌套,E,1,3407,16384,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",0,[],[],"[{""role"": ""user"", ""content"": ""把记录转换成指定 JSON，不推测缺失值。id 是字符串 \""007\""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 \""z\""、\""a\""。只输出结构：{\""id\"":字符串,\""settings\"":{\""enabled\"":布尔值,\""retries\"":整数},\""owner\"":null,\""tags\"":[字符串]}""}]",97379257988b47afba6bdfb68d2be97d,1,2026-09-05T23:25:59.280+08:00,2026-09-05T23:26:05.539+08:00,135,135,True,176,0,310.628321,32.688346,186.69392305748477,32.872416965307444,0.7231087000000116,5.224991600000067,6.077654500000108,True,False,False,stop,16384,True,[],True,True,4,4,,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",completed,"{""id"":""007"",""settings"":{""enabled"":false,""retries"":0},""owner"":null,""tags"":[""z"",""a""]}","We need answer user in Chinese likely. Need output only specified JSON structure. User: ""把记录转换成指定 JSON，不推测缺失值。id 是字符串 ""007""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 ""z""、""a""。只输出结构：{""id"":字符串,""settings"":{""enabled"":布尔值,""retries"":整数},""owner"":null,""tags"":[字符串]}""
+
+Need produce exact JSON: {""id"":""007"",""settings"":{""enabled"":false,""retries"":0},""owner"":null,""tags"":[""z"",""a""]}
+Ensure no extra. Final only JSON.
+",,,True,,,,,
+E_empty-s3407,E_empty,E5：空结果,E,1,3407,16384,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""节点 A 延迟40状态正常；B 延迟80状态已归档；C 延迟50状态正常。保留延迟严格大于50且未归档的节点。按延迟降序；结果为空时 nodes 用空数组、max_latency 用 null。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数,\""max_latency\"":数字或null}""}]",5091414d799c4a528e847a83f30011ea,1,2026-09-05T23:26:05.550+08:00,2026-09-05T23:26:11.787+08:00,130,130,True,172,0,340.593209,31.647684,190.5034331649476,31.830376185904083,0.6824024000000009,5.666255600000113,6.086003000000119,True,False,False,stop,16384,True,[],True,True,3,3,,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",completed,"{""nodes"":[],""count"":0,""max_latency"":null}","We need answer user in Chinese likely. Task: Given nodes A latency 40 status normal; B latency 80 status archived; C latency 50 status normal. Keep nodes with latency strictly >50 and not archived. Sort by latency descending. If empty nodes empty array max_latency null. Output only JSON: {""nodes"":[strings],""count"":integer,""max_latency"":number or null}
+
+Let's parse: A latency 40 normal -> not >50, exclude. B latency 80 archived -> not not archived, exclude. C latency 50 normal -> not strictly >50, exclude. So result empty. nodes [], count 0, max_latency null.
+Need output only JSON no extra. Ensure valid JSON.
+",,,True,,,,,
+D_long_context-s3407,D_long_context,D：长文档检索,D,1,3407,16384,"{""ORION-8944"": ""J13T-DX1B"", ""LYRA-3023"": ""L19P-7QL4"", ""CYGNUS-5735"": ""UW4Q-QWX6"", ""VEGA-8779"": ""628H-XV3E"", ""DRACO-8123"": null}",128,[],"[{""project"": ""ORION-8944"", ""code"": ""J13T-DX1B"", ""target_position"": 0.1, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 497, ""token_position_estimate"": 0.097502}, {""project"": ""LYRA-3023"", ""code"": ""L19P-7QL4"", ""target_position"": 0.3, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 1411, ""token_position_estimate"": 0.297765}, {""project"": ""CYGNUS-5735"", ""code"": ""UW4Q-QWX6"", ""target_position"": 0.5, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 2279, ""token_position_estimate"": 0.487949}, {""project"": ""VEGA-8779"", ""code"": ""628H-XV3E"", ""target_position"": 0.7, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 3205, ""token_position_estimate"": 0.690841}, {""project"": ""DRACO-8123"", ""code"": null, ""target_position"": 0.9, ""variant"": ""challenge"", ""missing"": true, ""token_prefix_count"": null, ""token_position_estimate"": null}]","[{""role"": ""user"", ""content"": ""以下是按归档位置排列的运行日志，位置顺序不代表版本先后。\n\n记录 000001：华东节点 N-164 在 2026-08-13 完成第 69 批巡检；延迟 175 ms，状态为待复核。\n记录 000002：巡检批次 15 覆盖华南节点 N-355；负载 37%，结果为已同步。\n记录 000003：华北节点 N-546 已写入归档索引；采集日为 2026-08-15，处理耗时 169 ms。\n记录 000004：第 04 批数据来自西南节点 N-737；负载 66%，温度 25.8℃，状态为正常。\n记录 000005：西北节点 N-128 在 2026-08-17 完成第 47 批巡检；延迟 163 ms，状态为已归档。\n记录 000006：巡检批次 90 覆盖东北节点 N-319；负载 95%，结果为正常。\n项目记录：项目 ORION-8944-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000007：华东节点 N-510 已写入归档索引；采集日为 2026-08-19，处理耗时 157 ms。\n记录 000008：第 79 批数据来自华南节点 N-701；负载 45%，温度 33.9℃，状态为正常。\n记录 000009：华北节点 N-892 在 2026-08-21 完成第 25 批巡检；延迟 151 ms，状态为已归档。\n项目记录：项目 ORION-8944，版本 2，状态有效，校验码 J13T-DX1B。\n记录 000010：巡检批次 68 覆盖西南节点 N-283；负载 74%，结果为待复核。\n记录 000011：西北节点 N-474 已写入归档索引；采集日为 2026-08-23，处理耗时 145 ms。\n记录 000012：第 57 批数据来自东北节点 N-665；负载 24%，温度 25.9℃，状态为待复核。\n记录 000013：华东节点 N-856 在 2026-08-25 完成第 03 批巡检；延迟 139 ms，状态为已同步。\n项目记录：项目 ORION-8944，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000014：巡检批次 46 覆盖华南节点 N-247；负载 53%，结果为待复核。\n记录 000015：华北节点 N-438 已写入归档索引；采集日为 2026-08-27，处理耗时 133 ms。\n记录 000016：第 35 批数据来自西南节点 N-629；负载 82%，温度 34.0℃，状态为待复核。\n记录 000017：西北节点 N-820 在 2026-08-01 完成第 78 批巡检；延迟 127 ms，状态为正常。\n记录 000018：巡检批次 24 覆盖东北节点 N-211；负载 32%，结果为已归档。\n记录 000019：华东节点 N-402 已写入归档索引；采集日为 2026-08-03，处理耗时 121 ms。\n记录 000020：第 13 批数据来自华南节点 N-593；负载 61%，温度 26.0℃，状态为已归档。\n记录 000021：华北节点 N-784 在 2026-08-05 完成第 56 批巡检；延迟 115 ms，状态为正常。\n记录 000022：巡检批次 02 覆盖西南节点 N-175；负载 90%，结果为已归档。\n记录 000023：西北节点 N-366 已写入归档索引；采集日为 2026-08-07，处理耗时 109 ms。\n记录 000024：第 88 批数据来自东北节点 N-557；负载 40%，温度 18.0℃，状态为已同步。\n记录 000025：华东节点 N-748 在 2026-08-09 完成第 34 批巡检；延迟 103 ms，状态为待复核。\n项目记录：项目 LYRA-3023-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000026：巡检批次 77 覆盖华南节点 N-139；负载 69%，结果为已同步。\n记录 000027：华北节点 N-330 已写入归档索引；采集日为 2026-08-11，处理耗时 97 ms。\n记录 000028：第 66 批数据来自西南节点 N-521；负载 98%，温度 26.1℃，状态为已同步。\n项目记录：项目 LYRA-3023，版本 2，状态有效，校验码 L19P-7QL4。\n记录 000029：西北节点 N-712 在 2026-08-13 完成第 12 批巡检；延迟 91 ms，状态为待复核。\n记录 000030：巡检批次 55 覆盖东北节点 N-103；负载 48%，结果为已同步。\n记录 000031：华东节点 N-294 已写入归档索引；采集日为 2026-08-15，处理耗时 85 ms。\n记录 000032：第 44 批数据来自华南节点 N-485；负载 77%，温度 18.1℃，状态为正常。\n项目记录：项目 LYRA-3023，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000033：华北节点 N-676 在 2026-08-17 完成第 87 批巡检；延迟 79 ms，状态为已归档。\n记录 000034：巡检批次 33 覆盖西南节点 N-867；负载 27%，结果为正常。\n记录 000035：西北节点 N-258 已写入归档索引；采集日为 2026-08-19，处理耗时 73 ms。\n记录 000036：第 22 批数据来自东北节点 N-449；负载 56%，温度 26.2℃，状态为正常。\n记录 000037：华东节点 N-640 在 2026-08-21 完成第 65 批巡检；延迟 67 ms，状态为已归档。\n记录 000038：巡检批次 11 覆盖华南节点 N-831；负载 85%，结果为待复核。\n记录 000039：华北节点 N-222 已写入归档索引；采集日为 2026-08-23，处理耗时 61 ms。\n记录 000040：第 97 批数据来自西南节点 N-413；负载 35%，温度 18.2℃，状态为待复核。\n记录 000041：西北节点 N-604 在 2026-08-25 完成第 43 批巡检；延迟 55 ms，状态为已同步。\n记录 000042：巡检批次 86 覆盖东北节点 N-795；负载 64%，结果为待复核。\n记录 000043：华东节点 N-186 已写入归档索引；采集日为 2026-08-27，处理耗时 49 ms。\n项目记录：项目 CYGNUS-5735-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000044：第 75 批数据来自华南节点 N-377；负载 93%，温度 26.3℃，状态为待复核。\n记录 000045：华北节点 N-568 在 2026-08-01 完成第 21 批巡检；延迟 43 ms，状态为正常。\n记录 000046：巡检批次 64 覆盖西南节点 N-759；负载 43%，结果为已归档。\n项目记录：项目 CYGNUS-5735，版本 2，状态有效，校验码 UW4Q-QWX6。\n记录 000047：西北节点 N-150 已写入归档索引；采集日为 2026-08-03，处理耗时 37 ms。\n记录 000048：第 53 批数据来自东北节点 N-341；负载 72%，温度 18.3℃，状态为已归档。\n记录 000049：华东节点 N-532 在 2026-08-05 完成第 96 批巡检；延迟 31 ms，状态为正常。\n记录 000050：巡检批次 42 覆盖华南节点 N-723；负载 22%，结果为已归档。\n项目记录：项目 CYGNUS-5735，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000051：华北节点 N-114 已写入归档索引；采集日为 2026-08-07，处理耗时 25 ms。\n记录 000052：第 31 批数据来自西南节点 N-305；负载 51%，温度 26.4℃，状态为已同步。\n记录 000053：西北节点 N-496 在 2026-08-09 完成第 74 批巡检；延迟 19 ms，状态为待复核。\n记录 000054：巡检批次 20 覆盖东北节点 N-687；负载 80%，结果为已同步。\n记录 000055：华东节点 N-878 已写入归档索引；采集日为 2026-08-11，处理耗时 13 ms。\n记录 000056：第 09 批数据来自华南节点 N-269；负载 30%，温度 18.4℃，状态为已同步。\n记录 000057：华北节点 N-460 在 2026-08-13 完成第 52 批巡检；延迟 248 ms，状态为待复核。\n记录 000058：巡检批次 95 覆盖西南节点 N-651；负载 59%，结果为已同步。\n记录 000059：西北节点 N-842 已写入归档索引；采集日为 2026-08-15，处理耗时 242 ms。\n记录 000060：第 84 批数据来自东北节点 N-233；负载 88%，温度 26.5℃，状态为正常。\n记录 000061：华东节点 N-424 在 2026-08-17 完成第 30 批巡检；延迟 236 ms，状态为已归档。\n记录 000062：巡检批次 73 覆盖华南节点 N-615；负载 38%，结果为正常。\n项目记录：项目 VEGA-8779-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000063：华北节点 N-806 已写入归档索引；采集日为 2026-08-19，处理耗时 230 ms。\n记录 000064：第 62 批数据来自西南节点 N-197；负载 67%，温度 18.5℃，状态为正常。\n记录 000065：西北节点 N-388 在 2026-08-21 完成第 08 批巡检；延迟 224 ms，状态为已归档。\n项目记录：项目 VEGA-8779，版本 2，状态有效，校验码 628H-XV3E。\n记录 000066：巡检批次 51 覆盖东北节点 N-579；负载 96%，结果为待复核。\n记录 000067：华东节点 N-770 已写入归档索引；采集日为 2026-08-23，处理耗时 218 ms。\n记录 000068：第 40 批数据来自华南节点 N-161；负载 46%，温度 26.6℃，状态为待复核。\n记录 000069：华北节点 N-352 在 2026-08-25 完成第 83 批巡检；延迟 212 ms，状态为已同步。\n项目记录：项目 VEGA-8779，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000070：巡检批次 29 覆盖西南节点 N-543；负载 75%，结果为待复核。\n记录 000071：西北节点 N-734 已写入归档索引；采集日为 2026-08-27，处理耗时 206 ms。\n记录 000072：第 18 批数据来自东北节点 N-125；负载 25%，温度 18.6℃，状态为待复核。\n记录 000073：华东节点 N-316 在 2026-08-01 完成第 61 批巡检；延迟 200 ms，状态为正常。\n记录 000074：巡检批次 07 覆盖华南节点 N-507；负载 54%，结果为已归档。\n记录 000075：华北节点 N-698 已写入归档索引；采集日为 2026-08-03，处理耗时 194 ms。\n记录 000076：第 93 批数据来自西南节点 N-889；负载 83%，温度 26.7℃，状态为已归档。\n记录 000077：西北节点 N-280 在 2026-08-05 完成第 39 批巡检；延迟 188 ms，状态为正常。\n记录 000078：巡检批次 82 覆盖东北节点 N-471；负载 33%，结果为已归档。\n记录 000079：华东节点 N-662 已写入归档索引；采集日为 2026-08-07，处理耗时 182 ms。\n记录 000080：第 71 批数据来自华南节点 N-853；负载 62%，温度 18.7℃，状态为已同步。\n记录 000081：华北节点 N-244 在 2026-08-09 完成第 17 批巡检；延迟 176 ms，状态为待复核。\n项目记录：项目 DRACO-8123-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000082：巡检批次 60 覆盖西南节点 N-435；负载 91%，结果为已同步。\n记录 000083：西北节点 N-626 已写入归档索引；采集日为 2026-08-11，处理耗时 170 ms。\n记录 000084：第 49 批数据来自东北节点 N-817；负载 41%，温度 26.8℃，状态为已同步。\n记录 000085：华东节点 N-208 在 2026-08-13 完成第 92 批巡检；延迟 164 ms，状态为待复核。\n记录 000086：巡检批次 38 覆盖华南节点 N-399；负载 70%，结果为已同步。\n记录 000087：华北节点 N-590 已写入归档索引；采集日为 2026-08-15，处理耗时 158 ms。\n记录 000088：第 27 批数据来自西南节点 N-781；负载 20%，温度 18.8℃，状态为正常。\n记录 000089：西北节点 N-172 在 2026-08-17 完成第 70 批巡检；延迟 152 ms，状态为已归档。\n记录 000090：巡检批次 16 覆盖东北节点 N-363；负载 49%，结果为正常。\n记录 000091：华东节点 N-554 已写入归档索引；采集日为 2026-08-19，处理耗时 146 ms。\n记录 000092：第 05 批数据来自华南节点 N-745；负载 78%，温度 26.9℃，状态为正常。\n记录 000093：华北节点 N-136 在 2026-08-21 完成第 48 批巡检；延迟 140 ms，状态为已归档。\n\n查询项目：ORION-8944、LYRA-3023、CYGNUS-5735、VEGA-8779、DRACO-8123。\n按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。\n只输出 JSON 对象，键为上述项目名，值为校验码或 null；不输出解释、额外字段或 Markdown。""}]",aab0407bce6645a1ae7eda5dd25d31a5,1,2026-09-05T23:26:11.793+08:00,2026-09-05T23:26:50.776+08:00,4616,4616,True,1032,0,703.230916,32.306564,671.1246538586689,32.33752847055137,6.878006899999946,35.72035310000001,38.79159460000005,True,False,False,stop,16384,True,[],True,True,5,5,,"{""ORION-8944"": ""J13T-DX1B"", ""LYRA-3023"": ""L19P-7QL4"", ""CYGNUS-5735"": ""UW4Q-QWX6"", ""VEGA-8779"": ""628H-XV3E"", ""DRACO-8123"": null}",completed,"{
+  ""ORION-8944"": ""J13T-DX1B"",
+  ""LYRA-3023"": ""L19P-7QL4"",
+  ""CYGNUS-5735"": ""UW4Q-QWX6"",
+  ""VEGA-8779"": ""628H-XV3E"",
+  ""DRACO-8123"": null
+}","We need answer user's request. Need output only JSON object. Need parse records. Query projects: ORION-8944, LYRA-3023, CYGNUS-5735, VEGA-8779, DRACO-8123. Need exact match project name, use highest version and status valid project records; if no valid return null. Need output JSON keys project names, values checksum or null. No explanation/markdown.
+
+Let's identify project records in log:
+- 项目记录：项目 ORION-8944-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+- 项目记录：项目 ORION-8944，版本 2，状态有效，校验码 J13T-DX1B.
+- 项目记录：项目 ORION-8944，版本 1，状态已失效，校验码 OLD0-0000.
+- 项目记录：项目 LYRA-3023-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+- 项目记录：项目 LYRA-3023，版本 2，状态有效，校验码 L19P-7QL4.
+- 项目记录：项目 LYRA-3023，版本 1，状态已失效，校验码 OLD0-0000.
+- 项目记录：项目 CYGNUS-5735-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+- 项目记录：项目 CYGNUS-5735，版本 2，状态有效，校验码 UW4Q-QWX6.
+- 项目记录：项目 CYGNUS-5735，版本 1，状态已失效，校验码 OLD0-0000.
+- 项目记录：项目 VEGA-8779-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+- 项目记录：项目 VEGA-8779，版本 2，状态有效，校验码 628H-XV3E.
+- 项目记录：项目 VEGA-8779，版本 1，状态已失效，校验码 OLD0-0000.
+- 项目记录：项目 DRACO-8123-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+Need query exact match project names: ORION-8944, LYRA-3023, CYGNUS-5735, VEGA-8779, DRACO-8123. Does -ARCHIVE count? No, exact project name. So ignore -ARCHIVE records. For each, valid status records: ORION version 2 valid J13T-DX1B; version1 invalid. Highest valid v2. LYRA v2 valid L19P-7QL4. CYGNUS v2 valid UW4Q-QWX6. VEGA v2 valid 628H-XV3E. DRACO: only -ARCHIVE valid v9, no exact DRACO-8123 record? There is no 项目记录：项目 DRACO-8123... except -ARCHIVE. So no valid exact -> null. Need ensure if -ARCHIVE could be considered archive location? The instruction: 按项目名称精确匹配. So exact. The log has archive project records with -ARCHIVE maybe separate. So null for DRACO-8123.
+
+Need output JSON object only. Key order maybe query order. Values strings. Ensure no markdown.
+
+Double-check: Could there be project records later? List ends record 93, only one DRACO archive. No DRACO exact. So null.
+
+Need maybe JSON with null unquoted. {""ORION-8944"":""J13T-DX1B"",""LYRA-3023"":""L19P-7QL4"",""CYGNUS-5735"":""UW4Q-QWX6"",""VEGA-8779"":""628H-XV3E"",""DRACO-8123"":null}
+
+Need final only JSON.
+",,,True,1,1,1,1,1
+A_short_qa-s3413,A_short_qa,A1：权重单位换算,A,2,3413,16384,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",0,[],[],"[{""role"": ""user"", ""content"": ""某稠密模型有 270 亿个参数，每参数占 2 字节，只计算权重。求字节数、十进制 GB 和二进制 GiB，GiB 保留 1 位小数。只输出 JSON：{\""bytes\"":整数,\""GB\"":数字,\""GiB\"":数字}""}]",94c9785aafb54112ab29ffc92e35e577,1,2026-09-05T23:26:50.788+08:00,2026-09-05T23:27:23.614+08:00,119,119,True,1036,0,310.509575,32.482957,148.61509464781503,32.51614143673293,0.8007262000000992,31.735137899999927,32.664032500000076,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",completed,"{""bytes"":54000000000,""GB"":54.0,""GiB"":50.3}","We need answer in Chinese? User asks: ""某稠密模型有 270 亿个参数，每参数占 2 字节，只计算权重。求字节数、十进制 GB 和二进制 GiB，GiB 保留 1 位小数。只输出 JSON：{""bytes"":整数,""GB"":数字,""GiB"":数字}""
+
+Need compute: 270 亿 = 27,000,000,000? In Chinese, 亿=100,000,000, so 270亿=27,000,000,000 (27 billion). Each param 2 bytes => bytes=54,000,000,000.
+Decimal GB: Usually 1 GB = 1,000,000,000 bytes. So GB = 54,000,000,000 / 1e9 = 54.0.
+Binary GiB: 1 GiB = 1,073,741,824 bytes. GiB = 54e9 / 1073741824 = ? Let's calculate. 54,000,000,000 / 1,073,741,824.
+1,073,741,824 * 50 = 53,687,091,200. Remainder 312,908,800. Divide by 1,073,741,824 ≈0.291428? Let's compute: 312,908,800 / 1,073,741,824 = 0.291428571? Let's check: 1,073,741,824 * 0.291428571 = 312,908,? 0.291428571 =? 1073741824 * 0.291428571 ≈ 312,908,800 exactly? 1,073,741,824 * 2/7? 2/7=0.285714. Not. Maybe 54e9 / 2^30. 54,000,000,000 / 1,073,741,824 = use high precision.
+1,073,741,824 * 50.29 = 53,687,091,200 + 0.29*1,073,741,824 (311,385,129? 1,073,741,824*0.29 = 311,385,129 - wait 1,073,741,824*29/100 = 31,138,513? No: 1,073,741,824*0.1=107,374,182.4; *0.29=311,385,129 - actually 107,374,182.4*2.9 = 311,385,129 - yes). Sum 53,998,476,329. Remainder 1,523,671. So 50.2914. Round 1 decimal = 50.3 GiB.
+Need output only JSON. Ensure bytes integer, GB number, GiB number. {""bytes"":54000000000,""GB"":54.0,""GiB"":50.3}. Does GB need 54 or 54.0? number can be 54.0. JSON valid.
+
+Double-check if ""270 亿"" could be 270e8 = 27e9 yes. bytes=54e9.
+
+Need final only JSON no markdown.
+",,,True,,,,,
+A_block_padding-s3413,A_block_padding,A2：量化块与填充,A,2,3413,16384,"{""blocks"": 4, ""bytes"": 136}",0,[],[],"[{""role"": ""user"", ""content"": ""一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{\""blocks\"":整数,\""bytes\"":整数}""}]",54b93edffa2b411cb579e323387e3746,1,2026-09-05T23:27:23.625+08:00,2026-09-05T23:27:31.431+08:00,120,120,True,226,0,266.257813,32.744895,153.9214964453194,32.891405385139045,0.779618199999959,7.315431999999873,7.651508299999932,True,False,False,stop,16384,True,[],True,True,2,2,,"{""blocks"": 4, ""bytes"": 136}",completed,"{""blocks"":4,""bytes"":136}","We need answer user in Chinese. Need solve. Problem: ""一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{""blocks"":整数,""bytes"":整数}""
+
+Interpretation: format uses 34 bytes per 32 elements, block size 32 elements, if less than block still full block. Two tensors have 17 and 65 elements, cannot share blocks across tensors. Need total blocks and total bytes.
+
+For each tensor blocks = ceil(n/32). 17 -> 1 block. 65 -> ceil(65/32)=3 blocks (since 2 blocks=64, need one more). Total blocks=4. Each block 34 bytes -> 136 bytes. Output JSON only. Ensure no extra.
+",,,True,,,,,
+A_kv-s3413,A_kv,A3：KV 理论容量,A,2,3413,16384,"{""bytes"": 4294967296, ""GiB"": 4.0}",0,[],[],"[{""role"": ""user"", ""content"": ""只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{\""bytes\"":整数,\""GiB\"":数字}""}]",3fa51ccbd2154b5da674be5429a391e1,1,2026-09-05T23:27:31.439+08:00,2026-09-05T23:27:43.547+08:00,130,130,True,366,0,270.450758,32.728546,164.75947018423332,32.81779927380613,0.7890290000000277,11.295996900000091,11.941828499999929,True,False,False,stop,16384,True,[],True,True,2,2,,"{""bytes"": 4294967296, ""GiB"": 4.0}",completed,"{""bytes"":4294967296,""GiB"":4.0}","We need answer in Chinese? User: ""只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{""bytes"":整数,""GiB"":数字}""
+
+Need compute bytes: tokens * layers * kv_heads * head_dim * 2 (K and V) * 2 bytes.
+65536 * 16 * 4 * 256 * 2 * 2.
+Let's compute: 65536*16=1,048,576. *4=4,194,304. *256=1,073,741,824. *2 (K&V)=2,147,483,648. *2 bytes=4,294,967,296 bytes.
+GiB decimal? Usually GiB = bytes / 1024^3 = 4,294,967,296 / 1,073,741,824 = 4.0. Output JSON only. Ensure integer and number. {""bytes"":4294967296,""GiB"":4} or 4.0? ""数字"" can be 4.0. JSON valid. Maybe 4.
+",,,True,,,,,
+A_headroom-s3413,A_headroom,A4：统一显存单位,A,2,3413,16384,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",0,[],[],"[{""role"": ""user"", ""content"": ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{\""file_GiB\"":数字,\""difference_GiB\"":数字}""}]",8ff3f2ad4e88480c872084a7079f9499,1,2026-09-05T23:27:43.555+08:00,2026-09-05T23:29:00.427+08:00,116,116,True,2448,0,248.125158,32.230916,153.1386896582197,32.24479682600302,0.7574833000001036,75.91708420000009,76.67905130000008,True,False,False,stop,16384,True,[],True,True,2,2,,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",completed,"{""file_GiB"":16.391,""difference_GiB"":3.609}","We need answer user's request in Chinese? They ask: ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{""file_GiB"":数字,""difference_GiB"":数字}""
+
+Need compute. Total capacity exactly 20 GiB. Weight file exactly 17.6 decimal GB. Need only arithmetic difference capacity minus file, no runtime. Both keep 3 decimals. Output only JSON: {""file_GiB"": number, ""difference_GiB"": number}
+
+Need interpret: file_GiB likely file size in GiB? ""权重文件精确为 17.6 十进制 GB"" decimal GB = 10^9 bytes? GiB = 1024^3 bytes. Total capacity 20 GiB. Need compute capacity - file in GiB. Need file_GiB = 17.6 decimal GB converted to GiB. 1 decimal GB = 1e9 bytes. 1 GiB = 1024^3 = 1,073,741,824 bytes. So file_GiB = 17.6e9 / 1073741824. Compute precisely and round 3 decimals. Difference = 20 - file_GiB (assuming file_GiB rounded? Need likely use exact file_GiB for difference then round? User says 两项都保留 3 位小数. Both numbers retain 3 decimals. Could compute file_GiB rounded and difference rounded. If difference based on exact? Need decide.
+
+Let's compute:
+17.6 * 1,000,000,000 = 17,600,000,000 bytes.
+Divide by 1,073,741,824.
+Use high precision.
+1,073,741,824 * 16 = 17,179,869,184. Remainder = 420,130,816.
+Remainder / divisor = 0.39125? Let's calculate.
+0.391 * 1,073,741,824 = 419? 1,073,741,824*0.39=418,759,311.36; plus 0.001* =1,073,741.824 => 419,833,053.184. Remainder 297,762.816. So 16.391...
+Need exact.
+Let's do decimal: 17.6e9 / 1073741824.
+Can simplify? 17.6 = 176/10 = 88/5. So bytes = 88/5 * 10^9 = 88 * 200,000,000 = 17,600,000,000.
+GiB = 17,600,000,000 / 1,073,741,824.
+Both divisible? denominator 2^30. numerator 17.6e9 = 17600000000 = 176 * 100000000 = 176 * 10^8 = 176 * (2^8*5^8?) Wait 10^8=2^8*5^8. numerator = 176 * 2^8 * 5^8 = (16*11) * 2^8 * 5^8 = 11 * 2^12 * 5^8? 16*2^8=2^12, yes. So numerator = 11 * 2^12 * 5^8. denominator = 2^30. Simplify = 11 * 5^8 / 2^18. 5^8=390625. 11*390625=4,296,875. denominator 262,144. So file_GiB = 4,296,875 / 262,144. Let's divide.
+262,144*16 = 4,194,304. remainder 102,571. remainder/262,144 = 0.391283...? 102,571/262,144.
+0.391 = 102,? 262,144*0.391 = 102,? 262,144*391/1000 = 102,? 262,144*391 = 262,144*400 - 262,144*9 = 104,857,600 - 2,359,296 = 102,498,304 /1000=102,498.304. remainder 72.696.
+0.000277? 262,144*0.000277 =72.613? yes. So 0.391277?
+Let's compute precisely: 102571/262144.
+We can calculate to 6 decimals.
+Use long division or binary.
+102571 / 262144 =?
+Since denominator 2^18, decimal terminating? Denominator power of 2 => decimal terminating after 18? Actually yes finite decimal because denominator 2^18; multiply by 5^18 etc. Could compute exact decimal maybe many digits. Need 3 decimals.
+Compute using high precision.
+102571 / 262144.
+262144 * 0.39128 = 262144*39128 /100000. 262144*39128 = 262144*(39000+128)=10,223,616,000 + 33,554,432=10,257,170,432 /100000 =102,571.70432. That's 0.70432 high. So 0.39128 too high by 0.70432.
+Try 0.391277: 262144*391277 /1e6 =? 262144*391277 = 262144*(391000+277) = 102,? 262144*391000 = 262144*391 *1000 = 102,498,304,000. +262144*277=262144*(300-23)=78,643,200-6,029,312=72,613,888. Sum 102,570,917,888 /1e6=102,570.917888. Remainder 0.082112.
+Try 0.3912773: add 0.0000003*262144=0.0786432 =>102,570.9965312. rem 0.0034688.
+Try 0.391277313: add 0.000000013*262144=0.003407872 =>102,570.999939072. rem 0.000060928.
+So 0.391277313... Thus file_GiB = 16.391277313...
+Round 3 decimals = 16.391 (since fourth decimal 2). Difference = 20 - 16.391277313 = 3.608722687. Round 3 decimals = 3.609 (fourth decimal 7? 3.6087 -> 3.609). If using rounded file 16.391, difference 3.609 exactly (20-16.391=3.609). Good.
+
+Need output only JSON. Ensure numbers with 3 decimals? JSON number can be 16.391 and 3.609. If they require retain 3 decimals, numbers can have trailing zeros if needed; here both 3 digits after decimal. {""file_GiB"":16.391,""difference_GiB"":3.609}
+
+Double-check if ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。"" They might want file_GiB = 17.6? Wait ""权重文件精确为 17.6 十进制 GB"" but output file_GiB maybe file size in GiB? Since key file_GiB, yes convert. difference_GiB capacity minus file. Could there be ambiguity: ""十进制 GB"" means 17.6 GB decimal, total 20 GiB. So difference in GiB. We did.
+
+Need maybe ""两项"" refers file_GiB and difference_GiB both 3 decimals. Yes.
+
+Only output JSON no markdown. final only JSON.
+",,,True,,,,,
+A_latency-s3413,A_latency,A5：计时范围,A,2,3413,16384,"{""TTFT_s"": 2.0, ""total_s"": 8.5, ""estimated_decode_tps"": 20.0}",0,[],[],"[{""role"": ""user"", ""content"": ""请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{\""TTFT_s\"":数字,\""total_s\"":数字,\""estimated_decode_tps\"":数字}""}]",f863138195674a5ca0c00388d935e4ad,1,2026-09-05T23:29:00.449+08:00,2026-09-05T23:29:08.940+08:00,137,137,True,246,0,312.748972,32.337646,181.0167353275339,32.47995413459217,0.7568360999998731,7.658702799999901,8.33364379999989,True,False,False,stop,16384,True,[],True,True,3,3,,"{""TTFT_s"": 2, ""total_s"": 8.5, ""estimated_decode_tps"": 20}",completed,"{""TTFT_s"":2,""total_s"":8.5,""estimated_decode_tps"":20}","We need answer in Chinese? User asks: ""请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{""TTFT_s"":数字,""total_s"":数字,""estimated_decode_tps"":数字}""
+
+Need compute:
+TTFT_s = time to first content block? Request sent then 2s received first content block => 2.
+total_s = time to finish event? 8.5 seconds.
+estimated_decode_tps = (output tokens -1)/(last content block time - first content block time) = (121-1)/(8-2)=120/6=20.
+
+Only output JSON. Ensure numeric no trailing? {""TTFT_s"":2,""total_s"":8.5,""estimated_decode_tps"":20}
+
+Need final only JSON.
+",,,True,,,,,
+B_code_debug-s3413,B_code_debug,B1：平均值分母,B,2,3413,16384,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python 函数：\n1 def average(values):\n2     total = sum(values)\n3     return total / (len(values) - 1)\n只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""完整语句\"",\""result\"":数字}""}]",377db9b2357148d89c573c2e00af04f8,1,2026-09-05T23:29:08.946+08:00,2026-09-05T23:29:19.585+08:00,137,137,True,309,0,340.718045,31.632732,189.07859928366534,31.741017371951244,0.7245663999999579,9.901952400000027,10.462047600000005,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5}",completed,"{""bug_line"":3,""replacement"":""return total / len(values)"",""result"":5}","We need answer user's request in Chinese? User asks: Python function:
+1 def average(values):
+2     total = sum(values)
+3     return total / (len(values) - 1)
+只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{""bug_line"":整数,""replacement"":""完整语句"",""result"":数字}
+
+Need output only JSON. Need think. The bug line is 3. Replacement should compute arithmetic average for non-empty list, preserving variables and expression structure. Original line 3: return total / (len(values) - 1). Need replace denominator to len(values). Preserve variable and expression structure: ""return total / len(values)"" perhaps. Could include spaces? Full statement. Result for [2,4,6,8] average = 20/4=5. Should be number, likely 5. JSON: {""bug_line"":3,""replacement"":""return total / len(values)"",""result"":5}. Need ensure only JSON no markdown. 
+
+Double-check: ""只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。"" So replacement full statement. If preserve expression structure maybe ""return total / len(values)"". Good. result number could be integer 5. JSON valid.
+",,,True,,,,,
+B_range-s3413,B_range,B2：循环边界,B,2,3413,16384,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n + 1):\n    total += i"", ""result"": 10}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 total = 0\n2 for i in range(1, n):\n3     total += i\n目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",c537b829200c428c81c2a2b53a03387d,1,2026-09-05T23:29:19.594+08:00,2026-09-05T23:29:35.276+08:00,144,144,True,474,0,350.922512,32.004051,200.84861328680606,32.06994062158982,0.7169578999998976,14.53410359999998,15.496603399999913,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n + 1):\n    total += i"", ""result"": 10}",completed,"{""bug_line"":2,""replacement"":""for i in range(1, n + 1):\n    total += i"",""result"":10}","We need answer user's request. Need produce JSON only. Let's parse Chinese.
+
+User:
+Python：
+1 total = 0
+2 for i in range(1, n):
+3     total += i
+目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}
+
+We need identify bug: goal sum 1 to n inclusive. Current range(1,n) gives 1 to n-1. Need only modify range end parameter to n+1. replacement returns complete lines 2-3 loop block including indentation. Other structure unchanged. n=4. Output JSON with bug_line integer, replacement string, result integer.
+
+Need consider JSON formatting: replacement must contain code lines likely with newline? They say 返回完整的第 2～3 行循环块（含缩进）. So replacement string should be:
+""for i in range(1, n + 1):\n    total += i""
+Maybe include exact indentation: line2 no leading? line3 four spaces. JSON string can contain \n. Need result for n=4 sum 1+2+3+4=10. bug_line is 2 (range line). Only output JSON.
+
+Check potential issue: ""只修改 range 结束参数"" means only modify the end parameter of range, so replacement should only change n to n+1. Yes.
+
+Need ensure valid JSON: {""bug_line"":2,""replacement"":""for i in range(1, n + 1):\n    total += i"",""result"":10}
+Should we include spaces? Fine.
+
+Need maybe if they expect replacement with literal newline? In JSON string, \n is okay. Could include actual line break? JSON can contain escaped newline. The instruction ""只输出 JSON"" so output one line maybe. Use escaped newline. Ensure no markdown. final only JSON.
+",,,True,,,,,
+B_units-s3413,B_units,B3：单位常量,B,2,3413,16384,"{""bug_line"": 2, ""replacement"": ""return n_bytes / (1024 ** 3)"", ""result"": 1.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def gib(n_bytes):\n2     return n_bytes / (1000 ** 3)\n目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":数字}""}]",28181c03c67c465395f858de2f305a68,1,2026-09-05T23:29:35.284+08:00,2026-09-05T23:29:50.675+08:00,136,136,True,472,0,291.032352,32.603549,175.09809033646818,32.677197863818655,0.7767074999999295,14.39817149999999,15.2237255,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return n_bytes / (1024 ** 3)"", ""result"": 1.0}",completed,"{""bug_line"":2,""replacement"":""return n_bytes / (1024 ** 3)"",""result"":1.0}","We need answer user's request. Need produce final only JSON: {""bug_line"":integer,""replacement"":""code"",""result"":number}
+
+User: Python:
+1 def gib(n_bytes):
+2     return n_bytes / (1000 ** 3)
+目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":数字}
+
+Need think: Target binary GiB. Binary GiB uses 1024^3 = 1073741824 bytes. They say only change 1000 to correct constant, give full line 2. Original line 2: return n_bytes / (1000 ** 3). Need replace 1000 with correct constant. Correct constant for binary GiB? 1024. So line: return n_bytes / (1024 ** 3). n_bytes=1073741824. Result = 1.0? 1073741824 / (1024**3) = 1.0. JSON number can be 1.0? They ask number. Could output 1.0 or 1. Python result is float 1.0 if true division. JSON accepts 1.0. replacement string: ""return n_bytes / (1024 ** 3)"" perhaps exact. bug_line integer 2. Need only output JSON no markdown. Ensure valid JSON. Could replacement include spaces? full line. result 1.0.
+
+Double-check nuance: ""目标是二进制 GiB。只将 1000 改为正确的常量"" maybe only change 1000 to 1024, not whole expression. Yes.
+
+Need final: {""bug_line"":2,""replacement"":""return n_bytes / (1024 ** 3)"",""result"":1.0}
+",,,True,,,,,
+B_zero-s3413,B_zero,B4：保留零值,B,2,3413,16384,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def limit(d):\n2     return d.get(\""limit\"") or 10\n要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={\""limit\"":0}。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",761942d2bb184e919421a8aef7239109,1,2026-09-05T23:29:50.683+08:00,2026-09-05T23:30:13.255+08:00,142,142,True,699,0,356.996503,32.173559,202.63051509963472,32.21887758782255,0.7007828999999219,21.710509699999875,22.396555300000045,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",completed,"{""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}","We need answer in Chinese? User asks: Python: code line 2 return d.get(""limit"") or 10. Requirement default 10 only if key missing; if key exists and is 0 must keep 0. Replace line 2 with dict.get call with default value, no other expressions. d={""limit"":0}. Only output JSON: {""bug_line"":integer,""replacement"":""code"",""result"":integer}
+
+Need solve. Bug line is 2. Replacement should be `return d.get(""limit"", 10)`? They say 不增加其他表达式 (do not add other expressions) replace line 2 with a dict.get call with default value. The line 2 currently `    return d.get(""limit"") or 10`. Need replace with maybe `    return d.get(""limit"", 10)`. JSON replacement string code likely without leading indentation? They ask 将第2行替换为... Output replacement code. Could include no indent? Usually just `return d.get(""limit"", 10)`. Result for d={""limit"":0} is 0. bug_line 2.
+
+Need only JSON. Ensure valid JSON. final: {""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}. Could include indentation? If replacement includes four spaces: ""    return d.get(\""limit\"", 10)""? The instruction says line 2 replace, likely code statement. No extra expression. If they test maybe expects exact? JSON with escaped quotes. Better no indentation because replacement content can be statement. But line includes indent? They ask 第2行替换, could require include indentation? In many coding bug fix tasks, replacement is code string for line maybe without indentation? Let's parse: ""Python：
+1 def limit(d):
+2     return d.get(""limit"") or 10
+要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={""limit"":0}。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}""
+
+They likely expect replacement code exactly: `return d.get(""limit"", 10)`. In JSON can't have unescaped inner quotes. Use escaped. If include indentation: `    return d.get(""limit"", 10)`. Which is safer? The line in file has leading spaces. But replacement field may be code, not necessarily full line? They said 将第 2 行替换为... 代码. Usually line replacement includes indentation? Hmm.
+
+Need output only JSON. Maybe replacement without indentation is accepted. If they expect to plug into line, they may concatenate? Let's consider common datasets: ask bug line and replacement code. Replacement often the whole corrected line maybe with indentation? In examples maybe `return d.get(""limit"", 10)`. I'll output no indentation to be concise. Result 0.
+
+Double-check: dict.get(key, default) returns default only if key absent; if present returns value even if 0. Good. No other expression. result integer 0.
+
+Final JSON only.
+",,,True,,,,,
+B_inclusive-s3413,B_inclusive,B5：包含端点,B,2,3413,16384,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def valid(x):\n2     return 0 < x < 100\n要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":布尔值}""}]",5026e2c28ac8495287cffcfa3f0a5819,1,2026-09-05T23:30:13.267+08:00,2026-09-05T23:30:23.748+08:00,128,128,True,307,0,324.10889,31.989763,178.81652795575263,32.101731856961784,0.7158175000001847,9.568090500000153,10.281763500000125,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",completed,"{""bug_line"":2,""replacement"":""return 0 <= x <= 100"",""result"":true}","We need answer in Chinese? User: Python code:
+1 def valid(x):
+2     return 0 < x < 100
+要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":布尔值}
+
+Need output only JSON. Need change comparison operators to include 0 and 100. Original line 2 return 0 < x < 100. To include endpoints: return 0 <= x <= 100. x=100 result True. bug_line integer likely 2. replacement code full statement: ""return 0 <= x <= 100"" maybe no indent? They ask 第2行完整语句. Could include? In JSON string. result boolean true (JSON true). Must only output JSON. Ensure keys exact.
+
+Need think if ""只改变比较运算符"" means change < to <=. line 2 complete statement: return 0 <= x <= 100. result for x=100 is True. JSON boolean true.
+
+Final: {""bug_line"":2,""replacement"":""return 0 <= x <= 100"",""result"":true}
+No extra.
+",,,True,,,,,
+C_constraint_reasoning-s3413,C_constraint_reasoning,C1：位置约束,C,2,3413,16384,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",0,[],[],"[{""role"": ""user"", ""content"": ""林、赵、陈、王排在第 1 到 4 位。林紧挨在赵前；陈在赵后；王不在第 1 位或第 4 位。给出唯一顺序。只输出 JSON，键为位置字符串 \""1\"" 到 \""4\""，值为姓名。""}]",6f819e42c0bb4cad8975ef76dc47e6bc,1,2026-09-05T23:30:23.756+08:00,2026-09-05T23:30:40.878+08:00,120,120,True,528,0,296.791682,32.532015,165.16281337231985,32.593109391171176,0.726555800000142,15.850430200000119,16.92652300000009,True,False,False,stop,16384,True,[],True,True,4,4,,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",completed,"{
+  ""1"": ""林"",
+  ""2"": ""赵"",
+  ""3"": ""王"",
+  ""4"": ""陈""
+}","We need solve logic puzzle in Chinese. User: 林、赵、陈、王排在第 1 到 4 位。林紧挨在赵前；陈在赵后；王不在第 1 位或第 4 位。给出唯一顺序。只输出 JSON，键为位置字符串 ""1"" 到 ""4""，值为姓名。
+
+We need output only JSON. Need reason.
+Names: Lin (林), Zhao (赵), Chen (陈), Wang (王). Positions 1-4.
+Constraints:
+1. 林紧挨在赵前: Lin immediately before Zhao (Lin position = Zhao position -1). So Lin and Zhao adjacent with Lin before Zhao.
+2. 陈在赵后: Chen after Zhao. Means Chen position > Zhao position (not necessarily immediately? Chinese ""在赵后"" usually after, could be later position; ""紧挨"" specifies immediately for Lin, so Chen merely after Zhao).
+3. 王不在第 1 位或第 4 位: Wang not in 1 or 4, so Wang in 2 or 3.
+Need unique order.
+Let's enumerate.
+Lin immediately before Zhao: possible (Lin,Zhao) positions (1,2), (2,3), (3,4).
+Chen after Zhao.
+Wang not 1/4.
+Case (1,2): positions 1 Lin, 2 Zhao. Chen after Zhao => Chen in 3 or4. Wang remaining in 3 or4, but Wang cannot be 4, so Wang 3, Chen 4. Order: 1 Lin,2 Zhao,3 Wang,4 Chen. Satisfies Chen after Zhao yes. Unique candidate.
+Case (2,3): 2 Lin,3 Zhao. Chen after Zhao => Chen 4. Remaining Wang 1, but Wang cannot 1. Invalid.
+Case (3,4): 3 Lin,4 Zhao. Chen after Zhao impossible (no position >4). Invalid.
+So unique: 1 林, 2 赵, 3 王, 4 陈.
+Need only JSON: {""1"":""林"",""2"":""赵"",""3"":""王"",""4"":""陈""}. Ensure valid JSON. No extra. final only JSON.
+",,,True,,,,,
+C_schedule-s3413,C_schedule,C2：依赖调度,C,2,3413,16384,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",0,[],[],"[{""role"": ""user"", ""content"": ""有足够多的处理器，任务开始后不可中断，全部从时刻 0 起尽早执行。A 耗时 3；B 耗时 5；C 耗时 4，依赖 A 和 B 完成；D 耗时 2，依赖 A 完成；E 耗时 1，依赖 C 和 D 完成。只输出 JSON：{\""C_start\"":整数,\""D_start\"":整数,\""E_finish\"":整数}""}]",7649137e54234805a2203b71536c68e9,1,2026-09-05T23:30:40.887+08:00,2026-09-05T23:30:50.196+08:00,143,143,True,270,0,327.828264,32.08673,189.58200482308067,32.204166273343276,0.7542909999999665,8.621909799999912,9.137842899999896,True,False,False,stop,16384,True,[],True,True,3,3,,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",completed,"{""C_start"":5,""D_start"":3,""E_finish"":10}","We need answer in Chinese? User asks: 有足够多的处理器，任务开始后不可中断，全部从时刻 0 起尽早执行。A 耗时 3；B 耗时 5；C 耗时 4，依赖 A 和 B 完成；D 耗时 2，依赖 A 完成；E 耗时 1，依赖 C 和 D 完成。只输出 JSON：{""C_start"":整数,""D_start"":整数,""E_finish"":整数}
+
+We need compute schedule with unlimited processors, nonpreemptive, start ASAP from 0. Dependencies:
+A duration 3 no deps, start 0 finish 3.
+B duration 5 no deps, start 0 finish 5.
+C duration 4 depends A and B, start max(3,5)=5 finish 9.
+D duration 2 depends A, start 3 finish 5.
+E duration 1 depends C and D, start max(C finish 9, D finish 5)=9 finish 10.
+JSON: C_start 5, D_start 3, E_finish 10.
+Need output only JSON no explanation. Ensure valid JSON.
+",,,True,,,,,
+C_knapsack-s3413,C_knapsack,C3：容量选择,C,2,3413,16384,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",0,[],[],"[{""role"": ""user"", ""content"": ""每件物品最多选一次，容量为 10。物品 A 重 6 价值 13；B 重 5 价值 12；C 重 4 价值 10；D 重 3 价值 7。选择总重量不超过 10 且总价值最高的组合，物品按字母排序。只输出 JSON：{\""items\"":[字符串],\""weight\"":整数,\""value\"":整数}""}]",fa1db3f9b9d24770b5f42c8114249fb4,1,2026-09-05T23:30:50.203+08:00,2026-09-05T23:31:01.683+08:00,144,144,True,337,0,260.519846,32.173698,166.0168567060135,32.26922335979445,0.8673817999999756,10.782663100000036,11.310913100000107,True,False,False,stop,16384,True,[],True,True,3,3,,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",completed,"{""items"":[""A"",""C""],""weight"":10,""value"":23}","We need answer in Chinese? User asks: ""每件物品最多选一次，容量为 10。物品 A 重 6 价值 13；B 重 5 价值 12；C 重 4 价值 10；D 重 3 价值 7。选择总重量不超过 10 且总价值最高的组合，物品按字母排序。只输出 JSON：{""items"":[字符串],""weight"":整数,""value"":整数}""
+
+Need solve 0/1 knapsack capacity 10:
+Items:
+A w6 v13
+B w5 v12
+C w4 v10
+D w3 v7
+Need max value weight <=10, items alphabetical.
+
+Enumerate combos:
+A+B: 11 >10
+A+C: 10 value23
+A+D:9 value20
+A alone 6 value13
+B+C:9 value22
+B+D:8 value19
+C+D:7 value17
+B alone 12, C 10, D 7.
+A+C value 23 best. Check A+B no. C+D+? B? B+C+D=12 no. A+? B no, C best. So output {""items"":[""A"",""C""],""weight"":10,""value"":23}
+Only output JSON no extra. Ensure strings maybe ""A"",""C"".
+",,,True,,,,,
+C_count-s3413,C_count,C4：可行排列计数,C,2,3413,16384,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",0,[],[],"[{""role"": ""user"", ""content"": ""A、B、C、D 四个不同任务串行排列。A 必须在 B 前，C 必须在 D 前，除此之外无限制。计算可行排列总数，并给出按字母字典序最小的排列。只输出 JSON：{\""count\"":整数,\""first\"":[字符串]}""}]",4f174aaa3c694451bb53d42a60c245e6,1,2026-09-05T23:31:01.691+08:00,2026-09-05T23:31:13.067+08:00,111,111,True,339,0,288.551523,32.199069,162.3650413730852,32.29558910570428,0.683644700000059,10.718261600000005,11.18089430000009,True,False,False,stop,16384,True,[],True,True,2,2,,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",completed,"{""count"":6,""first"":[""A"",""B"",""C"",""D""]}","We need answer in Chinese? User asks: ""A、B、C、D 四个不同任务串行排列。A 必须在 B 前，C 必须在 D 前，除此之外无限制。计算可行排列总数，并给出按字母字典序最小的排列。只输出 JSON：{""count"":整数,""first"":[字符串]}""
+
+Need solve. Four distinct tasks serial arrangements. Constraints: A before B, C before D. Count feasible permutations of 4 elements satisfying both. Total 4! =24. For pair A,B half have A before B (12), for C,D half have C before D (12), events independent? For all permutations, probability A before B =1/2, C before D=1/2, independent for disjoint pairs? yes count = 24/4=6. Or enumerate. Need lexicographically smallest arrangement among valid permutations. Alphabetical order of tasks strings? likely permutations as list of characters sorted lexicographically by sequence. Need find smallest sequence satisfying A<B and C<D.
+
+All permutations in lex order:
+A B C D? Check A before B yes, C before D yes: ABCD valid. Is there any smaller? Lex order starts with A. Among sequences starting A, second smallest B, then C,D. ABCD is first overall. It satisfies constraints. So first is [""A"",""B"",""C"",""D""].
+
+Need output only JSON: {""count"":6,""first"":[""A"",""B"",""C"",""D""]}. Ensure no extra. final just JSON.
+",,,True,,,,,
+C_unsat-s3413,C_unsat,C5：不可满足约束,C,2,3413,16384,"{""satisfiable"": false, ""order"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{\""satisfiable\"":布尔值,\""order\"":数组或null}""}]",21cfa52c820948338e280c9b8d1ab155,1,2026-09-05T23:31:13.077+08:00,2026-09-05T23:31:18.555+08:00,114,114,True,147,0,226.912635,32.687216,140.69118617849227,32.91434425157848,0.8102853000000323,4.927454199999829,5.277217800000017,True,False,False,stop,16384,True,[],True,True,2,2,,"{""satisfiable"": false, ""order"": null}",completed,"{""satisfiable"":false,""order"":null}","We need answer user in Chinese likely. User: ""三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{""satisfiable"":布尔值,""order"":数组或null}""
+
+We need only output JSON. Constraints: A before B, B before C, C before A => cycle A<B<C<A impossible. satisfiable false, order null. Output exact JSON no extra. Ensure boolean maybe true/false lowercase. {""satisfiable"":false,""order"":null}
+",,,True,,,,,
+E_instruction_following-s3413,E_instruction_following,E1：筛选排序,E,2,3413,16384,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",fe355c86e6c946d1b1ed33a6ea1e325c,1,2026-09-05T23:31:18.562+08:00,2026-09-05T23:31:24.710+08:00,136,136,True,171,0,309.547492,32.380311,184.13573186375066,32.57201423266684,0.7385855999998512,5.528921999999966,5.9890409999998155,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",completed,"{""nodes"":[""N-7"",""N-2""],""count"":2}","We need answer in Chinese likely. User asks: records: N-2 latency 70 status normal; N-7 latency95 status pending review; N-4 latency60 status archived; N-1 latency40 status normal. Filter latency >50 and status not archived, sort by latency descending. Output only JSON: {""nodes"":[strings],""count"":int}. Need produce only JSON no extra. Filter: N-2 70 normal >50 not archived yes; N-7 95 pending review >50 not archived yes; N-4 60 archived excluded; N-1 40 no. Sort desc: N-7, N-2. count 2. Ensure valid JSON.
+",,,True,,,,,
+E_ties-s3413,E_ties,E2：并列与边界,E,2,3413,16384,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",0,[],[],"[{""role"": ""user"", ""content"": ""记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",a878d744a8ce4965b1d107b511125824,1,2026-09-05T23:31:24.718+08:00,2026-09-05T23:31:36.570+08:00,128,128,True,353,0,261.664513,32.440097,160.04305158087573,32.532079009735895,0.7997847999999976,11.24654570000007,11.651027500000055,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",completed,"{""nodes"":[""C"",""D"",""A""],""count"":3}","We need answer user in Chinese likely. Need parse task. User: ""记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{""nodes"":[字符串],""count"":整数}""
+
+Need produce only JSON. Need filter enabled true and delay >=50. Records:
+A delay 50 enabled true -> keep
+B delay 80 enabled false -> exclude
+C delay 80 enabled true -> keep
+D delay 80 enabled true -> keep
+E delay 0 enabled true -> exclude (delay <50)
+
+Sort: by delay descending, then ID letter ascending. Kept: C 80, D 80, A 50. Same delay 80: C before D. Output nodes strings. What format? likely just node identifiers? ""nodes"":[字符串] maybe strings could be ""A""? Or maybe record strings? Need infer. User says 只输出 JSON: {""nodes"":[字符串],""count"":整数}. They list records A ... Maybe nodes should be the labels of retained records: [""C"",""D"",""A""] count 3. Could also include full record string? ""保留启用且延迟大于等于50的记录"" nodes strings maybe node names. In such tasks often output nodes as IDs. Need only JSON. Ensure valid. No extra. Final: {""nodes"":[""C"",""D"",""A""],""count"":3}
+",,,True,,,,,
+E_versions-s3413,E_versions,E3：版本与缺失,E,2,3413,16384,"{""P"": ""B"", ""Q"": null, ""R"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。""}]",511c450a4c0041228b481b6b772cf7c8,1,2026-09-05T23:31:36.579+08:00,2026-09-05T23:31:46.156+08:00,145,145,True,268,0,290.807281,30.971686,191.48342473258288,31.082341616494034,0.7572456999998849,8.643811700000015,9.378295999999864,True,False,False,stop,16384,True,[],True,True,3,3,,"{""P"": ""B"", ""Q"": null, ""R"": null}",completed,"{
+  ""P"": ""B"",
+  ""Q"": null,
+  ""R"": null
+}","We need answer user in Chinese likely. Need solve: Records:
+- 项目 P 版本1 有效 code=A
+- 项目 P 版本3 失效 code=C
+- 项目 P 版本2 有效 code=B
+- 项目 P-OLD 版本9 有效 code=X
+- 项目 Q 版本1 失效 code=Y
+
+分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。
+
+Need output only JSON. Need values? Probably code? The prompt: 记录 with code; query exact project name, among valid records choose max version; if no valid return null. Output JSON keys P,Q,R. Likely value is code for selected valid max version. For P: valid P versions 1 A, 2 B; max version 2 => B. P-OLD is not exact match P. Q: valid? Q version1 invalid => no valid => null. R: no records => null. JSON: {""P"":""B"",""Q"":null,""R"":null}. Ensure only JSON.
+",,,True,,,,,
+E_nested-s3413,E_nested,E4：类型与嵌套,E,2,3413,16384,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",0,[],[],"[{""role"": ""user"", ""content"": ""把记录转换成指定 JSON，不推测缺失值。id 是字符串 \""007\""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 \""z\""、\""a\""。只输出结构：{\""id\"":字符串,\""settings\"":{\""enabled\"":布尔值,\""retries\"":整数},\""owner\"":null,\""tags\"":[字符串]}""}]",115532b5b8d4481881f844fed3d1807d,1,2026-09-05T23:31:46.164+08:00,2026-09-05T23:31:52.555+08:00,135,135,True,178,0,340.902204,32.055868,191.11282876716734,32.25293708091472,0.7063889999999446,5.357385199999953,6.228725299999951,True,False,False,stop,16384,True,[],True,True,4,4,,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",completed,"{""id"":""007"",""settings"":{""enabled"":false,""retries"":0},""owner"":null,""tags"":[""z"",""a""]}","We need answer user in Chinese likely. User asks: 把记录转换成指定 JSON，不推测缺失值。id 是字符串 ""007""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 ""z""、""a""。只输出结构：{""id"":字符串,""settings"":{""enabled"":布尔值,""retries"":整数},""owner"":null,""tags"":[字符串]}
+
+Need output only JSON structure no extra. Need produce final only JSON. Ensure valid JSON: {""id"":""007"",""settings"":{""enabled"":false,""retries"":0},""owner"":null,""tags"":[""z"",""a""]}. No markdown.
+",,,True,,,,,
+E_empty-s3413,E_empty,E5：空结果,E,2,3413,16384,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""节点 A 延迟40状态正常；B 延迟80状态已归档；C 延迟50状态正常。保留延迟严格大于50且未归档的节点。按延迟降序；结果为空时 nodes 用空数组、max_latency 用 null。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数,\""max_latency\"":数字或null}""}]",396c667dde1143b39bc19b0889f79352,1,2026-09-05T23:31:52.564+08:00,2026-09-05T23:31:56.994+08:00,130,130,True,118,0,333.997904,32.710519,193.5031755359152,32.98991117762472,0.6718236000001525,3.8565424000000803,4.249175700000023,True,False,False,stop,16384,True,[],True,True,3,3,,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",completed,"{""nodes"":[],""count"":0,""max_latency"":null}","We need answer user in Chinese likely. Need solve: nodes A latency 40 normal; B latency 80 archived; C latency 50 normal. Keep nodes with latency strictly greater than 50 and not archived. A 40 no, B 80 archived exclude, C 50 not >50 exclude. Result empty. Output only JSON: {""nodes"":[], ""count"":0, ""max_latency"":null}. Need ensure only JSON no extra. Final.
+",,,True,,,,,
+D_long_context-s3413,D_long_context,D：长文档检索,D,2,3413,16384,"{""ORION-1183"": ""DIM9-Z0AI"", ""LYRA-5182"": ""VT1R-IJXK"", ""CYGNUS-6329"": ""MY5G-EV15"", ""VEGA-6009"": ""VSG3-9NZ7"", ""DRACO-8018"": null}",128,[],"[{""project"": ""ORION-1183"", ""code"": ""DIM9-Z0AI"", ""target_position"": 0.1, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 491, ""token_position_estimate"": 0.09642}, {""project"": ""LYRA-5182"", ""code"": ""VT1R-IJXK"", ""target_position"": 0.3, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 1409, ""token_position_estimate"": 0.298045}, {""project"": ""CYGNUS-6329"", ""code"": ""MY5G-EV15"", ""target_position"": 0.5, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 2294, ""token_position_estimate"": 0.492423}, {""project"": ""VEGA-6009"", ""code"": ""VSG3-9NZ7"", ""target_position"": 0.7, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 3200, ""token_position_estimate"": 0.691412}, {""project"": ""DRACO-8018"", ""code"": null, ""target_position"": 0.9, ""variant"": ""challenge"", ""missing"": true, ""token_prefix_count"": null, ""token_position_estimate"": null}]","[{""role"": ""user"", ""content"": ""以下是按归档位置排列的运行日志，位置顺序不代表版本先后。\n\n记录 000001：第 24 批数据来自东北节点 N-525；负载 38%，温度 33.4℃，状态为已同步。\n记录 000002：华东节点 N-716 在 2026-08-09 完成第 67 批巡检；延迟 222 ms，状态为待复核。\n记录 000003：巡检批次 13 覆盖华南节点 N-107；负载 67%，结果为已同步。\n记录 000004：华北节点 N-298 已写入归档索引；采集日为 2026-08-11，处理耗时 216 ms。\n记录 000005：第 02 批数据来自西南节点 N-489；负载 96%，温度 25.4℃，状态为已同步。\n记录 000006：西北节点 N-680 在 2026-08-13 完成第 45 批巡检；延迟 210 ms，状态为待复核。\n项目记录：项目 ORION-1183-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000007：巡检批次 88 覆盖东北节点 N-871；负载 46%，结果为已同步。\n记录 000008：华东节点 N-262 已写入归档索引；采集日为 2026-08-15，处理耗时 204 ms。\n记录 000009：第 77 批数据来自华南节点 N-453；负载 75%，温度 33.5℃，状态为正常。\n项目记录：项目 ORION-1183，版本 2，状态有效，校验码 DIM9-Z0AI。\n记录 000010：华北节点 N-644 在 2026-08-17 完成第 23 批巡检；延迟 198 ms，状态为已归档。\n记录 000011：巡检批次 66 覆盖西南节点 N-835；负载 25%，结果为正常。\n记录 000012：西北节点 N-226 已写入归档索引；采集日为 2026-08-19，处理耗时 192 ms。\n记录 000013：第 55 批数据来自东北节点 N-417；负载 54%，温度 25.5℃，状态为正常。\n项目记录：项目 ORION-1183，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000014：华东节点 N-608 在 2026-08-21 完成第 01 批巡检；延迟 186 ms，状态为已归档。\n记录 000015：巡检批次 44 覆盖华南节点 N-799；负载 83%，结果为待复核。\n记录 000016：华北节点 N-190 已写入归档索引；采集日为 2026-08-23，处理耗时 180 ms。\n记录 000017：第 33 批数据来自西南节点 N-381；负载 33%，温度 33.6℃，状态为待复核。\n记录 000018：西北节点 N-572 在 2026-08-25 完成第 76 批巡检；延迟 174 ms，状态为已同步。\n记录 000019：巡检批次 22 覆盖东北节点 N-763；负载 62%，结果为待复核。\n记录 000020：华东节点 N-154 已写入归档索引；采集日为 2026-08-27，处理耗时 168 ms。\n记录 000021：第 11 批数据来自华南节点 N-345；负载 91%，温度 25.6℃，状态为待复核。\n记录 000022：华北节点 N-536 在 2026-08-01 完成第 54 批巡检；延迟 162 ms，状态为正常。\n记录 000023：巡检批次 97 覆盖西南节点 N-727；负载 41%，结果为已归档。\n记录 000024：西北节点 N-118 已写入归档索引；采集日为 2026-08-03，处理耗时 156 ms。\n记录 000025：第 86 批数据来自东北节点 N-309；负载 70%，温度 33.7℃，状态为已归档。\n项目记录：项目 LYRA-5182-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000026：华东节点 N-500 在 2026-08-05 完成第 32 批巡检；延迟 150 ms，状态为正常。\n记录 000027：巡检批次 75 覆盖华南节点 N-691；负载 20%，结果为已归档。\n记录 000028：华北节点 N-882 已写入归档索引；采集日为 2026-08-07，处理耗时 144 ms。\n项目记录：项目 LYRA-5182，版本 2，状态有效，校验码 VT1R-IJXK。\n记录 000029：第 64 批数据来自西南节点 N-273；负载 49%，温度 25.7℃，状态为已同步。\n记录 000030：西北节点 N-464 在 2026-08-09 完成第 10 批巡检；延迟 138 ms，状态为待复核。\n记录 000031：巡检批次 53 覆盖东北节点 N-655；负载 78%，结果为已同步。\n记录 000032：华东节点 N-846 已写入归档索引；采集日为 2026-08-11，处理耗时 132 ms。\n项目记录：项目 LYRA-5182，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000033：第 42 批数据来自华南节点 N-237；负载 28%，温度 33.8℃，状态为已同步。\n记录 000034：华北节点 N-428 在 2026-08-13 完成第 85 批巡检；延迟 126 ms，状态为待复核。\n记录 000035：巡检批次 31 覆盖西南节点 N-619；负载 57%，结果为已同步。\n记录 000036：西北节点 N-810 已写入归档索引；采集日为 2026-08-15，处理耗时 120 ms。\n记录 000037：第 20 批数据来自东北节点 N-201；负载 86%，温度 25.8℃，状态为正常。\n记录 000038：华东节点 N-392 在 2026-08-17 完成第 63 批巡检；延迟 114 ms，状态为已归档。\n记录 000039：巡检批次 09 覆盖华南节点 N-583；负载 36%，结果为正常。\n记录 000040：华北节点 N-774 已写入归档索引；采集日为 2026-08-19，处理耗时 108 ms。\n记录 000041：第 95 批数据来自西南节点 N-165；负载 65%，温度 33.9℃，状态为正常。\n记录 000042：西北节点 N-356 在 2026-08-21 完成第 41 批巡检；延迟 102 ms，状态为已归档。\n记录 000043：巡检批次 84 覆盖东北节点 N-547；负载 94%，结果为待复核。\n项目记录：项目 CYGNUS-6329-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000044：华东节点 N-738 已写入归档索引；采集日为 2026-08-23，处理耗时 96 ms。\n记录 000045：第 73 批数据来自华南节点 N-129；负载 44%，温度 25.9℃，状态为待复核。\n记录 000046：华北节点 N-320 在 2026-08-25 完成第 19 批巡检；延迟 90 ms，状态为已同步。\n项目记录：项目 CYGNUS-6329，版本 2，状态有效，校验码 MY5G-EV15。\n记录 000047：巡检批次 62 覆盖西南节点 N-511；负载 73%，结果为待复核。\n记录 000048：西北节点 N-702 已写入归档索引；采集日为 2026-08-27，处理耗时 84 ms。\n记录 000049：第 51 批数据来自东北节点 N-893；负载 23%，温度 34.0℃，状态为待复核。\n记录 000050：华东节点 N-284 在 2026-08-01 完成第 94 批巡检；延迟 78 ms，状态为正常。\n项目记录：项目 CYGNUS-6329，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000051：巡检批次 40 覆盖华南节点 N-475；负载 52%，结果为已归档。\n记录 000052：华北节点 N-666 已写入归档索引；采集日为 2026-08-03，处理耗时 72 ms。\n记录 000053：第 29 批数据来自西南节点 N-857；负载 81%，温度 26.0℃，状态为已归档。\n记录 000054：西北节点 N-248 在 2026-08-05 完成第 72 批巡检；延迟 66 ms，状态为正常。\n记录 000055：巡检批次 18 覆盖东北节点 N-439；负载 31%，结果为已归档。\n记录 000056：华东节点 N-630 已写入归档索引；采集日为 2026-08-07，处理耗时 60 ms。\n记录 000057：第 07 批数据来自华南节点 N-821；负载 60%，温度 18.0℃，状态为已同步。\n记录 000058：华北节点 N-212 在 2026-08-09 完成第 50 批巡检；延迟 54 ms，状态为待复核。\n记录 000059：巡检批次 93 覆盖西南节点 N-403；负载 89%，结果为已同步。\n记录 000060：西北节点 N-594 已写入归档索引；采集日为 2026-08-11，处理耗时 48 ms。\n记录 000061：第 82 批数据来自东北节点 N-785；负载 39%，温度 26.1℃，状态为已同步。\n记录 000062：华东节点 N-176 在 2026-08-13 完成第 28 批巡检；延迟 42 ms，状态为待复核。\n项目记录：项目 VEGA-6009-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000063：巡检批次 71 覆盖华南节点 N-367；负载 68%，结果为已同步。\n记录 000064：华北节点 N-558 已写入归档索引；采集日为 2026-08-15，处理耗时 36 ms。\n记录 000065：第 60 批数据来自西南节点 N-749；负载 97%，温度 18.1℃，状态为正常。\n项目记录：项目 VEGA-6009，版本 2，状态有效，校验码 VSG3-9NZ7。\n记录 000066：西北节点 N-140 在 2026-08-17 完成第 06 批巡检；延迟 30 ms，状态为已归档。\n记录 000067：巡检批次 49 覆盖东北节点 N-331；负载 47%，结果为正常。\n记录 000068：华东节点 N-522 已写入归档索引；采集日为 2026-08-19，处理耗时 24 ms。\n记录 000069：第 38 批数据来自华南节点 N-713；负载 76%，温度 26.2℃，状态为正常。\n项目记录：项目 VEGA-6009，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000070：华北节点 N-104 在 2026-08-21 完成第 81 批巡检；延迟 18 ms，状态为已归档。\n记录 000071：巡检批次 27 覆盖西南节点 N-295；负载 26%，结果为待复核。\n记录 000072：西北节点 N-486 已写入归档索引；采集日为 2026-08-23，处理耗时 12 ms。\n记录 000073：第 16 批数据来自东北节点 N-677；负载 55%，温度 18.2℃，状态为待复核。\n记录 000074：华东节点 N-868 在 2026-08-25 完成第 59 批巡检；延迟 247 ms，状态为已同步。\n记录 000075：巡检批次 05 覆盖华南节点 N-259；负载 84%，结果为待复核。\n记录 000076：华北节点 N-450 已写入归档索引；采集日为 2026-08-27，处理耗时 241 ms。\n记录 000077：第 91 批数据来自西南节点 N-641；负载 34%，温度 26.3℃，状态为待复核。\n记录 000078：西北节点 N-832 在 2026-08-01 完成第 37 批巡检；延迟 235 ms，状态为正常。\n记录 000079：巡检批次 80 覆盖东北节点 N-223；负载 63%，结果为已归档。\n记录 000080：华东节点 N-414 已写入归档索引；采集日为 2026-08-03，处理耗时 229 ms。\n记录 000081：第 69 批数据来自华南节点 N-605；负载 92%，温度 18.3℃，状态为已归档。\n项目记录：项目 DRACO-8018-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000082：华北节点 N-796 在 2026-08-05 完成第 15 批巡检；延迟 223 ms，状态为正常。\n记录 000083：巡检批次 58 覆盖西南节点 N-187；负载 42%，结果为已归档。\n记录 000084：西北节点 N-378 已写入归档索引；采集日为 2026-08-07，处理耗时 217 ms。\n记录 000085：第 47 批数据来自东北节点 N-569；负载 71%，温度 26.4℃，状态为已同步。\n记录 000086：华东节点 N-760 在 2026-08-09 完成第 90 批巡检；延迟 211 ms，状态为待复核。\n记录 000087：巡检批次 36 覆盖华南节点 N-151；负载 21%，结果为已同步。\n记录 000088：华北节点 N-342 已写入归档索引；采集日为 2026-08-11，处理耗时 205 ms。\n记录 000089：第 25 批数据来自西南节点 N-533；负载 50%，温度 18.4℃，状态为已同步。\n记录 000090：西北节点 N-724 在 2026-08-13 完成第 68 批巡检；延迟 199 ms，状态为待复核。\n记录 000091：巡检批次 14 覆盖东北节点 N-115；负载 79%，结果为已同步。\n记录 000092：华东节点 N-306 已写入归档索引；采集日为 2026-08-15，处理耗时 193 ms。\n记录 000093：第 03 批数据来自华南节点 N-497；负载 29%，温度 26.5℃，状态为正常。\n\n查询项目：ORION-1183、LYRA-5182、CYGNUS-6329、VEGA-6009、DRACO-8018。\n按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。\n只输出 JSON 对象，键为上述项目名，值为校验码或 null；不输出解释、额外字段或 Markdown。""}]",19841d18fcd24646bf80764a1ae45f4b,1,2026-09-05T23:31:57.001+08:00,2026-09-05T23:32:58.529+08:00,4605,4605,True,1760,0,764.234299,31.973538,727.7451618181994,31.991553036908048,6.3277645000000575,58.41529319999995,61.34269500000005,True,False,False,stop,16384,True,[],True,True,5,5,,"{""ORION-1183"": ""DIM9-Z0AI"", ""LYRA-5182"": ""VT1R-IJXK"", ""CYGNUS-6329"": ""MY5G-EV15"", ""VEGA-6009"": ""VSG3-9NZ7"", ""DRACO-8018"": null}",completed,"{
+  ""ORION-1183"": ""DIM9-Z0AI"",
+  ""LYRA-5182"": ""VT1R-IJXK"",
+  ""CYGNUS-6329"": ""MY5G-EV15"",
+  ""VEGA-6009"": ""VSG3-9NZ7"",
+  ""DRACO-8018"": null
+}","We need answer user's request. Need parse records, projects. Need output JSON only. Need think carefully.
+
+User Chinese: They provided logs sorted by archive position, order not version. Query projects: ORION-1183, LYRA-5182, CYGNUS-6329, VEGA-6009, DRACO-8018.
+按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。
+只输出 JSON object, keys project names, values 校验码 or null; no explanation, extra fields, Markdown.
+
+Need inspect project records in input:
+项目记录：项目 ORION-1183-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+项目记录：项目 ORION-1183，版本 2，状态有效，校验码 DIM9-Z0AI.
+项目记录：项目 ORION-1183，版本 1，状态已失效，校验码 OLD0-0000.
+项目记录：项目 LYRA-5182-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+项目记录：项目 LYRA-5182，版本 2，状态有效，校验码 VT1R-IJXK.
+项目记录：项目 LYRA-5182，版本 1，状态已失效，校验码 OLD0-0000.
+项目记录：项目 CYGNUS-6329-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+项目记录：项目 CYGNUS-6329，版本 2，状态有效，校验码 MY5G-EV15.
+项目记录：项目 CYGNUS-6329，版本 1，状态已失效，校验码 OLD0-0000.
+项目记录：项目 VEGA-6009-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+项目记录：项目 VEGA-6009，版本 2，状态有效，校验码 VSG3-9NZ7.
+项目记录：项目 VEGA-6009，版本 1，状态已失效，校验码 OLD0-0000.
+项目记录：项目 DRACO-8018-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999.
+There is no non-archive DRACO-8018? Need check. For DRACO, only project record: DRACO-8018-ARCHIVE v9 valid. No DRACO-8018 exact? Query exact project name DRACO-8018. Need match exact project name. Does DRACO-8018-ARCHIVE count? No, exact match likely no. So null for DRACO-8018? Need be careful: They say 按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null. So for each query project exact name, among project records where 项目 == name, choose highest version with 状态有效. If none valid => null. For ORION-1183: records: v2 valid DIM9-Z0AI, v1 invalid. ORION-1183-ARCHIVE is not exact. So highest valid v2 -> DIM9-Z0AI. But wait, there is ORION-1183-ARCHIVE version 9 valid. Does project name ORION-1183-ARCHIVE maybe considered same? They explicitly say exact match. So ignore.
+
+LYRA-5182: v2 valid VT1R-IJXK, v1 invalid; LYRA-5182-ARCHIVE ignore. -> VT1R-IJXK.
+CYGNUS-6329: v2 valid MY5G-EV15; -> MY5G-EV15.
+VEGA-6009: v2 valid VSG3-9NZ7; -> VSG3-9NZ7.
+DRACO-8018: no exact project records? Maybe there is DRACO-8018-ARCHIVE only. So null. But need verify if there might be hidden exact? The logs include many records, no 项目记录 DRACO-8018 non-archive. So null.
+
+Need output JSON only no markdown. Ensure keys in order? likely as query. {""ORION-1183"":""DIM9-Z0AI"",""LYRA-5182"":""VT1R-IJXK"",""CYGNUS-6329"":""MY5G-EV15"",""VEGA-6009"":""VSG3-9NZ7"",""DRACO-8018"":null}
+
+Need final only JSON. Ensure no explanation.
+
+Double-check nuance: ""位置顺序不代表版本先后"" maybe irrelevant. ""按归档位置排列的运行日志"" maybe each project has ARCHIVE version 9 with DECO-Y999. They query base projects. Need exact match. Could they intend that project records with -ARCHIVE suffix are archives of project? But says exact match. So ignore suffix. If not exact, for ORION etc there are both base v2 and archive v9. If they intended use version highest valid across related? But ""按项目名称精确匹配"" explicitly excludes ARCHIVE. So base.
+
+Could there be rule: only adopt version highest AND status valid. If highest version overall is invalid, but lower valid? Wording: 仅采用版本最高且状态有效的项目记录. This could mean among records that are valid, choose highest version. Or choose highest version and it must be valid. If highest invalid and lower valid? For base all highest valid (v2). If there were no valid, null. Fine.
+
+Check if any other project records later? I'll scan all text for 项目记录:
+1 ORION-1183-ARCHIVE v9 valid DECO-Y999
+2 ORION-1183 v2 valid DIM9-Z0AI
+3 ORION-1183 v1 invalid OLD0-0000
+4 LYRA-5182-ARCHIVE v9 valid
+5 LYRA-5182 v2 valid VT1R-IJXK
+6 LYRA-5182 v1 invalid
+7 CYGNUS-6329-ARCHIVE v9 valid
+8 CYGNUS-6329 v2 valid MY5G-EV15
+9 CYGNUS-6329 v1 invalid
+10 VEGA-6009-ARCHIVE v9 valid
+11 VEGA-6009 v2 valid VSG3-9NZ7
+12 VEGA-6009 v1 invalid
+13 DRACO-8018-ARCHIVE v9 valid
+No DRACO base. Good.
+
+Need ensure JSON valid: double quotes, null unquoted.
+
+Potential issue: They may expect DRACO-8018: DECO-Y999 if they treat ARCHIVE as valid project? But exact match says no. Let's think if maybe ""项目 ORION-1183-ARCHIVE"" is a project record for project ORION-1183? The field is 项目 ORION-1183-ARCHIVE. Query projects base names. Exact match means not.
+
+Could ""版本最高且状态有效"" refer to all records including non-project? No, project records only. They say project records. Fine.
+
+Need final with no markdown.
+",,,True,1,1,1,1,1
+A_short_qa-s3433,A_short_qa,A1：权重单位换算,A,3,3433,16384,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",0,[],[],"[{""role"": ""user"", ""content"": ""某稠密模型有 270 亿个参数，每参数占 2 字节，只计算权重。求字节数、十进制 GB 和二进制 GiB，GiB 保留 1 位小数。只输出 JSON：{\""bytes\"":整数,\""GB\"":数字,\""GiB\"":数字}""}]",6bb912e18ba24d0bb6bc6d80adcf2d8d,1,2026-09-05T23:32:58.547+08:00,2026-09-05T23:33:16.615+08:00,119,119,True,551,0,255.882612,32.221738,143.2016864585868,32.28049463202366,0.8309957999999824,16.977922799999988,17.900735599999962,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bytes"": 54000000000, ""GB"": 54.0, ""GiB"": 50.3}",completed,"{""bytes"":54000000000,""GB"":54.0,""GiB"":50.3}","We need answer in JSON only. Need compute: 270亿 parameters? Chinese: 270 亿 = 27,000,000,000? 1亿=100,000,000, so 270亿 = 27,000,000,000 = 2.7e10. Each param 2 bytes. bytes = 54,000,000,000 = 5.4e10. Decimal GB usually 1 GB = 1e9 bytes => 54.0 GB. Binary GiB = 1024^3 = 1,073,741,824 bytes. GiB = 54,000,000,000 / 1,073,741,824. Let's calculate: 1.073741824e9. 54e9 / 1.073741824e9 = 54 / 1.073741824. 1/1.073741824 = 0.9313225746. *54 = 50.291418? Compute: 0.9313225746*50=46.56612873; *4=3.7252903; total 50.29141903. 1 decimal = 50.3. Need JSON {""bytes"":整数,""GB"":数字,""GiB"":数字}. GB number likely 54.0? They ask 十进制 GB and binary GiB, GiB retain 1 decimal. Maybe GB can be 54 (number). JSON only. Ensure bytes integer. Final: {""bytes"":54000000000,""GB"":54,""GiB"":50.3} or GB 54.0. Since数字, 54 okay. To be safe maybe 54.0. JSON permits. They specifically GiB 1 decimal; not necessarily GB. Could output 54.0. Let's final JSON only.
+",,,True,,,,,
+A_block_padding-s3433,A_block_padding,A2：量化块与填充,A,3,3433,16384,"{""blocks"": 4, ""bytes"": 136}",0,[],[],"[{""role"": ""user"", ""content"": ""一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{\""blocks\"":整数,\""bytes\"":整数}""}]",1272ef25ba514121afa7cf99df176e09,1,2026-09-05T23:33:16.627+08:00,2026-09-05T23:33:21.915+08:00,120,120,True,143,0,266.383117,32.530159,158.66709066040232,32.759279256176114,0.7563004999999521,4.769591100000071,5.1219412999998895,True,False,False,stop,16384,True,[],True,True,2,2,,"{""blocks"": 4, ""bytes"": 136}",completed,"{""blocks"":4,""bytes"":136}","We need answer in JSON only. Need solve: format each 32 elements uses 34 bytes, incomplete block still full block. Two tensors have 17 and 65 elements, cannot share blocks across tensors. Need total blocks and bytes. For each tensor blocks = ceil(elements/32). 17 -> ceil(17/32)=1 block. 65 -> ceil(65/32)=ceil(2.03125)=3 blocks. total blocks=4. bytes=4*34=136. Output JSON exactly. Need final only JSON.
+",,,True,,,,,
+A_kv-s3433,A_kv,A3：KV 理论容量,A,3,3433,16384,"{""bytes"": 4294967296, ""GiB"": 4.0}",0,[],[],"[{""role"": ""user"", ""content"": ""只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{\""bytes\"":整数,\""GiB\"":数字}""}]",ff5f3d73ee46449e86f0224f9e212c1f,1,2026-09-05T23:33:21.922+08:00,2026-09-05T23:33:33.530+08:00,130,130,True,344,0,296.477392,32.083226,177.312098618282,32.17489364157365,0.7331704999999147,10.762454700000035,11.424306100000194,True,False,False,stop,16384,True,[],True,True,2,2,,"{""bytes"": 4294967296, ""GiB"": 4.0}",completed,"{""bytes"":4294967296,""GiB"":4.0}","We need answer user in Chinese. They ask: ""只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{""bytes"":整数,""GiB"":数字}""
+
+Need compute bytes: tokens 65536 * layers 16 * kv heads 4 * elements per head 256 * K and V 2 * bytes 2. Let's compute. 65536*16=1,048,576. *4=4,194,304. *256=1,073,741,824. *2=2,147,483,648. *2=4,294,967,296 bytes. GiB likely gibibytes /1024^3 = 4294967296 / 1073741824 = 4.0. Need output only JSON. Ensure integer. {""bytes"":4294967296,""GiB"":4.0} maybe 4. Could be number. They requested 数字. Use 4.0? JSON valid. Only output JSON.
+",,,True,,,,,
+A_headroom-s3433,A_headroom,A4：统一显存单位,A,3,3433,16384,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",0,[],[],"[{""role"": ""user"", ""content"": ""总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{\""file_GiB\"":数字,\""difference_GiB\"":数字}""}]",2d69da84cfa4495d8ac216a32c3b8246,1,2026-09-05T23:33:33.538+08:00,2026-09-05T23:33:57.852+08:00,116,116,True,757,0,310.795314,32.181557,174.4205104085988,32.223351678166566,0.6650593999997909,23.401647700000012,24.15718229999993,True,False,False,stop,16384,True,[],True,True,2,2,,"{""file_GiB"": 16.391, ""difference_GiB"": 3.609}",completed,"{""file_GiB"":16.391,""difference_GiB"":3.609}","We need answer user in Chinese. Need compute JSON only. Let's parse: 总容量假设精确为 20 GiB, 权重文件精确为 17.6 十进制 GB. 只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON: {""file_GiB"":数字,""difference_GiB"":数字}
+
+Need convert file 17.6 decimal GB to GiB? They ask file_GiB number and difference_GiB. Total capacity 20 GiB. File is 17.6 decimal GB. 1 decimal GB = 10^9 bytes. 1 GiB = 2^30 = 1,073,741,824 bytes. So file GiB = 17.6 * 1e9 / 1,073,741,824. Let's compute accurately. 17.6e9 / 1073741824 = ? 1073741824*16.4 = 17,609,365,913.6? Let's calculate.
+
+1 GiB = 1.073741824 GB decimal. So 1 decimal GB = 1/1.073741824 GiB ≈ 0.9313225746154785. *17.6 = 16.391277313? Let's compute: 0.9313225746154785 * 17.6 = 0.9313225746154785* (10+7+0.6) = 9.313225746154785 + 6.51925802230835 + 0.5587935447692871 = 16.391277313232422. Yes.
+Rounded 3 decimals: 16.391. Difference = 20 - 16.391277313232422 = 3.608722686767578. Rounded 3 decimals: 3.609. Need output only JSON numbers with 3 decimals? They say both keep 3 decimals. JSON numbers can be 16.391, 3.609. Ensure only JSON no markdown.
+
+Double-check if ""17.6 十进制 GB"" means 17.6 GB (base 10) exactly. Yes. Total 20 GiB exact. Arithmetic difference capacity minus file. If file_GiB rounded to 3 decimals, difference should maybe use unrounded or rounded? They say both keep 3 decimals. If compute difference from exact values then round: 3.609. If from rounded file: 20 - 16.391 = 3.609 also same. Good.
+
+Need final only JSON. Ensure no extra.
+",,,True,,,,,
+A_latency-s3433,A_latency,A5：计时范围,A,3,3433,16384,"{""TTFT_s"": 2.0, ""total_s"": 8.5, ""estimated_decode_tps"": 20.0}",0,[],[],"[{""role"": ""user"", ""content"": ""请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{\""TTFT_s\"":数字,\""total_s\"":数字,\""estimated_decode_tps\"":数字}""}]",e4fa7da6e3274094b82efee70eadd85f,1,2026-09-05T23:33:57.865+08:00,2026-09-05T23:34:06.287+08:00,137,137,True,247,0,326.400305,32.557964,195.43782495105384,32.690627186560604,0.7009901999999784,7.581917799999701,8.257129899999654,True,False,False,stop,16384,True,[],True,True,3,3,,"{""TTFT_s"": 2, ""total_s"": 8.5, ""estimated_decode_tps"": 20}",completed,"{""TTFT_s"":2,""total_s"":8.5,""estimated_decode_tps"":20}","We need answer user in Chinese. User asks: ""请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{""TTFT_s"":数字,""total_s"":数字,""estimated_decode_tps"":数字}""
+
+We need output only JSON. Need compute:
+TTFT_s = 2 (first content block after request sent)
+total_s = 8.5 (end event?) They likely want total latency from request to end event = 8.5.
+estimated_decode_tps = (output tokens -1)/(last content time - first content time) = (121-1)/(8-2)=120/6=20.
+
+Need ensure JSON only. Could use numbers: 2, 8.5, 20. Maybe no trailing commas. Final only JSON.
+",,,True,,,,,
+B_code_debug-s3433,B_code_debug,B1：平均值分母,B,3,3433,16384,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python 函数：\n1 def average(values):\n2     total = sum(values)\n3     return total / (len(values) - 1)\n只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""完整语句\"",\""result\"":数字}""}]",b80484f722d143b6a7a7ec35d4ffea55,1,2026-09-05T23:34:06.296+08:00,2026-09-05T23:34:19.413+08:00,137,137,True,389,0,279.399678,31.952289,174.12650455787684,32.03251782698293,0.7867842999999084,12.30796330000021,12.930535299999974,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 3, ""replacement"": ""return total / len(values)"", ""result"": 5.0}",completed,"{""bug_line"":3,""replacement"":""return total / len(values)"",""result"":5.0}","We need answer user in Chinese likely. User asks:
+Python function:
+1 def average(values):
+2     total = sum(values)
+3     return total / (len(values) - 1)
+只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{""bug_line"":整数,""replacement"":""完整语句"",""result"":数字}
+
+We need output only JSON. Need fix line 3 to compute arithmetic average of non-empty list, keep variables and expression structure. Bug line is 3. replacement should be ""return total / len(values)"" likely. result for [2,4,6,8] average 10? Sum=20, len=4, 20/4=5.0? Actually values [2,4,6,8], average = 20/4 = 5.0. JSON number can be 5 or 5.0. They say 数字. Python returns float 5.0. But JSON can be 5.0. Need output only JSON.
+
+Check constraints: ""只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。"" They want replace line 3 only. Keep variables and expression structure: total / len(values). If non-empty list, no division by zero? Could be return total / len(values). But if list empty? ""非空列表"" means for non-empty. So yes.
+
+Need ensure JSON valid: {""bug_line"":3,""replacement"":""return total / len(values)"",""result"":5.0}. In JSON 5.0 valid.
+
+No extra text. final only JSON.
+",,,True,,,,,
+B_range-s3433,B_range,B2：循环边界,B,3,3433,16384,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n + 1):\n    total += i"", ""result"": 10}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 total = 0\n2 for i in range(1, n):\n3     total += i\n目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",2ca01fd47b6f4a2a98e592afa71f38ee,1,2026-09-05T23:34:19.424+08:00,2026-09-05T23:34:39.905+08:00,144,144,True,627,0,361.719978,31.889321,215.78351518844926,31.95163995773303,0.6673354999998082,19.30176689999962,20.29873899999984,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""for i in range(1, n + 1):\n    total += i"", ""result"": 10}",completed,"{""bug_line"":2,""replacement"":""for i in range(1, n + 1):\n    total += i"",""result"":10}","We need answer user in Chinese likely. User asks: Python:
+1 total = 0
+2 for i in range(1, n):
+3     total += i
+目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}
+
+Need output JSON only. Need think carefully.
+
+Original code:
+total = 0
+for i in range(1, n):
+    total += i
+
+Goal sum 1 to n inclusive. range(1,n) sums 1 to n-1. Only modify range ending argument. For n=4 should range(1, n+1) or range(1, 5)? Since only modify range ending parameter, likely range(1, n + 1). Replacement should be complete lines 2-3 loop block with indentation, other structure unchanged. So:
+""for i in range(1, n + 1):\n    total += i""
+bug_line integer: line 2? The buggy line is line 2 because range end parameter wrong. Could be 2.
+result for n=4 sum 1+2+3+4=10.
+
+Need output only JSON. Ensure valid JSON string with newline escaped? In JSON, can include actual newline inside string? Better escape \n. Could also include literal newline but JSON permits? yes string can contain newline? JSON spec allows? Actually JSON string cannot contain unescaped control characters (<0x20), newline must be escaped. So use \n. Need indentation: four spaces. Replacement includes both lines. So:
+{""bug_line"":2,""replacement"":""for i in range(1, n + 1):\n    total += i"",""result"":10}
+
+Double-check if they expect replacement ""for i in range(1, 5):\n    total += i""? They say 只修改 range 结束参数, n=4. Since code variable n, ending parameter should be n+1. But if they want for n=4 specifically? ""n=4"" maybe to compute result. But replacement should preserve code with n? ""其他结构不变"" means keep variable n. Only modify range ending argument. The ending argument currently n; to include n, change to n+1. If modify to 5, that hardcodes n=4, changes variable? It is ending parameter but not general? Goal sum 1 to n inclusive. So n+1 is correct.
+
+Need maybe bug_line is 2 because line 2. Some datasets expect bug_line line number of bug (2). Good.
+
+Final only JSON. No markdown.
+",,,True,,,,,
+B_units-s3433,B_units,B3：单位常量,B,3,3433,16384,"{""bug_line"": 2, ""replacement"": ""return n_bytes / (1024 ** 3)"", ""result"": 1.0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def gib(n_bytes):\n2     return n_bytes / (1000 ** 3)\n目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":数字}""}]",fe60ae7d22ff4066b8ee51f81c66d3e1,1,2026-09-05T23:34:39.919+08:00,2026-09-05T23:34:54.531+08:00,136,136,True,448,0,295.386968,32.612847,181.94890286153446,32.685439194027,0.7474625999998352,13.620885400000134,14.454625599999872,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return n_bytes / (1024 ** 3)"", ""result"": 1.0}",completed,"{""bug_line"":2,""replacement"":""return n_bytes / (1024 ** 3)"",""result"":1.0}","We need answer user in Chinese likely. User asks: Python code:
+1 def gib(n_bytes):
+2     return n_bytes / (1000 ** 3)
+目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":数字}
+
+We need produce JSON only. Need think: They want target binary GiB. Change 1000 to correct constant only? Original line 2: return n_bytes / (1000 ** 3). Binary GiB is 1024**3 = 1073741824. So line should be return n_bytes / (1024 ** 3). If n_bytes=1073741824 result = 1.0? 1073741824/(1024**3)=1.0. Need output JSON with bug_line integer 2, replacement code full statement maybe ""return n_bytes / (1024 ** 3)"". result number 1.0 or 1? They specify 数字, can be 1.0. JSON valid. Need only JSON. Ensure replacement includes statement? ""第 2 行完整语句"" means full line 2: return n_bytes / (1024 ** 3). result: n_bytes=1073741824 -> 1.0. If using integer division? Python / float. Output 1.0. Could be 1. JSON number 1.0 okay. Need maybe 1024**3 as constant? They say only change 1000 to correct constant. So replacement exactly ""return n_bytes / (1024 ** 3)"".
+
+Need final only JSON no markdown.
+",,,True,,,,,
+B_zero-s3433,B_zero,B4：保留零值,B,3,3433,16384,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def limit(d):\n2     return d.get(\""limit\"") or 10\n要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={\""limit\"":0}。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":整数}""}]",51eafcfb464547a3a2d1a09e9e1fceb0,1,2026-09-05T23:34:54.541+08:00,2026-09-05T23:35:09.080+08:00,142,142,True,440,0,298.89577,32.224471,188.01046662210356,32.298447899925485,0.7552771000000575,13.704597900000408,14.37933750000002,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return d.get(\""limit\"", 10)"", ""result"": 0}",completed,"{""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}","We need answer user in Chinese likely. Need solve. User asks:
+Python：
+1 def limit(d):
+2     return d.get(""limit"") or 10
+要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={""limit"":0}。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":整数}
+
+Need output only JSON. Bug line is 2. replacement should be code for line 2: return d.get(""limit"", 10) maybe exact? ""带默认值的 dict.get 调用，不增加其他表达式"" So return d.get(""limit"", 10). result for d={""limit"":0}: limit(d) returns 0. JSON keys bug_line integer, replacement string, result integer. Need ensure valid JSON. Could replacement include quotes? JSON string: ""return d.get(\""limit\"", 10)"" maybe. They likely expect replacement code. Since only output JSON, no markdown. Need decide spaces. Use {""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}. Valid JSON. Could use single quotes inside? JSON string can contain single quotes without escaping: ""return d.get('limit', 10)"". But Python code originally uses double quotes. Both valid. To match, use double quotes escaped. But if output raw JSON, escaped quotes fine. Alternatively replacement ""return d.get('limit', 10)"" simpler. Requirement likely code. Need no other expression. return d.get(""limit"",10) no space? Both okay. Use maybe ""return d.get('limit', 10)"". But Python accepts. They might parse? Let's output with escaped double quotes: {""bug_line"":2,""replacement"":""return d.get(\""limit\"", 10)"",""result"":0}. Ensure no trailing. final only JSON.
+",,,True,,,,,
+B_inclusive-s3433,B_inclusive,B5：包含端点,B,3,3433,16384,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",0,"[""replacement""]",[],"[{""role"": ""user"", ""content"": ""Python：\n1 def valid(x):\n2     return 0 < x < 100\n要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{\""bug_line\"":整数,\""replacement\"":\""代码\"",\""result\"":布尔值}""}]",33306cf26c504f8da1bdcb9a1834063a,1,2026-09-05T23:35:09.090+08:00,2026-09-05T23:35:21.822+08:00,128,128,True,382,0,284.203819,32.192241,176.48081536337642,32.27511039803273,0.7252913000002081,11.491059399999813,12.560787800000071,True,False,False,stop,16384,True,[],True,True,3,3,,"{""bug_line"": 2, ""replacement"": ""return 0 <= x <= 100"", ""result"": true}",completed,"{
+  ""bug_line"": 2,
+  ""replacement"": ""return 0 <= x <= 100"",
+  ""result"": true
+}","We need answer user in Chinese. They ask:
+Python:
+1 def valid(x):
+2     return 0 < x < 100
+要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{""bug_line"":整数,""replacement"":""代码"",""result"":布尔值}
+
+Need output only JSON. Need think: original chained comparison 0 < x < 100 excludes 0 and 100. Want legal range includes 0 and 100. Only change comparison operators. Need line 2 complete statement. Could be return 0 <= x <= 100. But ""只改变比较运算符"" from < to <=? Both? yes change operators to <=. x=100 result True. bug_line integer? Which line has bug? line 2. replacement code full statement? ""return 0 <= x <= 100"". result boolean true? JSON boolean true. Need ensure only output JSON. Could bug_line be 2. JSON: {""bug_line"":2,""replacement"":""return 0 <= x <= 100"",""result"":true}
+
+Double-check: ""要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。"" They want line 2 full statement and x=100 result. replacement likely code string including return. bug_line maybe 2. If they expect line number? yes.
+
+Need final only JSON no markdown.
+",,,True,,,,,
+C_constraint_reasoning-s3433,C_constraint_reasoning,C1：位置约束,C,3,3433,16384,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",0,[],[],"[{""role"": ""user"", ""content"": ""林、赵、陈、王排在第 1 到 4 位。林紧挨在赵前；陈在赵后；王不在第 1 位或第 4 位。给出唯一顺序。只输出 JSON，键为位置字符串 \""1\"" 到 \""4\""，值为姓名。""}]",9c2176754b104f42bf9278e7805772ec,1,2026-09-05T23:35:21.831+08:00,2026-09-05T23:35:34.757+08:00,120,120,True,394,0,265.783674,32.707527,161.63749558857563,32.793911867839846,0.7424020000003111,11.691448500000206,12.758150399999977,True,False,False,stop,16384,True,[],True,True,4,4,,"{""1"": ""林"", ""2"": ""赵"", ""3"": ""王"", ""4"": ""陈""}",completed,"{
+  ""1"": ""林"",
+  ""2"": ""赵"",
+  ""3"": ""王"",
+  ""4"": ""陈""
+}","We need answer in JSON only. User Chinese: Lin, Zhao, Chen, Wang positions 1-4. Lin immediately before Zhao; Chen after Zhao; Wang not position 1 or 4. Give unique order. Need output JSON keys ""1""..""4"" values names.
+
+Let's solve. Positions 1,2,3,4.
+Lin紧挨在赵前 => Lin immediately before Zhao: (Lin, Zhao) consecutive in order, Lin pos = Zhao pos -1.
+Chen after Zhao => Chen pos > Zhao pos.
+Wang not 1 or 4 => Wang pos 2 or 3.
+
+Names: Lin (林), Zhao (赵), Chen (陈), Wang (王).
+
+Consider pair Lin-Zhao possible at (1,2), (2,3), (3,4). Chen after Zhao.
+Case (1,2): Zhao 2, Chen must 3 or4. Wang not1/4, pos remaining: positions 3,4. Wang can 3 only (not4). Then Chen 4. Order: 1 Lin,2 Zhao,3 Wang,4 Chen. Chen after Zhao yes. Wang not1/4 yes. Unique? check.
+Case (2,3): Zhao 3, Chen after => pos4. Remaining pos1 for Wang? But Wang not1, impossible.
+Case (3,4): Zhao4, Chen after impossible.
+So unique: 1 Lin,2 Zhao,3 Wang,4 Chen.
+Need only JSON. Ensure Chinese names? 林,赵,王,陈.
+Output {""1"":""林"",""2"":""赵"",""3"":""王"",""4"":""陈""}
+",,,True,,,,,
+C_schedule-s3433,C_schedule,C2：依赖调度,C,3,3433,16384,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",0,[],[],"[{""role"": ""user"", ""content"": ""有足够多的处理器，任务开始后不可中断，全部从时刻 0 起尽早执行。A 耗时 3；B 耗时 5；C 耗时 4，依赖 A 和 B 完成；D 耗时 2，依赖 A 完成；E 耗时 1，依赖 C 和 D 完成。只输出 JSON：{\""C_start\"":整数,\""D_start\"":整数,\""E_finish\"":整数}""}]",7b7df5c7845a48b583d1dcc1a1f14a08,1,2026-09-05T23:35:34.766+08:00,2026-09-05T23:35:42.978+08:00,143,143,True,222,0,303.136937,30.297513,195.2820138572618,30.422162707969306,0.7322743000004266,7.47243060000028,8.026889400000073,True,False,False,stop,16384,True,[],True,True,3,3,,"{""C_start"": 5, ""D_start"": 3, ""E_finish"": 10}",completed,"{""C_start"":5,""D_start"":3,""E_finish"":10}","We need answer user's request in Chinese likely. Need solve scheduling with unlimited processors, nonpreemptive, all start as early as possible from time 0, precedence constraints. Tasks: A duration 3 no deps; B duration 5 no deps; C duration 4 depends A,B; D duration 2 depends A; E duration1 depends C,D. Need output JSON only: {""C_start"":integer,""D_start"":integer,""E_finish"":integer}.
+
+Compute: A start 0 finish 3. B start 0 finish5. C can start max(3,5)=5 start 5 finish9. D can start max(3)=3 start3 finish5. E can start max(C finish 9, D finish 5)=9 finish10. Output JSON. Need only JSON, no markdown? user says 只输出 JSON. So final just {""C_start"":5,""D_start"":3,""E_finish"":10}. Ensure integer.
+",,,True,,,,,
+C_knapsack-s3433,C_knapsack,C3：容量选择,C,3,3433,16384,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",0,[],[],"[{""role"": ""user"", ""content"": ""每件物品最多选一次，容量为 10。物品 A 重 6 价值 13；B 重 5 价值 12；C 重 4 价值 10；D 重 3 价值 7。选择总重量不超过 10 且总价值最高的组合，物品按字母排序。只输出 JSON：{\""items\"":[字符串],\""weight\"":整数,\""value\"":整数}""}]",1ac9a4ecbd644ae6b698ece77eec53f6,1,2026-09-05T23:35:42.986+08:00,2026-09-05T23:35:51.430+08:00,144,144,True,244,0,258.635554,32.593606,172.42378509486923,32.727925963449806,0.83515159999979,7.766108199999962,8.291177699999935,True,False,False,stop,16384,True,[],True,True,3,3,,"{""items"": [""A"", ""C""], ""weight"": 10, ""value"": 23}",completed,"{""items"":[""A"",""C""],""weight"":10,""value"":23}","We need answer in JSON only. User Chinese: each item at most once, capacity 10. Items A weight6 value13; B weight5 value12; C weight4 value10; D weight3 value7. Choose total weight <=10 max total value. Items sorted alphabetically. Output only JSON {""items"":[strings],""weight"":int,""value"":int}
+
+Need solve knapsack 0/1. Enumerate combos:
+A(6,13)+B(5)=11 no
+A+C=10 value23
+A+D=9 value20
+A alone 6 13
+B+C=9 value22
+B+D=8 value19
+C+D=7 value17
+A+B? no; A+C+? A+C weight10 can't add D. B+C+D=12 no; A+B? no.
+Best A+C value23 weight10. Sorted items [""A"",""C""].
+Output only JSON. Ensure no extra.
+",,,True,,,,,
+C_count-s3433,C_count,C4：可行排列计数,C,3,3433,16384,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",0,[],[],"[{""role"": ""user"", ""content"": ""A、B、C、D 四个不同任务串行排列。A 必须在 B 前，C 必须在 D 前，除此之外无限制。计算可行排列总数，并给出按字母字典序最小的排列。只输出 JSON：{\""count\"":整数,\""first\"":[字符串]}""}]",fd3615288a1c4ee5a9db282060c64419,1,2026-09-05T23:35:51.438+08:00,2026-09-05T23:36:17.681+08:00,111,111,True,819,0,300.89292,32.157295,173.83495733296778,32.20103498220458,0.6385366999998041,25.61008159999983,26.076450699999896,True,False,False,stop,16384,True,[],True,True,2,2,,"{""count"": 6, ""first"": [""A"", ""B"", ""C"", ""D""]}",completed,"{""count"":6,""first"":[""A"",""B"",""C"",""D""]}","We need answer in JSON only. Need solve combinatorics. User Chinese: Four distinct tasks A,B,C,D arranged serially. A must be before B, C must be before D, no other restrictions. Compute total feasible permutations and give lexicographically smallest arrangement by letters. Output JSON only: {""count"": integer, ""first"": [string]}? It says ""first"":[字符串] likely array of characters? Need parse. They want JSON {""count"":整数,""first"":[字符串]}. Example first maybe [""A"",""C"",""B"",""D""]? Or a string? They specify [字符串] bracket, so array of strings (each character) perhaps. Need ensure. Count: total permutations of 4 with A before B and C before D independent events? 24 * 1/2 * 1/2 = 6. Lexicographically smallest valid permutation among A,B,C,D with constraints A<B, C<D. Need find smallest string in lex order. Candidates start with A likely? Let's enumerate: positions 1-4, constraints. Lexicographically smallest: try first char A. Then remaining B,C,D with C before D, B anywhere. Lex smallest after A: choose smallest possible second char among remaining respecting constraints? B? If second B, remaining C,D with C<D => C,D. So A B C D valid. Is there any starting with A and second smaller than B? No (A used). So ABCD is lexicographically smallest? Check A C B D, A C D B invalid? C<D so D before B? A C D B invalid because C before D yes, D before B no issue, but lex after A C then B is smaller than D, so ACBD if valid? C before D: C at pos2, D at pos3? ACBD has D pos4? A C B D: C before D yes. But ABCD is smaller because B<C. So ABCD valid and smallest. If first char could be? Lex order alphabet A<B<C<D, A is minimal possible first because A must before B, but can C first? C>A so not smaller. So ABCD.
+Need output JSON only. Need decide first format: ""first"":[""A"",""B"",""C"",""D""] maybe. The key says [字符串] singular? Chinese [字符串] might mean string? In JSON, {""count"":6,""first"":[""A"",""B"",""C"",""D""]} satisfies array. Could also be ""first"":""ABCD"". They specifically wrote {""count"":整数,""first"":[字符串]} where [字符串] denotes array of strings? In many prompts, [字符串] means list of strings. They ask 排列, probably list of tasks. Use array. Ensure valid JSON no extra. final: {""count"":6,""first"":[""A"",""B"",""C"",""D""]}
+Double-check count: pairs constraints independent: number of permutations satisfying both: 4!/(2*2)=6. List: ABCD, ACBD, ADBC? wait ADBC: A before B? A pos1 B pos3 yes; C before D? C pos2 D pos3 yes. B? Let's list all: A B C D, A C B D, A C D B, A D C B invalid C before D? C pos3 D pos2 invalid. C A B D valid? C before D yes, A before B yes. C A D B valid? C pos1 D pos3 yes, A pos2 B pos4 yes. C B A D valid? A before B? A pos3 B pos2 invalid. D cannot first? C before D means C must before, but D first invalid. Let's count properly: total with A<B =12. Among those half C<D =6. Good. Lex smallest ABCD.
+Need final only JSON. Ensure no code fences.
+",,,True,,,,,
+C_unsat-s3433,C_unsat,C5：不可满足约束,C,3,3433,16384,"{""satisfiable"": false, ""order"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{\""satisfiable\"":布尔值,\""order\"":数组或null}""}]",0f7fa5f560584c8682733e8fe59fdf29,1,2026-09-05T23:36:17.695+08:00,2026-09-05T23:36:22.681+08:00,114,114,True,134,0,315.190524,31.877269,175.1597372296103,32.11209661713613,0.6508345000002009,4.491184700000304,4.82320000000027,True,False,False,stop,16384,True,[],True,True,2,2,,"{""satisfiable"": false, ""order"": null}",completed,"{""satisfiable"":false,""order"":null}","We need answer user's request. User Chinese: ""三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{""satisfiable"":布尔值,""order"":数组或null}""
+Need output only JSON. The constraints A before B, B before C, C before A create cycle, unsatisfiable. So {""satisfiable"":false,""order"":null}. Must be valid JSON. No extra.
+",,,True,,,,,
+E_instruction_following-s3433,E_instruction_following,E1：筛选排序,E,3,3433,16384,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",521906e10fb444e0a44960b8220647c6,1,2026-09-05T23:36:22.691+08:00,2026-09-05T23:36:30.444+08:00,136,136,True,220,0,275.662451,32.032108,178.18165619851058,32.175219841596174,0.7632659999999305,7.1332462000000305,7.600404499999968,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""N-7"", ""N-2""], ""count"": 2}",completed,"{""nodes"":[""N-7"",""N-2""],""count"":2}","We need answer user's request in Chinese. Need solve filtering. User: 记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{""nodes"":[字符串],""count"":整数}
+
+Need filter latency >50 and status != 已归档.
+N-2 70 normal include; N-7 95 pending include; N-4 60 archived exclude; N-1 40 normal exclude due <=50. Sort descending by latency: N-7 95, N-2 70. Output JSON only {""nodes"":[""N-7"",""N-2""],""count"":2}. Ensure no extra text. Final only JSON.
+",,,True,,,,,
+E_ties-s3433,E_ties,E2：并列与边界,E,3,3433,16384,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",0,[],[],"[{""role"": ""user"", ""content"": ""记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数}""}]",cda37b21388748aea65faeccbdba7d21,1,2026-09-05T23:36:30.454+08:00,2026-09-05T23:36:39.773+08:00,128,128,True,274,0,348.310693,32.249822,187.01111386592862,32.3643041783681,0.6844513000000916,8.744261299999835,9.150418700000046,True,False,False,stop,16384,True,[],True,True,2,2,,"{""nodes"": [""C"", ""D"", ""A""], ""count"": 3}",completed,"{""nodes"":[""C"",""D"",""A""],""count"":3}","We need answer user's request in Chinese likely. Need parse: ""记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{""nodes"":[字符串],""count"":整数}""
+
+We need produce only JSON. Let's reason: records:
+A delay 50 enabled true
+B delay 80 enabled false
+C delay 80 enabled true
+D delay 80 enabled true
+E delay 0 enabled true
+
+Filter enabled true and delay >=50: A, C, D. B excluded false; E excluded delay 0 <50. Sort by delay descending: C/D delay 80 before A delay 50. Then by ID letter ascending: C, D, A. Output nodes as strings. Likely node IDs: ""A"", ""C"", ""D""? The sorted order: ""C"",""D"",""A"". count 3. JSON: {""nodes"":[""C"",""D"",""A""],""count"":3}. Ensure only JSON no markdown. Final.
+",,,True,,,,,
+E_versions-s3433,E_versions,E3：版本与缺失,E,3,3433,16384,"{""P"": ""B"", ""Q"": null, ""R"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。""}]",fa81030f46a74157a2e1d963620a1950,1,2026-09-05T23:36:39.782+08:00,2026-09-05T23:36:51.006+08:00,145,145,True,330,0,292.35934,31.967887,189.84243470688796,32.06126668334588,0.7637913000003209,10.644685700000082,11.05587400000013,True,False,False,stop,16384,True,[],True,True,3,3,,"{""P"": ""B"", ""Q"": null, ""R"": null}",completed,"{""P"":""B"",""Q"":null,""R"":null}","We need answer user's request in Chinese likely. Need output only JSON keys P Q R. Need solve.
+
+User: ""记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。""
+
+Need produce JSON with values for P, Q, R. Let's parse:
+Records:
+- Project P version1 valid code=A
+- Project P version3 invalid code=C
+- Project P version2 valid code=B
+- Project P-OLD version9 valid code=X
+- Project Q version1 invalid code=Y
+
+Query P, Q, R. Exact match project name, only valid records choose max version. No valid records return null.
+
+For P: valid records: v1 A, v2 B. max version 2 => B. Note P-OLD is not exact match P, ignore. P v3 invalid ignore. So P = ""B"".
+Q: valid records none (v1 invalid) => null.
+R: none => null.
+
+Output only JSON: {""P"":""B"",""Q"":null,""R"":null}. Ensure valid JSON. Could include Chinese? only JSON. Final just that.
+",,,True,,,,,
+E_nested-s3433,E_nested,E4：类型与嵌套,E,3,3433,16384,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",0,[],[],"[{""role"": ""user"", ""content"": ""把记录转换成指定 JSON，不推测缺失值。id 是字符串 \""007\""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 \""z\""、\""a\""。只输出结构：{\""id\"":字符串,\""settings\"":{\""enabled\"":布尔值,\""retries\"":整数},\""owner\"":null,\""tags\"":[字符串]}""}]",e4399e60bfe3487caae92969fe7196ea,1,2026-09-05T23:36:51.030+08:00,2026-09-05T23:36:57.309+08:00,135,135,True,174,0,305.255137,31.968618,190.91426295002967,32.14791340437196,0.707123700000011,5.253934700000173,6.119186700000228,True,False,False,stop,16384,True,[],True,True,4,4,,"{""id"": ""007"", ""settings"": {""enabled"": false, ""retries"": 0}, ""owner"": null, ""tags"": [""z"", ""a""]}",completed,"{""id"":""007"",""settings"":{""enabled"":false,""retries"":0},""owner"":null,""tags"":[""z"",""a""]}","We need answer user's request in Chinese likely. User: ""把记录转换成指定 JSON，不推测缺失值。id 是字符串 ""007""；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 ""z""、""a""。只输出结构：{""id"":字符串,""settings"":{""enabled"":布尔值,""retries"":整数},""owner"":null,""tags"":[字符串]}""
+
+Need output only JSON structure with values: id ""007"", settings.enabled false, settings.retries 0, owner null, tags [""z"",""a""]. Ensure valid JSON, no extra text. final only JSON.
+",,,True,,,,,
+E_empty-s3433,E_empty,E5：空结果,E,3,3433,16384,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",0,[],[],"[{""role"": ""user"", ""content"": ""节点 A 延迟40状态正常；B 延迟80状态已归档；C 延迟50状态正常。保留延迟严格大于50且未归档的节点。按延迟降序；结果为空时 nodes 用空数组、max_latency 用 null。只输出 JSON：{\""nodes\"":[字符串],\""count\"":整数,\""max_latency\"":数字或null}""}]",871fd329c8424deb994c42721cea2bf3,1,2026-09-05T23:36:57.318+08:00,2026-09-05T23:37:05.600+08:00,130,130,True,236,0,281.122414,31.877495,177.98727336222902,32.00811605963061,0.7303893000002972,7.6919398,8.102842200000396,True,False,False,stop,16384,True,[],True,True,3,3,,"{""nodes"": [], ""count"": 0, ""max_latency"": null}",completed,"{""nodes"":[],""count"":0,""max_latency"":null}","We need answer user's request in Chinese. Need produce JSON only. Let's analyze problem.
+
+User: ""节点 A 延迟40状态正常；B 延迟80状态已归档；C 延迟50状态正常。保留延迟严格大于50且未归档的节点。按延迟降序；结果为空时 nodes 用空数组、max_latency 用 null。只输出 JSON：{""nodes"":[字符串],""count"":整数,""max_latency"":数字或null}""
+
+Nodes:
+A latency 40 status normal.
+B latency 80 status archived.
+C latency 50 status normal.
+Filter: latency strictly >50 and not archived. So A no (40 not >50). B no (archived though >50). C no (50 not >50). Result empty. Need nodes empty array, count 0, max_latency null. JSON only. Ensure valid JSON. {""nodes"":[],""count"":0,""max_latency"":null}
+
+Need final only JSON. No markdown.
+",,,True,,,,,
+D_long_context-s3433,D_long_context,D：长文档检索,D,3,3433,16384,"{""ORION-7710"": ""IPOS-Y33U"", ""LYRA-3719"": ""DO5T-NWC3"", ""CYGNUS-1073"": ""OFRC-P73C"", ""VEGA-1140"": ""QPIY-B9HS"", ""DRACO-7850"": null}",128,[],"[{""project"": ""ORION-7710"", ""code"": ""IPOS-Y33U"", ""target_position"": 0.1, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 487, ""token_position_estimate"": 0.095667}, {""project"": ""LYRA-3719"", ""code"": ""DO5T-NWC3"", ""target_position"": 0.3, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 1405, ""token_position_estimate"": 0.297559}, {""project"": ""CYGNUS-1073"", ""code"": ""OFRC-P73C"", ""target_position"": 0.5, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 2283, ""token_position_estimate"": 0.490653}, {""project"": ""VEGA-1140"", ""code"": ""QPIY-B9HS"", ""target_position"": 0.7, ""variant"": ""challenge"", ""missing"": false, ""token_prefix_count"": 3203, ""token_position_estimate"": 0.692984}, {""project"": ""DRACO-7850"", ""code"": null, ""target_position"": 0.9, ""variant"": ""challenge"", ""missing"": true, ""token_prefix_count"": null, ""token_position_estimate"": null}]","[{""role"": ""user"", ""content"": ""以下是按归档位置排列的运行日志，位置顺序不代表版本先后。\n\n记录 000001：西北节点 N-886 已写入归档索引；采集日为 2026-08-03，处理耗时 34 ms。\n记录 000002：第 22 批数据来自东北节点 N-277；负载 68%，温度 33.0℃，状态为已归档。\n记录 000003：华东节点 N-468 在 2026-08-05 完成第 65 批巡检；延迟 28 ms，状态为正常。\n记录 000004：巡检批次 11 覆盖华南节点 N-659；负载 97%，结果为已归档。\n记录 000005：华北节点 N-850 已写入归档索引；采集日为 2026-08-07，处理耗时 22 ms。\n记录 000006：第 97 批数据来自西南节点 N-241；负载 47%，温度 25.0℃，状态为已同步。\n项目记录：项目 ORION-7710-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000007：西北节点 N-432 在 2026-08-09 完成第 43 批巡检；延迟 16 ms，状态为待复核。\n记录 000008：巡检批次 86 覆盖东北节点 N-623；负载 76%，结果为已同步。\n记录 000009：华东节点 N-814 已写入归档索引；采集日为 2026-08-11，处理耗时 10 ms。\n项目记录：项目 ORION-7710，版本 2，状态有效，校验码 IPOS-Y33U。\n记录 000010：第 75 批数据来自华南节点 N-205；负载 26%，温度 33.1℃，状态为已同步。\n记录 000011：华北节点 N-396 在 2026-08-13 完成第 21 批巡检；延迟 245 ms，状态为待复核。\n记录 000012：巡检批次 64 覆盖西南节点 N-587；负载 55%，结果为已同步。\n记录 000013：西北节点 N-778 已写入归档索引；采集日为 2026-08-15，处理耗时 239 ms。\n项目记录：项目 ORION-7710，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000014：第 53 批数据来自东北节点 N-169；负载 84%，温度 25.1℃，状态为正常。\n记录 000015：华东节点 N-360 在 2026-08-17 完成第 96 批巡检；延迟 233 ms，状态为已归档。\n记录 000016：巡检批次 42 覆盖华南节点 N-551；负载 34%，结果为正常。\n记录 000017：华北节点 N-742 已写入归档索引；采集日为 2026-08-19，处理耗时 227 ms。\n记录 000018：第 31 批数据来自西南节点 N-133；负载 63%，温度 33.2℃，状态为正常。\n记录 000019：西北节点 N-324 在 2026-08-21 完成第 74 批巡检；延迟 221 ms，状态为已归档。\n记录 000020：巡检批次 20 覆盖东北节点 N-515；负载 92%，结果为待复核。\n记录 000021：华东节点 N-706 已写入归档索引；采集日为 2026-08-23，处理耗时 215 ms。\n记录 000022：第 09 批数据来自华南节点 N-897；负载 42%，温度 25.2℃，状态为待复核。\n记录 000023：华北节点 N-288 在 2026-08-25 完成第 52 批巡检；延迟 209 ms，状态为已同步。\n记录 000024：巡检批次 95 覆盖西南节点 N-479；负载 71%，结果为待复核。\n记录 000025：西北节点 N-670 已写入归档索引；采集日为 2026-08-27，处理耗时 203 ms。\n项目记录：项目 LYRA-3719-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000026：第 84 批数据来自东北节点 N-861；负载 21%，温度 33.3℃，状态为待复核。\n记录 000027：华东节点 N-252 在 2026-08-01 完成第 30 批巡检；延迟 197 ms，状态为正常。\n记录 000028：巡检批次 73 覆盖华南节点 N-443；负载 50%，结果为已归档。\n项目记录：项目 LYRA-3719，版本 2，状态有效，校验码 DO5T-NWC3。\n记录 000029：华北节点 N-634 已写入归档索引；采集日为 2026-08-03，处理耗时 191 ms。\n记录 000030：第 62 批数据来自西南节点 N-825；负载 79%，温度 25.3℃，状态为已归档。\n记录 000031：西北节点 N-216 在 2026-08-05 完成第 08 批巡检；延迟 185 ms，状态为正常。\n记录 000032：巡检批次 51 覆盖东北节点 N-407；负载 29%，结果为已归档。\n项目记录：项目 LYRA-3719，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000033：华东节点 N-598 已写入归档索引；采集日为 2026-08-07，处理耗时 179 ms。\n记录 000034：第 40 批数据来自华南节点 N-789；负载 58%，温度 33.4℃，状态为已同步。\n记录 000035：华北节点 N-180 在 2026-08-09 完成第 83 批巡检；延迟 173 ms，状态为待复核。\n记录 000036：巡检批次 29 覆盖西南节点 N-371；负载 87%，结果为已同步。\n记录 000037：西北节点 N-562 已写入归档索引；采集日为 2026-08-11，处理耗时 167 ms。\n记录 000038：第 18 批数据来自东北节点 N-753；负载 37%，温度 25.4℃，状态为已同步。\n记录 000039：华东节点 N-144 在 2026-08-13 完成第 61 批巡检；延迟 161 ms，状态为待复核。\n记录 000040：巡检批次 07 覆盖华南节点 N-335；负载 66%，结果为已同步。\n记录 000041：华北节点 N-526 已写入归档索引；采集日为 2026-08-15，处理耗时 155 ms。\n记录 000042：第 93 批数据来自西南节点 N-717；负载 95%，温度 33.5℃，状态为正常。\n记录 000043：西北节点 N-108 在 2026-08-17 完成第 39 批巡检；延迟 149 ms，状态为已归档。\n项目记录：项目 CYGNUS-1073-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000044：巡检批次 82 覆盖东北节点 N-299；负载 45%，结果为正常。\n记录 000045：华东节点 N-490 已写入归档索引；采集日为 2026-08-19，处理耗时 143 ms。\n记录 000046：第 71 批数据来自华南节点 N-681；负载 74%，温度 25.5℃，状态为正常。\n项目记录：项目 CYGNUS-1073，版本 2，状态有效，校验码 OFRC-P73C。\n记录 000047：华北节点 N-872 在 2026-08-21 完成第 17 批巡检；延迟 137 ms，状态为已归档。\n记录 000048：巡检批次 60 覆盖西南节点 N-263；负载 24%，结果为待复核。\n记录 000049：西北节点 N-454 已写入归档索引；采集日为 2026-08-23，处理耗时 131 ms。\n记录 000050：第 49 批数据来自东北节点 N-645；负载 53%，温度 33.6℃，状态为待复核。\n项目记录：项目 CYGNUS-1073，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000051：华东节点 N-836 在 2026-08-25 完成第 92 批巡检；延迟 125 ms，状态为已同步。\n记录 000052：巡检批次 38 覆盖华南节点 N-227；负载 82%，结果为待复核。\n记录 000053：华北节点 N-418 已写入归档索引；采集日为 2026-08-27，处理耗时 119 ms。\n记录 000054：第 27 批数据来自西南节点 N-609；负载 32%，温度 25.6℃，状态为待复核。\n记录 000055：西北节点 N-800 在 2026-08-01 完成第 70 批巡检；延迟 113 ms，状态为正常。\n记录 000056：巡检批次 16 覆盖东北节点 N-191；负载 61%，结果为已归档。\n记录 000057：华东节点 N-382 已写入归档索引；采集日为 2026-08-03，处理耗时 107 ms。\n记录 000058：第 05 批数据来自华南节点 N-573；负载 90%，温度 33.7℃，状态为已归档。\n记录 000059：华北节点 N-764 在 2026-08-05 完成第 48 批巡检；延迟 101 ms，状态为正常。\n记录 000060：巡检批次 91 覆盖西南节点 N-155；负载 40%，结果为已归档。\n记录 000061：西北节点 N-346 已写入归档索引；采集日为 2026-08-07，处理耗时 95 ms。\n记录 000062：第 80 批数据来自东北节点 N-537；负载 69%，温度 25.7℃，状态为已同步。\n项目记录：项目 VEGA-1140-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000063：华东节点 N-728 在 2026-08-09 完成第 26 批巡检；延迟 89 ms，状态为待复核。\n记录 000064：巡检批次 69 覆盖华南节点 N-119；负载 98%，结果为已同步。\n记录 000065：华北节点 N-310 已写入归档索引；采集日为 2026-08-11，处理耗时 83 ms。\n项目记录：项目 VEGA-1140，版本 2，状态有效，校验码 QPIY-B9HS。\n记录 000066：第 58 批数据来自西南节点 N-501；负载 48%，温度 33.8℃，状态为已同步。\n记录 000067：西北节点 N-692 在 2026-08-13 完成第 04 批巡检；延迟 77 ms，状态为待复核。\n记录 000068：巡检批次 47 覆盖东北节点 N-883；负载 77%，结果为已同步。\n记录 000069：华东节点 N-274 已写入归档索引；采集日为 2026-08-15，处理耗时 71 ms。\n项目记录：项目 VEGA-1140，版本 1，状态已失效，校验码 OLD0-0000。\n记录 000070：第 36 批数据来自华南节点 N-465；负载 27%，温度 25.8℃，状态为正常。\n记录 000071：华北节点 N-656 在 2026-08-17 完成第 79 批巡检；延迟 65 ms，状态为已归档。\n记录 000072：巡检批次 25 覆盖西南节点 N-847；负载 56%，结果为正常。\n记录 000073：西北节点 N-238 已写入归档索引；采集日为 2026-08-19，处理耗时 59 ms。\n记录 000074：第 14 批数据来自东北节点 N-429；负载 85%，温度 33.9℃，状态为正常。\n记录 000075：华东节点 N-620 在 2026-08-21 完成第 57 批巡检；延迟 53 ms，状态为已归档。\n记录 000076：巡检批次 03 覆盖华南节点 N-811；负载 35%，结果为待复核。\n记录 000077：华北节点 N-202 已写入归档索引；采集日为 2026-08-23，处理耗时 47 ms。\n记录 000078：第 89 批数据来自西南节点 N-393；负载 64%，温度 25.9℃，状态为待复核。\n记录 000079：西北节点 N-584 在 2026-08-25 完成第 35 批巡检；延迟 41 ms，状态为已同步。\n记录 000080：巡检批次 78 覆盖东北节点 N-775；负载 93%，结果为待复核。\n记录 000081：华东节点 N-166 已写入归档索引；采集日为 2026-08-27，处理耗时 35 ms。\n项目记录：项目 DRACO-7850-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。\n记录 000082：第 67 批数据来自华南节点 N-357；负载 43%，温度 34.0℃，状态为待复核。\n记录 000083：华北节点 N-548 在 2026-08-01 完成第 13 批巡检；延迟 29 ms，状态为正常。\n记录 000084：巡检批次 56 覆盖西南节点 N-739；负载 72%，结果为已归档。\n记录 000085：西北节点 N-130 已写入归档索引；采集日为 2026-08-03，处理耗时 23 ms。\n记录 000086：第 45 批数据来自东北节点 N-321；负载 22%，温度 26.0℃，状态为已归档。\n记录 000087：华东节点 N-512 在 2026-08-05 完成第 88 批巡检；延迟 17 ms，状态为正常。\n记录 000088：巡检批次 34 覆盖华南节点 N-703；负载 51%，结果为已归档。\n记录 000089：华北节点 N-894 已写入归档索引；采集日为 2026-08-07，处理耗时 11 ms。\n记录 000090：第 23 批数据来自西南节点 N-285；负载 80%，温度 18.0℃，状态为已同步。\n记录 000091：西北节点 N-476 在 2026-08-09 完成第 66 批巡检；延迟 246 ms，状态为待复核。\n记录 000092：巡检批次 12 覆盖东北节点 N-667；负载 30%，结果为已同步。\n记录 000093：华东节点 N-858 已写入归档索引；采集日为 2026-08-11，处理耗时 240 ms。\n\n查询项目：ORION-7710、LYRA-3719、CYGNUS-1073、VEGA-1140、DRACO-7850。\n按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。\n只输出 JSON 对象，键为上述项目名，值为校验码或 null；不输出解释、额外字段或 Markdown。""}]",dd0380e9aa5945a693438ccf0f3e3367,1,2026-09-05T23:37:05.609+08:00,2026-09-05T23:38:08.497+08:00,4599,4599,True,1817,0,744.642629,32.296386,711.0240436050278,32.31433224321286,6.468135699999948,59.84201519999988,62.6980994999999,True,False,False,stop,16384,True,[],True,True,5,5,,"{""ORION-7710"": ""IPOS-Y33U"", ""LYRA-3719"": ""DO5T-NWC3"", ""CYGNUS-1073"": ""OFRC-P73C"", ""VEGA-1140"": ""QPIY-B9HS"", ""DRACO-7850"": null}",completed,"{
+  ""ORION-7710"": ""IPOS-Y33U"",
+  ""LYRA-3719"": ""DO5T-NWC3"",
+  ""CYGNUS-1073"": ""OFRC-P73C"",
+  ""VEGA-1140"": ""QPIY-B9HS"",
+  ""DRACO-7850"": null
+}","We need answer user in Chinese? User asks output JSON object only, keys project names, values checksum or null. Need parse logs.
+
+We need identify project records. Query projects: ORION-7710, LYRA-3719, CYGNUS-1073, VEGA-1140, DRACO-7850.
+Need ""按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。"" Means for each project, exact project name? There are records like project ORION-7710-ARCHIVE, and project ORION-7710. Need exact match project name? Query project names are base names? ""项目名称精确匹配"" likely project field exact to queried project name, not substring. Records have project ORION-7710-ARCHIVE and ORION-7710. So only records with project exactly ""ORION-7710"", etc. But need consider if -ARCHIVE maybe separate project? Query only base names; exact match means ORION-7710 not ORION-7710-ARCHIVE. For each base project there are version 9 -ARCHIVE? Wait records:
+项目记录：项目 ORION-7710-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。
+...
+项目记录：项目 ORION-7710，版本 2，状态有效，校验码 IPOS-Y33U。
+...
+项目记录：项目 ORION-7710，版本 1，状态已失效，校验码 OLD0-0000。
+
+If exact match project name to query ORION-7710, highest version among valid records is version 2 with IPOS-Y33U. Version 1 invalid. ORION-7710-ARCHIVE not exact, ignore. So value IPOS-Y33U.
+
+LYRA: records:
+LYRA-3719-ARCHIVE version 9 valid DECO-Y999.
+LYRA-3719 version 2 valid DO5T-NWC3.
+LYRA-3719 version 1 invalid OLD0-0000.
+Exact LYRA-3719 -> version 2 valid DO5T-NWC3.
+
+CYGNUS:
+CYGNUS-1073-ARCHIVE version 9 valid DECO-Y999.
+CYGNUS-1073 version 2 valid OFRC-P73C.
+CYGNUS-1073 version 1 invalid OLD0-0000.
+Exact -> OFRC-P73C.
+
+VEGA:
+VEGA-1140-ARCHIVE version 9 valid DECO-Y999.
+VEGA-1140 version 2 valid QPIY-B9HS.
+VEGA-1140 version 1 invalid OLD0-0000.
+Exact -> QPIY-B9HS.
+
+DRACO:
+Only DRACO-7850-ARCHIVE version 9 valid DECO-Y999.
+No exact DRACO-7850 record. If exact match, null. But maybe the intended project name includes -ARCHIVE? Let's parse carefully.
+
+The logs include ""项目记录：项目 ORION-7710-ARCHIVE，版本 9，状态有效，校验码 DECO-Y999。"" and ""项目记录：项目 ORION-7710，版本 2，状态有效，校验码 IPOS-Y33U。"" etc. Query: ORION-7710, LYRA-3719, CYGNUS-1073, VEGA-1140, DRACO-7850.
+""按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。"" Could mean for query project, match project name exactly. Then -ARCHIVE not exact, so DRACO null. But why include -ARCHIVE records? It may be a trap: They have same base plus -ARCHIVE, higher version 9 valid, but exact match excludes them. Or maybe the project name in log is ""ORION-7710-ARCHIVE"" but the query project is ""ORION-7710"" and exact match could be interpreted as project prefix? No, exact match means not prefix. The instruction explicitly says 精确匹配, so exclude ARCHIVE. But ""仅采用版本最高且状态有效的项目记录"" could among all records where project name exact? Yes.
+
+Need consider if there is ""DRACO-7850"" exact absent. Return null.
+
+Need output JSON object only, no markdown. Keys exactly project names. Values checksum string or null. Ensure JSON valid: {""ORION-7710"":""IPOS-Y33U"",""LYRA-3719"":""DO5T-NWC3"",""CYGNUS-1073"":""OFRC-P73C"",""VEGA-1140"":""QPIY-B9HS"",""DRACO-7850"":null}
+
+Double-check if any project record with exact base name but higher version than 2? For ORION: base has version 2,1. ARCHIVE version 9. If exact exclude. For all.
+
+Potential ambiguity: The phrase ""按项目名称精确匹配"" could refer to query list: we should match project names exactly in records. Project names in records include ORION-7710-ARCHIVE, ORION-7710. Query list includes base. So base exact.
+
+Need ensure ""仅采用版本最高且状态有效的项目记录"" if multiple valid exact same project, choose highest version. If highest version invalid but lower valid? Wording: only adopt version highest and status valid project record. Could mean filter status valid, then among those highest version. If highest overall is invalid, do we return null? Let's analyze: ""仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。"" It says adopt only the record with highest version and status valid. Could be read as among valid records pick highest version. If no valid records null. In given data, for base projects highest valid is version 2, invalid version1. OK.
+
+Need output only JSON object. No explanation.
+
+Check no hidden issue: The logs are ""按归档位置排列的运行日志，位置顺序不代表版本先后。"" irrelevant.
+
+Need perhaps use project record with ""状态有效"" and version highest. For DRACO, there is DRACO-7850-ARCHIVE exact? Query DRACO-7850 not match. But maybe project name is ""DRACO-7850"" and log ""DRACO-7850-ARCHIVE"" contains it as prefix but not exact. If the test expects using ARCHIVE because all other have ARCHIVE higher? Let's consider alternative: They may intend project names in query are base names and project records are of form PROJECT-ARCHIVE, PROJECT, etc. ""按项目名称精确匹配"" maybe exact match on the portion before -ARCHIVE? No, that would be partial. But maybe they want to ignore suffix? Let's examine wording: ""查询项目：ORION-7710、LYRA-3719、CYGNUS-1073、VEGA-1140、DRACO-7850。
+按项目名称精确匹配，仅采用版本最高且状态有效的项目记录；找不到有效记录时返回 null。"" If they wanted ignore -ARCHIVE, they'd say maybe prefix. They emphasize exact likely to avoid matching ORION-7710-ARCHIVE when querying ORION-7710. So DRACO null. This is likely.
+
+Could there be exact DRACO-7850 hidden? No.
+
+Need final JSON only. Ensure Chinese? JSON keys as specified. null unquoted.
+",,,True,1,1,1,1,1

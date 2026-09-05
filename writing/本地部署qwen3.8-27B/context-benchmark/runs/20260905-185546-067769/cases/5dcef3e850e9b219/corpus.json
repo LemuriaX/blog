@@ -1,0 +1,20 @@
+{
+  "spec": {
+    "context": 131072,
+    "target": 116000,
+    "cases": 3,
+    "seed": 3407,
+    "variant": "baseline",
+    "max_output_tokens": 192,
+    "tolerance": 64,
+    "safety_margin": 128
+  },
+  "files": {
+    "case-01.json": "5844f072cf58dffdcdde35790aa574161b0d93e54a197a57a086dbd5ff15f91b",
+    "case-01.txt": "c3d3d24e3f4667615419ffad36f3a59a737153935473af3375bf689c1c678f25",
+    "case-02.json": "fa00d565725b8fc7dd4eb04ecd6ae360722c0af7fc51adde9af1797ff772af88",
+    "case-02.txt": "eca0af36de5e5191c55f82ed93ed0c654c6304db4f162dbf42f5cdd19e02d410",
+    "case-03.json": "fbe2ee270615f1fe6099a955124cde2d56da7a977b336c300eddea5ad2ba5790",
+    "case-03.txt": "2ea96fe86eec85d9ac4fffc8abcadcd02ca28dc3ca1c492061a98525d1ace5f9"
+  }
+}

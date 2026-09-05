@@ -1,0 +1,277 @@
+{
+  "schema_version": 3,
+  "note": "4 smoke + 16 extended short tasks. Long retrieval D is generated separately. Targeted code repairs use AST normalization, never execution.",
+  "tasks": [
+    {
+      "id": "A_short_qa",
+      "name": "A1：权重单位换算",
+      "suite": "smoke",
+      "family": "A",
+      "prompt": "某稠密模型有 270 亿个参数，每参数占 2 字节，只计算权重。求字节数、十进制 GB 和二进制 GiB，GiB 保留 1 位小数。只输出 JSON：{\"bytes\":整数,\"GB\":数字,\"GiB\":数字}",
+      "expected": {
+        "bytes": 54000000000,
+        "GB": 54.0,
+        "GiB": 50.3
+      }
+    },
+    {
+      "id": "A_block_padding",
+      "name": "A2：量化块与填充",
+      "suite": "extended",
+      "family": "A",
+      "prompt": "一种格式每 32 个元素用 34 字节，不满一块仍占完整一块。两个张量分别有 17 和 65 个元素，不能跨张量共享块。求总块数和总字节数。只输出 JSON：{\"blocks\":整数,\"bytes\":整数}",
+      "expected": {
+        "blocks": 4,
+        "bytes": 136
+      }
+    },
+    {
+      "id": "A_kv",
+      "name": "A3：KV 理论容量",
+      "suite": "extended",
+      "family": "A",
+      "prompt": "只估算 Full Attention K/V 数据：65536 个 Token，16 层，每层 4 个 KV 头，每头 256 个元素，K 和 V 都存储，元素为 2 字节。不含其他状态和缓冲。只输出 JSON：{\"bytes\":整数,\"GiB\":数字}",
+      "expected": {
+        "bytes": 4294967296,
+        "GiB": 4.0
+      }
+    },
+    {
+      "id": "A_headroom",
+      "name": "A4：统一显存单位",
+      "suite": "extended",
+      "family": "A",
+      "prompt": "总容量假设精确为 20 GiB，权重文件精确为 17.6 十进制 GB。只计算容量减文件的算术差，不计运行时。两项都保留 3 位小数。只输出 JSON：{\"file_GiB\":数字,\"difference_GiB\":数字}",
+      "expected": {
+        "file_GiB": 16.391,
+        "difference_GiB": 3.609
+      }
+    },
+    {
+      "id": "A_latency",
+      "name": "A5：计时范围",
+      "suite": "extended",
+      "family": "A",
+      "prompt": "请求发出后 2 秒收到第一个内容块，8 秒收到最后一个内容块，8.5 秒收到结束事件。usage 报告 121 个输出 Token。按约定估算 (输出 Token 数-1)/(最后内容块时刻-首内容块时刻)。只输出 JSON：{\"TTFT_s\":数字,\"total_s\":数字,\"estimated_decode_tps\":数字}",
+      "expected": {
+        "TTFT_s": 2.0,
+        "total_s": 8.5,
+        "estimated_decode_tps": 20.0
+      }
+    },
+    {
+      "id": "B_code_debug",
+      "name": "B1：平均值分母",
+      "suite": "smoke",
+      "family": "B",
+      "code_fields": [
+        "replacement"
+      ],
+      "prompt": "Python 函数：\n1 def average(values):\n2     total = sum(values)\n3     return total / (len(values) - 1)\n只替换第 3 行以计算非空列表的算术平均值，保留变量和表达式结构。输入 [2,4,6,8]。只输出 JSON：{\"bug_line\":整数,\"replacement\":\"完整语句\",\"result\":数字}",
+      "expected": {
+        "bug_line": 3,
+        "replacement": "return total / len(values)",
+        "result": 5.0
+      }
+    },
+    {
+      "id": "B_range",
+      "name": "B2：循环边界",
+      "suite": "extended",
+      "family": "B",
+      "code_fields": [
+        "replacement"
+      ],
+      "prompt": "Python：\n1 total = 0\n2 for i in range(1, n):\n3     total += i\n目标是求 1 到 n（含 n）的整数和。只修改 range 结束参数，replacement 返回完整的第 2～3 行循环块（含缩进），其他结构不变；n=4。只输出 JSON：{\"bug_line\":整数,\"replacement\":\"代码\",\"result\":整数}",
+      "expected": {
+        "bug_line": 2,
+        "replacement": "for i in range(1, n + 1):\n    total += i",
+        "result": 10
+      }
+    },
+    {
+      "id": "B_units",
+      "name": "B3：单位常量",
+      "suite": "extended",
+      "family": "B",
+      "code_fields": [
+        "replacement"
+      ],
+      "prompt": "Python：\n1 def gib(n_bytes):\n2     return n_bytes / (1000 ** 3)\n目标是二进制 GiB。只将 1000 改为正确的常量，给出第 2 行完整语句。n_bytes=1073741824。只输出 JSON：{\"bug_line\":整数,\"replacement\":\"代码\",\"result\":数字}",
+      "expected": {
+        "bug_line": 2,
+        "replacement": "return n_bytes / (1024 ** 3)",
+        "result": 1.0
+      }
+    },
+    {
+      "id": "B_zero",
+      "name": "B4：保留零值",
+      "suite": "extended",
+      "family": "B",
+      "code_fields": [
+        "replacement"
+      ],
+      "prompt": "Python：\n1 def limit(d):\n2     return d.get(\"limit\") or 10\n要求仅在键缺失时默认 10；键存在且为 0 时必须保留 0。请将第 2 行替换为带默认值的 dict.get 调用，不增加其他表达式。d={\"limit\":0}。只输出 JSON：{\"bug_line\":整数,\"replacement\":\"代码\",\"result\":整数}",
+      "expected": {
+        "bug_line": 2,
+        "replacement": "return d.get(\"limit\", 10)",
+        "result": 0
+      }
+    },
+    {
+      "id": "B_inclusive",
+      "name": "B5：包含端点",
+      "suite": "extended",
+      "family": "B",
+      "code_fields": [
+        "replacement"
+      ],
+      "prompt": "Python：\n1 def valid(x):\n2     return 0 < x < 100\n要求合法范围包含 0 和 100。只改变比较运算符，给出第 2 行完整语句及 x=100 的结果。只输出 JSON：{\"bug_line\":整数,\"replacement\":\"代码\",\"result\":布尔值}",
+      "expected": {
+        "bug_line": 2,
+        "replacement": "return 0 <= x <= 100",
+        "result": true
+      }
+    },
+    {
+      "id": "C_constraint_reasoning",
+      "name": "C1：位置约束",
+      "suite": "smoke",
+      "family": "C",
+      "prompt": "林、赵、陈、王排在第 1 到 4 位。林紧挨在赵前；陈在赵后；王不在第 1 位或第 4 位。给出唯一顺序。只输出 JSON，键为位置字符串 \"1\" 到 \"4\"，值为姓名。",
+      "expected": {
+        "1": "林",
+        "2": "赵",
+        "3": "王",
+        "4": "陈"
+      }
+    },
+    {
+      "id": "C_schedule",
+      "name": "C2：依赖调度",
+      "suite": "extended",
+      "family": "C",
+      "prompt": "有足够多的处理器，任务开始后不可中断，全部从时刻 0 起尽早执行。A 耗时 3；B 耗时 5；C 耗时 4，依赖 A 和 B 完成；D 耗时 2，依赖 A 完成；E 耗时 1，依赖 C 和 D 完成。只输出 JSON：{\"C_start\":整数,\"D_start\":整数,\"E_finish\":整数}",
+      "expected": {
+        "C_start": 5,
+        "D_start": 3,
+        "E_finish": 10
+      }
+    },
+    {
+      "id": "C_knapsack",
+      "name": "C3：容量选择",
+      "suite": "extended",
+      "family": "C",
+      "prompt": "每件物品最多选一次，容量为 10。物品 A 重 6 价值 13；B 重 5 价值 12；C 重 4 价值 10；D 重 3 价值 7。选择总重量不超过 10 且总价值最高的组合，物品按字母排序。只输出 JSON：{\"items\":[字符串],\"weight\":整数,\"value\":整数}",
+      "expected": {
+        "items": [
+          "A",
+          "C"
+        ],
+        "weight": 10,
+        "value": 23
+      }
+    },
+    {
+      "id": "C_count",
+      "name": "C4：可行排列计数",
+      "suite": "extended",
+      "family": "C",
+      "prompt": "A、B、C、D 四个不同任务串行排列。A 必须在 B 前，C 必须在 D 前，除此之外无限制。计算可行排列总数，并给出按字母字典序最小的排列。只输出 JSON：{\"count\":整数,\"first\":[字符串]}",
+      "expected": {
+        "count": 6,
+        "first": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ]
+      }
+    },
+    {
+      "id": "C_unsat",
+      "name": "C5：不可满足约束",
+      "suite": "extended",
+      "family": "C",
+      "prompt": "三个不同任务 A、B、C 串行执行，要求 A 早于 B，B 早于 C，C 早于 A。判断是否有解；无解时 order 必须为 null。只输出 JSON：{\"satisfiable\":布尔值,\"order\":数组或null}",
+      "expected": {
+        "satisfiable": false,
+        "order": null
+      }
+    },
+    {
+      "id": "E_instruction_following",
+      "name": "E1：筛选排序",
+      "suite": "smoke",
+      "family": "E",
+      "prompt": "记录：N-2 延迟70ms 状态正常；N-7 延迟95ms 状态待复核；N-4 延迟60ms 状态已归档；N-1 延迟40ms 状态正常。筛选延迟大于50ms且状态不是已归档的节点，按延迟降序。只输出 JSON：{\"nodes\":[字符串],\"count\":整数}",
+      "expected": {
+        "nodes": [
+          "N-7",
+          "N-2"
+        ],
+        "count": 2
+      }
+    },
+    {
+      "id": "E_ties",
+      "name": "E2：并列与边界",
+      "suite": "extended",
+      "family": "E",
+      "prompt": "记录 A 延迟50启用true；B 延迟80启用false；C 延迟80启用true；D 延迟80启用true；E 延迟0启用true。保留启用且延迟大于等于50的记录，先按延迟降序，再按编号字母升序。只输出 JSON：{\"nodes\":[字符串],\"count\":整数}",
+      "expected": {
+        "nodes": [
+          "C",
+          "D",
+          "A"
+        ],
+        "count": 3
+      }
+    },
+    {
+      "id": "E_versions",
+      "name": "E3：版本与缺失",
+      "suite": "extended",
+      "family": "E",
+      "prompt": "记录：项目 P 版本1 有效 code=A；项目 P 版本3 失效 code=C；项目 P 版本2 有效 code=B；项目 P-OLD 版本9 有效 code=X；项目 Q 版本1 失效 code=Y。分别查 P、Q、R，精确匹配项目名，只在有效记录中选版本最大者；没有有效记录返回 null。只输出 JSON，键为 P、Q、R。",
+      "expected": {
+        "P": "B",
+        "Q": null,
+        "R": null
+      }
+    },
+    {
+      "id": "E_nested",
+      "name": "E4：类型与嵌套",
+      "suite": "extended",
+      "family": "E",
+      "prompt": "把记录转换成指定 JSON，不推测缺失值。id 是字符串 \"007\"；enabled 是布尔值 false；重试次数是整数 0；owner 缺失用 null；标签按原顺序为 \"z\"、\"a\"。只输出结构：{\"id\":字符串,\"settings\":{\"enabled\":布尔值,\"retries\":整数},\"owner\":null,\"tags\":[字符串]}",
+      "expected": {
+        "id": "007",
+        "settings": {
+          "enabled": false,
+          "retries": 0
+        },
+        "owner": null,
+        "tags": [
+          "z",
+          "a"
+        ]
+      }
+    },
+    {
+      "id": "E_empty",
+      "name": "E5：空结果",
+      "suite": "extended",
+      "family": "E",
+      "prompt": "节点 A 延迟40状态正常；B 延迟80状态已归档；C 延迟50状态正常。保留延迟严格大于50且未归档的节点。按延迟降序；结果为空时 nodes 用空数组、max_latency 用 null。只输出 JSON：{\"nodes\":[字符串],\"count\":整数,\"max_latency\":数字或null}",
+      "expected": {
+        "nodes": [],
+        "count": 0,
+        "max_latency": null
+      }
+    }
+  ]
+}

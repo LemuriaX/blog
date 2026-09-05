@@ -1,0 +1,385 @@
+{"timestamp": "2026-09-05T11:50:12.069674Z", "level": "info", "event": "run_server startup begin api_only=False host=127.0.0.1 port=8001"}
+{"timestamp": "2026-09-05T11:50:13.736032Z", "level": "info", "event": "Imported FastAPI app in 1614.0ms"}
+{"timestamp": "2026-09-05T11:50:13.742105Z", "level": "info", "event": "Ensured Unsloth directories in 1678.2ms"}
+{"timestamp": "2026-09-05T11:50:13.743377Z", "level": "info", "event": "run_server pre-uvicorn setup completed in 1679.5ms"}
+{"timestamp": "2026-09-05T11:50:13.768984Z", "level": "info", "event": "Keeping the compiled cache: another backend of this install is live (PID 24516)"}
+{"timestamp": "2026-09-05T11:50:13.837115Z", "level": "info", "event": "lifespan pre-auth setup completed in 73.2ms"}
+{"timestamp": "2026-09-05T11:50:13.839448Z", "level": "info", "event": "lifespan startup completed in 75.5ms"}
+{"timestamp": "2026-09-05T11:50:13.840981Z", "level": "info", "event": "Uvicorn startup hook completed in 1777.1ms"}
+{"timestamp": "2026-09-05T11:50:13.841190Z", "level": "info", "event": "run_server uvicorn ready after 1777.3ms"}
+Starting Unsloth Studio...
+{"timestamp": "2026-09-05T11:50:15.221524Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/health", "status_code": 200, "process_time_ms": 1280.51}
+Loading model: C:\Users\Yuki\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\Qwen3.8-27B-UD-Q3_K_XL.gguf...
+{"timestamp": "2026-09-05T11:50:15.472937Z", "level": "info", "event": "Manual GPU memory owns the offload flags; stripping them from explicit llama_extra_args: ['--gpu-layers', '999', '--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4'] -> ['--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4']"}
+Hardware detected: ROCm (HIP 7.13.99004) -- AMD Radeon RX 7900 XT
+{"timestamp": "2026-09-05T11:50:15.499666Z", "level": "info", "event": "InferenceOrchestrator initialized (subprocess mode)"}
+{"timestamp": "2026-09-05T11:50:15.504040Z", "level": "info", "event": "Detected local GGUF model: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf"}
+{"timestamp": "2026-09-05T11:50:15.779336Z", "level": "info", "event": "Detected mmproj for vision: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\blobs\\cbb841a9ee0636b2ec172f5bb8df2ea8dfeb01e90fe7c6126581d662a0b4e43e"}
+{"timestamp": "2026-09-05T11:50:15.859640Z", "level": "info", "event": "GGUF metadata: context_length=262144"}
+{"timestamp": "2026-09-05T11:50:15.859752Z", "level": "info", "event": "GGUF metadata: chat_template=9993 chars"}
+{"timestamp": "2026-09-05T11:50:15.859889Z", "level": "info", "event": "GGUF metadata: model supports reasoning (enable_thinking + reasoning_effort: ['low', 'medium', 'high', 'xhigh'])"}
+{"timestamp": "2026-09-05T11:50:15.859980Z", "level": "info", "event": "GGUF metadata: model supports preserve_thinking"}
+{"timestamp": "2026-09-05T11:50:15.860066Z", "level": "info", "event": "GGUF metadata: model supports tool calling"}
+{"timestamp": "2026-09-05T11:50:15.862528Z", "level": "info", "event": "TrainingBackend initialized (subprocess mode)"}
+{"timestamp": "2026-09-05T11:50:15.952491Z", "level": "info", "event": "amd-smi disabled on Windows (no HIP SDK detected) to avoid a UAC/DiskPart elevation prompt; GPU VRAM polling unavailable. Set UNSLOTH_ENABLE_AMD_SMI=1 to force amd-smi."}
+{"timestamp": "2026-09-05T11:50:16.231096Z", "level": "info", "event": "User --cache-type-k/-v (k=q8_0, v=q8_0) honored; KV estimate budgets the heavier axis"}
+{"timestamp": "2026-09-05T11:50:16.231227Z", "level": "warning", "event": "Vision-capable GGUF loaded without a usable mmproj; image input will be disabled for this session"}
+{"timestamp": "2026-09-05T11:50:16.234717Z", "level": "info", "event": "GGUF size: 12.2 GB, est. KV cache: 6.3 GB, context: 131072, GPUs free: [], selected: None, --fit: on"}
+{"timestamp": "2026-09-05T11:50:16.236287Z", "level": "info", "event": "KV cache type: q8_0"}
+{"timestamp": "2026-09-05T11:50:16.238189Z", "level": "info", "event": "Reasoning model: {'enable_thinking': True, 'preserve_thinking': True} by default"}
+{"timestamp": "2026-09-05T11:50:16.242959Z", "level": "info", "event": "Appending user extra args to llama-server: ['--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4']"}
+{"timestamp": "2026-09-05T11:50:16.243082Z", "level": "info", "event": "Starting llama-server: C:\\Users\\Yuki\\.unsloth\\llama.cpp\\build\\bin\\Release\\llama-server.exe -m C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf --port 4738 --parallel 1 --flash-attn on --no-context-shift -c 131072 --alias unsloth/Qwen3.8-27B-GGUF --gpu-layers 999 --fit off --metrics --slot-save-path C:\\Users\\Yuki\\.unsloth\\studio\\cache\\llama-slots --jinja --cache-type-k q8_0 --cache-type-v q8_0 --chat-template-kwargs {\"enable_thinking\": true, \"preserve_thinking\": true} --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on --batch-size 256 --ubatch-size 128 --kv-unified --no-cache-prompt --no-context-shift --no-mmproj --threads -1 --perf --log-verbosity 4"}
+{"timestamp": "2026-09-05T11:50:16.258420Z", "level": "info", "event": "llama-server stdout/stderr -> C:\\Users\\Yuki\\.unsloth\\studio\\logs\\llama-server\\llama-1788609016-port-4738-try0.log"}
+{"timestamp": "2026-09-05T11:50:19.485513Z", "level": "info", "event": "torch warm finished in 5646.2ms"}
+{"timestamp": "2026-09-05T11:50:24.458852Z", "level": "info", "event": "llama-server ready on port 4738 for model 'C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf'"}
+{"timestamp": "2026-09-05T11:50:24.636028Z", "level": "info", "event": "Loaded GGUF model via llama-server: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf"}
+{"timestamp": "2026-09-05T11:50:24.640250Z", "level": "info", "event": "Loaded default model defaults from C:\\Users\\Yuki\\.unsloth\\studio\\unsloth_studio\\Lib\\site-packages\\studio\\backend\\assets\\configs\\model_defaults\\default.yaml"}
+{"timestamp": "2026-09-05T11:50:24.644384Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/inference/load", "status_code": 200, "process_time_ms": 9304.56}
+
+========================================================
+  Unsloth Studio running at http://127.0.0.1:8001
+  Model loaded: C:\Users\Yuki\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\Qwen3.8-27B-UD-Q3_K_XL.gguf
+  Context length: 131072 tokens
+  API Key:      [REDACTED]
+
+  OpenAI / Anthropic SDK base URL:
+    http://127.0.0.1:8001/v1
+========================================================
+Server-side tools are DISABLED (--disable-tools).
+
+OpenAI Chat Completions:
+  curl http://127.0.0.1:8001/v1/chat/completions \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"messages": [{"role": "user", "content": "Hello"}], "stream": true}'
+
+Anthropic Messages:
+  curl http://127.0.0.1:8001/v1/messages \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"max_tokens": 256, "messages": [{"role": "user", "content": "Hello"}], "stream": true}'
+
+OpenAI Responses:
+  curl http://127.0.0.1:8001/v1/responses \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"input": "Hello", "stream": true}'
+
+{"timestamp": "2026-09-05T11:50:25.641268Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/status", "status_code": 200, "process_time_ms": 22.63}
+{"timestamp": "2026-09-05T11:50:26.374967Z", "level": "info", "event": "Cached model scan: inspected=4 skipped_gguf=2 skipped_no_weights=0 returned=0"}
+{"timestamp": "2026-09-05T11:50:26.379855Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/v1/models", "status_code": 200, "process_time_ms": 736.76}
+{"timestamp": "2026-09-05T11:50:26.870549Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 332.3}
+{"timestamp": "2026-09-05T11:50:27.169471Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 267.68}
+{"timestamp": "2026-09-05T11:50:27.402828Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 228.36}
+{"timestamp": "2026-09-05T11:50:27.637188Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 228.24}
+{"timestamp": "2026-09-05T11:50:27.890467Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 225.55}
+{"timestamp": "2026-09-05T11:50:28.134020Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 227.29}
+{"timestamp": "2026-09-05T11:50:28.391064Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 247.54}
+{"timestamp": "2026-09-05T11:50:28.637325Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 239.49}
+{"timestamp": "2026-09-05T11:50:28.872349Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 228.01}
+{"timestamp": "2026-09-05T11:50:29.141860Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 262.71}
+{"timestamp": "2026-09-05T11:50:29.442874Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 291.29}
+{"timestamp": "2026-09-05T11:50:29.694535Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 244.89}
+{"timestamp": "2026-09-05T11:50:29.863228Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 166.82}
+{"timestamp": "2026-09-05T11:50:30.037394Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 172.03}
+{"timestamp": "2026-09-05T11:50:30.223777Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 184.3}
+{"timestamp": "2026-09-05T11:50:30.444152Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 194.59}
+{"timestamp": "2026-09-05T11:50:30.694377Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 225.45}
+{"timestamp": "2026-09-05T11:50:30.929334Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 232.38}
+{"timestamp": "2026-09-05T11:50:31.326548Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 380.11}
+{"timestamp": "2026-09-05T11:50:31.603103Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 265.79}
+{"timestamp": "2026-09-05T11:50:31.830040Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 222.19}
+{"timestamp": "2026-09-05T11:50:32.064974Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 229.01}
+{"timestamp": "2026-09-05T11:50:32.344529Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 258.42}
+{"timestamp": "2026-09-05T11:50:32.631137Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 276.17}
+{"timestamp": "2026-09-05T11:50:32.874678Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 236.44}
+{"timestamp": "2026-09-05T11:50:33.125883Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 235.18}
+{"timestamp": "2026-09-05T11:50:33.383817Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 250.68}
+{"timestamp": "2026-09-05T11:50:33.638949Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 245.17}
+{"timestamp": "2026-09-05T11:50:33.914053Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 247.99}
+{"timestamp": "2026-09-05T11:50:34.172344Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 251.34}
+{"timestamp": "2026-09-05T11:50:34.339034Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 164.86}
+{"timestamp": "2026-09-05T11:50:34.578849Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 238.09}
+{"timestamp": "2026-09-05T11:50:34.785560Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 180.07}
+{"timestamp": "2026-09-05T11:50:34.998003Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 196.33}
+{"timestamp": "2026-09-05T11:50:35.237644Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 237.28}
+{"timestamp": "2026-09-05T11:50:35.467183Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 226.86}
+{"timestamp": "2026-09-05T11:50:35.841614Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 342.6}
+{"timestamp": "2026-09-05T11:50:36.087201Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 235.45}
+{"timestamp": "2026-09-05T11:50:36.309662Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 200.13}
+{"timestamp": "2026-09-05T11:50:36.544581Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 215.6}
+{"timestamp": "2026-09-05T11:50:36.841929Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 290.36}
+{"timestamp": "2026-09-05T11:50:37.099218Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 250.16}
+{"timestamp": "2026-09-05T11:50:37.354208Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 245.42}
+{"timestamp": "2026-09-05T11:50:37.618702Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 249.35}
+{"timestamp": "2026-09-05T11:50:37.854424Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 228.49}
+{"timestamp": "2026-09-05T11:50:38.088772Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 227.35}
+{"timestamp": "2026-09-05T11:50:38.358740Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 262.92}
+{"timestamp": "2026-09-05T11:50:38.668404Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 278.73}
+{"timestamp": "2026-09-05T11:50:38.840347Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 169.11}
+{"timestamp": "2026-09-05T11:50:39.013699Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 171.66}
+{"timestamp": "2026-09-05T11:50:39.236444Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 220.84}
+{"timestamp": "2026-09-05T11:50:39.453567Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 214.8}
+{"timestamp": "2026-09-05T11:50:39.674005Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 215.05}
+{"timestamp": "2026-09-05T11:50:39.924057Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 247.35}
+{"timestamp": "2026-09-05T11:50:40.101669Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/status", "status_code": 200, "process_time_ms": 26.9}
+{"timestamp": "2026-09-05T11:50:44.579358Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:50:54.588751Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:04.603936Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:14.609903Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:24.636400Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:34.643582Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:44.652967Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:51:54.667636Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:04.672556Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:14.695554Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:24.715711Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:34.726083Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:44.742089Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:52:54.751316Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:04.756035Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:14.776853Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:24.804068Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:34.819851Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:44.835990Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:53:54.854237Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:04.856995Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:14.882798Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:24.888112Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:34.890610Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:44.902007Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:54:54.902776Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:04.930977Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:14.944051Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:24.971096Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:34.987274Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:44.998849Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:55:55.014326Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:05.016865Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:15.021562Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:25.038254Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:31.983818Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 351845.14}
+{"timestamp": "2026-09-05T11:56:32.539402Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 532.87}
+{"timestamp": "2026-09-05T11:56:35.041254Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.2, "prompt_tok_s": 331.5, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:45.056696Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:56:55.070609Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:05.075122Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:15.089625Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:25.105051Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:35.111673Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:45.118515Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:57:55.124131Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:05.135657Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:15.140812Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:25.147405Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:35.174257Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:45.187038Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:58:55.201936Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:05.229873Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:15.242619Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:25.244444Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:35.264473Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:45.265586Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:59:55.275895Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:05.291393Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:15.305342Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:25.308443Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:35.315250Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:45.331851Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:00:55.360018Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:05.372020Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:15.374728Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:25.377918Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:35.385466Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:45.386248Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:01:55.394966Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:05.402801Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:15.420685Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:25.447562Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 332.4, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:27.122253Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 354578.21}
+{"timestamp": "2026-09-05T12:02:27.491351Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 346.35}
+{"timestamp": "2026-09-05T12:02:35.461575Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:45.475149Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:02:55.478373Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:05.491167Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:15.511103Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:25.526124Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:35.554070Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:45.562851Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:03:55.593881Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:05.610711Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:15.613135Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:25.614674Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:35.628667Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:45.640670Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:04:55.645481Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:05.651789Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:15.662653Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:25.691880Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:35.692871Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:45.702573Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:05:55.712895Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:05.743949Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:15.747054Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:25.773503Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:35.804055Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:45.822893Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:06:55.841073Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:05.844157Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:15.863956Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:25.891632Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:35.904987Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:45.928828Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:07:55.931491Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:05.948317Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:16.382723Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:22.296267Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 354778.48}
+{"timestamp": "2026-09-05T12:08:22.644785Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 314.04}
+{"timestamp": "2026-09-05T12:08:26.397698Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.5, "prompt_tok_s": 332.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:36.412446Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:46.417536Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:08:56.424015Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:06.446945Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:16.460792Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:26.462702Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:36.479586Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:46.485986Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:09:56.503108Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:06.515358Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:16.519989Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:26.551151Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:36.575206Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:46.590522Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:10:56.604749Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:06.629833Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:16.647407Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:26.663768Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:36.680436Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:46.686427Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:11:56.687996Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:06.704561Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:16.713089Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:26.718833Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:36.734621Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:46.741000Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:12:56.752034Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:06.768680Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:16.777416Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:26.797935Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:36.807770Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:46.816839Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:13:56.819305Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:06.852111Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:16.868762Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 331.7, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:18.519554Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 355872.1}
+{"timestamp": "2026-09-05T12:14:18.867204Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 317.63}
+{"timestamp": "2026-09-05T12:14:26.870994Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.5, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:36.886018Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:46.886883Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:14:56.888619Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:06.920603Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:16.936340Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:26.951124Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:36.976569Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:47.002041Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:15:57.012842Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:07.035692Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:17.039300Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:27.046354Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:37.072543Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:47.079651Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:16:57.103267Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:07.107675Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:17.119395Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:27.122800Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:37.139671Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:47.150246Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:17:57.157197Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:07.168274Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:17.180055Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:27.186045Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:37.214789Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:47.236382Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:18:57.248937Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:07.273354Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:17.287393Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:27.290231Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:37.304674Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:47.323830Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:19:57.325358Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:07.355970Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 334.7, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:10.508722Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 351621.29}
+{"timestamp": "2026-09-05T12:20:10.891959Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 338.85}
+{"timestamp": "2026-09-05T12:20:17.357514Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.8, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:27.359303Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:37.375645Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:47.392167Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:20:57.422623Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:07.425072Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:17.441247Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:27.457925Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:37.459177Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:47.472553Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:21:57.499393Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:07.506202Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:17.521557Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:27.530668Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:37.544002Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:47.569792Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:22:57.576269Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:07.607405Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:17.621935Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:27.641315Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:37.644735Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:47.660032Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:23:57.676090Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:07.704883Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:17.733861Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:27.741257Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:37.743184Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:47.753154Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:24:57.773446Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:07.775687Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:17.790256Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:27.808663Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:37.822284Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:47.828610Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:25:57.844372Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:03.985648Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 353090.63}
+{"timestamp": "2026-09-05T12:26:04.370806Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 340.18}
+{"timestamp": "2026-09-05T12:26:07.875356Z", "level": "info", "event": "engine_stats", "gen_tok_s": 21.5, "prompt_tok_s": 334.5, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:17.893048Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:27.923617Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:37.944652Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:47.946933Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:26:57.960456Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:07.994932Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:17.997010Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:27.999750Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:38.013565Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:48.035291Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:27:58.062561Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:08.074636Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:18.082911Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:28.111296Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:38.112886Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:48.128027Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:28:58.132090Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:08.146551Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:18.161424Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:28.166401Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:38.194343Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:48.230878Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:29:58.240886Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:08.260774Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:18.262193Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:28.275279Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:38.289760Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:48.301204Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:30:58.314570Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:08.331723Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:18.345309Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:28.364136Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:38.379311Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:48.397624Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T12:31:56.119308Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 351745.64}

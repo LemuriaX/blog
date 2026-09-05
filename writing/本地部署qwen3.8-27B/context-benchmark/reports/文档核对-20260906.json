@@ -1,0 +1,29 @@
+{
+  "source_runs": {
+    "20260905-185546-067769": [
+      "performance-performance",
+      "quality-performance",
+      "context-performance",
+      "capacity-32K",
+      "capacity-64K",
+      "capacity-128K"
+    ],
+    "20260905-230353-216459": [
+      "performance-quality",
+      "quality-quality",
+      "context-quality"
+    ]
+  },
+  "selected_stages": 9,
+  "selected_requests": 225,
+  "checks": 641,
+  "errors": [],
+  "documents": [
+    "27B模型如何塞进20GB显存-技术分享.md",
+    "Qwen3.8-27B本机实测报告.md",
+    "Qwen3.8-27B上下文与性能测试方案.md",
+    "修正说明-20260905.md",
+    "context-benchmark/README.md"
+  ],
+  "original_evidence_unchanged": true
+}

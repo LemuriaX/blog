@@ -1,0 +1,8 @@
+{
+  "status": "captured",
+  "captured_at": "2026-09-05T18:27:22.975+08:00",
+  "source": "C:\\Users\\Yuki\\.unsloth\\studio\\logs\\llama-server\\llama-1788603941-port-7225-try0.log",
+  "source_bytes": 54479,
+  "snapshot": "llama-server.log",
+  "snapshot_sha256": "6b10b4dc984f34183e2907076689fe937c5578034802ffa34cecc59c2f9b05aa"
+}

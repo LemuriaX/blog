@@ -1,0 +1,94 @@
+{"timestamp": "2026-09-05T11:23:07.154383Z", "level": "info", "event": "run_server startup begin api_only=False host=127.0.0.1 port=8001"}
+{"timestamp": "2026-09-05T11:23:08.865833Z", "level": "info", "event": "Imported FastAPI app in 1659.7ms"}
+{"timestamp": "2026-09-05T11:23:08.872475Z", "level": "info", "event": "Ensured Unsloth directories in 1724.6ms"}
+{"timestamp": "2026-09-05T11:23:08.873714Z", "level": "info", "event": "run_server pre-uvicorn setup completed in 1725.8ms"}
+{"timestamp": "2026-09-05T11:23:08.899006Z", "level": "info", "event": "Keeping the compiled cache: another backend of this install is live (PID 24516)"}
+{"timestamp": "2026-09-05T11:23:08.954909Z", "level": "info", "event": "lifespan pre-auth setup completed in 60.5ms"}
+{"timestamp": "2026-09-05T11:23:08.957317Z", "level": "info", "event": "lifespan startup completed in 62.9ms"}
+{"timestamp": "2026-09-05T11:23:08.958664Z", "level": "info", "event": "Uvicorn startup hook completed in 1810.7ms"}
+{"timestamp": "2026-09-05T11:23:08.958788Z", "level": "info", "event": "run_server uvicorn ready after 1810.9ms"}
+Starting Unsloth Studio...
+{"timestamp": "2026-09-05T11:23:10.330158Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/health", "status_code": 200, "process_time_ms": 1272.09}
+Loading model: C:\Users\Yuki\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\Qwen3.8-27B-UD-Q3_K_XL.gguf...
+{"timestamp": "2026-09-05T11:23:10.625249Z", "level": "info", "event": "Manual GPU memory owns the offload flags; stripping them from explicit llama_extra_args: ['--gpu-layers', '999', '--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4'] -> ['--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4']"}
+Hardware detected: ROCm (HIP 7.13.99004) -- AMD Radeon RX 7900 XT
+{"timestamp": "2026-09-05T11:23:10.666014Z", "level": "info", "event": "InferenceOrchestrator initialized (subprocess mode)"}
+{"timestamp": "2026-09-05T11:23:10.672628Z", "level": "info", "event": "Detected local GGUF model: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf"}
+{"timestamp": "2026-09-05T11:23:10.985904Z", "level": "info", "event": "Detected mmproj for vision: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\blobs\\cbb841a9ee0636b2ec172f5bb8df2ea8dfeb01e90fe7c6126581d662a0b4e43e"}
+{"timestamp": "2026-09-05T11:23:11.065609Z", "level": "info", "event": "GGUF metadata: context_length=262144"}
+{"timestamp": "2026-09-05T11:23:11.065714Z", "level": "info", "event": "GGUF metadata: chat_template=9993 chars"}
+{"timestamp": "2026-09-05T11:23:11.065822Z", "level": "info", "event": "GGUF metadata: model supports reasoning (enable_thinking + reasoning_effort: ['low', 'medium', 'high', 'xhigh'])"}
+{"timestamp": "2026-09-05T11:23:11.065854Z", "level": "info", "event": "GGUF metadata: model supports preserve_thinking"}
+{"timestamp": "2026-09-05T11:23:11.065921Z", "level": "info", "event": "GGUF metadata: model supports tool calling"}
+{"timestamp": "2026-09-05T11:23:11.069797Z", "level": "info", "event": "TrainingBackend initialized (subprocess mode)"}
+{"timestamp": "2026-09-05T11:23:11.161542Z", "level": "info", "event": "amd-smi disabled on Windows (no HIP SDK detected) to avoid a UAC/DiskPart elevation prompt; GPU VRAM polling unavailable. Set UNSLOTH_ENABLE_AMD_SMI=1 to force amd-smi."}
+{"timestamp": "2026-09-05T11:23:11.437897Z", "level": "info", "event": "User --cache-type-k/-v (k=q8_0, v=q8_0) honored; KV estimate budgets the heavier axis"}
+{"timestamp": "2026-09-05T11:23:11.437980Z", "level": "warning", "event": "Vision-capable GGUF loaded without a usable mmproj; image input will be disabled for this session"}
+{"timestamp": "2026-09-05T11:23:11.441746Z", "level": "info", "event": "GGUF size: 12.2 GB, est. KV cache: 0.5 GB, context: 8192, GPUs free: [], selected: None, --fit: on"}
+{"timestamp": "2026-09-05T11:23:11.442268Z", "level": "info", "event": "Load mode: the whole load (12.8 GB) fits without paging, using --load-mode none."}
+{"timestamp": "2026-09-05T11:23:11.443334Z", "level": "info", "event": "KV cache type: q8_0"}
+{"timestamp": "2026-09-05T11:23:11.445123Z", "level": "info", "event": "Reasoning model: {'enable_thinking': True, 'preserve_thinking': True} by default"}
+{"timestamp": "2026-09-05T11:23:11.449961Z", "level": "info", "event": "Load mode: --load-mode none"}
+{"timestamp": "2026-09-05T11:23:11.450047Z", "level": "info", "event": "Appending user extra args to llama-server: ['--cache-type-k', 'q8_0', '--cache-type-v', 'q8_0', '--flash-attn', 'on', '--batch-size', '256', '--ubatch-size', '128', '--kv-unified', '--no-cache-prompt', '--no-context-shift', '--no-mmproj', '--threads', '-1', '--perf', '--log-verbosity', '4']"}
+{"timestamp": "2026-09-05T11:23:11.450146Z", "level": "info", "event": "Starting llama-server: C:\\Users\\Yuki\\.unsloth\\llama.cpp\\build\\bin\\Release\\llama-server.exe -m C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf --port 9928 --parallel 1 --flash-attn on --no-context-shift -c 8192 --alias unsloth/Qwen3.8-27B-GGUF --gpu-layers 999 --fit off --metrics --slot-save-path C:\\Users\\Yuki\\.unsloth\\studio\\cache\\llama-slots --jinja --cache-type-k q8_0 --cache-type-v q8_0 --chat-template-kwargs {\"enable_thinking\": true, \"preserve_thinking\": true} --load-mode none --cache-type-k q8_0 --cache-type-v q8_0 --flash-attn on --batch-size 256 --ubatch-size 128 --kv-unified --no-cache-prompt --no-context-shift --no-mmproj --threads -1 --perf --log-verbosity 4"}
+{"timestamp": "2026-09-05T11:23:11.464042Z", "level": "info", "event": "llama-server stdout/stderr -> C:\\Users\\Yuki\\.unsloth\\studio\\logs\\llama-server\\llama-1788607391-port-9928-try0.log"}
+{"timestamp": "2026-09-05T11:23:15.565173Z", "level": "info", "event": "torch warm finished in 6608.0ms"}
+{"timestamp": "2026-09-05T11:23:17.711537Z", "level": "info", "event": "llama-server ready on port 9928 for model 'C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf'"}
+{"timestamp": "2026-09-05T11:23:17.866697Z", "level": "info", "event": "Loaded GGUF model via llama-server: C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf"}
+{"timestamp": "2026-09-05T11:23:17.871274Z", "level": "info", "event": "Loaded default model defaults from C:\\Users\\Yuki\\.unsloth\\studio\\unsloth_studio\\Lib\\site-packages\\studio\\backend\\assets\\configs\\model_defaults\\default.yaml"}
+{"timestamp": "2026-09-05T11:23:17.875562Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/inference/load", "status_code": 200, "process_time_ms": 7475.21}
+
+========================================================
+  Unsloth Studio running at http://127.0.0.1:8001
+  Model loaded: C:\Users\Yuki\.cache\huggingface\hub\models--unsloth--Qwen3.8-27B-GGUF\snapshots\4ca720788d1e01f1bff70c033e0d0028fd02e502\Qwen3.8-27B-UD-Q3_K_XL.gguf
+  Context length: 8192 tokens
+  API Key:      [REDACTED]
+
+  OpenAI / Anthropic SDK base URL:
+    http://127.0.0.1:8001/v1
+========================================================
+Server-side tools are DISABLED (--disable-tools).
+
+OpenAI Chat Completions:
+  curl http://127.0.0.1:8001/v1/chat/completions \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"messages": [{"role": "user", "content": "Hello"}], "stream": true}'
+
+Anthropic Messages:
+  curl http://127.0.0.1:8001/v1/messages \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"max_tokens": 256, "messages": [{"role": "user", "content": "Hello"}], "stream": true}'
+
+OpenAI Responses:
+  curl http://127.0.0.1:8001/v1/responses \
+    -H "Authorization: Bearer [REDACTED]" \
+    -H "Content-Type: application/json" \
+    -d '{"input": "Hello", "stream": true}'
+
+{"timestamp": "2026-09-05T11:23:18.695705Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/status", "status_code": 200, "process_time_ms": 20.8}
+{"timestamp": "2026-09-05T11:23:19.450238Z", "level": "info", "event": "Cached model scan: inspected=4 skipped_gguf=2 skipped_no_weights=0 returned=0"}
+{"timestamp": "2026-09-05T11:23:19.455652Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/v1/models", "status_code": 200, "process_time_ms": 735.99}
+{"timestamp": "2026-09-05T11:23:27.864677Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:23:31.398114Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 11779.26}
+{"timestamp": "2026-09-05T11:23:31.655668Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 246.73}
+{"timestamp": "2026-09-05T11:23:37.868674Z", "level": "info", "event": "engine_stats", "gen_tok_s": 28.8, "prompt_tok_s": 645.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:23:45.612453Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 13955.11}
+{"timestamp": "2026-09-05T11:23:45.860179Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 233.25}
+{"timestamp": "2026-09-05T11:23:47.879862Z", "level": "info", "event": "engine_stats", "gen_tok_s": 33.0, "prompt_tok_s": 653.8, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:23:57.896876Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 646.7, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:23:59.911539Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 14025.93}
+{"timestamp": "2026-09-05T11:24:00.162287Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 227.51}
+{"timestamp": "2026-09-05T11:24:07.917484Z", "level": "info", "event": "engine_stats", "gen_tok_s": 33.3, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:24:14.036250Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 13872.18}
+{"timestamp": "2026-09-05T11:24:14.302864Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 231.77}
+{"timestamp": "2026-09-05T11:24:17.935258Z", "level": "info", "event": "engine_stats", "gen_tok_s": 33.3, "prompt_tok_s": 659.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:24:27.949242Z", "level": "info", "event": "engine_stats", "gen_tok_s": 0.0, "prompt_tok_s": 653.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:24:28.084581Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 13779.93}
+{"timestamp": "2026-09-05T11:24:28.358003Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 258.79}
+{"timestamp": "2026-09-05T11:24:37.951007Z", "level": "info", "event": "engine_stats", "gen_tok_s": 33.4, "prompt_tok_s": 0.0, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:24:42.390591Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 14030.79}
+{"timestamp": "2026-09-05T11:24:42.631338Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/count_tokens", "status_code": 200, "process_time_ms": 225.24}
+{"timestamp": "2026-09-05T11:24:47.952996Z", "level": "info", "event": "engine_stats", "gen_tok_s": 33.2, "prompt_tok_s": 647.6, "running": 1, "waiting": 0}
+{"timestamp": "2026-09-05T11:24:56.472057Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 13820.08}

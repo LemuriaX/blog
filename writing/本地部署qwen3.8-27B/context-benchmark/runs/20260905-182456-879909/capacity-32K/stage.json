@@ -1,0 +1,29 @@
+{
+  "id": "capacity-32K",
+  "stage": {
+    "name": "context",
+    "label": "上下文优先候选",
+    "quant": "UD-Q3_K_XL",
+    "batch": 256,
+    "ubatch": 128,
+    "kv": "q8_0",
+    "thinking": false,
+    "effort": "medium",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "max_tokens": 1024,
+    "id": "capacity-32K",
+    "kind": "capacity",
+    "context": 32768,
+    "target": 29000,
+    "output_budget": 192
+  },
+  "started_at": "2026-09-05T18:27:23.046+08:00",
+  "status": "failed",
+  "verdict": "unverified",
+  "error": "Port 8001 is occupied; select another port. Existing processes are left alone.",
+  "error_type": "ValueError",
+  "finished_at": "2026-09-05T18:27:23.048+08:00"
+}

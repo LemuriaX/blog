@@ -1,0 +1,30 @@
+{
+  "id": "performance-performance",
+  "stage": {
+    "name": "performance",
+    "label": "性能优先候选",
+    "quant": "UD-Q4_K_S",
+    "batch": 1024,
+    "ubatch": 512,
+    "kv": "q8_0",
+    "thinking": false,
+    "effort": "medium",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "max_tokens": 1024,
+    "id": "performance-performance",
+    "kind": "performance",
+    "context": 8192,
+    "target": 6800,
+    "output_budget": 192
+  },
+  "started_at": "2026-09-05T17:38:41.578+08:00",
+  "status": "failed",
+  "verdict": "unverified",
+  "error": "",
+  "error_type": "KeyboardInterrupt",
+  "interrupted": true,
+  "finished_at": "2026-09-05T17:50:00.341+08:00"
+}

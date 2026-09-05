@@ -1,0 +1,17 @@
+
+============================================================================
+  Qwen3.8-27B · 空运行检查
+============================================================================
+22:35:26  [计划] 3 个阶段 | 189 次正式请求 | 题集 extended
+                 端口 8001 | 单次调用时限 2h 00m 00s
+                 结果目录：E:\codex\技术分享\context-benchmark\reports\verification-console-quality-20260905
+                 只检查计划和模型路径；不启动服务、不推理、不下载、不计算模型哈希。
+                 01. performance-quality | 63 次 | 窗口 16,384 | Thinking xhigh
+                 02. quality-quality | 63 次 | 窗口 16,384 | Thinking xhigh
+                 03. context-quality | 63 次 | 窗口 16,384 | Thinking xhigh
+22:35:26  [模型] UD-Q4_K_S | 分片 1/1 | 14.303 GiB
+22:35:26  [模型] UD-Q4_K_XL | 分片 1/1 | 16.353 GiB
+22:35:26  [模型] UD-Q3_K_XL | 分片 1/1 | 12.244 GiB
+22:35:26  [检查] 空运行结束 | 3 个阶段 | 模型路径问题 0 项
+                 执行计划：E:\codex\技术分享\context-benchmark\reports\verification-console-quality-20260905\plan.json
+                 模型检查：E:\codex\技术分享\context-benchmark\reports\verification-console-quality-20260905\model-preflight.json

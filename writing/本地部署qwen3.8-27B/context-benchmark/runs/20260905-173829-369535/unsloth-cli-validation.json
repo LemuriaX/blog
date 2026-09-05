@@ -1,0 +1,10 @@
+{
+  "command": [
+    "C:\\Users\\Yuki\\.unsloth\\studio\\bin\\unsloth.exe",
+    "run",
+    "--help"
+  ],
+  "returncode": 0,
+  "missing_options": [],
+  "help_width": 240
+}

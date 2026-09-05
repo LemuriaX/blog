@@ -1,0 +1,264 @@
+{
+  "config": {
+    "schema_version": 3,
+    "model_repository": "unsloth/Qwen3.8-27B-GGUF",
+    "local_model_files": {
+      "UD-Q4_K_S": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q4_K_S.gguf",
+      "UD-Q4_K_XL": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q4_K_XL.gguf",
+      "UD-Q3_K_XL": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q3_K_XL.gguf"
+    },
+    "seeds": [
+      3407,
+      3413,
+      3433
+    ],
+    "common_context": 8192,
+    "quality_context": 16384,
+    "common_target_tokens": 6800,
+    "quality_target_tokens": 4600,
+    "common_max_tokens": 192,
+    "performance_repeats": 2,
+    "safety_margin": 128,
+    "tolerance": 64,
+    "gpu_layers_request": 999,
+    "profiles": [
+      {
+        "name": "performance",
+        "label": "性能优先候选",
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "thinking": true,
+        "effort": "xhigh",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 8192
+      },
+      {
+        "name": "quality",
+        "label": "质量优先候选",
+        "quant": "UD-Q4_K_XL",
+        "batch": 512,
+        "ubatch": 256,
+        "kv": "q8_0",
+        "thinking": true,
+        "effort": "xhigh",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 8192
+      },
+      {
+        "name": "context",
+        "label": "上下文优先候选",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "thinking": true,
+        "effort": "xhigh",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 8192
+      }
+    ],
+    "contexts": [
+      {
+        "name": "8K",
+        "context": 8192,
+        "target": 6800
+      },
+      {
+        "name": "32K",
+        "context": 32768,
+        "target": 29000
+      },
+      {
+        "name": "64K",
+        "context": 65536,
+        "target": 58000
+      },
+      {
+        "name": "128K",
+        "context": 131072,
+        "target": 116000
+      }
+    ],
+    "ablations": [
+      {
+        "name": "quant-q4s",
+        "quant": "UD-Q4_K_S",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "quant-q4xl",
+        "quant": "UD-Q4_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "quant-q3",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "kv-q8",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 65536,
+        "target": 58000,
+        "kind": "capacity"
+      },
+      {
+        "name": "kv-q4",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q4_0",
+        "context": 65536,
+        "target": 58000,
+        "kind": "capacity"
+      },
+      {
+        "name": "batch-large",
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "name": "performance",
+      "label": "性能优先候选",
+      "quant": "UD-Q4_K_S",
+      "batch": 1024,
+      "ubatch": 512,
+      "kv": "q8_0",
+      "thinking": true,
+      "effort": "xhigh",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0,
+      "max_tokens": 8192,
+      "id": "performance-quality",
+      "kind": "quality",
+      "context": 16384,
+      "target": 4600,
+      "output_budget": 8192
+    },
+    {
+      "name": "quality",
+      "label": "质量优先候选",
+      "quant": "UD-Q4_K_XL",
+      "batch": 512,
+      "ubatch": 256,
+      "kv": "q8_0",
+      "thinking": true,
+      "effort": "xhigh",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0,
+      "max_tokens": 8192,
+      "id": "quality-quality",
+      "kind": "quality",
+      "context": 16384,
+      "target": 4600,
+      "output_budget": 8192
+    },
+    {
+      "name": "context",
+      "label": "上下文优先候选",
+      "quant": "UD-Q3_K_XL",
+      "batch": 256,
+      "ubatch": 128,
+      "kv": "q8_0",
+      "thinking": true,
+      "effort": "xhigh",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0,
+      "max_tokens": 8192,
+      "id": "context-quality",
+      "kind": "quality",
+      "context": 16384,
+      "target": 4600,
+      "output_budget": 8192
+    }
+  ],
+  "suite": "extended",
+  "scripts": {
+    "benchmark_common.py": "3373474f02c410ba31bff9e68800ff2250b74146c4ebab59c833935270668f59",
+    "benchmark_config.json": "32c5f583445411cd9f7a4e61c2bc2e14ccaf11d9cccbe58e789659642cd8b162",
+    "benchmark_console.py": "61ab7f89226a093042db4dda01f9d882ad63c003255727419f286cdc1e63729f",
+    "benchmark_entry.psm1": "e8e68759cc3834d6d78a9e176b13340f7067af8091e15263f854cc08f64a5c26",
+    "benchmark_suite.py": "423866e75d2047679d14a7c9653e2e41366a3ee1789e9ef96ff037b8ddd80972",
+    "benchmark_tasks.json": "3e1af5759687397e061f655217819dcc234eadff83fe661d596d06ed601779c3",
+    "benchmark_validation.py": "1edb3eeb7250d61ef49e62709cbd261d27cf8f8fe8587ca9e00093024d8bbb85",
+    "generate_context_cases.py": "96f1e0775c41c747e7fc43d7d5fda1f48f3db46ac0c141acc95da56de8d58cc8",
+    "managed_process.py": "e1907ad77089924ae3ed0abfaeb7f99f74f45b16d98d02cdd36521e7340a2543",
+    "run_all_contexts.ps1": "6bfb5e77f91fd273297f1518bb0a1c3867c5a24c46e9224f485c2be88585dc88",
+    "run_context_benchmark.py": "426255c4c98b8eecadf97b2e4e90c95d4da45e87b0c69b1e57a20211bb1b9868",
+    "run_full_benchmark.ps1": "143606d4c4d8a5c9aba6a524a9cd411fbfd429e6ff5426d12f4e82ac090fd11c",
+    "run_profile_benchmark.py": "6322a76fa99d977cbee8e6a6b9544be499dd688872b62dd8f4903f919ea0750e"
+  },
+  "models": {
+    "UD-Q4_K_S": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_S.gguf",
+        "bytes": 15358213024,
+        "sha256": "75bc9c8adba2842e72f0ab5201aaa07133c5010b566305c09187fcbdcd364017"
+      }
+    ],
+    "UD-Q4_K_XL": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_XL.gguf",
+        "bytes": 17559178144,
+        "sha256": "3f227079003add2511437e5b1e94812e363385225bf6a9b47b0054a72bc8b01e"
+      }
+    ],
+    "UD-Q3_K_XL": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q3_K_XL.gguf",
+        "bytes": 13146393504,
+        "sha256": "8c2a45ff85e7674ca185ec8eb6cdeab0e617ed9d8018caed0b64380eb2a67a5e"
+      }
+    ]
+  },
+  "unsloth_path": "C:\\Users\\Yuki\\.unsloth\\studio\\bin\\unsloth.exe",
+  "unsloth_executable_sha256": "a69ed2b2513f1c2e753f0684f38dd1f9e361049a0e3352dbd6ed0f6bd227f303",
+  "unsloth_version": "unsloth 2026.9.2\n",
+  "server_timeout": 1800,
+  "request_timeout": 7200,
+  "fingerprint": "778d35c544d03f6f3442e09eed66028277f5345eed5f3a3cfc367e5af801688d",
+  "created_at": "2026-09-05T23:04:23.836+08:00"
+}

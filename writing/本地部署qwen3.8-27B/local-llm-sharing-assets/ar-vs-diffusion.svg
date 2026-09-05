@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">自回归生成与文本扩散生成对比</title>
+  <desc id="desc">自回归逐 Token 生成；DiffusionGemma 在 Canvas 内迭代去噪，多个 Canvas 之间按块自回归推进</desc>
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0f172a"/><stop offset="1" stop-color="#18181b"/></linearGradient>
+    <marker id="arrow5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/></marker>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg5)"/>
+  <text x="70" y="80" fill="#fff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="40" font-weight="700">逐 Token 生成与块内迭代去噪</text>
+
+  <rect x="65" y="130" width="550" height="505" rx="28" fill="#111c35" stroke="#3b82f6" stroke-width="2"/>
+  <text x="105" y="185" fill="#93c5fd" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="24">AUTOREGRESSIVE</text>
+  <text x="105" y="224" fill="#fff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="27" font-weight="700">自回归：从左到右逐 Token 生成</text>
+  <g font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="19" text-anchor="middle">
+    <rect x="105" y="295" width="72" height="58" rx="10" fill="#2563eb"/><text x="141" y="331" fill="#fff">我</text>
+    <path d="M182 324h32" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow5)"/>
+    <rect x="225" y="295" width="72" height="58" rx="10" fill="#2563eb"/><text x="261" y="331" fill="#fff">正在</text>
+    <path d="M302 324h32" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow5)"/>
+    <rect x="345" y="295" width="72" height="58" rx="10" fill="#2563eb"/><text x="381" y="331" fill="#fff">生成</text>
+    <path d="M422 324h32" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow5)"/>
+    <rect x="465" y="295" width="72" height="58" rx="10" fill="#2563eb"/><text x="501" y="331" fill="#fff">文本</text>
+  </g>
+  <text x="105" y="430" fill="#bfdbfe" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 常见引擎支持流式输出</text>
+  <text x="105" y="471" fill="#bfdbfe" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 通常每步增加一个 Token</text>
+  <text x="105" y="512" fill="#fca5a5" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 生成速度受权重和缓存读取影响</text>
+  <text x="105" y="553" fill="#fca5a5" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 已输出的 Token 通常保持固定</text>
+
+  <rect x="665" y="130" width="550" height="505" rx="28" fill="#25134a" stroke="#a78bfa" stroke-width="2"/>
+  <text x="705" y="185" fill="#c4b5fd" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="24">DIFFUSIONGEMMA</text>
+  <text x="705" y="224" fill="#fff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="29" font-weight="700">块内去噪，块间依次推进</text>
+  <g stroke="#c4b5fd" stroke-width="1">
+    <rect x="725" y="275" width="430" height="120" rx="14" fill="#3b1b70"/>
+    <path d="M778.75 275v120M832.5 275v120M886.25 275v120M940 275v120M993.75 275v120M1047.5 275v120M1101.25 275v120"/>
+    <path d="M725 315h430M725 355h430"/>
+  </g>
+  <g fill="#ddd6fe" font-family="Consolas, monospace" font-size="17" text-anchor="middle">
+    <text x="752" y="303">?</text><text x="806" y="303">文</text><text x="860" y="303">#</text><text x="913" y="303">本</text><text x="967" y="303">?</text><text x="1021" y="303">生</text><text x="1075" y="303">*</text><text x="1128" y="303">成</text>
+    <text x="752" y="343">并</text><text x="806" y="343">?</text><text x="860" y="343">行</text><text x="913" y="343">?</text><text x="967" y="343">修</text><text x="1021" y="343">正</text><text x="1075" y="343">?</text><text x="1128" y="343">。</text>
+    <text x="752" y="383">?</text><text x="806" y="383">?</text><text x="860" y="383">→</text><text x="913" y="383">逐</text><text x="967" y="383">步</text><text x="1021" y="383">变</text><text x="1075" y="383">清</text><text x="1128" y="383">晰</text>
+  </g>
+  <text x="705" y="430" fill="#e9d5ff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 一块 Canvas 内经过多轮更新</text>
+  <text x="705" y="471" fill="#e9d5ff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 完成后继续生成下一个 Canvas</text>
+  <text x="705" y="512" fill="#fbcfe8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 块间使用已完成的前缀</text>
+  <text x="705" y="553" fill="#fbcfe8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="21">• 记录块长、迭代步数与总耗时</text>
+
+  <text x="640" y="680" text-anchor="middle" fill="#94a3b8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="20">DiffusionGemma：先完成当前块，再利用已有前缀继续生成下一块</text>
+</svg>

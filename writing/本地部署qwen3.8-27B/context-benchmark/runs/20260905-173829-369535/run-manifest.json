@@ -1,0 +1,242 @@
+{
+  "config": {
+    "schema_version": 3,
+    "model_repository": "unsloth/Qwen3.8-27B-GGUF",
+    "local_model_files": {
+      "UD-Q4_K_S": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q4_K_S.gguf",
+      "UD-Q4_K_XL": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q4_K_XL.gguf",
+      "UD-Q3_K_XL": "C:/Users/Yuki/.cache/huggingface/hub/models--unsloth--Qwen3.8-27B-GGUF/snapshots/4ca720788d1e01f1bff70c033e0d0028fd02e502/Qwen3.8-27B-UD-Q3_K_XL.gguf"
+    },
+    "seeds": [
+      3407,
+      3413,
+      3433
+    ],
+    "common_context": 8192,
+    "common_target_tokens": 6800,
+    "quality_target_tokens": 4600,
+    "common_max_tokens": 192,
+    "performance_repeats": 2,
+    "safety_margin": 128,
+    "tolerance": 64,
+    "gpu_layers_request": 999,
+    "profiles": [
+      {
+        "name": "performance",
+        "label": "性能优先候选",
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "thinking": false,
+        "effort": "medium",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "presence_penalty": 1.5,
+        "max_tokens": 1024
+      },
+      {
+        "name": "quality",
+        "label": "质量优先候选",
+        "quant": "UD-Q4_K_XL",
+        "batch": 512,
+        "ubatch": 256,
+        "kv": "q8_0",
+        "thinking": true,
+        "effort": "medium",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 3072
+      },
+      {
+        "name": "context",
+        "label": "上下文优先候选",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "thinking": false,
+        "effort": "medium",
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "presence_penalty": 1.5,
+        "max_tokens": 1024
+      }
+    ],
+    "contexts": [
+      {
+        "name": "8K",
+        "context": 8192,
+        "target": 6800
+      },
+      {
+        "name": "32K",
+        "context": 32768,
+        "target": 29000
+      },
+      {
+        "name": "64K",
+        "context": 65536,
+        "target": 58000
+      },
+      {
+        "name": "128K",
+        "context": 131072,
+        "target": 116000
+      }
+    ],
+    "ablations": [
+      {
+        "name": "quant-q4s",
+        "quant": "UD-Q4_K_S",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "quant-q4xl",
+        "quant": "UD-Q4_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "quant-q3",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      },
+      {
+        "name": "thinking-off",
+        "quant": "UD-Q4_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 4600,
+        "kind": "quality",
+        "thinking": false,
+        "effort": "medium",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 3072
+      },
+      {
+        "name": "thinking-medium",
+        "quant": "UD-Q4_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 4600,
+        "kind": "quality",
+        "thinking": true,
+        "effort": "medium",
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0,
+        "max_tokens": 3072
+      },
+      {
+        "name": "kv-q8",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 65536,
+        "target": 58000,
+        "kind": "capacity"
+      },
+      {
+        "name": "kv-q4",
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q4_0",
+        "context": 65536,
+        "target": 58000,
+        "kind": "capacity"
+      },
+      {
+        "name": "batch-large",
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "context": 8192,
+        "target": 6800,
+        "kind": "performance"
+      }
+    ]
+  },
+  "plan": [
+    {
+      "name": "performance",
+      "label": "性能优先候选",
+      "quant": "UD-Q4_K_S",
+      "batch": 1024,
+      "ubatch": 512,
+      "kv": "q8_0",
+      "thinking": false,
+      "effort": "medium",
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "presence_penalty": 1.5,
+      "max_tokens": 1024,
+      "id": "performance-performance",
+      "kind": "performance",
+      "context": 8192,
+      "target": 6800,
+      "output_budget": 192
+    }
+  ],
+  "suite": "smoke",
+  "scripts": {
+    "benchmark_common.py": "8568d321f2aad2d450a3affab0c0b089ff2fa47f809ab90fa3bc6329e5b9b863",
+    "benchmark_config.json": "92f7cc2f4cedd229fcd1447c52bf5d1817dbc7b9f9b51ad7c72e4f4b8e4d2709",
+    "benchmark_entry.psm1": "677acd8de244b2845bd8d3ab0daf9dc925a618a02ff2e0e9636238992bb14f8b",
+    "benchmark_suite.py": "b06ea0757d2839dcb663af46560ff244680c746e7997b06941fa8c3b5dead380",
+    "benchmark_tasks.json": "3e1af5759687397e061f655217819dcc234eadff83fe661d596d06ed601779c3",
+    "benchmark_validation.py": "7f585acd7ddf9614b150a3c8db6f046ba268fd0c1573b564680b0c47d5ca95d6",
+    "generate_context_cases.py": "bd7b74a33ac1b5690d815200d39e85830fd7e4635129455e146970901afd83e6",
+    "managed_process.py": "7d205cc40db42789402cf3775c7ee3fa9675cb864422404c440e0f6862fcdeeb",
+    "run_all_contexts.ps1": "6bfb5e77f91fd273297f1518bb0a1c3867c5a24c46e9224f485c2be88585dc88",
+    "run_context_benchmark.py": "6b9587a8cf5395c7897c492cde957ef40f09a77fcbac79105e738510c25aa6d1",
+    "run_full_benchmark.ps1": "143606d4c4d8a5c9aba6a524a9cd411fbfd429e6ff5426d12f4e82ac090fd11c",
+    "run_profile_benchmark.py": "b901f0056fd5ca9d5c276962e5161c898164dcfff305a31cd5d9cd685f3d5e74"
+  },
+  "models": {
+    "UD-Q4_K_S": [
+      {
+        "path": "C:\\Users\\Yuki\\.cache\\huggingface\\hub\\models--unsloth--Qwen3.8-27B-GGUF\\snapshots\\4ca720788d1e01f1bff70c033e0d0028fd02e502\\Qwen3.8-27B-UD-Q4_K_S.gguf",
+        "bytes": 15358213024,
+        "sha256": "75bc9c8adba2842e72f0ab5201aaa07133c5010b566305c09187fcbdcd364017"
+      }
+    ]
+  },
+  "unsloth_path": "C:\\Users\\Yuki\\.unsloth\\studio\\bin\\unsloth.exe",
+  "unsloth_executable_sha256": "a69ed2b2513f1c2e753f0684f38dd1f9e361049a0e3352dbd6ed0f6bd227f303",
+  "unsloth_version": "unsloth 2026.9.2\n",
+  "server_timeout": 1800,
+  "request_timeout": 7200,
+  "fingerprint": "b47eed65bac70703fc4ae23abb10f23de9e92f66509107038f1694970458913a",
+  "created_at": "2026-09-05T17:38:40.816+08:00"
+}

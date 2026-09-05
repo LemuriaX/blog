@@ -1,0 +1,12 @@
+{
+  "issues": [],
+  "local_links_checked": 55,
+  "historical_evidence_hashes_checked": 46,
+  "historical_snapshot_hashes_checked": 12,
+  "historical_quality_table_unchanged": true,
+  "quality_dry_run_stages": 3,
+  "full_with_ablations_and_boundary_stages": 16,
+  "model_paths_found": 3,
+  "regression_tests_passed": 34,
+  "gpu_inference_started": false
+}

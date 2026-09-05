@@ -1,0 +1,25 @@
+{
+  "stages": [
+    {
+      "name": "quality",
+      "label": "质量优先候选",
+      "quant": "UD-Q4_K_XL",
+      "batch": 512,
+      "ubatch": 256,
+      "kv": "q8_0",
+      "thinking": true,
+      "effort": "medium",
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 0.0,
+      "max_tokens": 3072,
+      "id": "quality-quality",
+      "kind": "quality",
+      "context": 8192,
+      "target": 4600,
+      "output_budget": 3072
+    }
+  ],
+  "dry_run": true
+}

@@ -1,0 +1,98 @@
+{
+  "status": "completed",
+  "planned_requests": 6,
+  "completed_requests": 6,
+  "valid_requests": 6,
+  "task_success_rate": 1.0,
+  "run_success_rate": 1.0,
+  "overall_accuracy": 1.0,
+  "total_items": 30,
+  "correct_items": 30,
+  "positions": {
+    "pos_10": 6,
+    "pos_30": 6,
+    "pos_50": 6,
+    "pos_70": 6,
+    "pos_90": 6
+  },
+  "capacity_verdict": "pass",
+  "performance_verdict": "pass",
+  "failure_reasons": [],
+  "metrics": {
+    "prompt_tps": {
+      "median": 733.393641,
+      "n": 6,
+      "minimum": 729.563984,
+      "maximum": 737.663497,
+      "source": "backend"
+    },
+    "decode_tps": {
+      "median": 31.17378,
+      "n": 6,
+      "minimum": 31.030209,
+      "maximum": 31.328554,
+      "source": "backend"
+    },
+    "client_prompt_tps_est": {
+      "median": 715.847597,
+      "n": 6,
+      "minimum": 703.0244035246659,
+      "maximum": 722.0037711648598,
+      "source": "client_estimate"
+    },
+    "client_decode_tps_est": {
+      "median": 31.492328,
+      "n": 6,
+      "minimum": 31.33460932040647,
+      "maximum": 31.641211468692862,
+      "source": "client_estimate"
+    },
+    "ttft_client_s": {
+      "median": 9.476904,
+      "n": 6,
+      "minimum": 9.387762599999405,
+      "maximum": 9.652581000002101,
+      "source": "client"
+    },
+    "ttfa_client_s": {
+      "median": 9.476904,
+      "n": 6,
+      "minimum": 9.387762599999405,
+      "maximum": 9.652581000002101,
+      "source": "client"
+    },
+    "total_s": {
+      "median": 12.801474,
+      "n": 6,
+      "minimum": 12.682783399999607,
+      "maximum": 12.877085400003125,
+      "source": "client"
+    },
+    "output_tokens": {
+      "median": 102.0,
+      "n": 6,
+      "minimum": 101,
+      "maximum": 108,
+      "source": "backend"
+    },
+    "reasoning_tokens": {
+      "median": 0.0,
+      "n": 6,
+      "minimum": 0,
+      "maximum": 0,
+      "source": "backend"
+    }
+  },
+  "measured_prompt_tokens": [
+    6778,
+    6778,
+    6786,
+    6786,
+    6782,
+    6782
+  ],
+  "configured_contexts": [
+    8192
+  ],
+  "primary_attempt_policy": "first_attempt_per_planned_request"
+}

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">27B 模型如何塞进 20GB 显存</title>
+  <desc id="desc">性能、质量和上下文围绕固定显存预算形成的工程权衡</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#111a36"/>
+      <stop offset="1" stop-color="#251449"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#4c1d95"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#93c5fd" stroke-opacity="0.06"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#grid)"/>
+  <circle cx="1110" cy="92" r="190" fill="#2563eb" opacity="0.08"/>
+  <circle cx="170" cy="680" r="260" fill="#ec4899" opacity="0.06"/>
+
+  <text x="90" y="105" fill="#a5b4fc" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="24" letter-spacing="2">LOCAL LLM ENGINEERING</text>
+  <text x="90" y="168" fill="#ffffff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="52" font-weight="700">27B 模型如何塞进 20GB 显存</text>
+  <text x="92" y="218" fill="#cbd5e1" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="25">量化、上下文与性能权衡 · Qwen3.8-27B × RX 7900 XT × Unsloth</text>
+
+  <path d="M640 335 L365 582 L915 582 Z" fill="none" stroke="#a78bfa" stroke-width="3" stroke-opacity="0.58"/>
+  <path d="M640 405 L450 568 M640 405 L830 568 M450 568 L830 568" stroke="#c4b5fd" stroke-width="2" stroke-dasharray="8 10" stroke-opacity="0.38"/>
+
+  <g filter="url(#shadow)">
+    <circle cx="640" cy="445" r="105" fill="url(#core)" stroke="#c4b5fd" stroke-width="3"/>
+    <text x="640" y="430" text-anchor="middle" fill="#ede9fe" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="26">固定预算</text>
+    <text x="640" y="480" text-anchor="middle" fill="#ffffff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="48" font-weight="700">20GB</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <circle cx="640" cy="315" r="64" fill="#0f766e" stroke="#5eead4" stroke-width="2"/>
+    <text x="640" y="323" text-anchor="middle" fill="#ecfeff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="25" font-weight="700">质量</text>
+    <circle cx="337" cy="588" r="64" fill="#1d4ed8" stroke="#93c5fd" stroke-width="2"/>
+    <text x="337" y="596" text-anchor="middle" fill="#eff6ff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="25" font-weight="700">性能</text>
+    <circle cx="943" cy="588" r="64" fill="#be185d" stroke="#f9a8d4" stroke-width="2"/>
+    <text x="943" y="596" text-anchor="middle" fill="#fdf2f8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="25" font-weight="700">上下文</text>
+  </g>
+
+  <text x="1090" y="675" text-anchor="end" fill="#94a3b8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="20">加载、速度与质量需分别验证</text>
+</svg>

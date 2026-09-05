@@ -1,0 +1,22 @@
+{
+  "spec": {
+    "context": 16384,
+    "target": 4600,
+    "cases": 3,
+    "seed": 3407,
+    "variant": "challenge",
+    "max_output_tokens": 8192,
+    "tolerance": 64,
+    "safety_margin": 128,
+    "enable_thinking": true,
+    "reasoning_effort": "xhigh"
+  },
+  "files": {
+    "case-01.json": "bd968ab24ecb766d261428b25b6ea15ebb06984e37358c38b1ad1e8cfb34fc72",
+    "case-01.txt": "86dd5b1233ad8eabe8941a932ac159f1c41be8df6c36799e9426e7bdb016abe0",
+    "case-02.json": "2ad4aabf320f2865351d05edef9322f64a20ba2ffd65e91fc1efd781347da9ef",
+    "case-02.txt": "e9e051eabff7157a8702540d364ba489c01a4c55ee34c66cd5fd5ee81d80e63a",
+    "case-03.json": "058f5ef2c7eae9a7a3d4468e4ed4a8e57dfbbf449ff2ea613cf2c4c06fe01ffa",
+    "case-03.txt": "42806a2a30e4cda9facab8903b3e2b0f3ba2566c1ed1a908c6a0ae2a979e5909"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "spec": {
+    "context": 8192,
+    "target": 4600,
+    "cases": 3,
+    "seed": 3407,
+    "variant": "challenge",
+    "max_output_tokens": 3072,
+    "tolerance": 64,
+    "safety_margin": 128
+  },
+  "files": {
+    "case-01.json": "88d061e357bde88222e26d45dc30706b6c301e7c05611a30b3543869a2132977",
+    "case-01.txt": "86dd5b1233ad8eabe8941a932ac159f1c41be8df6c36799e9426e7bdb016abe0",
+    "case-02.json": "b52ab29c41b732b69f4e2f3a5ac9e235b10a0ab55729108ccf96db63f50134a4",
+    "case-02.txt": "e9e051eabff7157a8702540d364ba489c01a4c55ee34c66cd5fd5ee81d80e63a",
+    "case-03.json": "c2946cbaaa1c7afec344a994ea6993f46459c7ce3b677043622c6f0e5ff4c05a",
+    "case-03.txt": "42806a2a30e4cda9facab8903b3e2b0f3ba2566c1ed1a908c6a0ae2a979e5909"
+  }
+}

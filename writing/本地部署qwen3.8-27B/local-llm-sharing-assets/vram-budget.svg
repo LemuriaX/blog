@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+<title id="title">本地文件大小与 20 GiB 参照值</title>
+<desc id="desc">文件大小取自2026年9月5日本地模型预检。20 GiB仅为算术参照；图中差额不是运行时可用显存。</desc>
+<rect width="1280" height="720" fill="#0f172a"/>
+<g font-family="Microsoft YaHei, Segoe UI, sans-serif">
+<text x="70" y="78" fill="#fff" font-size="38" font-weight="700">本地文件大小与 20 GiB 参照值</text>
+<text x="72" y="122" fill="#cbd5e1" font-size="21">文件大小取自本轮预检；20 GiB 用于演示单位换算和差额</text>
+<text x="82" y="222" fill="#e2e8f0" font-size="25" font-weight="700">性能预设</text>
+<rect x="300" y="186" width="850" height="58" rx="9" fill="#7dd3fc"/>
+<rect x="300" y="186" width="607.897" height="58" rx="9" fill="#2563eb"/>
+<text x="603.948" y="223" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">UD-Q4_K_S · 14.303 GiB</text>
+<text x="1028.948" y="222" text-anchor="middle" fill="#0f172a" font-size="19">差额 5.697</text>
+<text x="300" y="269" fill="#94a3b8" font-size="17">本地文件 15.358 GB；差额单位为 GiB</text>
+<text x="82" y="338" fill="#e2e8f0" font-size="25" font-weight="700">质量预设</text>
+<rect x="300" y="302" width="850" height="58" rx="9" fill="#6ee7b7"/>
+<rect x="300" y="302" width="695.014" height="58" rx="9" fill="#059669"/>
+<text x="647.507" y="339" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">UD-Q4_K_XL · 16.353 GiB</text>
+<text x="1072.507" y="338" text-anchor="middle" fill="#0f172a" font-size="19">差额 3.647</text>
+<text x="300" y="385" fill="#94a3b8" font-size="17">本地文件 17.559 GB；差额单位为 GiB</text>
+<text x="82" y="454" fill="#e2e8f0" font-size="25" font-weight="700">上下文预设</text>
+<rect x="300" y="418" width="850" height="58" rx="9" fill="#f9a8d4"/>
+<rect x="300" y="418" width="520.350" height="58" rx="9" fill="#db2777"/>
+<text x="560.175" y="455" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">UD-Q3_K_XL · 12.244 GiB</text>
+<text x="985.175" y="454" text-anchor="middle" fill="#0f172a" font-size="19">差额 7.756</text>
+<text x="300" y="501" fill="#94a3b8" font-size="17">本地文件 13.146 GB；差额单位为 GiB</text>
+<path d="M300 532H1150" stroke="#64748b"/>
+<text x="300" y="560" text-anchor="middle" fill="#cbd5e1" font-size="18">0 GiB</text>
+<text x="512.5" y="560" text-anchor="middle" fill="#cbd5e1" font-size="18">5 GiB</text>
+<text x="725" y="560" text-anchor="middle" fill="#cbd5e1" font-size="18">10 GiB</text>
+<text x="937.5" y="560" text-anchor="middle" fill="#cbd5e1" font-size="18">15 GiB</text>
+<text x="1150" y="560" text-anchor="middle" fill="#cbd5e1" font-size="18">20 GiB</text>
+<rect x="75" y="598" width="1130" height="90" rx="16" fill="#1e293b"/>
+<text x="100" y="633" fill="#fbbf24" font-size="22" font-weight="700">文件大小 ≠ GPU 模型缓冲；差额 ≠ 运行余量</text>
+<text x="100" y="667" fill="#e2e8f0" font-size="20">运行还需要缓存、循环状态和计算缓冲；本轮未采集总显存峰值。</text>
+</g></svg>

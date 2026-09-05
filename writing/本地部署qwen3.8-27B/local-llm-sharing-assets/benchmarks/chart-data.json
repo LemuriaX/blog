@@ -1,0 +1,756 @@
+{
+  "schema": 1,
+  "matplotlib": "3.11.1",
+  "figures": [
+    {
+      "file": "01-common-performance",
+      "pixels": [
+        2560,
+        1440
+      ],
+      "out_of_canvas_text": []
+    },
+    {
+      "file": "02-quality-wait",
+      "pixels": [
+        2560,
+        1440
+      ],
+      "out_of_canvas_text": []
+    },
+    {
+      "file": "03-quality-distribution",
+      "pixels": [
+        2560,
+        1440
+      ],
+      "out_of_canvas_text": []
+    },
+    {
+      "file": "04-context-scaling",
+      "pixels": [
+        2560,
+        1440
+      ],
+      "out_of_canvas_text": []
+    },
+    {
+      "file": "05-gpu-buffers",
+      "pixels": [
+        2560,
+        1440
+      ],
+      "out_of_canvas_text": []
+    }
+  ],
+  "source_runs": [
+    {
+      "id": "20260905-185546-067769",
+      "driver": "32.0.31035.1003"
+    },
+    {
+      "id": "20260905-230353-216459",
+      "driver": "32.0.31041.1004"
+    }
+  ],
+  "selected_first_attempts": 225,
+  "stages": [
+    {
+      "id": "performance-performance",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "context": 8192,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 780.849174,
+          "minimum": 771.776614,
+          "maximum": 800.894375
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 34.0002305,
+          "minimum": 32.535805,
+          "maximum": 34.079635
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 8.874250349999784,
+          "minimum": 8.846513100001175,
+          "maximum": 9.122722199997952
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 8.874250349999784,
+          "minimum": 8.846513100001175,
+          "maximum": 9.122722199997952
+        },
+        "total_s": {
+          "n": 6,
+          "median": 11.986661949998961,
+          "minimum": 11.79542500000025,
+          "maximum": 12.104538200001116
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 102.0,
+          "minimum": 101,
+          "maximum": 108
+        }
+      },
+      "buffers_gib": {
+        "model": 13.457529296875,
+        "KV": 0.265625,
+        "RS": 0.14611328125,
+        "compute": 0.1272265625
+      },
+      "input_median": 6782.0,
+      "input_range": [
+        6778,
+        6786
+      ]
+    },
+    {
+      "id": "quality-performance",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q4_K_XL",
+        "batch": 512,
+        "ubatch": 256,
+        "kv": "q8_0",
+        "context": 8192,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 733.393641,
+          "minimum": 729.563984,
+          "maximum": 737.663497
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 31.1737805,
+          "minimum": 31.030209,
+          "maximum": 31.328554
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 9.476904150000337,
+          "minimum": 9.387762599999405,
+          "maximum": 9.652581000002101
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 9.476904150000337,
+          "minimum": 9.387762599999405,
+          "maximum": 9.652581000002101
+        },
+        "total_s": {
+          "n": 6,
+          "median": 12.801473599998644,
+          "minimum": 12.682783399999607,
+          "maximum": 12.877085400003125
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 102.0,
+          "minimum": 101,
+          "maximum": 108
+        }
+      },
+      "buffers_gib": {
+        "model": 15.350078125,
+        "KV": 0.265625,
+        "RS": 0.14611328125,
+        "compute": 0.074482421875
+      },
+      "input_median": 6782.0,
+      "input_range": [
+        6778,
+        6786
+      ]
+    },
+    {
+      "id": "context-performance",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 8192,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 0,
+      "format_valid": 0,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 649.658331,
+          "minimum": 646.095389,
+          "maximum": 658.381627
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 33.335946,
+          "minimum": 33.045357,
+          "maximum": 33.418471
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 10.691680699999779,
+          "minimum": 10.566095700000005,
+          "maximum": 10.867111999999906
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 10.691680699999779,
+          "minimum": 10.566095700000005,
+          "maximum": 10.867111999999906
+        },
+        "total_s": {
+          "n": 6,
+          "median": 13.914931699999215,
+          "minimum": 13.781266699999833,
+          "maximum": 14.050898100002087
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 107.0,
+          "minimum": 106,
+          "maximum": 113
+        }
+      },
+      "buffers_gib": {
+        "model": 11.397607421875,
+        "KV": 0.265625,
+        "RS": 0.14611328125,
+        "compute": 0.052998046875
+      },
+      "input_median": 6782.0,
+      "input_range": [
+        6778,
+        6786
+      ]
+    },
+    {
+      "id": "capacity-32K",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 32768,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 556.2533115,
+          "minimum": 554.37691,
+          "maximum": 557.826814
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 30.564496,
+          "minimum": 29.14107,
+          "maximum": 30.779217
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 52.366846450000594,
+          "minimum": 52.110326500001975,
+          "maximum": 52.56834220000019
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 52.366846450000594,
+          "minimum": 52.110326500001975,
+          "maximum": 52.56834220000019
+        },
+        "total_s": {
+          "n": 6,
+          "median": 55.75236285000028,
+          "minimum": 55.5987712999995,
+          "maximum": 55.85087299999941
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 102.0,
+          "minimum": 101,
+          "maximum": 108
+        }
+      },
+      "buffers_gib": {
+        "model": 11.397607421875,
+        "KV": 1.0625,
+        "RS": 0.14611328125,
+        "compute": 0.152607421875
+      },
+      "input_median": 28947.0,
+      "input_range": [
+        28942,
+        28959
+      ]
+    },
+    {
+      "id": "capacity-64K",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 65536,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 455.330717,
+          "minimum": 452.808275,
+          "maximum": 455.712858
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 27.5088475,
+          "minimum": 26.177481,
+          "maximum": 27.607474
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 127.55348439999943,
+          "minimum": 127.41500290000113,
+          "maximum": 128.77277239999967
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 127.55348439999943,
+          "minimum": 127.41500290000113,
+          "maximum": 128.77277239999967
+        },
+        "total_s": {
+          "n": 6,
+          "median": 131.40723830000024,
+          "minimum": 131.20209859999886,
+          "maximum": 132.40630959999908
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 102.0,
+          "minimum": 101,
+          "maximum": 108
+        }
+      },
+      "buffers_gib": {
+        "model": 11.397607421875,
+        "KV": 2.125,
+        "RS": 0.14611328125,
+        "compute": 0.285419921875
+      },
+      "input_median": 57966.0,
+      "input_range": [
+        57964,
+        57975
+      ]
+    },
+    {
+      "id": "capacity-128K",
+      "run_id": "20260905-185546-067769",
+      "settings": {
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 131072,
+        "enable_thinking": false,
+        "reasoning_effort": null,
+        "max_tokens": 192,
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "top_k": 1,
+        "presence_penalty": 0.0
+      },
+      "planned": 6,
+      "valid": 6,
+      "success": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "n": 6,
+          "median": 333.418151,
+          "minimum": 331.690849,
+          "maximum": 334.676359
+        },
+        "decode_tps": {
+          "n": 6,
+          "median": 21.5330795,
+          "minimum": 20.977303,
+          "maximum": 21.763484
+        },
+        "ttft_client_s": {
+          "n": 6,
+          "median": 348.96426875,
+          "minimum": 346.9976010999999,
+          "maximum": 351.1772136999971
+        },
+        "ttfa_client_s": {
+          "n": 6,
+          "median": 348.96426875,
+          "minimum": 346.9976010999999,
+          "maximum": 351.1772136999971
+        },
+        "total_s": {
+          "n": 6,
+          "median": 353.8376988,
+          "minimum": 351.6407615999997,
+          "maximum": 355.8743817999966
+        },
+        "output_tokens": {
+          "n": 6,
+          "median": 102.0,
+          "minimum": 101,
+          "maximum": 108
+        }
+      },
+      "buffers_gib": {
+        "model": 11.397607421875,
+        "KV": 4.25,
+        "RS": 0.14611328125,
+        "compute": 0.551044921875
+      },
+      "input_median": 116046.0,
+      "input_range": [
+        116043,
+        116057
+      ]
+    },
+    {
+      "id": "performance-quality",
+      "run_id": "20260905-230353-216459",
+      "settings": {
+        "quant": "UD-Q4_K_S",
+        "batch": 1024,
+        "ubatch": 512,
+        "kv": "q8_0",
+        "context": 16384,
+        "enable_thinking": true,
+        "reasoning_effort": "xhigh",
+        "max_tokens": 8192,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0
+      },
+      "planned": 63,
+      "valid": 63,
+      "success": 63,
+      "format_valid": 63,
+      "metrics": {
+        "prompt_tps": {
+          "n": 63,
+          "median": 298.364044,
+          "minimum": 151.703864,
+          "maximum": 793.835766
+        },
+        "decode_tps": {
+          "n": 63,
+          "median": 35.108847,
+          "minimum": 34.116446,
+          "maximum": 35.44257
+        },
+        "ttft_client_s": {
+          "n": 63,
+          "median": 0.7482281000000057,
+          "minimum": 0.623305500000015,
+          "maximum": 6.610090200000059
+        },
+        "ttfa_client_s": {
+          "n": 63,
+          "median": 8.40632979999998,
+          "minimum": 3.569604899999945,
+          "maximum": 72.91294459999995
+        },
+        "total_s": {
+          "n": 63,
+          "median": 8.995713000000023,
+          "minimum": 3.884459500000048,
+          "maximum": 73.47967039999992
+        },
+        "output_tokens": {
+          "n": 63,
+          "median": 290,
+          "minimum": 112,
+          "maximum": 2530
+        }
+      },
+      "buffers_gib": {
+        "model": 13.457529296875,
+        "KV": 0.53125,
+        "RS": 0.14611328125,
+        "compute": 0.1565234375
+      },
+      "input_median": 135,
+      "input_range": [
+        111,
+        4616
+      ]
+    },
+    {
+      "id": "quality-quality",
+      "run_id": "20260905-230353-216459",
+      "settings": {
+        "quant": "UD-Q4_K_XL",
+        "batch": 512,
+        "ubatch": 256,
+        "kv": "q8_0",
+        "context": 16384,
+        "enable_thinking": true,
+        "reasoning_effort": "xhigh",
+        "max_tokens": 8192,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0
+      },
+      "planned": 63,
+      "valid": 63,
+      "success": 63,
+      "format_valid": 63,
+      "metrics": {
+        "prompt_tps": {
+          "n": 63,
+          "median": 296.779938,
+          "minimum": 193.076817,
+          "maximum": 764.234299
+        },
+        "decode_tps": {
+          "n": 63,
+          "median": 32.173559,
+          "minimum": 30.297513,
+          "maximum": 32.744895
+        },
+        "ttft_client_s": {
+          "n": 63,
+          "median": 0.7542909999999665,
+          "minimum": 0.6385366999998041,
+          "maximum": 6.878006899999946
+        },
+        "ttfa_client_s": {
+          "n": 63,
+          "median": 10.762454700000035,
+          "minimum": 3.712467800000013,
+          "maximum": 75.91708420000009
+        },
+        "total_s": {
+          "n": 63,
+          "median": 11.310913100000107,
+          "minimum": 4.053330200000119,
+          "maximum": 76.67905130000008
+        },
+        "output_tokens": {
+          "n": 63,
+          "median": 339,
+          "minimum": 108,
+          "maximum": 2448
+        }
+      },
+      "buffers_gib": {
+        "model": 15.350078125,
+        "KV": 0.53125,
+        "RS": 0.14611328125,
+        "compute": 0.109638671875
+      },
+      "input_median": 135,
+      "input_range": [
+        111,
+        4616
+      ]
+    },
+    {
+      "id": "context-quality",
+      "run_id": "20260905-230353-216459",
+      "settings": {
+        "quant": "UD-Q3_K_XL",
+        "batch": 256,
+        "ubatch": 128,
+        "kv": "q8_0",
+        "context": 16384,
+        "enable_thinking": true,
+        "reasoning_effort": "xhigh",
+        "max_tokens": 8192,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "presence_penalty": 0.0
+      },
+      "planned": 63,
+      "valid": 63,
+      "success": 63,
+      "format_valid": 63,
+      "metrics": {
+        "prompt_tps": {
+          "n": 63,
+          "median": 255.524618,
+          "minimum": 157.038853,
+          "maximum": 668.187362
+        },
+        "decode_tps": {
+          "n": 63,
+          "median": 34.287861,
+          "minimum": 32.748043,
+          "maximum": 34.913013
+        },
+        "ttft_client_s": {
+          "n": 63,
+          "median": 0.8319201999997858,
+          "minimum": 0.6322322000000895,
+          "maximum": 7.419851800000288
+        },
+        "ttfa_client_s": {
+          "n": 63,
+          "median": 9.702108500000122,
+          "minimum": 3.1606990999998743,
+          "maximum": 80.18117819999998
+        },
+        "total_s": {
+          "n": 63,
+          "median": 10.083998099999917,
+          "minimum": 3.475013499999932,
+          "maximum": 80.8847697000001
+        },
+        "output_tokens": {
+          "n": 63,
+          "median": 310,
+          "minimum": 97,
+          "maximum": 2759
+        }
+      },
+      "buffers_gib": {
+        "model": 11.397607421875,
+        "KV": 0.53125,
+        "RS": 0.14611328125,
+        "compute": 0.086201171875
+      },
+      "input_median": 135,
+      "input_range": [
+        111,
+        4616
+      ]
+    }
+  ],
+  "source_sha256": {
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\environment.json": "017d95e9ea8d405a2999f007cada83edd790f4ecc7af717889655d06837fe1af",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\summary.json": "cab8bc85ad012fe8cf4a2759d632432e6f2521c6deb0401c2f88aaac597db902",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\performance-performance\\results.events.jsonl": "305d600e439aeee78497dddf02c331c3f6d90ab1f0a1f2713445849828886c8a",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\performance-performance\\results.manifest.json": "c86f2f9f069a1ff782731d3c1de3e041d9cac78d44f953ae6ab49fd93a5dd3a6",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\performance-performance\\results.summary.json": "bb636b7b911b6e9d390651e2b9f5cd0e6c2685c079844b7b9c0ac2d0fc82f4a1",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\performance-performance\\llama-server.log": "ccb76c06cedb251df6459845b3fe840ea90eb37e9ec57bb7c2493167411f5438",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\performance-performance\\backend-log-collection.json": "9e6305b867c09a0f71a8fe8cce5c101fdacc268b363a117ceeba3f5bc2ee7178",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\quality-performance\\results.events.jsonl": "a2ff14ea0b7d8af793b298a9729b13411d3ef17c6dfa6289bff618d9783770bb",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\quality-performance\\results.manifest.json": "4a87c02c724f9a174ac7a3038ba2aabd6e4501ba23fea8a8085d43ef8315a438",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\quality-performance\\results.summary.json": "fe37630b771d373ef45f94d47f2163a6b36594986cd36b177c4121e29c8cf40b",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\quality-performance\\llama-server.log": "ec3f351a69fc1c156bc36704e02198b6b7533c03d1abf0e24927cffe617a6c18",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\quality-performance\\backend-log-collection.json": "0c3337ffcc9e93a44efefcbab546928bda90f07fb379c1470ad13dbd1b089cf1",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\context-performance\\results.events.jsonl": "beedc6eedef006a6c27dc6ece56089a7747cb988063eaedb3e5f889da6771bed",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\context-performance\\results.manifest.json": "7d94400c67e91621e04bb66ac09dc758a1ee3462e58767c8b1885510f167859a",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\context-performance\\results.summary.json": "cafcceaa340a663180ad0f24f6f890ebf7d2d491519befb3bd7b08d4132a43e5",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\context-performance\\llama-server.log": "53a961857abb9c00cdf8e1798a34f329fe1627210cdd43190b362e2e98de6e31",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\context-performance\\backend-log-collection.json": "5f8c428ff4a9c9de20c967080c093e2841174c79cabd5dc8c2ddecd4f8f4add7",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-32K\\results.events.jsonl": "14efa4bf4ff9896819e3f62b3890f30bf2154e251b1624c372fdbf437d7b478f",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-32K\\results.manifest.json": "def86a476284a1c5b94e99393e2159929aa501a15072850f1538de2f0b57a34d",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-32K\\results.summary.json": "d7e9a97482232bf9af56b7b57c7925783dda685af78e50b6149937e4ab05b3a3",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-32K\\llama-server.log": "20a3d40d1918ba88af097c954cfaab650b5dbd0e30653da7c4f605abf9ae9a36",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-32K\\backend-log-collection.json": "bed3ebcb64a6eef5b1032dad176838970f114adc697b32966f74bd5b67b93794",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-64K\\results.events.jsonl": "16311da6f713f78ea23a9898eca279d5beec072c296dd35e048ce8a85f151578",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-64K\\results.manifest.json": "f0a8752beca3a9028b031305f2179d74fb3154409f00dff7cc45215195bd8189",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-64K\\results.summary.json": "b2615bf6aec390f22abdffaeb25a692bd5cdb24ba864c1eb0ed91cf642ebaab0",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-64K\\llama-server.log": "8f0f89f561e99e693244f9e41e04bbcb02ad1f8194d6f0ef3d0aa61d87e21649",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-64K\\backend-log-collection.json": "2c6f12356692f98e63f27b55f0a8bc965240f148d0d79fa3da218d6b3db188e1",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-128K\\results.events.jsonl": "9b86da883e9f79c0264a2d935941592405179df992cfb2a00e35d412416d720b",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-128K\\results.manifest.json": "1c0f4a0dfef3c77e364d8f4785a17fdaeb3ed097c3d9ce0f50982d010d957f57",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-128K\\results.summary.json": "35905d078b53e5d0a87bbde0bf402a2634b497c22f3c82bbf9bd9f89480fac42",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-128K\\llama-server.log": "de4977db7104c9ba7e66cd8d3c5444c059ed7e22fadca82ecfca6a6f54ffef51",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-185546-067769\\capacity-128K\\backend-log-collection.json": "cc92f3ab33a4a06a26a49e1cebdf4f065f533af8afd04954bf8443c685030d66",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\environment.json": "11d904524c8c7dbae7635561c005ab74882c3c0bd850c8289e1edef3c74e8123",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\summary.json": "92cdaa8b8bd7614d76d88b98792aecf3e27075a40fb64b4c5f89731c000393d4",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\performance-quality\\results.events.jsonl": "27dc6731081d38c8661868622f16770a922cb11f4b988f0fbfd4cf7279fc3162",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\performance-quality\\results.manifest.json": "ede7fc6017fb1c1fc3a452840ee4c01e56836967709930ebcb2216f156821893",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\performance-quality\\results.summary.json": "0ad90dc8cd4770d4d358a30ddee36ec239872839624bc8a351652d39eeef044f",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\performance-quality\\llama-server.log": "46b6b37d9d0dbb618315582f2400ab2ade5dab7391b4ab7308e230e5acbe8047",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\performance-quality\\backend-log-collection.json": "75345ca3842c55c4d9332f3a8cb98ec8bdb7b011d2646cbaff3312f186bbc0a4",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\quality-quality\\results.events.jsonl": "ec298f9268b5d315f7f0a09aef058ed9e4e02202ed9a7cddb38a0c844adffa10",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\quality-quality\\results.manifest.json": "027d7918be3543d139e291efe006ca5e274faacf4f5b451dd0466916f1ad99ee",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\quality-quality\\results.summary.json": "7ca9e1b927f6c3cb359290706dd3fd34682b368360e0f26be5318513294150f9",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\quality-quality\\llama-server.log": "e4ee040dad56e98c66e7bdfa8d24f8d903f53ab759919e0b79edd2978c77ed26",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\quality-quality\\backend-log-collection.json": "c8254c5ad9c204bc0fb39f546fd7fb68e831b67bfd56137f289c52951f6599e0",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\context-quality\\results.events.jsonl": "2d75813e8d597a1667035df2d1d3b2535a3020ab36edab523daff7ff04012b81",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\context-quality\\results.manifest.json": "1484a5bf2efd21ef8c2d50d91f43ed45632d39543ef6d81efb0fcdb14947b064",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\context-quality\\results.summary.json": "09002ab881ad34830e5765d78bf7f92d0cfd2f13ccc29402f8c83abd3a012fc7",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\context-quality\\llama-server.log": "1c4835b1ec5bb46f6f6ede9ecd75e63ea88d3790aacdcea888c8d55312a7693f",
+    "E:\\codex\\技术分享\\context-benchmark\\runs\\20260905-230353-216459\\context-quality\\backend-log-collection.json": "00807162849d23bf3ae1dad78ec9ec1af26c30ed3b5086997a0a5693293969ce"
+  },
+  "original_evidence_unchanged": true,
+  "notes": [
+    "CSV contains chart metrics only; no prompts, answers or reasoning.",
+    "Medians use valid first attempts; long-document groups contain only D-family requests.",
+    "Context 8K is reused from common performance, not counted twice.",
+    "GPU buffer totals are arithmetic sums of listed startup allocations, not measured peaks."
+  ]
+}

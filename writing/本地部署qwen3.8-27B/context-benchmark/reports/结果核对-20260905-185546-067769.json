@@ -1,0 +1,1861 @@
+{
+  "run_id": "20260905-185546-067769",
+  "stages": [
+    {
+      "id": "performance-performance",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "pass",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 6,
+      "content_correct": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "median": 780.849174,
+          "n": 6,
+          "minimum": 771.776614,
+          "maximum": 800.894375,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 34.000231,
+          "n": 6,
+          "minimum": 32.535805,
+          "maximum": 34.079635,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 764.008646,
+          "n": 6,
+          "minimum": 743.8569158667929,
+          "maximum": 767.0818912820124,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 34.33762,
+          "n": 6,
+          "minimum": 32.851786373371105,
+          "maximum": 34.405270832443705,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 8.87425,
+          "n": 6,
+          "minimum": 8.846513100001175,
+          "maximum": 9.122722199997952,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 8.87425,
+          "n": 6,
+          "minimum": 8.846513100001175,
+          "maximum": 9.122722199997952,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 11.986662,
+          "n": 6,
+          "minimum": 11.79542500000025,
+          "maximum": 12.104538200001116,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 102.0,
+          "n": 6,
+          "minimum": 101,
+          "maximum": 108,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        6778,
+        6786
+      ],
+      "gpu_buffers_mib": {
+        "model": 13780.51,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 130.28
+      }
+    },
+    {
+      "id": "performance-quality",
+      "status": "partial",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "measured",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 63,
+      "completed": 60,
+      "valid": 60,
+      "success": 21,
+      "content_correct": 42,
+      "format_valid": 25,
+      "metrics": {
+        "prompt_tps": {
+          "median": 224.310306,
+          "n": 60,
+          "minimum": 157.736065,
+          "maximum": 769.104114,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 34.203511,
+          "n": 60,
+          "minimum": 26.104106,
+          "maximum": 34.966468,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 131.908429,
+          "n": 60,
+          "minimum": 95.81100779424128,
+          "maximum": 737.7672915604746,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 35.175097,
+          "n": 60,
+          "minimum": 26.637170439960855,
+          "maximum": 37.13089569016456,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.704624,
+          "n": 60,
+          "minimum": 0.4952620999974897,
+          "maximum": 6.6468257000015,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 0.704624,
+          "n": 60,
+          "minimum": 0.4952620999974897,
+          "maximum": 6.6468257000015,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 1.679024,
+          "n": 60,
+          "minimum": 1.1613225000000966,
+          "maximum": 9.571256900002481,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 33.5,
+          "n": 60,
+          "minimum": 17,
+          "maximum": 95,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 60,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 34,
+      "reasoning_field_nonempty": 0,
+      "failures": [
+        {
+          "job_id": "E_empty-s3413",
+          "error_kind": "http_error",
+          "runtime_error": "HTTP 503: {\"error\":{\"message\":\"Cannot count tokens while a generation is in progress.\",\"type\":\"api_error\",\"param\":null,\"code\":null}}",
+          "finish_reason": null,
+          "budget_exhausted": null
+        },
+        {
+          "job_id": "D_long_context-s3413",
+          "error_kind": "http_error",
+          "runtime_error": "HTTP 503: {\"error\":{\"message\":\"Cannot count tokens while a generation is in progress.\",\"type\":\"api_error\",\"param\":null,\"code\":null}}",
+          "finish_reason": null,
+          "budget_exhausted": null
+        },
+        {
+          "job_id": "A_short_qa-s3433",
+          "error_kind": "http_error",
+          "runtime_error": "HTTP 503: {\"error\":{\"message\":\"Cannot count tokens while a generation is in progress.\",\"type\":\"api_error\",\"param\":null,\"code\":null}}",
+          "finish_reason": null,
+          "budget_exhausted": null
+        }
+      ],
+      "families": {
+        "A": {
+          "planned": 15,
+          "completed": 14,
+          "valid": 14,
+          "success": 0,
+          "content_correct": 2,
+          "format_valid": 4
+        },
+        "B": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 11,
+          "content_correct": 15,
+          "format_valid": 11
+        },
+        "C": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 6,
+          "content_correct": 13,
+          "format_valid": 6
+        },
+        "E": {
+          "planned": 15,
+          "completed": 14,
+          "valid": 14,
+          "success": 3,
+          "content_correct": 11,
+          "format_valid": 3
+        },
+        "D": {
+          "planned": 3,
+          "completed": 2,
+          "valid": 2,
+          "success": 1,
+          "content_correct": 1,
+          "format_valid": 1
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "A_short_qa",
+          "task_name": "A1：权重单位换算",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 2,
+          "valid_runs": 2,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_block_padding",
+          "task_name": "A2：量化块与填充",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.6666666666666666,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_kv",
+          "task_name": "A3：KV 理论容量",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.3333333333333333,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_headroom",
+          "task_name": "A4：统一显存单位",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.3333333333333333,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_latency",
+          "task_name": "A5：计时范围",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_code_debug",
+          "task_name": "B1：平均值分母",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_range",
+          "task_name": "B2：循环边界",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_units",
+          "task_name": "B3：单位常量",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_zero",
+          "task_name": "B4：保留零值",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_inclusive",
+          "task_name": "B5：包含端点",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.6666666666666666,
+          "task_success_rate": 0.6666666666666666,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_constraint_reasoning",
+          "task_name": "C1：位置约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.6666666666666666,
+          "task_success_rate": 0.6666666666666666,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_schedule",
+          "task_name": "C2：依赖调度",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_knapsack",
+          "task_name": "C3：容量选择",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.3333333333333333,
+          "task_success_rate": 0.3333333333333333,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_count",
+          "task_name": "C4：可行排列计数",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_unsat",
+          "task_name": "C5：不可满足约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_instruction_following",
+          "task_name": "E1：筛选排序",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.3333333333333333,
+          "task_success_rate": 0.3333333333333333,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_ties",
+          "task_name": "E2：并列与边界",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_versions",
+          "task_name": "E3：版本与缺失",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.6666666666666666,
+          "task_success_rate": 0.6666666666666666,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_nested",
+          "task_name": "E4：类型与嵌套",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_empty",
+          "task_name": "E5：空结果",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 2,
+          "valid_runs": 2,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "D_long_context",
+          "task_name": "D：长文档检索",
+          "family": "D",
+          "planned_runs": 3,
+          "completed_runs": 2,
+          "valid_runs": 2,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.3333333333333333,
+          "task_success_rate": 0.3333333333333333,
+          "budget_exhausted": 0
+        }
+      ],
+      "gpu_buffers_mib": {
+        "model": 13780.51,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 130.28
+      }
+    },
+    {
+      "id": "quality-performance",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "pass",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 6,
+      "content_correct": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "median": 733.393641,
+          "n": 6,
+          "minimum": 729.563984,
+          "maximum": 737.663497,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.17378,
+          "n": 6,
+          "minimum": 31.030209,
+          "maximum": 31.328554,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 715.847597,
+          "n": 6,
+          "minimum": 703.0244035246659,
+          "maximum": 722.0037711648598,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.492328,
+          "n": 6,
+          "minimum": 31.33460932040647,
+          "maximum": 31.641211468692862,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 9.476904,
+          "n": 6,
+          "minimum": 9.387762599999405,
+          "maximum": 9.652581000002101,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.476904,
+          "n": 6,
+          "minimum": 9.387762599999405,
+          "maximum": 9.652581000002101,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 12.801474,
+          "n": 6,
+          "minimum": 12.682783399999607,
+          "maximum": 12.877085400003125,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 102.0,
+          "n": 6,
+          "minimum": 101,
+          "maximum": 108,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        6778,
+        6786
+      ],
+      "gpu_buffers_mib": {
+        "model": 15718.48,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 76.27
+      }
+    },
+    {
+      "id": "quality-quality",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "measured",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 63,
+      "completed": 63,
+      "valid": 62,
+      "success": 61,
+      "content_correct": 61,
+      "format_valid": 62,
+      "metrics": {
+        "prompt_tps": {
+          "median": 206.699121,
+          "n": 62,
+          "minimum": 151.82253,
+          "maximum": 750.953028,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 31.518788,
+          "n": 62,
+          "minimum": 27.221696,
+          "maximum": 31.856523,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 125.351632,
+          "n": 62,
+          "minimum": 86.94364819895917,
+          "maximum": 717.7950432574498,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 31.602407,
+          "n": 62,
+          "minimum": 27.347302674267006,
+          "maximum": 32.13223689495651,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.73213,
+          "n": 62,
+          "minimum": 0.5204262000006565,
+          "maximum": 6.997591100000136,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 9.670316,
+          "n": 62,
+          "minimum": 4.018699299998843,
+          "maximum": 87.56394559999899,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 10.146617,
+          "n": 62,
+          "minimum": 4.357138600000326,
+          "maximum": 88.03517179999835,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 300.0,
+          "n": 62,
+          "minimum": 115,
+          "maximum": 2745,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 62,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 1,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 63,
+      "failures": [
+        {
+          "job_id": "A_headroom-s3413",
+          "error_kind": "",
+          "runtime_error": "",
+          "finish_reason": "length",
+          "budget_exhausted": true
+        }
+      ],
+      "families": {
+        "A": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 14,
+          "success": 13,
+          "content_correct": 13,
+          "format_valid": 14
+        },
+        "B": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 15,
+          "content_correct": 15,
+          "format_valid": 15
+        },
+        "C": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 15,
+          "content_correct": 15,
+          "format_valid": 15
+        },
+        "E": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 15,
+          "content_correct": 15,
+          "format_valid": 15
+        },
+        "D": {
+          "planned": 3,
+          "completed": 3,
+          "valid": 3,
+          "success": 3,
+          "content_correct": 3,
+          "format_valid": 3
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "A_short_qa",
+          "task_name": "A1：权重单位换算",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_block_padding",
+          "task_name": "A2：量化块与填充",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_kv",
+          "task_name": "A3：KV 理论容量",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_headroom",
+          "task_name": "A4：统一显存单位",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 2,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.6666666666666666,
+          "task_success_rate": 0.3333333333333333,
+          "budget_exhausted": 1
+        },
+        {
+          "task_id": "A_latency",
+          "task_name": "A5：计时范围",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_code_debug",
+          "task_name": "B1：平均值分母",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_range",
+          "task_name": "B2：循环边界",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_units",
+          "task_name": "B3：单位常量",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_zero",
+          "task_name": "B4：保留零值",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_inclusive",
+          "task_name": "B5：包含端点",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_constraint_reasoning",
+          "task_name": "C1：位置约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_schedule",
+          "task_name": "C2：依赖调度",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_knapsack",
+          "task_name": "C3：容量选择",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_count",
+          "task_name": "C4：可行排列计数",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_unsat",
+          "task_name": "C5：不可满足约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_instruction_following",
+          "task_name": "E1：筛选排序",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_ties",
+          "task_name": "E2：并列与边界",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_versions",
+          "task_name": "E3：版本与缺失",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_nested",
+          "task_name": "E4：类型与嵌套",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_empty",
+          "task_name": "E5：空结果",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "D_long_context",
+          "task_name": "D：长文档检索",
+          "family": "D",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 1.0,
+          "task_success_rate": 1.0,
+          "budget_exhausted": 0
+        }
+      ],
+      "gpu_buffers_mib": {
+        "model": 15718.48,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 76.27
+      }
+    },
+    {
+      "id": "context-performance",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "fail",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 0,
+      "content_correct": 6,
+      "format_valid": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 649.658331,
+          "n": 6,
+          "minimum": 646.095389,
+          "maximum": 658.381627,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 33.335946,
+          "n": 6,
+          "minimum": 33.045357,
+          "maximum": 33.418471,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 634.324929,
+          "n": 6,
+          "minimum": 624.0848534550908,
+          "maximum": 641.4857665921005,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 33.656064,
+          "n": 6,
+          "minimum": 33.3361688919862,
+          "maximum": 33.73559225146292,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 10.691681,
+          "n": 6,
+          "minimum": 10.566095700000005,
+          "maximum": 10.867111999999906,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 10.691681,
+          "n": 6,
+          "minimum": 10.566095700000005,
+          "maximum": 10.867111999999906,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 13.914932,
+          "n": 6,
+          "minimum": 13.781266699999833,
+          "maximum": 14.050898100002087,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 107.0,
+          "n": 6,
+          "minimum": 106,
+          "maximum": 113,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 6,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        6778,
+        6786
+      ],
+      "gpu_buffers_mib": {
+        "model": 11671.15,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 54.27
+      }
+    },
+    {
+      "id": "context-quality",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "measured",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 63,
+      "completed": 63,
+      "valid": 63,
+      "success": 0,
+      "content_correct": 38,
+      "format_valid": 0,
+      "metrics": {
+        "prompt_tps": {
+          "median": 219.008476,
+          "n": 63,
+          "minimum": 146.245923,
+          "maximum": 667.330594,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 33.564571,
+          "n": 63,
+          "minimum": 27.012289,
+          "maximum": 34.288849,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 128.853534,
+          "n": 63,
+          "minimum": 92.14675993797103,
+          "maximum": 641.3721351426386,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 34.631357,
+          "n": 63,
+          "minimum": 27.69792983945176,
+          "maximum": 35.859554577756114,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 0.72243,
+          "n": 63,
+          "minimum": 0.4988831000009668,
+          "maximum": 7.251824800001486,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 0.72243,
+          "n": 63,
+          "minimum": 0.4988831000009668,
+          "maximum": 7.251824800001486,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 1.690537,
+          "n": 63,
+          "minimum": 1.039885399997729,
+          "maximum": 10.458198600001197,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 31,
+          "n": 63,
+          "minimum": 17,
+          "maximum": 105,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0,
+          "n": 63,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 63,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {
+        "A": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 0,
+          "content_correct": 4,
+          "format_valid": 0
+        },
+        "B": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 0,
+          "content_correct": 15,
+          "format_valid": 0
+        },
+        "C": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 0,
+          "content_correct": 11,
+          "format_valid": 0
+        },
+        "E": {
+          "planned": 15,
+          "completed": 15,
+          "valid": 15,
+          "success": 0,
+          "content_correct": 8,
+          "format_valid": 0
+        },
+        "D": {
+          "planned": 3,
+          "completed": 3,
+          "valid": 3,
+          "success": 0,
+          "content_correct": 0,
+          "format_valid": 0
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "A_short_qa",
+          "task_name": "A1：权重单位换算",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_block_padding",
+          "task_name": "A2：量化块与填充",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_kv",
+          "task_name": "A3：KV 理论容量",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_headroom",
+          "task_name": "A4：统一显存单位",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "A_latency",
+          "task_name": "A5：计时范围",
+          "family": "A",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_code_debug",
+          "task_name": "B1：平均值分母",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_range",
+          "task_name": "B2：循环边界",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_units",
+          "task_name": "B3：单位常量",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_zero",
+          "task_name": "B4：保留零值",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "B_inclusive",
+          "task_name": "B5：包含端点",
+          "family": "B",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_constraint_reasoning",
+          "task_name": "C1：位置约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_schedule",
+          "task_name": "C2：依赖调度",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_knapsack",
+          "task_name": "C3：容量选择",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.6666666666666666,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_count",
+          "task_name": "C4：可行排列计数",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "C_unsat",
+          "task_name": "C5：不可满足约束",
+          "family": "C",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_instruction_following",
+          "task_name": "E1：筛选排序",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_ties",
+          "task_name": "E2：并列与边界",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_versions",
+          "task_name": "E3：版本与缺失",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.3333333333333333,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_nested",
+          "task_name": "E4：类型与嵌套",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 1.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "E_empty",
+          "task_name": "E5：空结果",
+          "family": "E",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        },
+        {
+          "task_id": "D_long_context",
+          "task_name": "D：长文档检索",
+          "family": "D",
+          "planned_runs": 3,
+          "completed_runs": 3,
+          "valid_runs": 3,
+          "content_correct_rate": 0.0,
+          "format_compliance_rate": 0.0,
+          "task_success_rate": 0.0,
+          "budget_exhausted": 0
+        }
+      ],
+      "gpu_buffers_mib": {
+        "model": 11671.15,
+        "KV": 272.0,
+        "RS": 149.62,
+        "compute": 54.27
+      }
+    },
+    {
+      "id": "capacity-32K",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "pass",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 6,
+      "content_correct": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "median": 556.253311,
+          "n": 6,
+          "minimum": 554.37691,
+          "maximum": 557.826814,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 30.564496,
+          "n": 6,
+          "minimum": 29.14107,
+          "maximum": 30.779217,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 552.726067,
+          "n": 6,
+          "minimum": 550.6546105233635,
+          "maximum": 555.7247851824321,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 30.856849,
+          "n": 6,
+          "minimum": 29.41186505224168,
+          "maximum": 31.100722306592363,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 52.366846,
+          "n": 6,
+          "minimum": 52.110326500001975,
+          "maximum": 52.56834220000019,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 52.366846,
+          "n": 6,
+          "minimum": 52.110326500001975,
+          "maximum": 52.56834220000019,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 55.752363,
+          "n": 6,
+          "minimum": 55.5987712999995,
+          "maximum": 55.85087299999941,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 102.0,
+          "n": 6,
+          "minimum": 101,
+          "maximum": 108,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        28942,
+        28959
+      ],
+      "gpu_buffers_mib": {
+        "model": 11671.15,
+        "KV": 1088.0,
+        "RS": 149.62,
+        "compute": 156.27
+      }
+    },
+    {
+      "id": "capacity-64K",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "pass",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 6,
+      "content_correct": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "median": 455.330717,
+          "n": 6,
+          "minimum": 452.808275,
+          "maximum": 455.712858,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 27.508848,
+          "n": 6,
+          "minimum": 26.177481,
+          "maximum": 27.607474,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 454.43683,
+          "n": 6,
+          "minimum": 450.1417412987231,
+          "maximum": 455.0092114780267,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 27.785007,
+          "n": 6,
+          "minimum": 26.415596793588577,
+          "maximum": 27.863618265320277,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 127.553484,
+          "n": 6,
+          "minimum": 127.41500290000113,
+          "maximum": 128.77277239999967,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 127.553484,
+          "n": 6,
+          "minimum": 127.41500290000113,
+          "maximum": 128.77277239999967,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 131.407238,
+          "n": 6,
+          "minimum": 131.20209859999886,
+          "maximum": 132.40630959999908,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 102.0,
+          "n": 6,
+          "minimum": 101,
+          "maximum": 108,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        57964,
+        57975
+      ],
+      "gpu_buffers_mib": {
+        "model": 11671.15,
+        "KV": 2176.0,
+        "RS": 149.62,
+        "compute": 292.27
+      }
+    },
+    {
+      "id": "capacity-128K",
+      "status": "completed",
+      "configuration_verdict": "unknown",
+      "measurement_verdict": "pass",
+      "cleanup_status": "completed",
+      "unverified_checks": [
+        "context_shift",
+        "prompt_cache",
+        "vision_projector_loaded",
+        "speculative_decoding"
+      ],
+      "planned": 6,
+      "completed": 6,
+      "valid": 6,
+      "success": 6,
+      "content_correct": 6,
+      "format_valid": 6,
+      "metrics": {
+        "prompt_tps": {
+          "median": 333.418151,
+          "n": 6,
+          "minimum": 331.690849,
+          "maximum": 334.676359,
+          "source": "backend"
+        },
+        "decode_tps": {
+          "median": 21.533079,
+          "n": 6,
+          "minimum": 20.977303,
+          "maximum": 21.763484,
+          "source": "backend"
+        },
+        "client_prompt_tps_est": {
+          "median": 332.556232,
+          "n": 6,
+          "minimum": 330.44854698099954,
+          "maximum": 334.42882496054244,
+          "source": "client_estimate"
+        },
+        "client_decode_tps_est": {
+          "median": 21.741397,
+          "n": 6,
+          "minimum": 21.162051355118972,
+          "maximum": 21.97370469850382,
+          "source": "client_estimate"
+        },
+        "ttft_client_s": {
+          "median": 348.964269,
+          "n": 6,
+          "minimum": 346.9976010999999,
+          "maximum": 351.1772136999971,
+          "source": "client"
+        },
+        "ttfa_client_s": {
+          "median": 348.964269,
+          "n": 6,
+          "minimum": 346.9976010999999,
+          "maximum": 351.1772136999971,
+          "source": "client"
+        },
+        "total_s": {
+          "median": 353.837699,
+          "n": 6,
+          "minimum": 351.6407615999997,
+          "maximum": 355.8743817999966,
+          "source": "client"
+        },
+        "output_tokens": {
+          "median": 102.0,
+          "n": 6,
+          "minimum": 101,
+          "maximum": 108,
+          "source": "backend"
+        },
+        "reasoning_tokens": {
+          "median": 0.0,
+          "n": 6,
+          "minimum": 0,
+          "maximum": 0,
+          "source": "backend"
+        }
+      },
+      "budget_exhausted": 0,
+      "fenced_answers": 0,
+      "reasoning_field_nonempty": 0,
+      "failures": [],
+      "families": {},
+      "tasks": [],
+      "actual_input_range": [
+        116043,
+        116057
+      ],
+      "gpu_buffers_mib": {
+        "model": 11671.15,
+        "KV": 4352.0,
+        "RS": 149.62,
+        "compute": 564.27
+      }
+    }
+  ],
+  "source_snapshot_verified": true,
+  "common_performance_inputs_identical": true,
+  "totals": {
+    "planned": 225,
+    "completed": 222,
+    "valid": 221
+  },
+  "issues": [],
+  "evidence_sha256": {
+    "summary.json": "cab8bc85ad012fe8cf4a2759d632432e6f2521c6deb0401c2f88aaac597db902",
+    "capacity-128K\\configuration-validation.json": "9a1afc0814217025cee34bbc537ba97ffdd2938d878cba1013a43efab8ff427e",
+    "capacity-128K\\results.csv": "bfd30dc551797d5aa0021f823ccbaf651fcac360e0d6115b8c4025c2af1bedec",
+    "capacity-128K\\results.events.jsonl": "9b86da883e9f79c0264a2d935941592405179df992cfb2a00e35d412416d720b",
+    "capacity-128K\\results.summary.json": "35905d078b53e5d0a87bbde0bf402a2634b497c22f3c82bbf9bd9f89480fac42",
+    "capacity-128K\\stage.json": "d7aca332e6ad3584541982449223554502ee91b3b0f40bcee37424007fe7f4f2",
+    "capacity-32K\\configuration-validation.json": "73e54be0144ae6db7aec6f5b4648ecd57102a52c24300a49d6e2f0cac8c01cc9",
+    "capacity-32K\\results.csv": "092b37174ba96f32f091d19516c89c88b97ab87b234008bc017aabca0b385bdd",
+    "capacity-32K\\results.events.jsonl": "14efa4bf4ff9896819e3f62b3890f30bf2154e251b1624c372fdbf437d7b478f",
+    "capacity-32K\\results.summary.json": "d7e9a97482232bf9af56b7b57c7925783dda685af78e50b6149937e4ab05b3a3",
+    "capacity-32K\\stage.json": "12b46fb04ea0f3695d9890c2b4f5b09c36a4f8f5177fba28f7c063f7f66beed9",
+    "capacity-64K\\configuration-validation.json": "19f3d9095ebafa4741eec4a638d3c8062495bb3c66d1d507de6a834a5fd2796e",
+    "capacity-64K\\results.csv": "1bba50f99db4e6eb8dc1f90821e40294b7fce06aad0e861794db38ce12be195b",
+    "capacity-64K\\results.events.jsonl": "16311da6f713f78ea23a9898eca279d5beec072c296dd35e048ce8a85f151578",
+    "capacity-64K\\results.summary.json": "b2615bf6aec390f22abdffaeb25a692bd5cdb24ba864c1eb0ed91cf642ebaab0",
+    "capacity-64K\\stage.json": "f4bf1447c51821313d49e0d40dab13b2a8009f4b30e1f4e5fdb7061a5f333ac5",
+    "context-performance\\configuration-validation.json": "f19ed7bb063046b1f578af824234c31b71726f3e181a0630a0eb121f0f79e192",
+    "context-performance\\results.csv": "6260df4b351422871a21ddeb3e2f38eec63beac373eed1f685f741bb52523339",
+    "context-performance\\results.events.jsonl": "beedc6eedef006a6c27dc6ece56089a7747cb988063eaedb3e5f889da6771bed",
+    "context-performance\\results.summary.json": "cafcceaa340a663180ad0f24f6f890ebf7d2d491519befb3bd7b08d4132a43e5",
+    "context-performance\\stage.json": "9a516c22454a8f6aacdca8804c2c5f7b79134758473f325b4b03a07d61e9a667",
+    "context-quality\\configuration-validation.json": "f19ed7bb063046b1f578af824234c31b71726f3e181a0630a0eb121f0f79e192",
+    "context-quality\\results.csv": "090c38bbe75375d3efdf9e85ae0731dfe70ed154f83a23d30d91b7331aa32223",
+    "context-quality\\results.events.jsonl": "819da67c10682a402d6bffa3a9a13f9eaa07facd298dd27bca62cd72d05a6959",
+    "context-quality\\results.summary.json": "b97938506227c223d2ff29b43ec586c16ba4e40a15911299fd144cdd0f3a4044",
+    "context-quality\\stage.json": "6f492484d64ee4e5171ebb504a7c65fbe279e5b2d2882fc5254753afd4833166",
+    "performance-performance\\configuration-validation.json": "1b9dd3d710e89956fd65bba0fd724336ca6e91d61db7c14397b8146f7358cd12",
+    "performance-performance\\results.csv": "c6fe1c49251c4164098f59d093a94868fb03a9dc841d32f4cc3d8bb310cc9743",
+    "performance-performance\\results.events.jsonl": "305d600e439aeee78497dddf02c331c3f6d90ab1f0a1f2713445849828886c8a",
+    "performance-performance\\results.summary.json": "bb636b7b911b6e9d390651e2b9f5cd0e6c2685c079844b7b9c0ac2d0fc82f4a1",
+    "performance-performance\\stage.json": "482e3f61bfae5d0dfd4a750eed0228d2eb81bc35f8994e00621b0f0a47db529d",
+    "performance-quality\\configuration-validation.json": "1b9dd3d710e89956fd65bba0fd724336ca6e91d61db7c14397b8146f7358cd12",
+    "performance-quality\\results.csv": "ebbe95916ee3f2f617b20587c6114ea1e6629be96b072ad134d871b3a8ea84ca",
+    "performance-quality\\results.events.jsonl": "e87ef19d3bd8035cb8a320e693bfdbec903e0278420e1cdd184021ff751b06d5",
+    "performance-quality\\results.summary.json": "8df2f774e04dedcdc6f082ff91c76db6035b8ccd8a7ad8457134004d81533b61",
+    "performance-quality\\stage.json": "c74e1aeec9987bbee571232ca51154f7804484e8bfd295b9bfa1535c825ab763",
+    "quality-performance\\configuration-validation.json": "dfe1352f01862a4d54a5077455a4fdafaab2b7ec492ce2f72395cf4ed4487621",
+    "quality-performance\\results.csv": "bc1b08819ae9d9c09bebe3d271583a75b5bb74bca3845014e644cdab24833da4",
+    "quality-performance\\results.events.jsonl": "a2ff14ea0b7d8af793b298a9729b13411d3ef17c6dfa6289bff618d9783770bb",
+    "quality-performance\\results.summary.json": "fe37630b771d373ef45f94d47f2163a6b36594986cd36b177c4121e29c8cf40b",
+    "quality-performance\\stage.json": "6360b4bfa6334d66e5eec9b0ea3a85577ac591cc1e59d20ca3601d18e0c07824",
+    "quality-quality\\configuration-validation.json": "dfe1352f01862a4d54a5077455a4fdafaab2b7ec492ce2f72395cf4ed4487621",
+    "quality-quality\\results.csv": "2bdde90039a7d3788ef0e3153853d0b5c973393c92f8409b5c273b8d4dee8aaa",
+    "quality-quality\\results.events.jsonl": "ed0f89654425e31a2e94694cd37d3ee5979825f10045a83e5632dff035f79ff9",
+    "quality-quality\\results.summary.json": "0dbf29fcd9784fe1a25237c05f3300dec285e2f62ecaf042f504494773d7e551",
+    "quality-quality\\stage.json": "36b86e3da3989f94eaebf5e37edca2092197d4b5d91114767496dfe795310276"
+  }
+}
