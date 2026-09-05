@@ -81,12 +81,14 @@ export function WeeklyBrief({
           <>
             {' '}
             · 本页为 {report.revisedAt} 阅读修订版。{report.revisionReason}
-            <a
-              href={`https://www.acgnx.top/market/${report.date}/`}
-              className="ml-2 underline underline-offset-4"
-            >
-              查看原版
-            </a>
+            {report.originalRetained !== false && (
+              <a
+                href={`https://www.acgnx.top/market/${report.date}/`}
+                className="ml-2 underline underline-offset-4"
+              >
+                查看原版
+              </a>
+            )}
           </>
         )}
       </p>

@@ -125,6 +125,8 @@ test('real report preserves original dates and definitions', () => {
 });
 test('archive interpolation escapes content and preserves original links', () => {
   const { history } = reportsAndHistory();
+  history.at(-1).originalRetained = true;
+  history.at(-1).route = '2026-09-04/revisions/02/';
   history.at(-1).title = '<img src=x onerror=alert(1)>';
   const html = renderIndex(
     fs.readFileSync(path.join(sourceRoot, 'archive/template.html'), 'utf8'),
@@ -165,6 +167,15 @@ function fixture() {
     fs.cpSync(path.join(sourceRoot, name), path.join(root, name), {
       recursive: true,
     });
+  const fixtureReport = JSON.parse(
+    fs.readFileSync(path.join(root, 'data/reports/2026-09-04.json')),
+  );
+  delete fixtureReport.originalRetained;
+  delete fixtureReport.canonicalRevision;
+  fs.writeFileSync(
+    path.join(root, 'data/reports/2026-09-04.json'),
+    JSON.stringify(fixtureReport),
+  );
   const repo = path.join(workspace, 'repo'),
     localRoot = path.join(workspace, 'local');
   for (const archiveRoot of [localRoot, path.join(repo, 'market')])

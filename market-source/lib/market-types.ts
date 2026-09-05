@@ -6,6 +6,8 @@ export type WeeklyReport = {
   date: string;
   label: string;
   revision: number;
+  canonicalRevision?: number;
+  originalRetained?: boolean;
   revisedAt?: string;
   revisionReason?: string;
   methodVersion: string;

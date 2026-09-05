@@ -4,6 +4,8 @@
 
 ## 项目与执行入口
 
+- 2026-09-04旧版已按用户要求删除，该日期入口展示优化后的版本；其他日期照常保留历史。新周设revision=1，清除上期canonicalRevision与originalRetained特殊字段。
+
 - 仓库：https://github.com/LemuriaX/blog；线上：https://www.acgnx.top/market/。
 - 源码在仓库 market-source/；当前目录直接有 app/、data/、package.json 时，当前目录就是源码根，不再嵌套另一份源码。
 - 唯一分析输入：data/reports/YYYY-MM-DD.json。历史基线：data/legacy-history.json。lib/current-report.ts、lib/market-history.ts、archive/ 由 scripts/weekly.mjs 生成；不要同时手改多份数据。

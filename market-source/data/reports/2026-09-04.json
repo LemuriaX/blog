@@ -1592,5 +1592,7 @@
       ],
       "missingImpact": "周度杠杆、完整周广度与可比估值分位仍不齐。代理会影响多少分，原口径没有定义；因此不提供看似精确的误差条，也不把记录差解释成同口径变化。"
     }
-  }
+  },
+  "originalRetained": false,
+  "canonicalRevision": 2
 }

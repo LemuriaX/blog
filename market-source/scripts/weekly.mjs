@@ -60,7 +60,7 @@ function write(file, value) {
 }
 const reportPath = (root, date) => safePath(root, `data/reports/${date}.json`);
 export const routeFor = (report) =>
-  report.revision === 1
+  report.revision === 1 || report.revision === report.canonicalRevision
     ? `${report.date}/`
     : `${report.date}/revisions/${String(report.revision).padStart(2, '0')}/`;
 const historyKeys = ['cnSentiment', 'usSentiment', 'cnCycle', 'usCycle'];
@@ -242,6 +242,7 @@ export function reportsAndHistory(root = sourceRoot) {
       methodVersion: r.methodVersion,
       comparable,
       route: routeFor(r),
+      originalRetained: r.originalRetained,
       revision: r.revision,
       title: r.title,
     });
@@ -302,7 +303,7 @@ export function renderIndex(template, history) {
     .reverse()
     .map(
       (r) =>
-        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股 周期${escape(r.cnCycle)} / 情绪${escape(r.cnSentiment)} · 美股 周期${escape(r.usCycle)} / 情绪${escape(r.usSentiment)}</span><em>${r.revision > 1 ? `修订${r.revision}` : '原版'}</em></a>${r.revision > 1 ? `<a href="./${r.date}/" class="original-link">查看 ${r.date} 原版 →</a>` : ''}</li>`,
+        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股 周期${escape(r.cnCycle)} / 情绪${escape(r.cnSentiment)} · 美股 周期${escape(r.usCycle)} / 情绪${escape(r.usSentiment)}</span><em>${r.revision > 1 ? `修订${r.revision}` : '原版'}</em></a>${r.revision > 1 && r.originalRetained !== false ? `<a href="./${r.date}/" class="original-link">查看 ${r.date} 原版 →</a>` : ''}</li>`,
     )
     .join('\n');
   assert(
