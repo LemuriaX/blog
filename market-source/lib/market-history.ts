@@ -17,4 +17,12 @@ export const marketHistory: WeeklyMarketSnapshot[] = [
     cnCycle: 64,
     usCycle: 78,
   },
+  {
+    date: '2026-09-04',
+    label: '09.04',
+    cnSentiment: 64,
+    usSentiment: 67,
+    cnCycle: 62,
+    usCycle: 77,
+  },
 ];

@@ -172,483 +172,497 @@ const frameworkSources: Source[] = [
 const cnData: MarketData = {
   label: 'A股',
   code: 'A · SHARE',
-  stage: '资金热 / 经济冷',
+  stage: '订单回暖 / 热点降温',
   regime: '结构性牛市',
-  cycleStage: '牛市中后段',
-  cycleRange: [58, 70],
-  cyclePhase: '第二阶段后半',
-  cyclePhaseNote: '改善已被多数人看见，但还没人敢说“一切只会更好”。',
+  cycleStage: '牛市中段偏后',
+  cycleRange: [54, 70],
+  cyclePhase: '第二阶段，仍有分歧',
+  cyclePhaseNote:
+    '少数人先看到转机的阶段已过；制造业改善成为共识，内需尚未跟上，离普遍笃信仍有距离。',
   cycleReason:
-    '宽松、利润与成交支持上涨；高估值与拥挤说明已经过了起步期，但内需和基金热度尚未进入全面亢奋。',
-  cycleRefs: ['CN-01', 'CN-03', 'CN-07', 'CN-08', 'HM-02', 'HM-03', 'HM-04'],
-  hero: '结构行情',
-  heroAccent: '不是全面牛市',
-  summary: '钱不缺，需求仍弱。科技和出口撑住盈利，地产与消费拖住总量。',
-  posture: '留在场内 · 不追拥挤',
+    '推断：利润增长、低融资成本仍支持牛市；本周科技回撤、消费偏弱，说明上涨基础不够宽。位置可回摆，不是走过的日历比例。',
+  cycleRefs: ['CN-01', 'CN-02', 'CN-03', 'CN-06', 'CN-07'],
+  hero: '订单回暖',
+  heroAccent: '价格仍需挑选',
+  summary:
+    '制造业订单转扩张，服务业却未跟上。指数退了一步，热门资产的价格要求仍高。',
+  posture: '核心仓留住 · 新钱慢一点',
   treatment:
-    '核心仓继续持有；新增资金略偏防守，只为盈利兑现买单，不为热度加价。',
-  score: 64,
+    '持有能兑现现金流的核心仓；新增资金分批，只在估值或盈利兑现提供余地时加仓。',
+  score: 62,
   accent: '#718f72',
   panel: '#e4ead8',
   signals: [
     {
       name: '基本面',
-      value: 56,
-      label: '外强内弱',
-      note: '内需拖后',
+      value: 58,
+      label: '边际改善',
+      note: '服务仍弱',
       icon: Activity,
     },
     {
       name: '资本供给',
-      value: 82,
-      label: '总量充足',
-      note: '需求偏弱',
+      value: 80,
+      label: '融资不贵',
+      note: '传导分层',
       icon: CircleDollarSign,
     },
     {
       name: '心理钟摆',
-      value: 66,
-      label: '偏向乐观',
-      note: '科技拥挤',
+      value: 64,
+      label: '乐观降温',
+      note: '热点回撤',
       icon: Sparkles,
     },
     {
       name: '价格压力',
-      value: 70,
-      label: '热门偏贵',
-      note: '价值分层',
+      value: 68,
+      label: '分化仍大',
+      note: '科技偏贵',
       icon: Landmark,
     },
   ],
   indices: [
     {
       name: '上证',
-      value: '3,952.18',
-      change: '-0.11%',
-      note: '08.28',
+      value: '3,930.12',
+      change: '-0.30%',
+      note: '09.04收盘 / 日变动',
       up: false,
     },
     {
       name: '深证',
-      value: '13,953.07',
-      change: '-0.68%',
-      note: '08.28',
+      value: '13,516.97',
+      change: '-0.79%',
+      note: '09.04收盘 / 日变动',
       up: false,
     },
     {
       name: '创业板',
-      value: '3,424.40',
-      change: '-1.41%',
-      note: '08.28',
+      value: '3,286.55',
+      change: '-0.78%',
+      note: '09.04收盘 / 日变动',
       up: false,
     },
     {
-      name: '成交',
-      value: '2.12 万亿',
-      change: '活跃',
-      note: '全市场',
+      name: '沪深成交',
+      value: '2.03 万亿',
+      change: '仍活跃',
+      note: '09.04 / 不含北交所',
       up: true,
     },
   ],
   crossChecks: [
     {
-      tag: '市场共识',
-      title: '钱松，科技强',
-      text: '工业利润、出口和成交都不弱，主流判断是结构行情还能延续。',
-      refs: ['CN-01', 'CN-03', 'CN-08'],
+      tag: '市场共识 · 推断',
+      title: '制造业改善，政策托底',
+      text: '订单转扩张、工业利润增长，构成结构牛市的支持；但服务业PMI仍低于50，不能外推成全面复苏。',
+      refs: ['CN-01', 'CN-03'],
       tone: '#718f72',
     },
     {
-      tag: '价格已计入',
-      title: '好消息不再便宜',
-      text: '科创板估值约 125 倍。科技景气是真的，但市场已经为它付了高价。',
+      tag: '价格已计入 · 推断',
+      title: '好行业已经有好价格',
+      text: '科创50周跌5.10%后，按上年利润计算的PE仍98.4倍；上证180为12.7倍。高增长已被索价，便宜也可能反映弱增长。',
       refs: ['CN-07', 'HM-04'],
       tone: '#b98358',
     },
     {
-      tag: '二层判断',
-      title: '对方向，未必有好赔率',
-      text: '消费、投资和地产仍弱。应买盈利超预期，不该只买人人看好的叙事。',
-      refs: ['CN-01', 'CN-02', 'CN-03', 'HM-05'],
+      tag: '二层判断 · 行动',
+      title: '订单不是到账的现金',
+      text: 'PMI新订单50.6是调查改善；7月零售仅增0.6%，工业应收回收期延长。只有订单转为回款，才值得提高估值容忍度。',
+      refs: ['CN-01', 'CN-02', 'CN-03'],
       tone: '#7e8fa1',
     },
     {
       tag: '仍不知道',
-      title: '内需何时接棒',
-      text: '信用宽松能否传到居民和地产，没有可靠时点。保留余地比猜日期重要。',
-      refs: ['CN-04', 'CN-12', 'HM-01'],
+      title: '改善会扩散多远',
+      text: '8月消费、利润与信贷硬数据尚未齐备；全市场基金净申购和周五完整两融未核验，不据此判定全面追涨或去杠杆。',
+      refs: ['CN-02', 'CN-03', 'CN-09', 'CN-10'],
       tone: '#b8796f',
     },
   ],
   guide: [
     {
       category: '经济现状',
-      current: '外强内弱',
+      current: '制造改善，服务偏弱',
       leftPole: '生机勃勃',
       rightPole: '停滞不前',
-      position: 62,
-      basis: 'Q2 GDP +4.3%；PMI 49.2。出口、高技术尚强，消费和投资偏弱。',
+      position: 59,
+      basis:
+        '事实：8月制造业PMI49.8、新订单50.6；非制造业49.0。调查回暖与总量偏弱同时存在。',
       confidence: '高',
-      refs: ['CN-01', 'CN-02'],
+      refs: ['CN-01'],
     },
     {
       category: '经济展望',
-      current: '有托底，难加速',
+      current: '转机尚待兑现',
       leftPole: '正面有利',
       rightPole: '负面不利',
-      position: 56,
-      basis: 'IMF 看 4.6%，世行看 4.4%；政策托底在，地产与居民需求仍是拖累。',
+      position: 52,
+      basis:
+        '推断：订单改善支持后续生产；7月零售仅增0.6%，尚无8月消费硬数据确认。',
       confidence: '中',
-      refs: ['CN-10', 'CN-11'],
+      refs: ['CN-01', 'CN-02'],
     },
     {
       category: '贷款机构',
-      current: '愿放，需求弱',
+      current: '价格优惠，择客放贷',
       leftPole: '急于放贷',
       rightPole: '缄默谨慎',
-      position: 39,
-      basis: 'M2 +7.7%，但前七月居民贷款净减 8271 亿元；供给比需求强。',
-      confidence: '高',
-      refs: ['CN-04', 'CN-12'],
-    },
-    {
-      category: '资本市场',
-      current: '交易宽松',
-      leftPole: '宽松',
-      rightPole: '紧缩',
-      position: 22,
-      basis: '8 月 28 日成交 2.12 万亿元，流动性没有收缩迹象。',
-      confidence: '高',
-      refs: ['CN-08'],
-    },
-    {
-      category: '资本供给',
-      current: '总量充足',
-      leftPole: '充足',
-      rightPole: '短缺',
-      position: 18,
-      basis: '社融存量 +7.4%，政府债和企业债仍在扩张。',
-      confidence: '高',
+      position: 38,
+      basis:
+        '事实：7月企业新贷利率略低于3%，贷款余额增5.1%；银行普遍惜贷的证据不足，也不能据此断言抢贷。',
+      confidence: '中',
       refs: ['CN-04'],
     },
     {
+      category: '资本市场',
+      current: '交易活跃，情绪回落',
+      leftPole: '宽松',
+      rightPole: '紧缩',
+      position: 28,
+      basis:
+        '事实：9月4日沪深成交2.03万亿元；科创50全周跌5.10%。可交易性尚好不代表人人赚钱。',
+      confidence: '高',
+      refs: ['CN-07', 'CN-11'],
+    },
+    {
+      category: '资本供给',
+      current: '总量宽裕',
+      leftPole: '充足',
+      rightPole: '短缺',
+      position: 20,
+      basis: '事实：7月末M2增7.7%、社融存量增7.4%；9月4日十年国债仍不足1.7%。',
+      confidence: '高',
+      refs: ['CN-04', 'CN-06'],
+    },
+    {
       category: '融资条款',
-      current: '价格宽，信用分层',
+      current: '低成本，条件分层',
       leftPole: '宽松',
       rightPole: '严格',
-      position: 27,
-      basis: 'LPR 仍低，但居民、地产和弱主体的信用需求明显弱于国企与政府端。',
+      position: 33,
+      basis:
+        '推断：低LPR支持优质主体融资，不能代表弱企业的抵押与契约也宽松；缺少本周条款统计。',
       confidence: '中',
-      refs: ['CN-05', 'CN-12'],
+      refs: ['CN-04', 'CN-05'],
     },
     {
       category: '利率水平',
-      current: '很低',
+      current: '低位',
       leftPole: '低',
       rightPole: '高',
       position: 12,
-      basis: '1 年 LPR 3.0%，5 年期以上 3.5%；十年国债约 1.69%。',
+      basis: '事实：8月20日1年/5年以上LPR为3.0%/3.5%；9月4日十年国债1.6804%。',
       confidence: '高',
       refs: ['CN-05', 'CN-06'],
     },
     {
       category: '利差水平',
-      current: '很窄',
+      current: '优质信用补偿薄',
       leftPole: '窄',
       rightPole: '宽',
-      position: 16,
-      basis: '十年 AAA 中票约 2.09%，对国债利差约 40bp，风险定价不紧。',
+      position: 17,
+      basis:
+        '计算：9月4日十年AAA中票2.0578%减同期限国债1.6804%，为37.74bp；只代表AAA，不代表弱信用。',
       confidence: '高',
       refs: ['CN-06'],
     },
     {
       category: '投资者',
-      current: '热，但会跑',
+      current: '仍参与，开始挑选',
       leftPole: '乐观／自信／渴望买进',
       rightPole: '悲观／忧虑／无心买进',
-      position: 30,
+      position: 37,
       basis:
-        '两融余额仍在 2.6 万亿元高位，近期曾连续回落；风险偏好强，持仓并不稳。',
+        '推断：9月3日两融2.6567万亿元，但单日减少42.88亿元；ETF涨跌也不齐，尚未全面恐惧。',
       confidence: '中',
-      refs: ['CN-13'],
+      refs: ['CN-10', 'CN-08'],
     },
     {
       category: '资产持有人',
-      current: '仍愿意拿',
+      current: '持有与减仓并存',
       leftPole: '乐于持有',
       rightPole: '急于卖出离场',
-      position: 35,
-      basis: '指数高位震荡而成交维持高位，尚未出现一致性离场。',
+      position: 40,
+      basis:
+        '推断：上证周跌0.56%、成交仍高，支持有换手而非一致离场；价格不能直接识别持有人的意愿。',
       confidence: '中',
-      refs: ['CN-08'],
+      refs: ['CN-07', 'CN-11'],
     },
     {
       category: '卖家',
-      current: '高位轮动',
+      current: '热门方向卖压增多',
       leftPole: '稀少',
       rightPole: '众多',
-      position: 44,
-      basis: '三大指数回落但超过 3000 只股票上涨，卖压集中在拥挤方向。',
+      position: 54,
+      basis:
+        '事实：科创50周跌5.10%，上证180跌0.80%；推断卖压分层，未取得完整个股周广度。',
       confidence: '中',
-      refs: ['CN-08'],
-    },
-    {
-      category: '市场',
-      current: '科技拥挤',
-      leftPole: '人群拥挤',
-      rightPole: '乏人问津',
-      position: 24,
-      basis: '科创板平均市盈率约 125 倍，远高于沪市主板约 14 倍。',
-      confidence: '高',
       refs: ['CN-07'],
     },
     {
+      category: '市场',
+      current: '热度仍有集中',
+      leftPole: '人群拥挤',
+      rightPole: '乏人问津',
+      position: 33,
+      basis:
+        '推断：9月4日仅44%非货ETF上涨，热门科技估值仍高；ETF广度含跨境与债券，不能替代A股个股广度。',
+      confidence: '中',
+      refs: ['CN-08', 'CN-07'],
+    },
+    {
       category: '基金',
-      current: '产品多，钱不挤',
+      current: '不足以判定抢购',
       leftPole: '申购门槛高／每天都发新基金／基金管理人说了算',
       rightPole: '向所有人开放申购／只有最好的基金才能募资／基金投资人有话语权',
-      position: 43,
+      position: 50,
       basis:
-        '公募供给充足，但没有重现排队抢购。此项缺少高频一手口径，信心较低。',
+        '资料不足：协会最新月度发布为7月；未核验本周新基金认购与净申购。暂置中间，不把规模增长当净流入。',
       confidence: '中',
       refs: ['CN-09'],
     },
     {
       category: '近期业绩',
-      current: '利润强，分布窄',
+      current: '本周回撤，分化明显',
       leftPole: '强劲',
       rightPole: '萎靡',
-      position: 29,
-      basis: '工业利润 +17.6%；电子 +110%，但汽车 -20.4%，行业差异很大。',
+      position: 58,
+      basis:
+        '事实：上证周跌0.56%，科创50周跌5.10%；此项衡量投资近期表现，工业利润另列基本面。',
       confidence: '高',
-      refs: ['CN-03'],
+      refs: ['CN-07'],
     },
     {
       category: '资产价格',
-      current: '结构偏高',
+      current: '价值分层',
       leftPole: '高',
       rightPole: '低',
-      position: 32,
-      basis: '沪市整体 PE 17.43 倍尚可，科创板 124.62 倍已经不便宜。',
+      position: 35,
+      basis:
+        '事实：9月4日上证综指PE17.3倍、科创50为98.4倍；均以上年年报利润并剔除亏损公司，非TTM。',
       confidence: '高',
       refs: ['CN-07'],
     },
     {
       category: '预期收益',
-      current: '热门偏低',
+      current: '热门回报余地有限',
       leftPole: '低',
       rightPole: '高',
-      position: 28,
-      basis: '高估值先透支未来回报；低估值板块仍有安全垫，不能一概而论。',
+      position: 34,
+      basis:
+        '推断：即使景气改善，高价仍可能先消耗未来回报；大盘低倍数也需要排除利润下滑。',
       confidence: '中',
-      refs: ['CN-07'],
+      refs: ['CN-07', 'CN-01', 'HM-04'],
     },
     {
       category: '风险',
-      current: '正在被低估',
+      current: '定价与杠杆风险',
       leftPole: '高',
       rightPole: '低',
-      position: 31,
-      basis: '利差很窄、杠杆交易高、热门估值贵；系统流动性暂时不紧。',
-      confidence: '高',
-      refs: ['CN-06', 'CN-07', 'CN-13', 'HM-01'],
+      position: 33,
+      basis:
+        '推断：高估值叠加借钱持仓会放大永久损失和被迫卖出；当前低融资成本是系统压力较小的反证。',
+      confidence: '中',
+      refs: ['CN-07', 'CN-10', 'CN-06'],
     },
     {
       category: '流行风格',
-      current: '追科技与主题',
+      current: '主题仍热，轮动加快',
       leftPole: '激进／四处投资',
       rightPole: '审慎且自律／精挑细选',
-      position: 24,
-      basis: '资金集中在高景气和高弹性方向，成交活跃但轮动很快。',
-      confidence: '高',
-      refs: ['CN-07', 'CN-08'],
+      position: 39,
+      basis:
+        '推断：科技回撤、航海装备与养殖走强，资金在换方向；不能把一天的行业轮动说成长期风格切换。',
+      confidence: '中',
+      refs: ['CN-08'],
     },
     {
       category: '正确风格',
-      current: '价格纪律优先',
+      current: '现金流与价格优先',
       leftPole: '审慎且自律／精挑细选',
       rightPole: '激进／四处投资',
-      position: 22,
-      basis: '盈利要兑现，价格要留余地；热门方向尤其需要安全边际。',
+      position: 26,
+      basis:
+        '行动：保留核心仓，先看回款、负债、估值；逆向买入须有错误定价证据，而非只因别人卖。',
       confidence: '中',
-      refs: ['CN-01', 'CN-03', 'CN-07', 'HM-04'],
+      refs: ['CN-03', 'CN-07', 'HM-05'],
     },
     {
       category: '易犯错误',
-      current: '把好故事当好价格',
+      current: '把回撤误认成便宜',
       leftPole: '买进太多／高价追涨／承受太多风险',
       rightPole: '买进太少／离开市场／承受太少风险',
-      position: 20,
-      basis: '钱多不等于需求强，好行业也不等于任何价格都值得买。',
+      position: 28,
+      basis:
+        '行动：防范追涨后补仓加杠杆；同样避免在信用尚稳时因短期波动清空长期资产。',
       confidence: '中',
-      refs: ['CN-01', 'CN-04', 'CN-12'],
+      refs: ['CN-07', 'CN-06', 'HM-01'],
     },
   ],
   styleMap: [
     {
-      name: '高景气科技',
-      certainty: 78,
-      cushion: 22,
+      name: '科技 / 高端制造',
+      certainty: 73,
+      cushion: 27,
       posture: '精选',
       tone: '#b98358',
     },
     {
-      name: '出口 / 制造',
-      certainty: 74,
-      cushion: 55,
-      posture: '偏配',
+      name: '制造 / 出口现金流',
+      certainty: 69,
+      cushion: 52,
+      posture: '持有',
       tone: '#6f9584',
     },
     {
       name: '大盘价值 / 红利',
-      certainty: 68,
-      cushion: 63,
+      certainty: 66,
+      cushion: 62,
       posture: '平衡',
       tone: '#718f72',
     },
     {
       name: '内需 / 地产链',
-      certainty: 31,
-      cushion: 46,
-      posture: '观察',
+      certainty: 34,
+      cushion: 44,
+      posture: '等回款',
       tone: '#b8796f',
     },
   ],
   actions: [
-    ['可持', '盈利兑现的科技、出口龙头'],
-    ['可等', '高估值回撤，宽基降温'],
-    ['少碰', '只靠故事、弱现金流、地产拖累链'],
+    ['核心仓', '持有盈利与回款稳定的资产，复核负债和分红来源'],
+    ['新增资金', '分批投入，优先价格有余地的现金流，留足现金'],
+    ['等待条件', '订单连续改善并传到零售、回款；或价格先给安全边际'],
+    ['避免', '跌过就当便宜、追主题加杠杆、因一周回撤全盘离场'],
   ],
-  defenseScore: 62,
-  defenseLabel: '略偏防守',
-  defenseReason: '不离场，但把新增资金留给价格回到价值附近的机会。',
+  defenseScore: 66,
+  defenseLabel: '适度偏防守',
+  defenseReason:
+    '行动判断：低利率支持留在场内，但永久损失常来自高价买弱现金流；避免杠杆把正常波动变成被迫卖出。',
   evidence: [
     {
-      label: 'GDP',
-      value: '+4.7%',
-      note: '上半年',
-      tone: '#b98358',
+      label: '制造业PMI',
+      value: '49.8',
+      note: '8月 / 08.31发布',
+      tone: '#718f72',
       refs: ['CN-01'],
     },
     {
-      label: '零售',
+      label: '新订单',
+      value: '50.6',
+      note: '8月 / 调查值',
+      tone: '#718f72',
+      refs: ['CN-01'],
+    },
+    {
+      label: '非制造业PMI',
+      value: '49.0',
+      note: '8月 / 反证',
+      tone: '#b8796f',
+      refs: ['CN-01'],
+    },
+    {
+      label: '社会零售',
       value: '+0.6%',
-      note: '7月同比',
+      note: '7月同比 / 08.17发布',
       tone: '#b8796f',
-      refs: ['CN-01'],
-    },
-    {
-      label: '固定投资',
-      value: '-6.7%',
-      note: '1—7月',
-      tone: '#b8796f',
-      refs: ['CN-01'],
+      refs: ['CN-02'],
     },
     {
       label: '工业利润',
       value: '+17.6%',
-      note: '1—7月',
+      note: '1—7月同比 / 08.27发布',
       tone: '#718f72',
       refs: ['CN-03'],
     },
     {
-      label: 'M2',
-      value: '+7.7%',
-      note: '7月末',
-      tone: '#6f9584',
-      refs: ['CN-04'],
-    },
-    {
       label: '十年国债',
-      value: '1.69%',
-      note: '08.28',
+      value: '1.6804%',
+      note: '09.04中债估值',
       tone: '#7e8fa1',
       refs: ['CN-06'],
     },
   ],
   triggers: [
-    ['更进攻', '消费、PMI、居民信贷一起回升', '#718f72'],
-    ['维持', '利润扩张，成交不塌，利差仍窄', '#7e8fa1'],
-    ['更防守', '盈利收窄，科技杀估值，成交退潮', '#b8796f'],
+    ['更进攻', '订单扩张延续，零售与回款跟上，估值仍有余地', '#718f72'],
+    ['维持', '信用平稳、利润仍增，回撤没有演变成资金链问题', '#7e8fa1'],
+    ['更防守', '盈利预期下修、信用利差持续走阔、杠杆被动退出', '#b8796f'],
   ],
   sources: [
     ...frameworkSources,
     {
       id: 'CN-01',
-      label: '国家统计局｜7月经济',
-      url: 'https://www.stats.gov.cn/sj/zxfb/202608/t20260817_1965056.html',
+      label: '国家统计局｜8月PMI · 08.31发布',
+      url: 'https://www.stats.gov.cn/sj/zxfbhjd/202608/t20260831_1965154.html',
       tier: '一手数据',
     },
     {
       id: 'CN-02',
-      label: '国家统计局｜7月PMI',
-      url: 'https://www.stats.gov.cn/zwfwck/sjfb/202607/t20260731_1964253.html',
+      label: '国家统计局｜7月零售 · 08.17发布',
+      url: 'https://www.stats.gov.cn/sj/zxfbhjd/202608/t20260817_1965052.html',
       tier: '一手数据',
     },
     {
       id: 'CN-03',
-      label: '国家统计局｜工业利润',
+      label: '国家统计局｜1—7月工业利润 · 08.27发布',
       url: 'https://www.stats.gov.cn/sj/zxfb/202608/t20260827_1965126.html',
       tier: '一手数据',
     },
     {
       id: 'CN-04',
-      label: '新华社 / 央行｜金融数据',
+      label: '新华社转引央行｜7月金融数据 · 08.14发布',
       url: 'https://www.news.cn/20260814/6fa0381f296748b9b4cd6fb392dc3a70/c.html',
-      tier: '一手数据',
+      tier: '交叉验证',
     },
     {
       id: 'CN-05',
-      label: '中国货币网｜LPR',
-      url: 'https://www.chinamoney.com.cn/chinese/rdgz/20260720/3379021.html',
+      label: '中国货币网｜8月LPR · 08.20发布',
+      url: 'https://www.chinamoney.com.cn/chinese/rdgz/20260820/3399885.html',
       tier: '一手数据',
     },
     {
       id: 'CN-06',
-      label: '中债｜收益率曲线',
-      url: 'https://yield.chinabond.com.cn/cbweb-pbc-web/pbc/more?locale=cn_zh',
+      label: '中债｜09.04国债与AAA中票曲线',
+      url: 'https://yield.chinabond.com.cn/cbweb-pbc-web/pbc/more?locale=cn_ZH',
       tier: '一手数据',
     },
     {
       id: 'CN-07',
-      label: '上交所｜市场数据',
-      url: 'https://www.sse.com.cn/',
-      tier: '一手数据',
+      label: '上交所发布（新浪转载）｜08.31—09.04周报',
+      url: 'https://finance.sina.com.cn/wm/2026-09-04/doc-iniqsenq4140368.shtml',
+      tier: '交叉验证',
     },
     {
       id: 'CN-08',
-      label: '新华财经｜8月28日收盘',
-      url: 'https://www.cnfin.com/yw-lb/detail/20260828/4461881_1.html',
-      tier: '一手数据',
+      label: '界面新闻（新浪转载）｜09.04收盘与ETF广度',
+      url: 'https://finance.sina.com.cn/jjxw/2026-09-04/doc-iniqsenq4068862.shtml',
+      tier: '交叉验证',
     },
     {
       id: 'CN-09',
-      label: '基金业协会｜公募数据',
-      url: 'https://www.amac.org.cn/sjtj/tjbg/gmjj/',
+      label: '基金业协会｜统计发布（最新月度为7月）',
+      url: 'https://www.amac.org.cn/sjtj/',
       tier: '一手数据',
     },
     {
       id: 'CN-10',
-      label: 'IMF｜7月全球展望',
-      url: 'https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026',
+      label: '上海证券报（经观转载）｜09.03两融 · 09.04发布',
+      url: 'https://www.eeo.com.cn/2026/0904/1023108.shtml',
       tier: '交叉验证',
     },
     {
       id: 'CN-11',
-      label: '世界银行｜中国经济简报',
-      url: 'https://www.worldbank.org/en/news/press-release/2026/07/07/rebalancing-growth-china-economic-update',
+      label: '新京报｜09.04沪深成交',
+      url: 'https://www.bjnews.com.cn/detail/1788505514129203.html',
       tier: '交叉验证',
     },
     {
       id: 'CN-12',
-      label: '澎湃｜信用结构拆分',
-      url: 'https://www.thepaper.cn/newsDetail_forward_33783788',
-      tier: '交叉验证',
-    },
-    {
-      id: 'CN-13',
-      label: '证券时报｜两融变化',
-      url: 'https://www.stcn.com/article/detail/4138103.html',
+      label: '新华财经｜09.04债市与流动性',
+      url: 'https://www.cnfin.com/yw-lb/detail/20260904/4465250_1.html',
       tier: '交叉验证',
     },
   ],
@@ -657,534 +671,599 @@ const cnData: MarketData = {
 const usData: MarketData = {
   label: '美股',
   code: 'U · S · MARKET',
-  stage: '盈利热 / 利率高',
-  regime: '盈利牛市',
-  cycleStage: '牛市后段',
-  cycleRange: [72, 84],
-  cyclePhase: '第二向第三阶段过渡',
-  cyclePhaseNote: '改善早已成为共识，部分资产开始按“好事会持续”定价。',
+  stage: '盈利仍强 / 利率掣肘',
+  regime: '盈利支撑的牛市',
+  cycleStage: '牛市成熟段',
+  cycleRange: [69, 85],
+  cyclePhase: '第二阶段后半，局部第三阶段',
+  cyclePhaseNote:
+    '盈利改善已是共识，部分成长叙事接近“乐观是常识”；调查仍有不少看空者，全市场尚非一致亢奋。',
   cycleReason:
-    '盈利和资金仍在推升价格；高估值、窄利差与低波动已把钟摆推向乐观一侧，但投资者问卷尚未全面亢奋。',
-  cycleRefs: [
-    'US-11',
-    'US-12',
-    'US-13',
-    'US-15',
-    'US-16',
-    'HM-02',
-    'HM-03',
-    'HM-04',
-  ],
-  hero: '盈利很强',
-  heroAccent: '赔率变薄',
+    '推断：盈利预测上修、年内上涨和窄利差支持牛市；高价格要求、基金流出与利率压力令周期偏成熟。新高或一周下跌都不足以独自定牛熊。',
+  cycleRefs: ['US-11', 'US-13', 'US-07', 'US-09', 'US-10'],
+  hero: '盈利撑住',
+  heroAccent: '利率抬高门槛',
   summary:
-    '企业利润撑住指数，就业和消费开始变软。低波动、窄利差、高估值同时出现。',
-  posture: '持有质量 · 少追久期',
+    '就业反弹，盈利预测仍在上修。好消息能延长增长，也会让高估值面对更高贴现率。',
+  posture: '守住质量 · 降低价格容忍度',
   treatment:
-    '不猜顶部，也不追估值；保留高质量核心仓，把新增风险留到价格或利率更友好时。',
-  score: 78,
+    '核心仓保留有现金流的企业；新增资金放慢，先分散集中风险，等待经营兑现或价格让步。',
+  score: 77,
   accent: '#8b7d63',
   panel: '#ece2cf',
   signals: [
     {
       name: '基本面',
       value: 68,
-      label: '仍在扩张',
-      note: '就业转弱',
+      label: '增长仍在',
+      note: '通胀未消',
       icon: Activity,
     },
     {
       name: '资本供给',
-      value: 72,
-      label: '信用宽',
-      note: '利差很窄',
+      value: 71,
+      label: '信用可得',
+      note: '银行分层',
       icon: CircleDollarSign,
     },
     {
       name: '心理钟摆',
-      value: 73,
-      label: '偏向乐观',
-      note: '人心谨慎',
+      value: 67,
+      label: '乐观有分歧',
+      note: '问卷回暖',
       icon: Sparkles,
     },
     {
       name: '价格压力',
-      value: 82,
-      label: '明显偏高',
-      note: '长债 4.67%',
+      value: 79,
+      label: '兑现要求高',
+      note: '利率掣肘',
       icon: Landmark,
     },
   ],
   indices: [
     {
-      name: 'S&P 500',
-      value: '7,711.76',
-      change: '-0.20%',
-      note: '年内 +12.7%',
+      name: '标普500',
+      value: '7,718.60',
+      change: '-0.38%',
+      note: '09.04收盘 / 日变动',
       up: false,
     },
     {
-      name: 'Nasdaq',
-      value: '26,402.42',
-      change: '-0.50%',
-      note: '年内 +13.6%',
+      name: '纳斯达克',
+      value: '26,506.99',
+      change: '-0.29%',
+      note: '09.04收盘 / 日变动',
       up: false,
     },
     {
-      name: 'Dow',
-      value: '53,559.99',
-      change: '近持平',
-      note: '年内 +11.4%',
-      up: true,
+      name: '道琼斯',
+      value: '53,414.25',
+      change: '-0.51%',
+      note: '09.04收盘 / 日变动',
+      up: false,
     },
     {
-      name: 'Russell 2000',
-      value: '2,972.37',
-      change: '-1.40%',
-      note: '年内 +19.8%',
+      name: 'VIX',
+      value: '14.32',
+      change: '偏低',
+      note: '09.03收盘 / 滞后一日',
       up: false,
     },
   ],
   crossChecks: [
     {
-      tag: '市场共识',
-      title: '盈利与AI继续托市',
-      text: '利润、PMI 和 ETF 流量都强，主流判断是龙头盈利足以消化估值。',
-      refs: ['US-06', 'US-13', 'US-14'],
+      tag: '市场共识 · 推断',
+      title: '增长有韧性，盈利能撑住',
+      text: '8月非农增16.2万，Q3盈利预测上修；但7月实际消费环比近乎停滞，调查强劲尚待更多支出数据确认。',
+      refs: ['US-01', 'US-11', 'US-03', 'US-15'],
       tone: '#718f72',
     },
     {
-      tag: '价格已计入',
-      title: '好公司已经是贵资产',
-      text: '标普远期 PE 约 20 倍，长债 4.67%，高收益债利差仅 2.63%。',
-      refs: ['US-10', 'US-11', 'US-13', 'HM-04'],
+      tag: '价格已计入 · 计算',
+      title: '利润兑现与利率都要过关',
+      text: '9月4日标普除以8月31日的2026全年预期EPS361.38，约21.36倍。这是当年预期PE，不是未来12个月PE；计入利润的投资重估收益也会美化盈利。',
+      refs: ['US-13', 'US-11', 'US-12'],
       tone: '#b98358',
     },
     {
-      tag: '二层判断',
-      title: '盈利强，不等于回报高',
-      text: '人人看见的好消息不构成优势。下一段上涨需要盈利继续超出已经很高的预期。',
-      refs: ['US-12', 'US-13', 'HM-04', 'HM-05'],
+      tag: '二层判断 · 推断',
+      title: '增长好，持有回报未必同步好',
+      text: '就业好让加息压力更难消退；Q3总EPS上修1.2%，却有7/11行业下修。强总量不等于普遍经营加速。',
+      refs: ['US-01', 'US-04', 'US-11'],
       tone: '#7e8fa1',
     },
     {
       tag: '仍不知道',
-      title: '软着陆能否维持',
-      text: '就业走弱与通胀偏高可能先后反复。无法精确预测，只能控制买价和仓位。',
-      refs: ['US-02', 'US-03', 'US-07', 'HM-01'],
+      title: '通胀与AI投入的回报',
+      text: '能源价格会否再传导、AI投入多久变成自由现金流，都没有可靠答案。VIX与利差最新核验到9月3日，不能冒充周五值。',
+      refs: ['US-03', 'US-12', 'US-06', 'US-07'],
       tone: '#b8796f',
     },
   ],
   guide: [
     {
       category: '经济现状',
-      current: '增长尚在，动能分裂',
+      current: '增长韧性仍在',
       leftPole: '生机勃勃',
       rightPole: '停滞不前',
-      position: 45,
-      basis: 'Q2 GDP +1.5%，国内私人最终销售 +4.2%；7 月就业却减少 2.3 万。',
+      position: 34,
+      basis:
+        '事实：8月非农增16.2万、失业4.1%；Q2实际GDP年化增1.5%，私人内需增4.2%。',
       confidence: '高',
-      refs: ['US-01', 'US-03'],
+      refs: ['US-01', 'US-02'],
     },
     {
       category: '经济展望',
-      current: '滞胀风险升',
+      current: '增长与通胀拉扯',
       leftPole: '正面有利',
       rightPole: '负面不利',
-      position: 55,
+      position: 43,
       basis:
-        '联储预计增长 2.2%；核心 CPI 2.5% 与核心 PCE 3.3% 分叉，就业又走弱。',
+        '事实：ISM制造业54.6指向扩张；7月实际消费月增不足0.1%、核心PCE同比3.3%，展望不能只看调查。',
       confidence: '中',
-      refs: ['US-02', 'US-03', 'US-04', 'US-08'],
+      refs: ['US-15', 'US-03'],
     },
     {
       category: '贷款机构',
-      current: '企业宽，居民紧',
+      current: '企业可借，弱端谨慎',
       leftPole: '急于放贷',
       rightPole: '缄默谨慎',
-      position: 48,
-      basis: '企业贷款标准大体稳定、需求增强；信用卡趋紧，居民信贷需求偏弱。',
+      position: 47,
+      basis:
+        '事实：7月SLOOS显示多类工商贷款标准较历史中点宽；消费、地产与非银贷款仍偏严。不是全面紧贷。',
       confidence: '高',
-      refs: ['US-09'],
+      refs: ['US-05'],
     },
     {
       category: '资本市场',
-      current: '信用仍宽',
+      current: '公开信用仍通畅',
       leftPole: '宽松',
       rightPole: '紧缩',
-      position: 25,
-      basis: '高收益债利差仅 2.63%，ETF 继续吸金，融资环境没有显著收紧。',
+      position: 29,
+      basis:
+        '事实：9月3日高收益债OAS为2.65%，较8月28日仅宽5bp；这是市场信用价格，不能代表银行所有借款人。',
       confidence: '高',
-      refs: ['US-11', 'US-14'],
+      refs: ['US-07', 'US-05'],
     },
     {
       category: '资本供给',
-      current: '很充足',
+      current: '有资金，配置在移动',
       leftPole: '充足',
       rightPole: '短缺',
-      position: 20,
-      basis: 'ETF 单周净流入 517 亿美元，企业信用利差靠近历史低位。',
-      confidence: '高',
-      refs: ['US-11', 'US-14'],
-    },
-    {
-      category: '融资条款',
-      current: '企业尚可，消费偏紧',
-      leftPole: '宽松',
-      rightPole: '严格',
-      position: 50,
-      basis: '大中企业融资尚可；信用卡和部分消费信贷标准处在偏紧一侧。',
+      position: 35,
+      basis:
+        '事实：8月26日当周债券基金净流入134.62亿美元，美国本土股票基金净流出183.44亿美元；含共同基金与ETF。',
       confidence: '高',
       refs: ['US-09'],
     },
     {
+      category: '融资条款',
+      current: '信用条款分层',
+      leftPole: '宽松',
+      rightPole: '严格',
+      position: 43,
+      basis:
+        '事实：SLOOS显示优质工商贷款较宽，地产、消费和非银较紧；未取得本周新债契约保护的完整统计。',
+      confidence: '中',
+      refs: ['US-05'],
+    },
+    {
       category: '利率水平',
-      current: '高',
+      current: '长期资金不便宜',
       leftPole: '低',
       rightPole: '高',
-      position: 80,
-      basis: '联邦基金目标 3.50%—3.75%，十年美债 4.67%。',
+      position: 69,
+      basis:
+        '事实：联邦基金目标3.50%—3.75%（07.29）；十年美债4.77%（09.03）。决议未变不代表长期贴现率低。',
       confidence: '高',
-      refs: ['US-07', 'US-10'],
+      refs: ['US-04', 'US-08'],
     },
     {
       category: '利差水平',
-      current: '信用窄，期限正',
+      current: '风险补偿仍薄',
       leftPole: '窄',
       rightPole: '宽',
-      position: 24,
-      basis: '高收益债 OAS 2.63%；10Y—2Y 约 +46bp，信用风险定价很松。',
+      position: 20,
+      basis:
+        '事实：高收益债OAS2.65%（09.03），比08.28的2.60%略宽；小幅走阔尚非信用危机。',
       confidence: '高',
-      refs: ['US-11', 'US-19'],
+      refs: ['US-07'],
     },
     {
       category: '投资者',
-      current: '价格乐观，人心谨慎',
+      current: '问卷回暖但有分歧',
       leftPole: '乐观／自信／渴望买进',
       rightPole: '悲观／忧虑／无心买进',
       position: 42,
-      basis: 'VIX 14.51，但 AAII 看空 44.4%。价格与问卷情绪并不一致。',
+      basis:
+        '事实：截至9月2日AAII看多39.7%、看空37.6%；看空比例仍高于其长期均值，不能称全民亢奋。',
       confidence: '高',
-      refs: ['US-15', 'US-16'],
+      refs: ['US-10'],
     },
     {
       category: '资产持有人',
-      current: '继续持有',
+      current: '持有意愿仍占优',
       leftPole: '乐于持有',
       rightPole: '急于卖出离场',
-      position: 28,
-      basis: '主要指数接近高位且年内涨幅两位数，没有广泛离场迹象。',
-      confidence: '高',
-      refs: ['US-17'],
+      position: 35,
+      basis:
+        '推断：标普年内上涨、VIX偏低支持多数资产仍被持有；美国股票基金流出构成反证，不能用指数代替实际持仓。',
+      confidence: '中',
+      refs: ['US-13', 'US-06', 'US-09'],
     },
     {
       category: '卖家',
-      current: '不急，但在换仓',
+      current: '买卖接近平衡',
       leftPole: '稀少',
       rightPole: '众多',
-      position: 38,
-      basis: '低 VIX 表明抛压不大；共同基金赎回与 ETF 流入并存，结构上在换仓。',
+      position: 49,
+      basis:
+        '事实：9月4日NYSE跌涨家数比1.04；纳斯达克上涨2478家、下跌2256家。广度分化，不是全面抛售。',
       confidence: '中',
-      refs: ['US-14', 'US-15'],
-    },
-    {
-      category: '市场',
-      current: '指数拥挤，广度改善',
-      leftPole: '人群拥挤',
-      rightPole: '乏人问津',
-      position: 26,
-      basis:
-        '英伟达仍能单独抬指数，但 Russell 2000 年内 +19.8%，并非只有七巨头。',
-      confidence: '高',
-      refs: ['US-17', 'US-18'],
-    },
-    {
-      category: '基金',
-      current: 'ETF吸金，主动赎回',
-      leftPole: '申购门槛高／每天都发新基金／基金管理人说了算',
-      rightPole: '向所有人开放申购／只有最好的基金才能募资／基金投资人有话语权',
-      position: 38,
-      basis:
-        'ETF 单周 +517 亿美元；长期共同基金同期 -175 亿美元。钱偏向被动工具。',
-      confidence: '高',
       refs: ['US-14'],
     },
     {
+      category: '市场',
+      current: '预期集中，价格偏热',
+      leftPole: '人群拥挤',
+      rightPole: '乏人问津',
+      position: 29,
+      basis:
+        '推断：低波动率与盈利高预期共存；七巨头以外493家Q2盈利也增长31.8%，反驳只剩少数公司盈利的说法。',
+      confidence: '中',
+      refs: ['US-06', 'US-12'],
+    },
+    {
+      category: '基金',
+      current: 'ETF与共同基金分流',
+      leftPole: '申购门槛高／每天都发新基金／基金管理人说了算',
+      rightPole: '向所有人开放申购／只有最好的基金才能募资／基金投资人有话语权',
+      position: 51,
+      basis:
+        '事实：8月26日当周共同基金流出337.8亿美元、ETF净发行320.4亿美元；不把单一渠道赎回误作全市场撤资。',
+      confidence: '高',
+      refs: ['US-09'],
+    },
+    {
       category: '近期业绩',
-      current: '很强但集中',
+      current: '年内强，本周横盘',
       leftPole: '强劲',
       rightPole: '萎靡',
-      position: 18,
-      basis: 'Q2 标普盈利 +50.4%；剔除 Alphabet 和 Amazon 后仍有 +32.0%。',
+      position: 27,
+      basis:
+        '事实：截至9月4日标普年内涨12.8%，本周约涨0.09%；近期投资表现强于单日下跌所传达的情绪。',
       confidence: '高',
       refs: ['US-13'],
     },
     {
       category: '资产价格',
-      current: '高',
+      current: '需要盈利持续兑现',
       leftPole: '高',
       rightPole: '低',
-      position: 18,
-      basis: '标普远期 PE 20 倍，高于十年均值 19 倍；联储也称估值压力偏高。',
-      confidence: '高',
-      refs: ['US-12', 'US-13'],
+      position: 26,
+      basis:
+        '计算：7718.60÷2026全年预期EPS361.38≈21.36倍；估计日期08.31。混合盈利口径及投资收益使便宜程度难定。',
+      confidence: '中',
+      refs: ['US-13', 'US-11', 'US-12'],
     },
     {
       category: '预期收益',
-      current: '被利率压薄',
+      current: '高价格压缩回报余地',
       leftPole: '低',
       rightPole: '高',
-      position: 20,
+      position: 27,
       basis:
-        '20 倍 PE 对应约 5% 盈利收益率，十年美债已到 4.67%，风险补偿很薄。',
-      confidence: '高',
-      refs: ['US-10', 'US-13'],
+        '推断：高预期必须兑现，同时承受较高贴现率；EPS收益率不能直接当作预期收益或股权风险溢价。',
+      confidence: '中',
+      refs: ['US-11', 'US-08', 'HM-04'],
     },
     {
       category: '风险',
-      current: '损失风险被低波动遮住',
+      current: '高价与现金流错配',
       leftPole: '高',
       rightPole: '低',
-      position: 22,
-      basis: 'VIX 低、利差窄，同时估值高、对冲基金杠杆接近纪录。',
-      confidence: '高',
-      refs: ['US-11', 'US-12', 'US-15', 'HM-01'],
+      position: 23,
+      basis:
+        '推断：估值依赖未来增长，利率与经营兑现任一落空都会损伤价值；低VIX不等于低永久损失风险。',
+      confidence: '中',
+      refs: ['US-12', 'US-08', 'US-06'],
     },
     {
       category: '流行风格',
-      current: 'AI、动量、ETF',
+      current: '追成长与分散并存',
       leftPole: '激进／四处投资',
       rightPole: '审慎且自律／精挑细选',
-      position: 18,
-      basis: 'AI 龙头主导指数边际变化，被动资金持续流入，趋势交易仍占上风。',
-      confidence: '高',
-      refs: ['US-14', 'US-18'],
+      position: 34,
+      basis:
+        '推断：AI和盈利叙事仍强，股票基金却有流出；风险偏好不整齐，不把调查反弹解释成盲目加仓。',
+      confidence: '中',
+      refs: ['US-12', 'US-09', 'US-10'],
     },
     {
       category: '正确风格',
-      current: '质量优先，更重价格',
+      current: '质量、限价、留余地',
       leftPole: '审慎且自律／精挑细选',
       rightPole: '激进／四处投资',
       position: 20,
-      basis: '高利率下，高现金流与盈利兑现比远期故事更值钱。',
+      basis:
+        '行动：持有核心质量，新增资金要求安全边际；耐心可以是分批，也可以是暂时持有短久期现金工具。',
       confidence: '中',
-      refs: ['US-07', 'US-10', 'US-13', 'HM-04'],
+      refs: ['US-08', 'US-12', 'HM-06'],
     },
     {
       category: '易犯错误',
-      current: '把好资产当好投资',
+      current: '把高增长永久化',
       leftPole: '买进太多／高价追涨／承受太多风险',
       rightPole: '买进太少／离开市场／承受太少风险',
-      position: 18,
+      position: 23,
       basis:
-        '利润强是真的，但价格、利率和杠杆也高。把好公司等同于好价格，是主要风险。',
+        '行动：不把GAAP投资重估收益当持续经营收入，也不借钱押注利率转向；反过来，不能因贵就断言牛市结束。',
       confidence: '中',
-      refs: ['US-10', 'US-12', 'US-13'],
+      refs: ['US-12', 'US-04', 'HM-01'],
     },
   ],
   styleMap: [
     {
-      name: 'AI / 大型科技',
-      certainty: 86,
-      cushion: 18,
-      posture: '精选',
-      tone: '#b98358',
-    },
-    {
-      name: '标普质量',
-      certainty: 80,
-      cushion: 32,
-      posture: '核心',
+      name: '高质量核心企业',
+      certainty: 76,
+      cushion: 39,
+      posture: '持有',
       tone: '#718f72',
     },
     {
-      name: '小盘 / 价值',
-      certainty: 61,
-      cushion: 43,
-      posture: '观察',
+      name: 'AI / 高预期成长',
+      certainty: 65,
+      cushion: 22,
+      posture: '限价',
+      tone: '#b98358',
+    },
+    {
+      name: '盈利扩散 / 中小盘',
+      certainty: 58,
+      cushion: 52,
+      posture: '精选',
       tone: '#7e8fa1',
     },
     {
-      name: '长久期 / 无盈利',
-      certainty: 40,
-      cushion: 12,
-      posture: '低配',
+      name: '弱现金流 / 高负债',
+      certainty: 29,
+      cushion: 25,
+      posture: '回避',
       tone: '#b8796f',
     },
   ],
   actions: [
-    ['可持', '高自由现金流、有定价权的龙头'],
-    ['可等', '长债利率回落，再加久期'],
-    ['少碰', '把低 VIX 当成安全垫'],
+    ['核心仓', '保留可持续现金流，分散行业与单一叙事的集中风险'],
+    ['新增资金', '分批买，保留短久期现金工具的等待价值'],
+    ['等待条件', '盈利改善扩散、经营现金流跟上，或价格回到合理价值'],
+    ['避免', '把投资重估收益当经常性利润、追涨加杠杆、押注加息日期'],
   ],
   defenseScore: 76,
-  defenseLabel: '偏防守',
-  defenseReason: '不猜顶部；保留强资产，同时降低对估值继续扩张的依赖。',
+  defenseLabel: '明确偏防守',
+  defenseReason:
+    '行动判断：高质量不等于任何价格都合适。让组合能承受利率再上行、盈利落空与流动性需求，避免被迫在低价卖出。',
   evidence: [
     {
-      label: 'Q2 GDP',
-      value: '+1.5%',
-      note: '年化',
-      tone: '#7e8fa1',
+      label: '非农就业',
+      value: '+16.2万',
+      note: '8月 / 09.04发布',
+      tone: '#718f72',
+      refs: ['US-01'],
+    },
+    {
+      label: '失业率',
+      value: '4.1%',
+      note: '8月 / 与上月持平',
+      tone: '#718f72',
       refs: ['US-01'],
     },
     {
       label: '核心PCE',
       value: '+3.3%',
-      note: '7月同比',
-      tone: '#b8796f',
-      refs: ['US-02'],
-    },
-    {
-      label: '非农',
-      value: '-2.3万',
-      note: '7月',
+      note: '7月同比 / 08.26发布',
       tone: '#b8796f',
       refs: ['US-03'],
     },
     {
-      label: 'Q2盈利',
-      value: '+50.4%',
-      note: '标普',
+      label: 'Q3 EPS上修',
+      value: '+1.2%',
+      note: '06.30→08.31 / 预期',
       tone: '#718f72',
-      refs: ['US-13'],
+      refs: ['US-11'],
+    },
+    {
+      label: '高收益债利差',
+      value: '2.65%',
+      note: '09.03 / 较08.28宽5bp',
+      tone: '#b98358',
+      refs: ['US-07'],
     },
     {
       label: '十年美债',
-      value: '4.67%',
-      note: '08.27',
-      tone: '#b98358',
-      refs: ['US-10'],
-    },
-    {
-      label: 'VIX',
-      value: '14.51',
-      note: '08.28',
+      value: '4.77%',
+      note: '09.03 / FRED最新值',
       tone: '#7e8fa1',
-      refs: ['US-15'],
+      refs: ['US-08'],
     },
   ],
   triggers: [
-    ['更进攻', '通胀回落，就业稳住，长债低于 4.2%', '#718f72'],
-    ['维持', '盈利上修，HY利差低于 3%，消费不衰退', '#7e8fa1'],
-    ['更防守', '盈利下修，HY利差高于 3.5%，VIX站上20', '#b8796f'],
+    ['更进攻', '盈利上修扩散，通胀缓和，价格留出安全边际', '#718f72'],
+    ['维持', '就业与现金流稳，信用利差没有持续扩大', '#7e8fa1'],
+    ['更防守', '通胀再升、盈利预期反转，信用与资金流同时转弱', '#b8796f'],
   ],
   sources: [
     ...frameworkSources,
     {
       id: 'US-01',
-      label: 'BEA｜Q2 GDP 二次估计',
-      url: 'https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026',
+      label: 'BLS｜8月就业 · 09.04 08:30 ET发布',
+      url: 'https://www.bls.gov/news.release/archives/empsit_09042026.htm',
       tier: '一手数据',
     },
     {
       id: 'US-02',
-      label: 'BEA｜7月收入与支出',
-      url: 'https://www.bea.gov/news/2026/personal-income-and-outlays-july-2026',
+      label: 'BEA｜Q2 GDP二次估计 · 08.26发布',
+      url: 'https://www.bea.gov/news/2026/gdp-second-estimate-and-corporate-profits-2nd-quarter-2026',
       tier: '一手数据',
     },
     {
       id: 'US-03',
-      label: 'BLS｜7月就业',
-      url: 'https://www.bls.gov/news.release/empsit.htm',
+      label: 'BEA｜7月PCE · 08.26发布',
+      url: 'https://www.bea.gov/news/2026/personal-income-and-outlays-july-2026',
       tier: '一手数据',
     },
     {
       id: 'US-04',
-      label: 'BLS｜7月CPI',
-      url: 'https://www.bls.gov/news.release/archives/cpi_08122026.htm',
-      tier: '一手数据',
-    },
-    {
-      id: 'US-05',
-      label: '密歇根大学｜消费者信心',
-      url: 'https://www.sca.isr.umich.edu/',
-      tier: '一手数据',
-    },
-    {
-      id: 'US-07',
-      label: '美联储｜7月FOMC',
+      label: 'Federal Reserve｜07.29利率决议',
       url: 'https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm',
       tier: '一手数据',
     },
     {
-      id: 'US-08',
-      label: '美联储｜6月经济预测',
-      url: 'https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20260617.htm',
-      tier: '一手数据',
-    },
-    {
-      id: 'US-09',
-      label: '美联储｜7月银行信贷调查',
+      id: 'US-05',
+      label: 'Federal Reserve｜7月银行贷款调查（Q2）',
       url: 'https://www.federalreserve.gov/data/sloos/sloos-202607.htm',
       tier: '一手数据',
     },
     {
-      id: 'US-10',
-      label: 'FRED｜美债收益率',
-      url: 'https://fred.stlouisfed.org/series/DGS10',
+      id: 'US-06',
+      label: 'FRED / Cboe｜VIX · 最新09.03收盘',
+      url: 'https://fred.stlouisfed.org/series/VIXCLS',
       tier: '一手数据',
     },
     {
-      id: 'US-11',
-      label: 'FRED｜高收益债利差',
+      id: 'US-07',
+      label: 'FRED / ICE｜高收益债利差 · 最新09.03',
       url: 'https://fred.stlouisfed.org/series/BAMLH0A0HYM2',
       tier: '一手数据',
     },
     {
-      id: 'US-19',
-      label: 'FRED｜10年—2年期限差',
-      url: 'https://fred.stlouisfed.org/series/T10Y2Y',
+      id: 'US-08',
+      label: 'FRED / Fed｜十年美债 · 最新09.03',
+      url: 'https://fred.stlouisfed.org/series/DGS10',
       tier: '一手数据',
     },
     {
-      id: 'US-12',
-      label: '美联储｜金融稳定报告',
-      url: 'https://www.federalreserve.gov/publications/2026-may-financial-stability-report-overview.htm',
-      tier: '一手数据',
-    },
-    {
-      id: 'US-14',
-      label: 'ICI｜基金与ETF流量',
+      id: 'US-09',
+      label: 'ICI｜合并基金流量 · 08.26当周，09.02发布',
       url: 'https://www.ici.org/research/stats/combined_flows',
       tier: '一手数据',
     },
     {
-      id: 'US-15',
-      label: 'Cboe｜VIX',
-      url: 'https://www.cboe.com/tradable-products/vix/',
+      id: 'US-10',
+      label: 'AAII｜09.02当周情绪 · 09.03发布',
+      url: 'https://www.aaii.com/latest/article/538876-aaii-sentiment-survey-pessimism-sinks',
       tier: '一手数据',
     },
     {
-      id: 'US-06',
-      label: 'S&P Global｜8月PMI',
-      url: 'https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/08/us-flash-pmi-signals-welcome-mix-of-hotter-output-growth-cooler-inflation',
+      id: 'US-11',
+      label: 'FactSet｜截至08.31盈利预测 · 09.04发布',
+      url: 'https://insight.factset.com/analysts-increasing-eps-estimates-for-sp-500-companies-for-2nd-straight-quarter',
+      tier: '交叉验证',
+    },
+    {
+      id: 'US-12',
+      label: 'FactSet｜Q2盈利与投资收益 · 08.28发布',
+      url: 'https://insight.factset.com/mag-7-companies-reported-earnings-growth-above-100-boosted-by-investment-gains',
       tier: '交叉验证',
     },
     {
       id: 'US-13',
-      label: 'FactSet｜Q2盈利',
-      url: 'https://insight.factset.com/sp-500-earnings-season-update-august-7-2026',
+      label: 'AP｜09.04最终收盘 · 16:30 ET发布',
+      url: 'https://apnews.com/article/ebc11cfa2cf8baf4491bf3d4199c1d74',
       tier: '交叉验证',
     },
     {
-      id: 'US-16',
-      label: 'AAII｜投资者情绪',
-      url: 'https://www.aaii.com/sentimentsurvey/sent_results',
+      id: 'US-14',
+      label: 'Reuters（转载）｜09.04收盘广度与成交',
+      url: 'https://www.marketscreener.com/news/wall-street-ends-lower-as-solid-jobs-data-fuels-hawkish-fed-bets-ce785bdbd889f126',
       tier: '交叉验证',
     },
     {
-      id: 'US-17',
-      label: 'AP｜8月28日收盘',
-      url: 'https://apnews.com/article/3f3477bcea915ac53ec2ae905ae57919',
-      tier: '交叉验证',
+      id: 'US-15',
+      label: 'ISM原始发布｜8月制造业调查 · 09.01发布',
+      url: 'https://www.prnewswire.com/news-releases/manufacturing-pmi-at-54-6-august-2026-ism-manufacturing-pmi-report-302865127.html',
+      tier: '一手数据',
     },
-    {
-      id: 'US-18',
-      label: 'AP｜指数集中度',
-      url: 'https://apnews.com/article/b4216a1f191d0304b4ed59e6912e23a4',
-      tier: '交叉验证',
-    },
+  ],
+};
+
+const sentimentBreakdown: Record<
+  MarketKey,
+  Array<[string, number, number, string, string[]]>
+> = {
+  cn: [
+    [
+      '价格趋势与市场广度',
+      25,
+      53,
+      '上证周跌0.56%、科创50跌5.10%；缺完整个股周广度，以指数分化和ETF广度辅助，中信心。',
+      ['CN-07', 'CN-08'],
+    ],
+    [
+      '资金流、成交与杠杆',
+      25,
+      67,
+      '沪深成交2.03万亿元，两融2.6567万亿元但单日下降；两融观测09.03，中信心。',
+      ['CN-10', 'CN-11'],
+    ],
+    [
+      '波动率与信用利差',
+      20,
+      78,
+      '09.04十年AAA中票对国债37.74bp；未核验A股期权波动率，使用信用代理，中信心。',
+      ['CN-06'],
+    ],
+    [
+      '估值与拥挤度',
+      15,
+      70,
+      '科创50上年利润PE98.4倍，对照上证180的12.7倍；为结构热度判断，中信心。',
+      ['CN-07'],
+    ],
+    [
+      '调查、基金发行与行为',
+      15,
+      50,
+      '缺少可比周度新发认购与全市场投资者调查，保守置中；不是观测到中性，中信心。',
+      ['CN-09'],
+    ],
+  ],
+  us: [
+    [
+      '价格趋势与市场广度',
+      25,
+      76,
+      '标普年内涨12.8%、本周约涨0.09%；NYSE与纳斯达克广度分化，中信心。',
+      ['US-13', 'US-14'],
+    ],
+    [
+      '资金流、成交与杠杆',
+      25,
+      50,
+      '美国股票基金净流出183.44亿美元（08.26当周），09.04成交低于20日均值；周度杠杆未核验，中信心。',
+      ['US-09', 'US-14'],
+    ],
+    [
+      '波动率与信用利差',
+      20,
+      82,
+      '09.03 VIX14.32、HY OAS2.65%，均偏平静；未取得09.04同口径值，中信心。',
+      ['US-06', 'US-07'],
+    ],
+    [
+      '估值与拥挤度',
+      15,
+      76,
+      '当年预期PE约21.36倍，利润含投资收益，价格仍要求兑现；不是NTM估值分位，中信心。',
+      ['US-11', 'US-12', 'US-13'],
+    ],
+    [
+      '调查、基金发行与行为',
+      15,
+      54,
+      'AAII看多39.7%、看空37.6%，问卷回暖但分歧仍大；基金流与问卷并列，中信心。',
+      ['US-10', 'US-09'],
+    ],
   ],
 };
 
@@ -1203,6 +1282,14 @@ const sentimentChartConfig = {
     color: '#b98358',
   },
 } satisfies ChartConfig;
+
+function sentimentLabel(value: number) {
+  if (value <= 20) return '极度恐惧';
+  if (value <= 40) return '谨慎';
+  if (value <= 60) return '中性';
+  if (value <= 80) return '乐观';
+  return '亢奋';
+}
 
 function guideSide(position: number): GuideSide {
   if (position <= 40) return 'left';
@@ -1358,6 +1445,7 @@ export default function Home() {
   const [guideFilter, setGuideFilter] = useState<GuideFilter>('all');
   const active = marketData[market];
   const latestSnapshot = marketHistory[marketHistory.length - 1];
+  const previousSnapshot = marketHistory[marketHistory.length - 2];
   const filteredGuide =
     guideFilter === 'all'
       ? active.guide
@@ -1393,7 +1481,7 @@ export default function Home() {
                 市场手记
               </div>
               <div className="font-mono text-[8px] tracking-[0.2em] text-[#26382e]/36">
-                CN / US · 08
+                CN / US · 09
               </div>
             </div>
           </div>
@@ -1423,7 +1511,7 @@ export default function Home() {
 
           <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.08em] text-[#26382e]/50">
             <CalendarDays className="size-3" aria-hidden="true" />
-            <span>2026.08.28</span>
+            <span>2026.09.04</span>
             <span className="ml-1 size-1 rounded-full bg-[var(--signal)]" />
           </div>
         </div>
@@ -1675,9 +1763,25 @@ export default function Home() {
 
             <div className="grid gap-px overflow-hidden border border-[#26382e]/10 bg-[#26382e]/8 sm:grid-cols-2 lg:grid-cols-1">
               {[
-                ['A股', latestSnapshot.cnSentiment, '#718f72', '偏热'],
-                ['美股', latestSnapshot.usSentiment, '#b98358', '偏热'],
-              ].map(([label, score, color, state]) => (
+                [
+                  'A股',
+                  latestSnapshot.cnSentiment,
+                  '#718f72',
+                  sentimentLabel(latestSnapshot.cnSentiment),
+                  latestSnapshot.cnSentiment -
+                    (previousSnapshot?.cnSentiment ??
+                      latestSnapshot.cnSentiment),
+                ],
+                [
+                  '美股',
+                  latestSnapshot.usSentiment,
+                  '#b98358',
+                  sentimentLabel(latestSnapshot.usSentiment),
+                  latestSnapshot.usSentiment -
+                    (previousSnapshot?.usSentiment ??
+                      latestSnapshot.usSentiment),
+                ],
+              ].map(([label, score, color, state, delta]) => (
                 <div
                   key={String(label)}
                   className="flex items-center justify-between bg-[#eee7d9] px-6 py-6"
@@ -1688,7 +1792,9 @@ export default function Home() {
                       {state}
                     </p>
                     <p className="mt-2 font-mono text-[8px] text-[#26382e]/30">
-                      首次记录 · {latestSnapshot.date}
+                      {latestSnapshot.date} · 较上周{' '}
+                      {Number(delta) > 0 ? '+' : ''}
+                      {delta} 分
                     </p>
                   </div>
                   <span
@@ -1701,7 +1807,8 @@ export default function Home() {
               ))}
               <div className="bg-[#f4efe5] px-6 py-5 sm:col-span-2 lg:col-span-1">
                 <p className="text-[10px] leading-5 text-[#26382e]/38">
-                  从本周起只追加记录，不回改历史分数；若评分口径变化，单独留注。
+                  0—20 极度恐惧 · 21—40 谨慎 · 41—60 中性 · 61—80 乐观 · 81—100
+                  亢奋。历史分数只追加。
                 </p>
                 <p className="mt-2 font-mono text-[8px] leading-4 text-[#26382e]/28">
                   价格广度 25 · 资金杠杆 25 · 波动利差 20 · 估值拥挤 15 ·
@@ -1710,6 +1817,68 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#26382e]/10 bg-[#f4efe5]">
+        <div className="mx-auto max-w-[1380px] px-5 py-8 lg:px-8">
+          <details className="text-sm leading-7 text-[#26382e]/80">
+            <summary className="cursor-pointer font-display text-lg">
+              本周评分依据 · {active.label}
+            </summary>
+            <p className="mt-4 max-w-4xl">
+              五项权重沿用上期，分项为证据支持的主观温度判断，不是自动计算的市场统计或收益预测。本期首次公开分项台账；上期未留分项，历史总分保持原样。缺项不伪造观测，不重新分配权重；明确采用代理或保守置中。所有分项为中信心。
+            </p>
+            <div className="mt-4 overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>维度</TableHead>
+                    <TableHead>权重</TableHead>
+                    <TableHead>分项</TableHead>
+                    <TableHead>证据与边界</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {sentimentBreakdown[market].map(
+                    ([label, weight, value, note, refs]) => (
+                      <TableRow key={label}>
+                        <TableCell>{label}</TableCell>
+                        <TableCell>{weight}%</TableCell>
+                        <TableCell>{value}</TableCell>
+                        <TableCell className="min-w-72 whitespace-normal">
+                          {note}
+                          <SourceRefs ids={refs} sources={active.sources} />
+                        </TableCell>
+                      </TableRow>
+                    ),
+                  )}
+                </TableBody>
+              </Table>
+            </div>
+            <p className="mt-4 font-mono">
+              {sentimentBreakdown[market]
+                .map(([, weight, value]) => value + '×' + weight + '%')
+                .join(' + ')}{' '}
+              ={' '}
+              {sentimentBreakdown[market]
+                .reduce(
+                  (sum, [, weight, value]) => sum + (weight * value) / 100,
+                  0,
+                )
+                .toFixed(1)}{' '}
+              →{' '}
+              {market === 'cn'
+                ? latestSnapshot.cnSentiment
+                : latestSnapshot.usSentiment}
+            </p>
+            <p className="mt-3">
+              周期位置、四个温度计、攻守分与风格坐标也都是判断值。周期区间表达不确定性，0为本轮起步、100为接近末期；攻守分不是仓位比例。钟摆位置是推断，信心标签表示证据强弱。
+            </p>
+            <p className="mt-3">
+              核验限制：A股完整个股周广度、周度基金认购与期权波动率，美国周度杠杆与09.04同口径VIX/利差未取得。标普采用AP最终收盘7718.60；Reuters早版7718.41有小幅差异，只用其成交与广度。A股估值为上年利润口径，美国为当年预期口径，不直接跨市场比较。
+            </p>
+          </details>
         </div>
       </section>
 
@@ -2091,7 +2260,7 @@ export default function Home() {
               </p>
               <p className="mt-2 max-w-xl text-[10px] leading-5 text-[#26382e]/36">
                 市场价截至
-                2026.08.28；宏观采用当时最新公布值。官方口径定事实，独立口径专门找反证。
+                2026.09.04各地收盘；VIX、美债及美国信用利差只核验到09.03，两融为09.03，ICI流量为08.26当周。宏观使用截止日前已发布数据，具体观测与发布日期见各条信源。
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 text-[10px] text-[#26382e]/34">
