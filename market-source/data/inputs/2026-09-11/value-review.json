@@ -1,0 +1,269 @@
+{
+  "date": "2026-09-11",
+  "revision": 3,
+  "informationCutoff": "2026-09-11",
+  "retrievedAt": "2026-09-13",
+  "valuation": {
+    "observedAt": "2026-08-31",
+    "definition": "官方指标按个股“计算用股本”计算。未取得同口径历史序列，不给历史分位；红利单张的PE、PB为空，保留缺失。不同指数的行业结构与盈利周期不同，不能只按倍数高低排序。",
+    "benchmarks": [
+      {
+        "code": "000300",
+        "name": "沪深300",
+        "samples": 300,
+        "pe": 14.65,
+        "pb": 1.44,
+        "dividendYield": 2.27,
+        "scope": "大盘参照",
+        "refs": ["PV-01"]
+      },
+      {
+        "code": "000922",
+        "name": "中证红利",
+        "samples": 100,
+        "pe": null,
+        "pb": null,
+        "dividendYield": 4.07,
+        "scope": "高股息样本",
+        "refs": ["PV-02"]
+      },
+      {
+        "code": "000930",
+        "name": "800工业",
+        "samples": 196,
+        "pe": 20.07,
+        "pb": 1.71,
+        "dividendYield": 1.81,
+        "scope": "宽口径工业，非纯出口",
+        "refs": ["PV-03"]
+      },
+      {
+        "code": "000688",
+        "name": "科创50",
+        "samples": 50,
+        "pe": 79.82,
+        "pb": 8.18,
+        "dividendYield": 0.26,
+        "scope": "科创板50只样本",
+        "refs": ["PV-04"]
+      },
+      {
+        "code": "000932",
+        "name": "800消费",
+        "samples": 36,
+        "pe": 19.69,
+        "pb": 3.23,
+        "dividendYield": 4.1,
+        "scope": "主要消费，非全部内需",
+        "refs": ["PV-05"]
+      },
+      {
+        "code": "399965",
+        "name": "800地产",
+        "samples": 9,
+        "pe": 39.19,
+        "pb": 0.51,
+        "dividendYield": 0.62,
+        "scope": "仅9只地产股",
+        "refs": ["PV-06"]
+      }
+    ]
+  },
+  "documents": [
+    {
+      "id": "000300",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000300factsheet.pdf",
+      "sha256": "8653755655ded0148202f0e43a20d36e9beaa1682a09b0c8e6d84f321f13c056",
+      "bytes": 454479,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:06:00 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "000922",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000922factsheet.pdf",
+      "sha256": "be719ab362df3fe3264fef6fdb9338ab56f515f8f29ef0073abb0490d8d3237d",
+      "bytes": 448515,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:10:57 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "000930",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000930factsheet.pdf",
+      "sha256": "0d96ad96363ff21a6a6fd067ce537f7f24d6122057e24cd57c2023748704ae5e",
+      "bytes": 435627,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:10:57 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "000688",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000688factsheet.pdf",
+      "sha256": "6238eb0c80d1dc57e620780c84455bf565d45df0b4fd782c96359f6d47f3c718",
+      "bytes": 434245,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:10:53 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "000932",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000932factsheet.pdf",
+      "sha256": "3220064f90c34eefa3c41dac23ce8d9b4355068a0181992be731393317edd3df",
+      "bytes": 442708,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:10:57 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "399965",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/399965factsheet.pdf",
+      "sha256": "0e85db27d879021e2dd808f2d94f51ae0236dda6a77cbaa7c0ee3ba6e71ac823",
+      "bytes": 436313,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Wed, 02 Sep 2026 13:11:02 GMT",
+      "publishedAt": null,
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "midea-h1-2026",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-29/1225531403.PDF",
+      "sha256": "9c4f21cebe9b35824276c41b90647bead0fd7948abc300ec1a2db0a7dfcac6f1",
+      "bytes": 163305,
+      "retrievedAt": "2026-09-13",
+      "lastModified": "Fri, 28 Aug 2026 11:08:57 GMT",
+      "publishedAt": "2026-08-29",
+      "note": "Last-Modified is file metadata, not an asserted publication date."
+    },
+    {
+      "id": "moutai-h1-2026",
+      "url": "https://static.cninfo.com.cn/finalpage/2026-08-15/1225475868.PDF",
+      "sha256": "0e10aa26be46b1cf3cd03f06e834c7fb98d5dd0d661b96f8fddd4af7e846a4f6",
+      "bytes": 832321,
+      "retrievedAt": "2026-09-13",
+      "publishedAt": "2026-08-15",
+      "lastModified": "Fri, 14 Aug 2026 12:46:55 GMT"
+    }
+  ],
+  "financialFacts": [
+    {
+      "source": "PV-07",
+      "scope": "沪市制造业",
+      "period": "2026H1",
+      "metric": "净利润同比",
+      "value": 40.3,
+      "unit": "%"
+    },
+    {
+      "source": "PV-07",
+      "scope": "整个科创板",
+      "period": "2026H1",
+      "metric": "净利润",
+      "value": 1448.87,
+      "unit": "亿元"
+    },
+    {
+      "source": "PV-07",
+      "scope": "长鑫科技",
+      "period": "2026H1",
+      "metric": "净利润",
+      "value": 776,
+      "unit": "亿元"
+    },
+    {
+      "source": "PV-08",
+      "scope": "美的集团合并",
+      "period": "2026H1",
+      "originalUnit": "千元",
+      "page": 2,
+      "revenue": 260042490,
+      "attributableProfit": 26446037,
+      "adjustedAttributableProfit": 19595179,
+      "operatingCashFlow": 37552090,
+      "conversionToYiYuan": "原值 / 100000",
+      "profitYoY": 1.66,
+      "adjustedProfitYoY": -25.31,
+      "operatingCashFlowYoY": 0.73
+    },
+    {
+      "source": "PV-09",
+      "scope": "贵州茅台合并，含财务子公司",
+      "period": "2026H1",
+      "originalUnit": "元",
+      "page": 5,
+      "revenue": 90703260964.48,
+      "attributableProfit": 44516880421.86,
+      "operatingCashFlow": 70690750119.06,
+      "conversionToYiYuan": "原值 / 100000000",
+      "profitYoY": -1.95,
+      "operatingCashFlowYoY": 438.84,
+      "qualification": "CFO增幅主要由财务子公司成员存款增加、不可随时支取的同业存款减少造成。"
+    },
+    {
+      "source": "PV-10",
+      "scope": "全国房地产开发企业",
+      "period": "2026年1—7月",
+      "salesYoY": -13.1,
+      "fundingYoY": -20.3,
+      "inventoryYoY": -0.8,
+      "unit": "%"
+    },
+    {
+      "source": "CN-02",
+      "scope": "限额以上单位粮油、食品类商品零售",
+      "period": "2026年1—7月",
+      "value": 7.2,
+      "unit": "%",
+      "definition": "名义同比；非上市公司利润"
+    }
+  ],
+  "calculations": [
+    {
+      "name": "长鑫科技占整个科创板当期利润比例",
+      "formula": "776 / 1448.87 * 100",
+      "value": 53.55898044683099,
+      "unit": "%",
+      "limitation": "非新增利润贡献，非科创50成分股权重"
+    },
+    {
+      "name": "中证红利能源与原材料权重",
+      "formula": "26.3 + 13.9",
+      "value": 40.2,
+      "unit": "%",
+      "source": "PV-02"
+    },
+    {
+      "name": "科创50三年估值情景",
+      "formula": "(1 + g)^3 * exitPE / 79.82 - 1",
+      "growth": 0.2,
+      "exitPe": 50,
+      "value": 0.08243547982961652,
+      "unit": "小数回报",
+      "limitation": "每股盈利、固定篮子、不计分红税费与调样；非预测"
+    }
+  ],
+  "conflicts": [
+    {
+      "title": "红利股息率为什么不取平均？",
+      "text": "中证8月31日为4.07%，有知有行9月11日为4.91%。日期差异未剥离，算法也未完成对齐。易方达说明的整体法使用含限售股的A股总市值，与中证“计算用股本”口径不同。本期采用统一日期的官方表，其余只作为冲突线索，不判定某个平台错误。",
+      "refs": ["PV-02", "PV-11", "PV-12"]
+    },
+    {
+      "title": "本期仍不能回答什么？",
+      "text": "缺9月11日同口径完整估值表、长期估值序列、所有成分股的可比自由现金流及一致预期。因此不给历史低估分位、目标价或统一安全边际分数。",
+      "refs": ["PV-01", "PV-02", "PV-03", "PV-04", "PV-05", "PV-06"]
+    }
+  ],
+  "exclusions": [
+    "中证红利官方PE/PB为--：保留null，不用第三方PE补齐。",
+    "易方达动态数值未加载，零占位与搜索摘要4.2%均未采用；只引用页面可读的方法说明。",
+    "第三方估值页存在整体法、等权及剔除负值等口径，未取得同日可重复匹配样本；不纳入统一估值表。",
+    "未取得可比长期序列，不发布历史分位；未将上半年利润增速直接用作未来EPS增速。",
+    "本次修订仍以9月11日为截止，不加入后来发布的8月地产或零售数据。"
+  ]
+}

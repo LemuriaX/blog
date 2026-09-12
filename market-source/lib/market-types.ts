@@ -26,7 +26,7 @@ export type WeeklyReport = {
     label: string;
     cnSentiment: number | null;
     usSentiment: number | null;
-    cnCycle: number;
+    cnCycle: number | null;
     usCycle: number | null;
   };
   markets: MarketRecords<MarketData>;
@@ -86,32 +86,33 @@ export type GuideItem = {
 };
 
 export type MarketData = {
+  valueAnalysis?: ValueAnalysis;
   label: string;
   code: string;
-  stage: string;
-  regime: string;
-  cycleStage: string;
-  cycleRange: [number, number];
-  cyclePhase: string;
-  cyclePhaseNote: string;
-  cycleReason: string;
-  cycleRefs: string[];
-  hero: string;
-  heroAccent: string;
-  summary: string;
-  posture: string;
-  treatment: string;
-  score: number;
+  stage?: string;
+  regime?: string;
+  cycleStage?: string;
+  cycleRange?: [number, number];
+  cyclePhase?: string;
+  cyclePhaseNote?: string;
+  cycleReason?: string;
+  cycleRefs?: string[];
+  hero?: string;
+  heroAccent?: string;
+  summary?: string;
+  posture?: string;
+  treatment?: string;
+  score?: number;
   accent: string;
   panel: string;
-  signals: Array<{
+  signals?: Array<{
     name: string;
     value: number | null;
     label: string;
     note: string;
     icon: 'activity' | 'capital' | 'psychology' | 'price';
   }>;
-  indices: Array<{
+  indices?: Array<{
     name: string;
     value: string;
     change: string;
@@ -126,7 +127,7 @@ export type MarketData = {
     tone: string;
   }>;
   guide: GuideItem[];
-  styleMap: Array<{
+  styleMap?: Array<{
     name: string;
     certainty: number;
     cushion: number;
@@ -134,9 +135,9 @@ export type MarketData = {
     tone: string;
   }>;
   actions: Array<[string, string]>;
-  defenseScore: number;
-  defenseLabel: string;
-  defenseReason: string;
+  defenseScore?: number;
+  defenseLabel?: string;
+  defenseReason?: string;
   evidence: Array<{
     label: string;
     value: string;
@@ -146,4 +147,41 @@ export type MarketData = {
   }>;
   triggers: Array<[string, string, string]>;
   sources: Source[];
+};
+
+export type ValueAnalysis = {
+  valuationDate: string;
+  scopeNote: string;
+  methodNote: string;
+  benchmarks: Array<{
+    code: string;
+    name: string;
+    samples: number;
+    pe: number | null;
+    pb: number | null;
+    dividendYield: number | null;
+    scope: string;
+    refs: string[];
+  }>;
+  cases: Array<{
+    id: string;
+    title: string;
+    verdict: string;
+    metric: string;
+    support: { text: string; refs: string[] };
+    challenge: { text: string; refs: string[] };
+    resolution: string;
+    limitation: string;
+    watch: string;
+  }>;
+  stress: {
+    benchmarkCode: string;
+    entryPe: number;
+    years: number;
+    defaultGrowth: number;
+    defaultExitPe: number;
+    refs: string[];
+  };
+  conflicts: Array<{ title: string; text: string; refs: string[] }>;
+  researchFile: string;
 };

@@ -3,82 +3,8 @@
     "cn": {
       "label": "A股",
       "code": "A · SHARE",
-      "stage": "外贸支撑 / 回撤扩散",
-      "regime": "结构性牛市，处于调整",
-      "cycleStage": "牛市中段偏后",
-      "cycleRange": [50, 70],
-      "cyclePhase": "第二阶段，分歧加大",
-      "cyclePhaseNote": "外贸与价格修复支持盈利，内需兑现和资金广度仍待确认。",
-      "cycleReason": "判断：人民币计价8月出口增长18.6%，支持结构性盈利；沪深300的1、4、13周价格回报均为负，反映调整已持续。AAA信用利差未走阔，尚不足以确认熊市。以60为示意中值、50—70为主观范围；由上期62到60主要包含五分刻度切换，不解读为精准倒退。",
-      "cycleRefs": ["CN-12", "CN-07", "CN-06"],
-      "hero": "外贸撑住",
-      "heroAccent": "内需仍待接棒",
-      "summary": "物价与外贸改善，股票回报却继续走弱。保留结构性牛市判断，提高对回款、负债与买入价格的要求。",
-      "posture": "核心仓精选 · 新钱等兑现",
-      "treatment": "保留现金流稳定的核心资产，新增资金先核对内需与回款；不因一次回撤就认定价格有安全边际。",
-      "score": 60,
       "accent": "#718f72",
       "panel": "#e4ead8",
-      "signals": [
-        {
-          "name": "基本面",
-          "value": 60,
-          "label": "外贸支撑",
-          "note": "内需等待确认",
-          "icon": "activity"
-        },
-        {
-          "name": "资本供给",
-          "value": 70,
-          "label": "仍可交易",
-          "note": "成交1.97万亿",
-          "icon": "capital"
-        },
-        {
-          "name": "心理钟摆",
-          "value": null,
-          "label": "资料不足",
-          "note": "缺调查与广度",
-          "icon": "psychology"
-        },
-        {
-          "name": "价格压力",
-          "value": null,
-          "label": "资料不足",
-          "note": "缺可比估值分位",
-          "icon": "price"
-        }
-      ],
-      "indices": [
-        {
-          "name": "沪深300",
-          "value": "4,510.16",
-          "change": "周 −0.83%",
-          "note": "09.11收盘",
-          "up": false
-        },
-        {
-          "name": "上证指数",
-          "value": "3,888.11",
-          "change": "周 −1.07%",
-          "note": "09.11收盘",
-          "up": false
-        },
-        {
-          "name": "创业板指",
-          "value": "3,322.04",
-          "change": "周 +1.08%",
-          "note": "09.11收盘",
-          "up": true
-        },
-        {
-          "name": "10年国债",
-          "value": "1.6899%",
-          "change": "AAA差 35.44bp",
-          "note": "09.11日终",
-          "up": false
-        }
-      ],
       "guide": [
         {
           "category": "经济现状",
@@ -296,9 +222,9 @@
           "leftPole": "高",
           "rightPole": "低",
           "position": null,
-          "basis": "资料不足：缺沪深300本期可比滚动PE及5年月末序列。价格跌3.34%不自动意味着估值便宜。",
+          "basis": "8月31日沪深300官方PE为14.65倍、PB为1.44倍；缺9月11日可比截面与同口径长期序列，不能据此判定历史高低。",
           "confidence": "无法判断",
-          "refs": ["CN-07"],
+          "refs": ["PV-01"],
           "review": {
             "status": "数据缺失",
             "confidence": "无法判断",
@@ -311,9 +237,9 @@
           "leftPole": "低",
           "rightPole": "高",
           "position": null,
-          "basis": "资料不足：没有本期统一盈利与估值输入，不能给全市场预期回报一个确定位置；须逐公司估值。",
+          "basis": "估值压力测试只能说明盈利与退出倍数的关系；缺可比每股盈利预测，暂不对A股整体预期收益定位。",
           "confidence": "无法判断",
-          "refs": ["CN-03", "CN-07", "HM-04"],
+          "refs": ["PV-01", "PV-04", "HM-04"],
           "review": {
             "status": "数据缺失",
             "confidence": "无法判断",
@@ -381,54 +307,24 @@
           }
         }
       ],
-      "styleMap": [
-        {
-          "name": "制造 / 出口现金流",
-          "certainty": 70,
-          "cushion": 50,
-          "posture": "精选",
-          "tone": "#6f9584"
-        },
-        {
-          "name": "大盘价值 / 红利",
-          "certainty": 65,
-          "cushion": 60,
-          "posture": "核分红",
-          "tone": "#718f72"
-        },
-        {
-          "name": "科技 / 高预期成长",
-          "certainty": 65,
-          "cushion": 25,
-          "posture": "限价",
-          "tone": "#b98358"
-        },
-        {
-          "name": "内需 / 地产链",
-          "certainty": 35,
-          "cushion": 40,
-          "posture": "等回款",
-          "tone": "#b8796f"
-        }
-      ],
       "actions": [
-        ["核心仓", "保留回款和负债稳健的企业，复核外贸收入能否转成经营现金流"],
+        [
+          "核心仓",
+          "按公司检查正常化盈利、可用现金与负债，不用板块标签替代核验。"
+        ],
         [
           "新增资金",
-          "放慢并分批；先核对合理价值与偿债能力，再决定价格是否有余地"
+          "把买入估值放入盈利与退出倍数情景，不根据单次回撤推断便宜。"
         ],
         [
           "等待条件",
-          "订单继续扩张，8月消费与回款跟进；弱信用和融资余额保持稳定"
+          "下一次财报核对回款、资本开支与分红来源，留意利润是否扩散。"
         ],
         [
-          "避免",
-          "把跌幅当安全边际，用两融合计替代新增融资，追逐日内强势主题加杠杆"
+          "避免错误",
+          "不把CFO当自由现金流，不混用指数与全板块样本，不把高息当保底。"
         ]
       ],
-      "defenseScore": 70,
-      "defenseLabel": "偏防守，留选择权",
-      "defenseReason": "主观攻守分70（上期66）：价格与广度转弱、杠杆余额回落，提高防守要求；AAA利差收窄和外贸增长是反证。缺少弱信用与完整基金流量，不能据此全面退出。分数不是建议仓位比例。",
       "evidence": [
         {
           "label": "物价",
@@ -658,19 +554,321 @@
           "retrievedAt": "2026-09-12",
           "period": "沪深北市场当日下跌家数；不等于成分股50日均线广度",
           "availability": "已核验收盘报道"
+        },
+        {
+          "id": "PV-01",
+          "label": "中证指数：沪深3008月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000300factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-02",
+          "label": "中证指数：中证红利8月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000922factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-03",
+          "label": "中证指数：800工业8月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000930factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-04",
+          "label": "中证指数：科创508月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000688factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-05",
+          "label": "中证指数：800消费8月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/000932factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-06",
+          "label": "中证指数：800地产8月单张",
+          "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/399965factsheet.pdf",
+          "tier": "一手数据",
+          "observedAt": "2026-08-31",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-08-31",
+          "availability": "单张日期为8月31日；文件元数据为9月2日修改，正式公开日未单列。不是9月11日即时估值。"
+        },
+        {
+          "id": "PV-07",
+          "label": "上交所：2026年半年报业绩综述",
+          "url": "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20260830_10830362.shtml",
+          "tier": "一手数据",
+          "observedAt": "2026-06-30",
+          "publishedAt": "2026-08-30",
+          "retrievedAt": "2026-09-13",
+          "period": "2026年上半年；沪市或科创板，非全A股"
+        },
+        {
+          "id": "PV-08",
+          "label": "美的集团：2026年半年报摘要，第2页",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-29/1225531403.PDF",
+          "tier": "一手数据",
+          "observedAt": "2026-06-30",
+          "publishedAt": "2026-08-29",
+          "retrievedAt": "2026-09-13",
+          "period": "2026年上半年；原表单位千元"
+        },
+        {
+          "id": "PV-09",
+          "label": "贵州茅台：2026年半年报，第5页",
+          "url": "https://static.cninfo.com.cn/finalpage/2026-08-15/1225475868.PDF",
+          "tier": "一手数据",
+          "observedAt": "2026-06-30",
+          "publishedAt": "2026-08-15",
+          "retrievedAt": "2026-09-13",
+          "period": "2026年上半年；原表单位元"
+        },
+        {
+          "id": "PV-10",
+          "label": "国家统计局：1—7月房地产开发投资",
+          "url": "https://www.stats.gov.cn/zwfwck/sjfb/202608/t20260817_1965053.html",
+          "tier": "一手数据",
+          "observedAt": "2026-07-31",
+          "publishedAt": "2026-08-17",
+          "retrievedAt": "2026-09-13",
+          "period": "2026年1—7月，全国房地产开发企业"
+        },
+        {
+          "id": "PV-11",
+          "label": "有知有行：中证红利数据（口径对照）",
+          "url": "https://youzhiyouxing.cn/data/indices/000922.CSI",
+          "tier": "交叉验证",
+          "observedAt": "2026-09-11",
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "2026-09-11截面，未与中证口径对齐"
+        },
+        {
+          "id": "PV-12",
+          "label": "易方达：股息率整体法说明",
+          "url": "https://cdn.efunds.com.cn/eda/h5/itcenter/pd/indexYield/indexCal.html?isSite=1&tstamp=2025110605",
+          "tier": "交叉验证",
+          "observedAt": null,
+          "publishedAt": null,
+          "retrievedAt": "2026-09-13",
+          "period": "方法说明；实时数值未成功加载",
+          "availability": "仅用于说明分母包含限售股的整体法，不使用空载数值或搜索摘要数值。"
         }
-      ]
+      ],
+      "valueAnalysis": {
+        "valuationDate": "2026-08-31",
+        "scopeNote": "统一比较8月31日中证官方单张；不是9月11日即时估值。PE为滚动市盈率，PB为市净率，股息率为历史分红口径。",
+        "methodNote": "官方指标按个股“计算用股本”计算。未取得同口径历史序列，不给历史分位；红利单张的PE、PB为空，保留缺失。不同指数的行业结构与盈利周期不同，不能只按倍数高低排序。",
+        "benchmarks": [
+          {
+            "code": "000300",
+            "name": "沪深300",
+            "samples": 300,
+            "pe": 14.65,
+            "pb": 1.44,
+            "dividendYield": 2.27,
+            "scope": "大盘参照",
+            "refs": ["PV-01"]
+          },
+          {
+            "code": "000922",
+            "name": "中证红利",
+            "samples": 100,
+            "pe": null,
+            "pb": null,
+            "dividendYield": 4.07,
+            "scope": "高股息样本",
+            "refs": ["PV-02"]
+          },
+          {
+            "code": "000930",
+            "name": "800工业",
+            "samples": 196,
+            "pe": 20.07,
+            "pb": 1.71,
+            "dividendYield": 1.81,
+            "scope": "宽口径工业，非纯出口",
+            "refs": ["PV-03"]
+          },
+          {
+            "code": "000688",
+            "name": "科创50",
+            "samples": 50,
+            "pe": 79.82,
+            "pb": 8.18,
+            "dividendYield": 0.26,
+            "scope": "科创板50只样本",
+            "refs": ["PV-04"]
+          },
+          {
+            "code": "000932",
+            "name": "800消费",
+            "samples": 36,
+            "pe": 19.69,
+            "pb": 3.23,
+            "dividendYield": 4.1,
+            "scope": "主要消费，非全部内需",
+            "refs": ["PV-05"]
+          },
+          {
+            "code": "399965",
+            "name": "800地产",
+            "samples": 9,
+            "pe": 39.19,
+            "pb": 0.51,
+            "dividendYield": 0.62,
+            "scope": "仅9只地产股",
+            "refs": ["PV-06"]
+          }
+        ],
+        "cases": [
+          {
+            "id": "industrial",
+            "title": "制造与出口",
+            "verdict": "盈利改善有依据，安全边际仍要落到公司",
+            "metric": "800工业 PE 20.07倍 · 股息率1.81%",
+            "support": {
+              "text": "上半年沪市制造业利润同比增长40.3%。美的经营现金流375.52亿元、同比增长0.73%，表明账面盈利之外仍有现金流入。",
+              "refs": ["PV-07", "PV-08"]
+            },
+            "challenge": {
+              "text": "美的归母利润增长1.66%，扣非利润却下降25.31%；摘要说明汇兑损失与套期工具收益分列经常性、非经常性项目，不能把扣非降幅全当经营恶化。经营现金流也未扣资本开支。",
+              "refs": ["PV-08"]
+            },
+            "resolution": "20.07倍只提供价格参照，不能据此确认便宜。应把套期损益配对、资本开支与回款核清，再评价可分配现金。",
+            "limitation": "800工业不是纯出口篮子；美的在中证行业分类中属可选消费，是公司反证案例，不是该指数盈利代表。",
+            "watch": "下一次财报逐项对照应收、存货、套期损益与资本开支；只有经调整的现金创造能力跟上利润，才提高判断把握。"
+          },
+          {
+            "id": "dividend",
+            "title": "红利资产",
+            "verdict": "现金回报有吸引力，不能把高息当保底",
+            "metric": "中证红利 股息率4.07% · PE / PB缺失",
+            "support": {
+              "text": "官方8月单张列示股息率4.07%，高于同日沪深300的2.27%；这是可核对的历史分红差异。",
+              "refs": ["PV-02", "PV-01"]
+            },
+            "challenge": {
+              "text": "能源与原材料权重合计40.2%，金融占24.2%；周期盈利与分红可能回落。另一平台9月11日给出4.91%，日期与算法未对齐，不能用它替换4.07%。",
+              "refs": ["PV-02", "PV-11"]
+            },
+            "resolution": "将红利作为逐家公司复核的候选，先查正常年份的分红覆盖、资本开支及负债；现有证据不足以断言整篮子低估。",
+            "limitation": "指数股息率不是基金到手收益，也不是未来承诺；官方PE、PB缺失，本期不拼接其他平台数字。",
+            "watch": "核对下一次分红公告及其现金来源，排除特殊分红和周期高点利润造成的高息错觉。"
+          },
+          {
+            "id": "technology",
+            "title": "科技成长",
+            "verdict": "高增长真实存在，价格对持续增长要求很高",
+            "metric": "科创50 PE 79.82倍 · PB 8.18倍",
+            "support": {
+              "text": "上交所披露整个科创板上半年净利润1448.87亿元，同比增长437.6%，支持产业盈利确有改善。",
+              "refs": ["PV-07"]
+            },
+            "challenge": {
+              "text": "其中长鑫科技净利润776亿元，约占全板块当期利润53.6%；这是利润集中度，不是增长贡献。全科创板也不等于科创50，不能把437.6%直接当指数每股盈利增速。",
+              "refs": ["PV-07", "PV-04"]
+            },
+            "resolution": "估值需要多年每股盈利兑现来支撑。下方用盈利增长与估值收缩共同检验回报，不把高增长自动译成低风险。",
+            "limitation": "缺同一组50只样本的可比扣非、现金流及一致预期，不能据全板块数据确定指数合理PE。",
+            "watch": "下一次财报检查盈利是否扩散到更多成分股，以及每股盈利、回款能否同时增长。"
+          },
+          {
+            "id": "consumer",
+            "title": "主要消费",
+            "verdict": "估值较成长温和，现金流质量需穿透核验",
+            "metric": "800消费 PE 19.69倍 · 股息率4.10%",
+            "support": {
+              "text": "同日官方股息率为4.10%。1—7月限额以上粮油食品零售额同比增长7.2%，说明消费细分需求并非同步走弱。",
+              "refs": ["PV-05", "CN-02"]
+            },
+            "challenge": {
+              "text": "茅台上半年归母利润下降1.95%，经营现金流却增长438.84%；报告解释后者主要来自财务子公司成员存款及受限同业存款变动，不能视为白酒回款同幅增长。",
+              "refs": ["PV-09"]
+            },
+            "resolution": "可以继续筛选品牌和现金流，但不能把19.69倍或一次现金流跳升当作价值修复已完成的证据。",
+            "limitation": "800消费是主要消费样本；零售统计、单一酒企和整个指数口径不同，均不能互相代替。",
+            "watch": "后续拆分主营销售回款与财务子公司资金，观察库存、渠道及利润变化，确认历史股息能否延续。"
+          },
+          {
+            "id": "property",
+            "title": "地产",
+            "verdict": "低PB尚不足以证明净资产折价可靠",
+            "metric": "800地产 PB 0.51倍 · PE 39.19倍",
+            "support": {
+              "text": "0.51倍PB反映市场给账面净资产较大折扣；7月末全国商品房待售面积同比下降0.8%，库存有小幅改善迹象。",
+              "refs": ["PV-06", "PV-10"]
+            },
+            "challenge": {
+              "text": "1—7月全国新建商品房销售额下降13.1%，开发企业到位资金下降20.3%。低PB同时伴随39.19倍PE和0.62%历史股息率，现金兑现尚弱。",
+              "refs": ["PV-10", "PV-06"]
+            },
+            "resolution": "暂不将行业低PB解释为普遍安全边际。要先核验资产减值、受限现金和债务到期，再判断折价是否覆盖潜在损失。",
+            "limitation": "指数仅9只股票，全国开发企业统计只能提示行业压力，不能直接替代这9家公司的资产负债表。",
+            "watch": "后续同口径销售回款、融资和资产减值能否共同改善；单月销售回升不足以确认账面资产可兑现。"
+          }
+        ],
+        "stress": {
+          "benchmarkCode": "000688",
+          "entryPe": 79.82,
+          "years": 3,
+          "defaultGrowth": 20,
+          "defaultExitPe": 50,
+          "refs": ["PV-04"]
+        },
+        "conflicts": [
+          {
+            "title": "红利股息率为什么不取平均？",
+            "text": "中证8月31日为4.07%，有知有行9月11日为4.91%。日期差异未剥离，算法也未完成对齐。易方达说明的整体法使用含限售股的A股总市值，与中证“计算用股本”口径不同。本期采用统一日期的官方表，其余只作为冲突线索，不判定某个平台错误。",
+            "refs": ["PV-02", "PV-11", "PV-12"]
+          },
+          {
+            "title": "本期仍不能回答什么？",
+            "text": "缺9月11日同口径完整估值表、长期估值序列、所有成分股的可比自由现金流及一致预期。因此不给历史低估分位、目标价或统一安全边际分数。",
+            "refs": ["PV-01", "PV-02", "PV-03", "PV-04", "PV-05", "PV-06"]
+          }
+        ],
+        "researchFile": "./price-value-research.md"
+      }
     }
   },
   "schemaVersion": 2,
   "date": "2026-09-11",
   "label": "09.11",
-  "revision": 2,
-  "methodVersion": "cn-brief-v1",
+  "revision": 3,
+  "methodVersion": "cn-value-v1",
   "informationCutoff": {
     "cn": "2026-09-11"
   },
-  "title": "外贸撑住，内需仍待接棒。",
+  "title": "A股价格与价值核验",
   "history": {
     "date": "2026-09-11",
     "label": "09.11",
@@ -687,5 +885,5 @@
     }
   },
   "revisedAt": "2026-09-13",
-  "revisionReason": "按用户要求改为仅展示A股，删除情绪周线、固定评分、日期与取数台账、上周条件复盘和二层思维章节；本周A股判断及既有历史数值不变。"
+  "revisionReason": "移除市场总结、分数和温度计；以同日官方估值、财报反证和情景计算重做价格与价值。"
 }

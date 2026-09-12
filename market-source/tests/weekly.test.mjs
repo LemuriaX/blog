@@ -141,7 +141,7 @@ test('archive interpolation escapes content and links only the current revision'
   assert.throws(() => safePath(sourceRoot, '../outside'));
 });
 
-test('A-share briefs validate without US research or scoring inputs', () => {
+test('A-share value reports validate without US research or market scores', () => {
   const brief = JSON.parse(
     fs.readFileSync(
       path.join(sourceRoot, 'data/reports/2026-09-11.json'),
@@ -155,6 +155,8 @@ test('A-share briefs validate without US research or scoring inputs', () => {
   newWeek.revision = 1;
   assert.throws(() => validateReport(newWeek), /US cycle score/);
   newWeek.history.usCycle = null;
+  assert.throws(() => validateReport(newWeek), /any score/);
+  newWeek.history.cnCycle = null;
   validateReport(newWeek);
   newWeek.markets.us = clone(newWeek.markets.cn);
   assert.throws(() => validateReport(newWeek), /only cn/);
@@ -184,6 +186,7 @@ function fixture() {
     'postcss.config.mjs',
     'WEEKLY_MARKET_PROMPT.md',
     'WORKFLOW.md',
+    'tsconfig.json',
     'tsconfig.weekly.json',
   ])
     fs.cpSync(path.join(sourceRoot, name), path.join(root, name), {

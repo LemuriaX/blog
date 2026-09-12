@@ -1,5 +1,6 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": { "allowImportingTsExtensions": true },
   "include": ["app/**/*.ts", "app/**/*.tsx", "lib/**/*.ts", "pages/**/*.tsx"],
   "exclude": ["node_modules", "work", "dist", "dist-pages", "weekly-reports"]
 }

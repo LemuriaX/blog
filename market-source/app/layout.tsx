@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: '市场手记｜周期、价格与风险',
-  description: '记录A股周期、价格与价值，以及每周的攻守判断。',
+  title: '市场手记｜价格、价值与风险',
+  description: '用估值、现金流与反证观察A股。',
 };
 
 export default function RootLayout({

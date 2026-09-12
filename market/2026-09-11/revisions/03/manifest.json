@@ -1,0 +1,56 @@
+{
+  "date": "2026-09-11",
+  "revision": 3,
+  "methodVersion": "cn-value-v1",
+  "inputHash": "61bf57927b3c6dff5bba8037ae2a68f370da945b3a762509a77b0e8d22a88360",
+  "sourceHash": "811879f90e972b9b8bcbbdce9a3b75ee7db87278b45f9b810d4fdf2020dd0f93",
+  "promptHash": "366010d9ccf3ce43dbee7aba28e482b10cbc6830b9b40b1a3de099435cf3e449",
+  "route": "2026-09-11/revisions/03/",
+  "files": [
+    {
+      "path": "assets/index-BsYEA1iu.css",
+      "bytes": 224260,
+      "sha256": "bafa042d00c42a56fe5fd1b116eadfb31f4c432fcf8c67489af19a7073eb0d96"
+    },
+    {
+      "path": "assets/index-CMZA9U5W.js",
+      "bytes": 280143,
+      "sha256": "808fda0ce14e1015338d722b52f874a6b0c4bac8e2b10aeb1d6a9452b4180a3f"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 712,
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7"
+    },
+    {
+      "path": "index.html",
+      "bytes": 515,
+      "sha256": "e9ab1f39eb4fe30b307e2e4db899c0d1fa773af8a3c2071c8d70822921c486af"
+    },
+    {
+      "path": "price-value-research.md",
+      "bytes": 14265,
+      "sha256": "b090fdb10883725a7ac0176e26d3bf77c9c10504a53fe44dd73cf0aec2513130"
+    },
+    {
+      "path": "report-data.json",
+      "bytes": 40208,
+      "sha256": "b038436e8f0e04f1f8f25315131aea8de5d119976ed512147e4cbf803b13a056"
+    },
+    {
+      "path": "report-meta.json",
+      "bytes": 329,
+      "sha256": "97c7f6c3419f85e44e684d6d4dd950c668272984a3c4faa805944b9b5dc1c23a"
+    },
+    {
+      "path": "value-inputs.json",
+      "bytes": 9787,
+      "sha256": "08f8bbbfd0de0345dc9d891005ea50ffc42c5257eb34d7a9f8af877b1a602178"
+    },
+    {
+      "path": "weekly-market-prompt.md",
+      "bytes": 10004,
+      "sha256": "366010d9ccf3ce43dbee7aba28e482b10cbc6830b9b40b1a3de099435cf3e449"
+    }
+  ]
+}

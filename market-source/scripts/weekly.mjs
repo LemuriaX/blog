@@ -1,4 +1,6 @@
 import fs from 'node:fs';
+import { validateValueAnalysis } from '../lib/value-validation.ts';
+import { renderValueResearch } from './value-research.mjs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -66,7 +68,8 @@ export const routeFor = (report) =>
 const historyKeys = ['cnSentiment', 'usSentiment', 'cnCycle', 'usCycle'];
 
 export function validateReport(report, root = sourceRoot) {
-  const cnBrief = report.methodVersion === 'cn-brief-v1';
+  const cnValue = report.methodVersion === 'cn-value-v1';
+  const cnBrief = report.methodVersion === 'cn-brief-v1' || cnValue;
   assert(report.schemaVersion === 2, 'Unsupported report schema');
   assert(iso(report.date), 'Invalid report date');
   assert(
@@ -107,6 +110,26 @@ export function validateReport(report, root = sourceRoot) {
       'New A-share weeks must not carry forward a US cycle score',
     );
   }
+  if (cnValue) {
+    assert(
+      report.revision > 1 ||
+        historyKeys.every((k) => report.history[k] === null),
+      'New value weeks must not carry forward any score',
+    );
+    for (const key of [
+      'hero',
+      'summary',
+      'score',
+      'cycleRange',
+      'signals',
+      'styleMap',
+      'defenseScore',
+    ])
+      assert(
+        !(key in report.markets.cn),
+        'Value reports must not contain removed summary or score fields',
+      );
+  }
   for (const key of cnBrief ? ['cn'] : ['cn', 'us']) {
     const market = report.markets[key];
     assert(
@@ -114,25 +137,32 @@ export function validateReport(report, root = sourceRoot) {
         report.informationCutoff[key] <= report.date,
       'Invalid information cutoff',
     );
-    assert(
-      score(market.score) &&
-        market.score !== null &&
-        score(market.defenseScore) &&
-        market.defenseScore !== null,
-      'Invalid judgment score',
-    );
-    assert(
-      Array.isArray(market.cycleRange) &&
-        market.cycleRange.length === 2 &&
-        market.cycleRange.every(score) &&
-        market.cycleRange[0] <= market.score &&
-        market.cycleRange[1] >= market.score,
-      'Cycle range must contain midpoint',
-    );
-    assert(
-      report.methodVersion === 'legacy-v1' || market.score % 5 === 0,
-      'New cycle midpoints must use five-point steps',
-    );
+    if (!cnValue) {
+      assert(
+        score(market.score) &&
+          market.score !== null &&
+          score(market.defenseScore) &&
+          market.defenseScore !== null,
+        'Invalid judgment score',
+      );
+      assert(
+        Array.isArray(market.cycleRange) &&
+          market.cycleRange.length === 2 &&
+          market.cycleRange.every(score) &&
+          market.cycleRange[0] <= market.score &&
+          market.cycleRange[1] >= market.score,
+        'Cycle range must contain midpoint',
+      );
+      assert(
+        report.methodVersion === 'legacy-v1' || market.score % 5 === 0,
+        'New cycle midpoints must use five-point steps',
+      );
+    } else
+      validateValueAnalysis(
+        market.valueAnalysis,
+        report.informationCutoff[key],
+        market.sources,
+      );
     assert(
       market.guide.length === 20,
       'Expected exactly 20 guide rows per market',
@@ -183,10 +213,11 @@ export function validateReport(report, root = sourceRoot) {
         'Weekly brief or prior conditions missing',
       );
     assert(market.actions.length === 4, 'Four action categories required');
-    assert(
-      report.history[`${key}Cycle`] === market.score,
-      'Cycle differs from historical record',
-    );
+    if (!cnValue)
+      assert(
+        report.history[`${key}Cycle`] === market.score,
+        'Cycle differs from historical record',
+      );
     if (report.methodVersion === 'legacy-v1') {
       const c = report.sentiment[key];
       assert(
@@ -263,7 +294,6 @@ export function reportsAndHistory(root = sourceRoot) {
       originalRetained: r.originalRetained,
       revision: r.revision,
       title: r.title,
-      cnDefense: r.markets.cn.defenseScore,
     });
   }
   history.sort((a, b) => a.date.localeCompare(b.date));
@@ -305,22 +335,13 @@ export function sourceFingerprint(root = sourceRoot) {
 
 export function renderIndex(template, history) {
   const latest = history.at(-1);
-  const metrics = [
-    ['A股周期', latest.cnCycle],
-    ['攻守位置', latest.cnDefense ?? '—'],
-  ]
-    .map(
-      ([label, v]) =>
-        `<div class="metric"><span>${label}</span><strong>${escape(v)}</strong></div>`,
-    )
-    .join('\n');
-  const card = `<a class="latest" href="./${escape(latest.route)}"><time datetime="${latest.date}">${latest.date.replaceAll('-', '.')}</time><h2>${escape(latest.title ?? '本周A股手记')}</h2><div class="metrics">${metrics}</div><div class="card-foot"><span>0进攻 · 100防守，分值不等于仓位</span><b>阅读本期 →</b></div></a>`;
+  const card = `<a class="latest" href="./${escape(latest.route)}"><time datetime="${latest.date}">${latest.date.replaceAll('-', '.')}</time><h2>${escape(latest.title ?? '本周A股手记')}</h2><div class="card-foot"><span>A股 · 估值与证据</span><b>阅读本期 →</b></div></a>`;
   const rows = history
     .slice()
     .reverse()
     .map(
       (r) =>
-        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股 · 周期${escape(r.cnCycle)}</span><em>阅读 →</em></a></li>`,
+        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股周报</span><em>阅读 →</em></a></li>`,
     )
     .join('\n');
   assert(
@@ -376,7 +397,7 @@ export async function prepare(date, root = sourceRoot) {
   );
   write(
     historyFile,
-    `// Generated from data/reports and immutable legacy history.\nexport type WeeklyMarketSnapshot = {date:string;label:string;cnSentiment:number|null;usSentiment:number|null;cnCycle:number;usCycle:number|null;methodVersion:string;comparable:boolean};\nexport const marketHistory: WeeklyMarketSnapshot[] = ${JSON.stringify(historical, null, 2)};\n`,
+    `// Generated from data/reports and immutable legacy history.\nexport type WeeklyMarketSnapshot = {date:string;label:string;cnSentiment:number|null;usSentiment:number|null;cnCycle:number|null;usCycle:number|null;methodVersion:string;comparable:boolean};\nexport const marketHistory: WeeklyMarketSnapshot[] = ${JSON.stringify(historical, null, 2)};\n`,
   );
   write(
     path.join(root, 'lib/current-report.ts'),
@@ -404,6 +425,17 @@ export async function prepare(date, root = sourceRoot) {
     path.join(root, 'public/report-data.json'),
     JSON.stringify(report, null, 2) + '\n',
   );
+  if (report.methodVersion === 'cn-value-v1') {
+    const review = json(
+      path.join(root, 'data/inputs', date, 'value-review.json'),
+    );
+    const research = renderValueResearch(report, review);
+    write(path.join(root, 'public/price-value-research.md'), research);
+    write(
+      path.join(root, 'public/value-inputs.json'),
+      JSON.stringify(review, null, 2) + '\n',
+    );
+  }
   const meta = {
     date,
     revision: report.revision,
@@ -595,6 +627,7 @@ export function archive(date, { repo, localRoot, root = sourceRoot }) {
     'package.json',
     'WEEKLY_MARKET_PROMPT.md',
     'WORKFLOW.md',
+    'tsconfig.json',
     'tsconfig.weekly.json',
     'vite.pages.config.ts',
     'postcss.config.mjs',
