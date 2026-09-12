@@ -30,4 +30,14 @@ export const marketHistory: WeeklyMarketSnapshot[] = [
     methodVersion: 'legacy-v1',
     comparable: false,
   },
+  {
+    date: '2026-09-11',
+    label: '09.11',
+    cnSentiment: null,
+    usSentiment: null,
+    cnCycle: 60,
+    usCycle: 80,
+    methodVersion: 'sentiment-v2',
+    comparable: false,
+  },
 ];

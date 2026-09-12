@@ -77,6 +77,14 @@ export function WeeklyBrief({
       </div>
       <p className="mt-4 text-sm leading-6 text-[#526358]">
         数据截止 {report.date}
+        {report.marketSessions && (
+          <>
+            {' '}
+            · {report.marketSessions[market].timezone}，收盘{' '}
+            {report.marketSessions[market].close}；信息截止{' '}
+            {report.marketSessions[market].cutoff}。
+          </>
+        )}
         {report.revision > 1 && (
           <>
             {' '}
@@ -222,6 +230,16 @@ export function EvidenceMethod({
                     {r.effectiveWeight.toFixed(2)}%
                   </p>
                   <p className="mt-2 text-sm leading-6">
+                    原值：
+                    {report.observations?.[market]
+                      .find((o) => o.id === r.id)
+                      ?.value?.toFixed(2) ?? '—'}{' '}
+                    {r.unit}
+                    {' · '}可信度：
+                    {report.observations?.[market].find((o) => o.id === r.id)
+                      ?.confidence ?? '未标注'}
+                  </p>
+                  <p className="mt-2 text-sm leading-6">
                     {
                       report.observations?.[market].find((o) => o.id === r.id)
                         ?.note
@@ -329,8 +347,18 @@ export function EvidenceMethod({
             观测日、发布日期与取数记录
           </summary>
           <p className="mt-3 text-sm leading-6 text-[#526358]">
-            取数晚于截止日不等于使用后来信息。旧稿未记录的精确发布日期保留为空；这部分不能据此认证为v2合格输入。
+            取数晚于截止日不等于使用后来信息。未核验的精确发布日期保留为空，不能据此认证为v2合格输入。低频沿用数据不代表本周新增证据。
           </p>
+          {!legacy && (
+            <a
+              href={`https://github.com/LemuriaX/blog/tree/main/market-source/data/inputs/${report.date}`}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-block text-sm underline underline-offset-4"
+            >
+              查看本期原始输入、样本数量与计算过程 →
+            </a>
+          )}
           <div className="mt-4 overflow-x-auto">
             <table className="w-full min-w-[700px] text-left text-sm leading-6">
               <thead>
@@ -361,7 +389,7 @@ export function EvidenceMethod({
                         {s.observedAt ?? '未核验'}
                       </td>
                       <td className="p-3 whitespace-nowrap">
-                        {s.publishedAt ?? '旧稿未记录'}
+                        {s.publishedAt ?? '未核验'}
                       </td>
                       <td className="p-3 whitespace-nowrap">{s.retrievedAt}</td>
                     </tr>

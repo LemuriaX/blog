@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-11",
+  "revision": 1,
+  "methodVersion": "sentiment-v2",
+  "inputHash": "d82096c9ccf448188ce80044555c48f3687ef45ae8b896830ba8ba1314ef838e",
+  "sourceHash": "ef0783f5956cf13f5cfb4cac5ba8834e3eb5a104d8caa92d1a7e1452222eb0ec",
+  "promptHash": "25f48cbdc0304109e50007b46c2a7e3d53acde0a6c082fdba804bb5a9aa06a38",
+  "route": "2026-09-11/",
+  "files": [
+    {
+      "path": "assets/index-DusqHkhu.js",
+      "bytes": 683180,
+      "sha256": "3bbbd87c7691b4778dc3c988304a3fba1578ddf1e39655f008d3e283c101853e"
+    },
+    {
+      "path": "assets/index-aD_YubF6.css",
+      "bytes": 222331,
+      "sha256": "cbf98ff9c0afc56eb5242b34a2fbe5e8650c9655882a673946cf92e0c28c5bcb"
+    },
+    {
+      "path": "favicon.svg",
+      "bytes": 712,
+      "sha256": "e6d2e59b7b5bbb0342e0fb496dfc262decbfe4426bbb7b047aec8d467d1dc6f7"
+    },
+    {
+      "path": "index.html",
+      "bytes": 567,
+      "sha256": "17c7faefdc9c120826efb9fd443721bc01ebb49bf4faea8e4c1f8d550a2e2fd7"
+    },
+    {
+      "path": "report-data.json",
+      "bytes": 77388,
+      "sha256": "fdc61bb4136f93a4511177b034dc12439ea3511aaf24065f5ff5eb9b891d6ac6"
+    },
+    {
+      "path": "report-meta.json",
+      "bytes": 330,
+      "sha256": "904a60454f7708b92c565d7630f96530680d67b446e8599b373246da9e4420d0"
+    },
+    {
+      "path": "weekly-market-prompt.md",
+      "bytes": 11886,
+      "sha256": "25f48cbdc0304109e50007b46c2a7e3d53acde0a6c082fdba804bb5a9aa06a38"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "cn": {
+    "return20d": -3.337547614266212,
+    "return20dStart": {
+      "date": "2026-08-14",
+      "value": 4665.881
+    },
+    "end": {
+      "date": "2026-09-11",
+      "value": 4510.155
+    },
+    "periods": [
+      {
+        "weeks": 1,
+        "start": {
+          "date": "2026-09-04",
+          "value": 4548.05
+        },
+        "return": -0.8332142346720084
+      },
+      {
+        "weeks": 4,
+        "start": {
+          "date": "2026-08-14",
+          "value": 4665.881
+        },
+        "return": -3.337547614266212
+      },
+      {
+        "weeks": 13,
+        "start": {
+          "date": "2026-06-12",
+          "value": 4777.321
+        },
+        "return": -5.59238116927877
+      }
+    ],
+    "volatility": {
+      "windowStart": "2023-09-12",
+      "windowEnd": "2026-09-11",
+      "N": 727,
+      "current": 15.447740286821137,
+      "less": 439,
+      "equal": 1,
+      "percentile": 60.45392022008254
+    }
+  },
+  "us": {
+    "return20d": -1.8208768058428082,
+    "return20dStart": {
+      "date": "2026-08-13",
+      "value": 7798.99
+    },
+    "end": {
+      "date": "2026-09-11",
+      "value": 7656.98
+    },
+    "periods": [
+      {
+        "weeks": 1,
+        "start": {
+          "date": "2026-09-04",
+          "value": 7718.6
+        },
+        "return": -0.7983313036042938
+      },
+      {
+        "weeks": 4,
+        "start": {
+          "date": "2026-08-14",
+          "value": 7785.76
+        },
+        "return": -1.6540453340457506
+      },
+      {
+        "weeks": 13,
+        "start": {
+          "date": "2026-06-12",
+          "value": 7431.46
+        },
+        "return": 3.034666135591113
+      }
+    ],
+    "volatility": {
+      "windowStart": "2023-09-11",
+      "windowEnd": "2026-09-10",
+      "N": 775,
+      "current": 17.84,
+      "less": 518,
+      "equal": 1,
+      "percentile": 66.90322580645162
+    },
+    "credit": {
+      "windowStart": "2023-09-12",
+      "windowEnd": "2026-09-10",
+      "N": 787,
+      "current": 2.7,
+      "less": 77,
+      "equal": 9,
+      "percentile": 10.355781448538755
+    },
+    "survey": {
+      "bullish": 38,
+      "bearish": 39.3,
+      "value": -1.3
+    }
+  },
+  "cnCreditBp": 35.43999999999998,
+  "usLeveragePct": -5.648663978823921
+}

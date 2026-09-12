@@ -5,6 +5,7 @@ export type WeeklyReport = {
   schemaVersion: number;
   date: string;
   label: string;
+  title: string;
   revision: number;
   canonicalRevision?: number;
   originalRetained?: boolean;
@@ -14,6 +15,10 @@ export type WeeklyReport = {
   nextMethodVersion?: string;
   comparison: { comparable: boolean; reason: string };
   informationCutoff: Record<MarketKey, string>;
+  marketSessions?: Record<
+    MarketKey,
+    { close: string; cutoff: string; timezone: string }
+  >;
   history: {
     date: string;
     label: string;
@@ -103,7 +108,7 @@ export type MarketData = {
   panel: string;
   signals: Array<{
     name: string;
-    value: number;
+    value: number | null;
     label: string;
     note: string;
     icon: 'activity' | 'capital' | 'psychology' | 'price';

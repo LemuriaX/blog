@@ -435,7 +435,7 @@ export default function Home() {
                     {signal.name}
                   </div>
                   <span className="font-mono text-sm text-[#26382e]/38">
-                    {signal.value}
+                    {signal.value ?? '—'}
                   </span>
                 </div>
                 <div className="mt-7 flex items-end justify-between gap-4">
@@ -446,11 +446,17 @@ export default function Home() {
                     {signal.note}
                   </span>
                 </div>
-                <Progress
-                  value={signal.value}
-                  aria-label={`${signal.name} ${signal.value} 分`}
-                  className="mt-5 gap-0 [&_[data-slot=progress-indicator]]:bg-[var(--signal)] [&_[data-slot=progress-track]]:h-px [&_[data-slot=progress-track]]:bg-[#26382e]/7"
-                />
+                {signal.value === null ? (
+                  <p className="mt-5 text-xs text-[#26382e]/50">
+                    证据不足，暂不定位
+                  </p>
+                ) : (
+                  <Progress
+                    value={signal.value}
+                    aria-label={`${signal.name} ${signal.value} 分`}
+                    className="mt-5 gap-0 [&_[data-slot=progress-indicator]]:bg-[var(--signal)] [&_[data-slot=progress-track]]:h-px [&_[data-slot=progress-track]]:bg-[#26382e]/7"
+                  />
+                )}
               </div>
             );
           })}

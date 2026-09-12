@@ -1,0 +1,53 @@
+{
+  "retrievedAt": "2026-09-12",
+  "cutoff": "2026-09-11",
+  "windowConvention": "过去3年为 (观测日减3年, 观测日]；保留数据商的非空日值，不前向填充。收益均为价格回报，不含分红。",
+  "formulas": {
+    "return20d": "(P[t]/P[t-20]-1)*100；交易日计数，需21个收盘值",
+    "performance": "(周末收盘 / 1、4、13个自然周前周末收盘 - 1)*100",
+    "rv": "最近20个对数日收益的样本标准差(ddof=1)*sqrt(252)*100",
+    "percentile": "(小于当前值的数量 + 0.5*等于当前值的数量)/有效样本数*100"
+  },
+  "files": [
+    {
+      "file": "price-cn.json",
+      "source": "https://quotes.sina.cn/cn/api/jsonp_v2.php/var%20_data=/CN_MarketDataService.getKLineData?symbol=sh000300&scale=240&ma=no&datalen=1023",
+      "publishedAt": "2026-09-11",
+      "observedAt": "2026-09-11",
+      "universe": "沪深300价格指数，非ETF净值；原始三位小数",
+      "crossCheck": "英为财情9/11为4510.16、9/4为4548.05、8/14为4665.88；6/12与Yahoo历史收盘4777.32一致"
+    },
+    {
+      "file": "price-us.json",
+      "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SP500&cosd=2026-06-01&coed=2026-09-11",
+      "publishedAt": "2026-09-11",
+      "publishedTime": "19:02 CDT",
+      "observedAt": "2026-09-11",
+      "universe": "S&P Dow Jones Indices经FRED分发的标普500价格指数；空值日排除；9/7劳动节休市"
+    },
+    {
+      "file": "vix-us.json",
+      "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2023-09-11&coed=2026-09-10",
+      "publishedAt": "2026-09-11",
+      "publishedTime": "08:37 CDT",
+      "observedAt": "2026-09-10",
+      "universe": "Cboe VIX日收盘；数据商非空日值原样保留"
+    },
+    {
+      "file": "credit-us.json",
+      "source": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2&cosd=2023-09-11&coed=2026-09-10",
+      "publishedAt": "2026-09-11",
+      "publishedTime": "08:57 CDT",
+      "observedAt": "2026-09-10",
+      "universe": "ICE BofA US HY OAS，含数据商发布的非交易日值，单位%"
+    }
+  ],
+  "exclusions": [
+    "Yahoo的CSI300接口元数据已到9/11，但历史数组只到7/17，不用于本期连续序列；采用新浪并交叉验证端点。",
+    "FINRA可核验7月1417225、6月1502072百万美元，但网页未给出7月数据的精确发布日期；只作旁证。",
+    "AAII正文的概述方向及所写-1.4与原始38.0/39.3不一致；采用历史结果表和分项数，自行计算-1.3百分点。",
+    "ICI本次8/26国内股票流出修订为18300百万美元；9/4旧报18344保持原信息集，不回写历史。",
+    "未取得当期基准成分股50日均线广度、去重基金周流量对应期初资产、同口径5/60日成交额、估值/集中度至少36个月末值、20日合约集合期权量；不以零散报道替换。",
+    "中国8月社融及8月零售尚未核验到截止日前正式发布值；低频沿用7月，不能写成本周改善。"
+  ]
+}

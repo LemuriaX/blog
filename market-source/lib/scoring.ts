@@ -151,6 +151,7 @@ export type Observation = {
   refs: string[];
   definition: string;
   note: string;
+  confidence?: '高' | '中' | '低' | '无法判断';
 };
 
 export function metricScore(rule: MetricRule, value: number) {

@@ -172,9 +172,18 @@ function fixture() {
   );
   delete fixtureReport.originalRetained;
   delete fixtureReport.canonicalRevision;
+  // Each fixture models the 09.04 revision, independently of later real weeks.
+  for (const filename of fs.readdirSync(path.join(root, 'data/reports'))) {
+    if (filename.endsWith('.json') && filename.slice(0, 10) > cutoff)
+      fs.unlinkSync(path.join(root, 'data/reports', filename));
+  }
   fs.writeFileSync(
     path.join(root, 'data/reports/2026-09-04.json'),
     JSON.stringify(fixtureReport),
+  );
+  fs.writeFileSync(
+    path.join(root, 'lib/market-history.ts'),
+    `export const marketHistory = ${JSON.stringify(reportsAndHistory(root).history)};\n`,
   );
   const repo = path.join(workspace, 'repo'),
     localRoot = path.join(workspace, 'local');
