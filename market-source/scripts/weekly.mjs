@@ -66,6 +66,7 @@ export const routeFor = (report) =>
 const historyKeys = ['cnSentiment', 'usSentiment', 'cnCycle', 'usCycle'];
 
 export function validateReport(report, root = sourceRoot) {
+  const cnBrief = report.methodVersion === 'cn-brief-v1';
   assert(report.schemaVersion === 2, 'Unsupported report schema');
   assert(iso(report.date), 'Invalid report date');
   assert(
@@ -82,7 +83,8 @@ export function validateReport(report, root = sourceRoot) {
   );
   assert(
     report.methodVersion === 'legacy-v1' ||
-      report.methodVersion === METHOD_VERSION,
+      report.methodVersion === METHOD_VERSION ||
+      cnBrief,
     'Unknown method version',
   );
   assert(
@@ -90,7 +92,22 @@ export function validateReport(report, root = sourceRoot) {
     'Legacy scoring is only retained for the existing report',
   );
   const schema = json(path.join(root, 'data/guide-schema.json'));
-  for (const key of ['cn', 'us']) {
+  if (cnBrief) {
+    assert(
+      Object.keys(report.markets).join() === 'cn',
+      'A-share brief must contain only cn',
+    );
+    assert(
+      report.history.cnSentiment === null &&
+        report.history.usSentiment === null,
+      'A-share brief does not calculate sentiment totals',
+    );
+    assert(
+      report.revision > 1 || report.history.usCycle === null,
+      'New A-share weeks must not carry forward a US cycle score',
+    );
+  }
+  for (const key of cnBrief ? ['cn'] : ['cn', 'us']) {
     const market = report.markets[key];
     assert(
       iso(report.informationCutoff[key]) &&
@@ -141,8 +158,8 @@ export function validateReport(report, root = sourceRoot) {
       }
     };
     refs(market);
-    refs(report.reading[key]);
-    refs(report.sentiment[key]);
+    refs(report.reading?.[key]);
+    refs(report.sentiment?.[key]);
     market.guide.forEach((g, i) => {
       assert(
         ['category', 'leftPole', 'rightPole'].every(
@@ -159,11 +176,12 @@ export function validateReport(report, root = sourceRoot) {
       );
       assert(g.basis && g.refs.length, 'Guide needs evidence and sources');
     });
-    assert(
-      report.reading[key].changes.length === 3 &&
-        report.reading[key].conditionReview.length > 0,
-      'Weekly brief or prior conditions missing',
-    );
+    if (!cnBrief)
+      assert(
+        report.reading[key].changes.length === 3 &&
+          report.reading[key].conditionReview.length > 0,
+        'Weekly brief or prior conditions missing',
+      );
     assert(market.actions.length === 4, 'Four action categories required');
     assert(
       report.history[`${key}Cycle`] === market.score,
@@ -185,7 +203,7 @@ export function validateReport(report, root = sourceRoot) {
           report.history[`${key}Sentiment`],
         'Sentiment arithmetic mismatch',
       );
-    } else {
+    } else if (!cnBrief) {
       const observations = report.observations?.[key];
       assert(Array.isArray(observations), 'v2 needs raw observations');
       refs(observations);
@@ -245,6 +263,7 @@ export function reportsAndHistory(root = sourceRoot) {
       originalRetained: r.originalRetained,
       revision: r.revision,
       title: r.title,
+      cnDefense: r.markets.cn.defenseScore,
     });
   }
   history.sort((a, b) => a.date.localeCompare(b.date));
@@ -288,22 +307,20 @@ export function renderIndex(template, history) {
   const latest = history.at(-1);
   const metrics = [
     ['A股周期', latest.cnCycle],
-    ['A股情绪', latest.cnSentiment],
-    ['美股周期', latest.usCycle],
-    ['美股情绪', latest.usSentiment],
+    ['攻守位置', latest.cnDefense ?? '—'],
   ]
     .map(
       ([label, v]) =>
         `<div class="metric"><span>${label}</span><strong>${escape(v)}</strong></div>`,
     )
     .join('\n');
-  const card = `<a class="latest" href="./${escape(latest.route)}"><time datetime="${latest.date}">${latest.date.replaceAll('-', '.')}${latest.revision > 1 ? ' · 阅读修订版' : ''}</time><h2>${escape(latest.title ?? '本周市场手记')}</h2><div class="metrics">${metrics}</div><div class="card-foot"><span>数据截止日 · 保留原始历史分</span><b>阅读本期 →</b></div></a>`;
+  const card = `<a class="latest" href="./${escape(latest.route)}"><time datetime="${latest.date}">${latest.date.replaceAll('-', '.')}</time><h2>${escape(latest.title ?? '本周A股手记')}</h2><div class="metrics">${metrics}</div><div class="card-foot"><span>0进攻 · 100防守，分值不等于仓位</span><b>阅读本期 →</b></div></a>`;
   const rows = history
     .slice()
     .reverse()
     .map(
       (r) =>
-        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股 周期${escape(r.cnCycle)} / 情绪${escape(r.cnSentiment)} · 美股 周期${escape(r.usCycle)} / 情绪${escape(r.usSentiment)}</span><em>${r.revision > 1 ? `修订${r.revision}` : '原版'}</em></a>${r.revision > 1 && r.originalRetained !== false ? `<a href="./${r.date}/" class="original-link">查看 ${r.date} 原版 →</a>` : ''}</li>`,
+        `<li><a href="./${escape(r.route)}"><time datetime="${r.date}">${r.date.replaceAll('-', '.')}</time><span>A股 · 周期${escape(r.cnCycle)}</span><em>阅读 →</em></a></li>`,
     )
     .join('\n');
   assert(
@@ -359,7 +376,7 @@ export async function prepare(date, root = sourceRoot) {
   );
   write(
     historyFile,
-    `// Generated from data/reports and immutable legacy history.\nexport type WeeklyMarketSnapshot = {date:string;label:string;cnSentiment:number|null;usSentiment:number|null;cnCycle:number;usCycle:number;methodVersion:string;comparable:boolean};\nexport const marketHistory: WeeklyMarketSnapshot[] = ${JSON.stringify(historical, null, 2)};\n`,
+    `// Generated from data/reports and immutable legacy history.\nexport type WeeklyMarketSnapshot = {date:string;label:string;cnSentiment:number|null;usSentiment:number|null;cnCycle:number;usCycle:number|null;methodVersion:string;comparable:boolean};\nexport const marketHistory: WeeklyMarketSnapshot[] = ${JSON.stringify(historical, null, 2)};\n`,
   );
   write(
     path.join(root, 'lib/current-report.ts'),
@@ -575,7 +592,6 @@ export function archive(date, { repo, localRoot, root = sourceRoot }) {
     'public',
     'pages',
     'archive',
-    'components/market-review.tsx',
     'package.json',
     'WEEKLY_MARKET_PROMPT.md',
     'WORKFLOW.md',

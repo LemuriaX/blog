@@ -10,12 +10,12 @@
     "build": "vinext build",
     "build:pages": "vite build --config vite.pages.config.ts",
     "start": "wrangler dev --config dist/server/wrangler.json",
-    "lint": "oxlint app lib pages components/market-review.tsx scripts tests",
-    "format": "oxfmt app lib pages components/market-review.tsx scripts tests data package.json tsconfig.weekly.json WORKFLOW.md WEEKLY_MARKET_PROMPT.md",
+    "lint": "oxlint app lib pages scripts tests",
+    "format": "oxfmt app lib pages scripts tests data package.json tsconfig.weekly.json WORKFLOW.md WEEKLY_MARKET_PROMPT.md",
     "weekly": "node scripts/weekly.mjs",
     "typecheck": "tsc --noEmit --project tsconfig.weekly.json",
     "test": "node --test tests/*.test.mjs",
-    "format:check": "oxfmt --check app lib pages components/market-review.tsx scripts tests data package.json tsconfig.weekly.json WORKFLOW.md WEEKLY_MARKET_PROMPT.md"
+    "format:check": "oxfmt --check app lib pages scripts tests data package.json tsconfig.weekly.json WORKFLOW.md WEEKLY_MARKET_PROMPT.md"
   },
   "dependencies": {
     "react": "19.2.6",

@@ -1,12 +1,10 @@
-# 市场手记维护
+# A股市场手记维护
 
-2026-09-04旧版已按用户明确要求删除，该日期正式入口展示优化后的版本（canonicalRevision=2、originalRetained=false）。其他日期仍按常规保留历史。新周应设revision=1，并清除上期的这两个特殊字段；字段只控制入口与展示，不允许归档命令绕过覆盖检查。
-
-在源码根目录执行命令。数据从 data/reports/ 输入，页面、历史与目录由同一份输入生成。新周复制上一期 JSON 作为结构起点，再逐项研究；日期、原始观测、条件复盘、信源、方法版本必须更新，不能沿用旧结论。
+从 data/reports/YYYY-MM-DD.json 生成页面、历史与目录。只维护A股，页面依次为本周判断、四个温度计、20项钟摆、价格与价值、关键数据与后续行动。取消美股切换、情绪周线、固定评分、日期取数台账、上周条件复盘和二层思维章节。
 
 ## 常规更新
 
-使用 Node 22.13 以上；本机优先把 Codex 随附 Node 24 的目录放在 PATH 前面。
+使用 Node 22.13 以上；本机优先使用 Codex 随附 Node 24。命令在源码根目录执行。
 
 ```text
 npm run weekly -- preflight --date YYYY-MM-DD --repo <仓库绝对路径>
@@ -24,31 +22,25 @@ npm run build:pages
 npm run weekly -- archive --date YYYY-MM-DD --repo <仓库绝对路径>
 ```
 
-prepare 写入用于绑定构建的数据及源码指纹。若之后修改产品源码或提示词，应重新 prepare、构建、检查；归档会拒绝不匹配的旧构建。格式变化也会改变源码指纹，所以最后一次 prepare 应在格式化之后。本地库默认是当前源码根下 weekly-reports，可用 --local-root 显式指定已有周报库。
+prepare 绑定数据、源码和提示词指纹；之后改动任何相关内容都要重新 prepare 和构建。archive 拒绝不匹配的旧构建，并在全部冲突检查通过后复制、核对哈希和更新入口。本地默认库是 weekly-reports/，可用 --local-root 指定。
 
-archive 不推送 Git：它检查全部目标冲突，复制同一构建、验证每个文件和原有快照，再更新目录/latest。准备完成后核对 diff，在最新 main 上提交，仅发布 market/ 与 market-source/ 的相关改动。命令不证明已登录 GitHub；提前用 git push --dry-run 或已授权连接器确认写权限。
+发布前用浏览器检查只显示A股、已删除章节未出现、钟摆筛选和资料不足状态、目录/提示词链接及窄屏排版。archive 不执行 Git 推送：核对 diff，在最新 main 上仅提交 market/ 和 market-source/ 的相关内容。提前通过 Git 或已授权连接器确认写权限，不强推。
 
-本周发布前须做市场切换、评分折叠、历史图、钟摆筛选、缺失项、链接和窄屏检查。部署成功后核对线上字节：
+部署成功后执行 npm run weekly -- verify-online --date YYYY-MM-DD --base https://www.acgnx.top/market/，核对线上实际字节。
 
-```text
-npm run weekly -- verify-online --date YYYY-MM-DD --base https://www.acgnx.top/market/
-```
+## 数据结构
 
-## 重跑、中断与修订
+新周从最新 JSON 起步并逐项重新研究，使用 schemaVersion=2、methodVersion=cn-brief-v1。markets、informationCutoff 和可选 marketSessions 只包含 cn；时区为 Asia/Shanghai。无需 reading、sentiment、observations、comparison 或 crossChecks，不再研究美股和固定加权情绪分项。
 
-- 同日相同数据不会重复追加历史；prepare 会检查现有历史分数，拒绝回改。
-- 构建不变时 archive 可以重跑；部分文件已复制时逐个核对后继续。已有文件内容不同则在写入前拒绝，不能用覆盖参数绕过。
-- 先完成两个快照并核对，再写目录/latest。网络失败或构建失败不应开始归档；远端只有完整提交才发布。操作系统在最后目录写入中断时重跑 archive 即可完成入口同步。
-- 已发布周需要改进：revision 从1加到2，填写 revisedAt 和 revisionReason，保存到日期/revisions/02/。原日期目录和旧修订永远保留，目录保留原版链接；周度历史依旧一条。
-- 修订用于说明事实纠错或展示变化，不把后见判断当原判断。数值历史维持当时记录，必要时在正文另列纠错值与原因。
-- 写入目标是明确指定的发布仓库与本地库；不要指向旧的脏工作区。遇远端进展，先整合再发布，不强推。
+history 保留兼容旧档的字段：新周 cnSentiment、usSentiment、usCycle 写 null，cnCycle 等于 markets.cn.score。修订现有日期保留该日已有历史数值，prepare 会拒绝历史被改写。旧 legacy-v1 和 sentiment-v2 记录仍按旧规则校验，lib/scoring.ts 仅用于这些既有档案，不是新周要求。
 
-## 数据与方法
+data/guide-schema.json 固定20项名称与两极。每项保留位置或 null、依据、引用、复核状态和信心；缺失不是中性50。周期中值以5分为刻度，温度计与攻守是有依据的判断值，不是收益预测。
 
-data/guide-schema.json 固定20项与两极；lib/scoring.ts 固定v2指标、权重、锚点、最大观测年龄、缺项处理及可比性规则。data/reports/2026-09-04.json 保留旧主观分项，只在修订版标明证据不足；不能当作v2输入。
+核心事实的观测期、公开日期、取数日期、单位、口径、直接来源和原始计算保存在 data/inputs/YYYY-MM-DD/；来源也可在 sources 记录日期供校验。这些记录供复核使用，不生成独立网页台账。只使用截止日内公开信息，不从文件名猜日期。
 
-v2周数据增加 observations.cn / observations.us，每项字段为 id、value（数字或null）、status、observedAt、publishedAt、retrievedAt、refs、definition、note。id 从 metricRules 选择；definition 写固定序列、窗口与样本定义。原始序列/分位计算过程放在 data/inputs/，由 refs 指向来源并在 note 写文件名。每个有效观测必须有发布日期；未知发布时间不能假装verified。
+## 重跑与修订
 
-总分和 history 的情绪值调用 scoreSentiment 后填入；缺覆盖返回null。v2不接受把代理或缺失填成50。前一期完整可比时才展示差值；方法变化保留历史断点。JSON中的 reading 保存首屏三件事、条件复盘及影响说明；所有文字均由研究结果填写，脚本不会自动生成投资判断。
-
-周期、温度计、攻守、钟摆属于解释性判断；除新周期中值用5分刻度外，不宣称量化公式可替代投资判断。新规则没有历史回测，使用时观察稳定性，但不得看到结果后回调阈值再回改分数。
+- 同日同内容重跑不重复追加历史；已有快照内容冲突时在写入前拒绝。部分复制可以核对后继续，两个快照验证完成才更新目录/latest。
+- 修改已发布页面，revision 加一并填写 revisedAt、revisionReason，写入日期/revisions/02/ 等目录。旧快照保存在档案中，目录只链接该周最新修订，不并列展示原版；数值历史保持一条。
+- 2026-09-04旧版已按用户要求删除，正式入口为优化版，canonicalRevision=2、originalRetained=false。其他周不继承特殊字段；新周 revision=1，清除 revisedAt、revisionReason、canonicalRevision、originalRetained。
+- 写入目标是明确的发布仓库与本地库；保留 CNAME、首页、daily、plans 及其他无关文件。远端更新时先整合，不覆盖用户修改。

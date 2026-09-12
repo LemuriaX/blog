@@ -15,24 +15,10 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import {
-  CartesianGrid,
-  Line,
-  LineChart as RechartsLineChart,
-  ReferenceLine,
-  XAxis,
-  YAxis,
-} from 'recharts';
 
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from '@/components/ui/chart';
 import { Progress } from '@/components/ui/progress';
 import {
   Table,
@@ -42,48 +28,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { marketHistory } from '@/lib/market-history';
-import {
-  WeeklyBrief,
-  EvidenceMethod,
-  ConditionReview,
-} from '@/components/market-review';
 
-import type {
-  MarketKey,
-  GuideSide,
-  GuideFilter,
-  Source,
-  MarketData,
-} from '@/lib/market-types';
+import type { GuideSide, GuideFilter, Source } from '@/lib/market-types';
 import { currentReport as report } from '@/lib/current-report';
-const marketData = report.markets as Record<MarketKey, MarketData>;
 const icons = {
   activity: Activity,
   capital: CircleDollarSign,
   psychology: Sparkles,
   price: Landmark,
 };
-
-const sentimentChartConfig = {
-  cnSentiment: {
-    label: 'A股情绪',
-    color: '#718f72',
-  },
-  usSentiment: {
-    label: '美股情绪',
-    color: '#b98358',
-  },
-} satisfies ChartConfig;
-
-function sentimentLabel(value: number | null) {
-  if (value === null) return '资料不足';
-  if (value <= 20) return '极度恐惧';
-  if (value <= 40) return '谨慎';
-  if (value <= 60) return '中性';
-  if (value <= 80) return '乐观';
-  return '亢奋';
-}
 
 function guideSide(position: number | null): GuideSide {
   if (position === null) return 'unknown';
@@ -208,12 +161,6 @@ function CycleGauge({
             style={{ left: `${score}%` }}
           />
         </div>
-        <div className="mt-3 flex items-center justify-between text-sm">
-          <span className="font-mono text-[#26382e]/42">
-            {range[0]}—{range[1]} / 中值 {score}
-          </span>
-          <strong className="font-normal text-[var(--signal)]">{stage}</strong>
-        </div>
         <div className="mt-4 border-t border-[#26382e]/9 pt-4">
           <p className="font-display text-base text-[#26382e]/78">{phase}</p>
           <p className="mt-1 text-sm leading-5 text-[#26382e]/44">
@@ -236,12 +183,8 @@ function SectionMark({ number, label }: { number: string; label: string }) {
 }
 
 export default function Home() {
-  const [market, setMarket] = useState<MarketKey>('cn');
   const [guideFilter, setGuideFilter] = useState<GuideFilter>('all');
-  const active = marketData[market];
-  const chartHistory = marketHistory.filter((item) => item.date <= report.date);
-  const latestSnapshot = chartHistory[chartHistory.length - 1];
-  const previousSnapshot = chartHistory[chartHistory.length - 2];
+  const active = report.markets.cn;
   const filteredGuide =
     guideFilter === 'all'
       ? active.guide
@@ -283,33 +226,10 @@ export default function Home() {
                 市场手记
               </div>
               <div className="font-mono text-xs tracking-[0.2em] text-[#26382e]/36">
-                CN / US · 09
+                A股 · {report.date.slice(0, 4)}
               </div>
             </div>
           </div>
-
-          <fieldset
-            className="order-3 flex rounded-full border border-[#26382e]/12 bg-[#eee7d9]/70 p-1 sm:order-none"
-            aria-label="市场选择"
-          >
-            {(Object.keys(marketData) as MarketKey[]).map((key) => (
-              <Button
-                key={key}
-                type="button"
-                size="sm"
-                variant="ghost"
-                aria-pressed={market === key}
-                onClick={() => setMarket(key)}
-                className={
-                  market === key
-                    ? 'h-7 rounded-full bg-[#26382e] px-4 text-xs text-[#f4efe5] hover:bg-[#26382e]/90 hover:text-[#f4efe5]'
-                    : 'h-7 rounded-full px-4 text-xs text-[#26382e]/45 hover:bg-[#26382e]/5 hover:text-[#26382e]'
-                }
-              >
-                {marketData[key].label}
-              </Button>
-            ))}
-          </fieldset>
 
           <div className="flex items-center gap-2 font-mono text-sm tracking-[0.08em] text-[#26382e]/50">
             <CalendarDays className="size-3" aria-hidden="true" />
@@ -318,8 +238,6 @@ export default function Home() {
           </div>
         </div>
       </header>
-
-      <WeeklyBrief market={market} sources={active.sources} />
 
       <section className="relative border-b border-[#26382e]/10">
         <div className="pointer-events-none absolute inset-y-0 left-[8%] w-px bg-[#26382e]/[0.035]" />
@@ -383,20 +301,6 @@ export default function Home() {
                   <SourceRefs ids={active.cycleRefs} sources={active.sources} />
                 </div>
               </div>
-              <div className="mt-5 rounded-[18px_5px_18px_5px] bg-[#f7f1e7]/58 px-4 py-4">
-                <p className="font-mono text-xs tracking-[0.16em] text-[#26382e]/36">
-                  HOWARD MARKS FRAME
-                </p>
-                <p className="mt-2 text-sm leading-5 text-[#26382e]/46">
-                  先问共识，再问价格；把资本、心理与风险一起看。攻守同时看价格、信用和现金流，周期位置不能单独决定仓位。0—100是本站的判断区间，不是书中公式。
-                </p>
-                <div className="mt-2">
-                  <SourceRefs
-                    ids={['HM-01', 'HM-04', 'HM-05', 'HM-06']}
-                    sources={active.sources}
-                  />
-                </div>
-              </div>
             </CardContent>
           </Card>
         </div>
@@ -446,11 +350,7 @@ export default function Home() {
                     {signal.note}
                   </span>
                 </div>
-                {signal.value === null ? (
-                  <p className="mt-5 text-xs text-[#26382e]/50">
-                    证据不足，暂不定位
-                  </p>
-                ) : (
+                {signal.value !== null && (
                   <Progress
                     value={signal.value}
                     aria-label={`${signal.name} ${signal.value} 分`}
@@ -498,227 +398,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#26382e]/10 bg-[#f0eadf]/62">
-        <div className="mx-auto max-w-[1380px] px-5 py-14 lg:px-8 lg:py-18">
-          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <div>
-              <SectionMark number="02" label="WEEKLY SENTIMENT" />
-              <h2 className="font-display mt-3 text-4xl tracking-[-0.06em] text-[#26382e]">
-                情绪周线
-              </h2>
-            </div>
-            <p className="max-w-lg text-xs leading-relaxed text-[#26382e]/42">
-              0 是极度恐惧，50 是中性，100 是极度乐观。只量情绪，不预测涨跌。
-            </p>
-          </div>
-
-          <p className="mt-5 rounded-lg border border-[#b98358]/25 bg-[#b98358]/5 px-4 py-3 text-sm leading-6 text-[#70553b]">
-            {report.comparison.reason}{' '}
-            图中保留原点；仅连接相同方法且完整可比的记录。
-          </p>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-[1.45fr_.55fr] lg:items-stretch">
-            <Card className="rounded-[6px_28px_6px_28px] bg-[#f7f1e7]/70 py-0 ring-1 ring-[#26382e]/8">
-              <CardContent className="px-3 py-6 sm:px-6">
-                <ChartContainer
-                  config={sentimentChartConfig}
-                  className="h-[280px] w-full aspect-auto"
-                  initialDimension={{ width: 760, height: 280 }}
-                >
-                  <RechartsLineChart
-                    accessibilityLayer
-                    data={chartHistory}
-                    margin={{ left: 0, right: 12, top: 14, bottom: 0 }}
-                  >
-                    {chartHistory.flatMap((row, i) =>
-                      i > 0 && row.comparable
-                        ? (['cnSentiment', 'usSentiment'] as const).map(
-                            (key) => (
-                              <Line
-                                key={row.date + key}
-                                dataKey={(point: typeof row) =>
-                                  point.date === row.date ||
-                                  point.date === chartHistory[i - 1].date
-                                    ? point[key]
-                                    : null
-                                }
-                                stroke={
-                                  key === 'cnSentiment' ? '#718f72' : '#b98358'
-                                }
-                                strokeWidth={2}
-                                dot={false}
-                                activeDot={false}
-                                tooltipType="none"
-                                legendType="none"
-                                connectNulls={false}
-                                isAnimationActive={false}
-                              />
-                            ),
-                          )
-                        : [],
-                    )}
-                    <CartesianGrid vertical={false} strokeDasharray="3 5" />
-                    <XAxis
-                      dataKey="label"
-                      tickLine={false}
-                      axisLine={false}
-                      tickMargin={10}
-                    />
-                    <YAxis
-                      domain={[0, 100]}
-                      ticks={[0, 25, 50, 75, 100]}
-                      tickLine={false}
-                      axisLine={false}
-                      width={30}
-                    />
-                    <ReferenceLine
-                      y={50}
-                      stroke="rgba(38,56,46,.22)"
-                      strokeDasharray="4 5"
-                    />
-                    <ChartTooltip
-                      cursor={false}
-                      content={<ChartTooltipContent indicator="line" />}
-                    />
-                    <Line
-                      dataKey="cnSentiment"
-                      type="linear"
-                      stroke="var(--color-cnSentiment)"
-                      strokeWidth={0}
-                      connectNulls={false}
-                      dot={{ r: 4, fill: 'var(--color-cnSentiment)' }}
-                      activeDot={{ r: 5 }}
-                    />
-                    <Line
-                      dataKey="usSentiment"
-                      type="monotone"
-                      stroke="var(--color-usSentiment)"
-                      strokeWidth={0}
-                      connectNulls={false}
-                      dot={{ r: 4, fill: 'var(--color-usSentiment)' }}
-                      activeDot={{ r: 5 }}
-                    />
-                  </RechartsLineChart>
-                </ChartContainer>
-              </CardContent>
-            </Card>
-
-            <div className="grid gap-px overflow-hidden border border-[#26382e]/10 bg-[#26382e]/8 sm:grid-cols-2 lg:grid-cols-1">
-              {[
-                [
-                  'A股',
-                  latestSnapshot.cnSentiment,
-                  '#718f72',
-                  sentimentLabel(latestSnapshot.cnSentiment),
-                  latestSnapshot.cnSentiment !== null &&
-                  previousSnapshot?.cnSentiment != null
-                    ? latestSnapshot.cnSentiment - previousSnapshot.cnSentiment
-                    : null,
-                ],
-                [
-                  '美股',
-                  latestSnapshot.usSentiment,
-                  '#b98358',
-                  sentimentLabel(latestSnapshot.usSentiment),
-                  latestSnapshot.usSentiment !== null &&
-                  previousSnapshot?.usSentiment != null
-                    ? latestSnapshot.usSentiment - previousSnapshot.usSentiment
-                    : null,
-                ],
-              ].map(([label, score, color, state, delta]) => (
-                <div
-                  key={String(label)}
-                  className="flex items-center justify-between bg-[#eee7d9] px-6 py-6"
-                >
-                  <div>
-                    <p className="text-sm text-[#26382e]/40">{label}</p>
-                    <p className="font-display mt-2 text-2xl text-[#26382e]/82">
-                      {state}
-                    </p>
-                    <p className="mt-2 font-mono text-xs text-[#26382e]/30">
-                      {latestSnapshot.date} ·{' '}
-                      {latestSnapshot.comparable
-                        ? '可比变化'
-                        : '记录差（不可直接比较）'}{' '}
-                      {delta !== null ? (
-                        <>
-                          {Number(delta) > 0 ? '+' : ''}
-                          {delta} 分
-                        </>
-                      ) : (
-                        '—'
-                      )}
-                    </p>
-                  </div>
-                  <span
-                    className="font-display text-5xl tracking-[-0.07em]"
-                    style={{ color: String(color) }}
-                  >
-                    {score ?? '—'}
-                  </span>
-                </div>
-              ))}
-              <div className="bg-[#f4efe5] px-6 py-5 sm:col-span-2 lg:col-span-1">
-                <p className="text-sm leading-5 text-[#26382e]/38">
-                  0—20 极度恐惧 · 21—40 谨慎 · 41—60 中性 · 61—80 乐观 · 81—100
-                  亢奋。历史分数只追加。
-                </p>
-                <p className="mt-2 font-mono text-xs leading-4 text-[#26382e]/28">
-                  价格广度 25 · 资金杠杆 25 · 波动利差 20 · 估值拥挤 15 ·
-                  调查行为 15
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <EvidenceMethod market={market} sources={active.sources} />
-      <ConditionReview market={market} sources={active.sources} />
-
-      <section className="border-y border-[#26382e]/10 bg-[#eee7d9]/55">
-        <div className="mx-auto max-w-[1380px] px-5 py-14 lg:px-8 lg:py-18">
-          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-            <div>
-              <SectionMark number="03" label="SECOND-LEVEL" />
-              <h2 className="font-display mt-3 text-4xl tracking-[-0.06em] text-[#26382e]">
-                二层思维
-              </h2>
-            </div>
-            <p className="max-w-lg text-xs leading-relaxed text-[#26382e]/42">
-              事实不等于机会。先看共识，再看价格已经反映了多少。
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-px overflow-hidden border border-[#26382e]/10 bg-[#26382e]/8 md:grid-cols-2 xl:grid-cols-4">
-            {active.crossChecks.map((item) => (
-              <article key={item.tag} className="bg-[#f4efe5] p-6 lg:p-7">
-                <div className="flex items-center justify-between gap-4">
-                  <span
-                    className="font-mono text-xs tracking-[0.18em]"
-                    style={{ color: item.tone }}
-                  >
-                    {item.tag}
-                  </span>
-                  <SourceRefs ids={item.refs} sources={active.sources} />
-                </div>
-                <h3 className="font-display mt-6 text-2xl tracking-[-0.04em] text-[#26382e]/88">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-xs leading-6 text-[#26382e]/52">
-                  {item.text}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="guide" className="scroll-mt-4 bg-[#e7decd] text-[#26382e]">
         <div className="mx-auto max-w-[1380px] px-5 py-16 lg:px-8 lg:py-20">
           <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
             <div>
-              <SectionMark number="04" label="MARKET PENDULUM" />
+              <SectionMark number="02" label="MARKET PENDULUM" />
               <h2 className="font-display mt-3 text-4xl tracking-[-0.06em] sm:text-5xl">
                 市场钟摆
               </h2>
@@ -841,10 +525,7 @@ export default function Home() {
                             资料不足 · 暂不定位
                           </p>
                         )}
-                        <p className="my-3 text-sm leading-6 text-[#526358]">
-                          {item.review.note}
-                        </p>
-                        <div className="mt-9 flex items-start justify-between gap-5 border-t border-[#26382e]/7 pt-3">
+                        <div className="mt-4 flex items-start justify-between gap-5 border-t border-[#26382e]/7 pt-3">
                           <p className="max-w-3xl text-sm leading-5 text-[#26382e]/46">
                             {item.basis}
                           </p>
@@ -866,7 +547,7 @@ export default function Home() {
       <section className="border-b border-[#26382e]/10">
         <div className="mx-auto grid max-w-[1380px] gap-14 px-5 py-16 lg:grid-cols-[1.15fr_.85fr] lg:px-8 lg:py-20">
           <div>
-            <SectionMark number="05" label="PRICE / VALUE" />
+            <SectionMark number="03" label="PRICE / VALUE" />
             <h2 className="font-display mt-3 text-4xl tracking-[-0.06em] text-[#26382e]">
               价格与价值
             </h2>
@@ -994,7 +675,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1380px] px-5 py-16 lg:px-8 lg:py-20">
           <div className="flex items-end justify-between gap-5">
             <div>
-              <SectionMark number="06" label="EVIDENCE" />
+              <SectionMark number="04" label="EVIDENCE" />
               <h2 className="font-display mt-3 text-4xl tracking-[-0.06em] text-[#26382e]">
                 关键数据
               </h2>
@@ -1070,12 +751,10 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-5 border-b border-[#26382e]/10 pb-7 lg:flex-row lg:items-end">
             <div>
               <p className="font-display text-base text-[#26382e]/72">
-                信源台账 · {active.label}
+                参考资料 · {active.label}
               </p>
               <p className="mt-2 max-w-xl text-sm leading-5 text-[#26382e]/36">
-                市场价截至
-                {report.informationCutoff[market]}
-                。具体观测期、发布时间和滞后见上方台账；缺失日期不补造。
+                正文引用均链接至原始资料。
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#26382e]/34">

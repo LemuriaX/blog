@@ -5,7 +5,7 @@ export type WeeklyMarketSnapshot = {
   cnSentiment: number | null;
   usSentiment: number | null;
   cnCycle: number;
-  usCycle: number;
+  usCycle: number | null;
   methodVersion: string;
   comparable: boolean;
 };
@@ -37,7 +37,7 @@ export const marketHistory: WeeklyMarketSnapshot[] = [
     usSentiment: null,
     cnCycle: 60,
     usCycle: 80,
-    methodVersion: 'sentiment-v2',
+    methodVersion: 'cn-brief-v1',
     comparable: false,
   },
 ];

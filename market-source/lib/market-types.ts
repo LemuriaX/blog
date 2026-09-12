@@ -1,4 +1,5 @@
 export type MarketKey = 'cn' | 'us';
+type MarketRecords<T> = { cn: T; us?: T };
 export type GuideSide = 'left' | 'middle' | 'right' | 'unknown';
 export type GuideFilter = 'all' | GuideSide;
 export type WeeklyReport = {
@@ -13,23 +14,23 @@ export type WeeklyReport = {
   revisionReason?: string;
   methodVersion: string;
   nextMethodVersion?: string;
-  comparison: { comparable: boolean; reason: string };
-  informationCutoff: Record<MarketKey, string>;
-  marketSessions?: Record<
-    MarketKey,
-    { close: string; cutoff: string; timezone: string }
-  >;
+  comparison?: { comparable: boolean; reason: string };
+  informationCutoff: MarketRecords<string>;
+  marketSessions?: MarketRecords<{
+    close: string;
+    cutoff: string;
+    timezone: string;
+  }>;
   history: {
     date: string;
     label: string;
     cnSentiment: number | null;
     usSentiment: number | null;
     cnCycle: number;
-    usCycle: number;
+    usCycle: number | null;
   };
-  markets: Record<MarketKey, MarketData>;
-  sentiment: Record<
-    MarketKey,
+  markets: MarketRecords<MarketData>;
+  sentiment?: MarketRecords<
     Array<{
       label: string;
       weight: number;
@@ -41,25 +42,22 @@ export type WeeklyReport = {
       limitation: string;
     }>
   >;
-  observations?: Record<MarketKey, import('./scoring').Observation[]>;
-  reading: Record<
-    MarketKey,
-    {
-      changes: Array<{
-        label: string;
-        title: string;
-        text: string;
-        refs: string[];
-      }>;
-      conditionReview: Array<{
-        condition: string;
-        status: string;
-        evidence: string;
-        refs: string[];
-      }>;
-      missingImpact: string;
-    }
-  >;
+  observations?: MarketRecords<import('./scoring').Observation[]>;
+  reading?: MarketRecords<{
+    changes: Array<{
+      label: string;
+      title: string;
+      text: string;
+      refs: string[];
+    }>;
+    conditionReview: Array<{
+      condition: string;
+      status: string;
+      evidence: string;
+      refs: string[];
+    }>;
+    missingImpact: string;
+  }>;
 };
 export type Confidence = '高' | '中' | '低' | '无法判断';
 
@@ -120,7 +118,7 @@ export type MarketData = {
     note: string;
     up: boolean;
   }>;
-  crossChecks: Array<{
+  crossChecks?: Array<{
     tag: string;
     title: string;
     text: string;

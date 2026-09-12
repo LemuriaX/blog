@@ -123,7 +123,7 @@ test('real report preserves original dates and definitions', () => {
     '2026-09-05';
   assert.throws(() => validateReport(future));
 });
-test('archive interpolation escapes content and preserves original links', () => {
+test('archive interpolation escapes content and links only the current revision', () => {
   const { history } = reportsAndHistory();
   history.at(-1).originalRetained = true;
   history.at(-1).route = '2026-09-04/revisions/02/';
@@ -135,7 +135,29 @@ test('archive interpolation escapes content and preserves original links', () =>
   assert.ok(html.includes('&lt;img'));
   assert.ok(html.includes('./2026-09-04/'));
   assert.ok(html.includes('./2026-09-04/revisions/02/'));
+  assert.ok(!html.includes('class="original-link"'));
+  assert.ok(!html.includes('美股'));
+  assert.ok(!html.includes('情绪'));
   assert.throws(() => safePath(sourceRoot, '../outside'));
+});
+
+test('A-share briefs validate without US research or scoring inputs', () => {
+  const brief = JSON.parse(
+    fs.readFileSync(
+      path.join(sourceRoot, 'data/reports/2026-09-11.json'),
+      'utf8',
+    ),
+  );
+  validateReport(brief);
+  assert.deepEqual(Object.keys(brief.markets), ['cn']);
+  const newWeek = clone(brief);
+  newWeek.date = newWeek.history.date = '2026-09-18';
+  newWeek.revision = 1;
+  assert.throws(() => validateReport(newWeek), /US cycle score/);
+  newWeek.history.usCycle = null;
+  validateReport(newWeek);
+  newWeek.markets.us = clone(newWeek.markets.cn);
+  assert.throws(() => validateReport(newWeek), /only cn/);
 });
 
 function fixture() {
