@@ -71,6 +71,18 @@ export function validateValueAnalysis(
       c.verdict && c.resolution && c.limitation && c.watch,
       'verdict, limitation and follow-up required',
     );
+    requireValue(
+      c.presentation &&
+        ['name', 'certainty', 'cushion', 'posture'].every((key) => {
+          const text = c.presentation[key as keyof typeof c.presentation];
+          return (
+            typeof text === 'string' &&
+            text.trim().length > 0 &&
+            !/\d/.test(text)
+          );
+        }),
+      'compact judgments must be text, not unsupported scores',
+    );
   }
   const benchmark = value.benchmarks.find(
     (b) => b.code === value.stress.benchmarkCode,
@@ -81,18 +93,20 @@ export function validateValueAnalysis(
   );
   requireValue(
     value.stress.years === 3,
-    'current scenario display requires three years',
-  );
-  requireValue(
-    [-10, 0, 10, 20, 30, 40].includes(value.stress.defaultGrowth) &&
-      [30, 40, 50, 60, 79.82, 100].includes(value.stress.defaultExitPe),
-    'scenario default unavailable in controls',
+    'research scenario requires three years',
   );
   valuationScenario(
     value.stress.entryPe,
     value.stress.defaultExitPe,
     value.stress.defaultGrowth,
     value.stress.years,
+  );
+  requireValue(
+    value.stance?.label &&
+      value.stance.reason &&
+      value.stance.refs.length &&
+      value.stance.actions.length === 4,
+    'offense/defense judgment and four actions required',
   );
   requireValue(
     value.conflicts.length > 0 &&

@@ -7,7 +7,10 @@ import {
   reportsAndHistory,
   renderIndex,
 } from '../scripts/weekly.mjs';
-import { renderValueResearch } from '../scripts/value-research.mjs';
+import {
+  renderValueResearch,
+  verifyResearchCalculations,
+} from '../scripts/value-research.mjs';
 
 const report = () =>
   JSON.parse(
@@ -45,6 +48,7 @@ test('value research rejects mismatched dates, missing counterevidence and unsup
     (r) => (r.markets.cn.valueAnalysis.stress.entryPe = 50),
     (r) => (r.markets.cn.valueAnalysis.cases[0].limitation = ''),
     (r) => (r.markets.cn.score = 50),
+    (r) => (r.markets.cn.valueAnalysis.cases[0].presentation.certainty = '70'),
   ];
   for (const change of changes) {
     const r = report();
@@ -88,5 +92,26 @@ test('archive directory shows no cycle or defensive scores', () => {
   );
   for (const label of ['A股周期', '攻守位置', '周期60', '温度计', '0进攻'])
     assert.ok(!html.includes(label));
-  assert.ok(html.includes('./2026-09-11/revisions/03/'));
+  assert.ok(html.includes('./2026-09-11/revisions/04/'));
+});
+
+test('stored derived values must reconcile with original research inputs', () => {
+  const review = JSON.parse(
+    fs.readFileSync(
+      new URL('../data/inputs/2026-09-11/value-review.json', import.meta.url),
+    ),
+  );
+  assert.equal(verifyResearchCalculations(review).length, 4);
+  const incorrect = structuredClone(review);
+  incorrect.financialFacts.find((f) => f.scope === '长鑫科技').value = 700;
+  assert.throws(
+    () => verifyResearchCalculations(incorrect),
+    /Calculation mismatch/,
+  );
+  const stale = structuredClone(review);
+  stale.calculations[0].value = 50;
+  assert.throws(
+    () => verifyResearchCalculations(stale),
+    /Calculation mismatch/,
+  );
 });

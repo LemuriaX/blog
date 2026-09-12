@@ -173,7 +173,19 @@ export type ValueAnalysis = {
     resolution: string;
     limitation: string;
     watch: string;
+    presentation: {
+      name: string;
+      certainty: string;
+      cushion: string;
+      posture: string;
+    };
   }>;
+  stance: {
+    label: string;
+    reason: string;
+    refs: string[];
+    actions: Array<[string, string]>;
+  };
   stress: {
     benchmarkCode: string;
     entryPe: number;

@@ -1,4 +1,4 @@
-# 每周A股市场手记更新提示词 · v4
+# 每周A股市场手记更新提示词 · v4.1
 
 维护给我自己看的A股市场手记，完成本周研究、网页更新、本地归档及 GitHub Pages 发布。正文简短，重点处理价格与价值；广泛搜寻资料，主动寻找最强反证。结论可以维持，不为周更制造变化。
 
@@ -14,9 +14,9 @@
 
 页头只显示名称与本期日期，正文直接进入“价格与价值”。随后为20项市场钟摆、关键数据与后续条件，页尾保留可折叠参考资料、研究全文、目录和提示词链接。
 
-不生成美股或切换入口。删除开头市场总结、周期概览、所有市场/周期/攻守/确定性/安全垫分数和温度计；目录也不显示分数。不得把这些内容换个名称放回。原先删除的情绪周线、固定评分、日期取数台账、上周等待是否兑现、二层思维章节继续删除。钟摆只保留单项示意位置，不汇总成总分。
+不生成美股或切换入口。删除开头市场总结、周期概览、市场与周期分数、温度计；确定性/安全垫/攻守使用文字判断；目录也不显示分数。不得把这些内容换个名称放回。原先删除的情绪周线、固定评分、日期取数台账、上周等待是否兑现、二层思维章节继续删除。钟摆只保留单项示意位置，不汇总成总分。
 
-价格与价值默认展示同日估值表、每类资产的一句判断，证据、反证、边界和后续条件可展开。完整推导链接到独立研究文件，避免在页面多处重复相同数字和判断。
+价格与价值沿用原来的双栏样式：左侧按资产分行，显示“确定性／安全垫／应对”的简短文字；右侧为浅绿底“攻守位置”卡片和四项行动。不恢复主观0—100分或按文字等级伪造长短条。研究变严谨不等于增加首屏数据量：估值表、计算、反证和口径冲突收进每行详情或独立研究文件，默认不展开，不在正文单独展示情景计算器。保持宋体、细分隔线与留白。
 
 ## 时间、来源与数据纪律
 
@@ -35,7 +35,7 @@
 - 对“低PE/低PB/高股息/高增长”分别提出最强替代解释：周期利润峰值、资产减值、特殊分红、盈利集中或估值透支。找原始报表和独立范围的数据验证；不只搜支持当前立场的资料。
 - 对冲突保留双方数字与日期，查定义、单位和样本；记录采用哪一个及理由。无法裁决时保留缺口，降低结论强度，不编造精确价值。
 - 有意义时提供估值压力测试，以起始PE、未来每股盈利增速、退出PE和期限计算价格回报及盈亏平衡要求。所有假设显式标注，说明分红、税费、调样限制；不拿情景当预测，不凭空给目标价。
-- 形成三层材料：网页的简洁判断与可展开证据；public/price-value-research.md中的完整引用和推导；data/inputs/YYYY-MM-DD/value-review.json中的数值、口径、裁决和计算记录。后两者由prepare按本期输入生成公开副本，不增加页面台账。
+- 形成三层材料：原版双栏里的简洁文字判断与可展开证据；public/price-value-research.md中的完整引用和推导；data/inputs/YYYY-MM-DD/value-review.json中的数值、口径、裁决和计算记录。后两者由prepare按本期输入生成公开副本，不增加页面台账。
 - 研究停止条件是关键结论有原始证据、最强反证已处理、影响判断的缺口已明确；不是凑齐链接数量。结论依赖的关键事实仍有重大冲突时，不给确定性结论。
 
 ## 判断与行动
@@ -72,10 +72,10 @@
 ## 生成、验证和发布
 
 1. 新周使用 schemaVersion=2、methodVersion=cn-value-v1、revision=1。markets、informationCutoff、可选marketSessions只含cn；不生成sentiment、observations、reading、comparison以及已删除的市场评分字段。新周history的cnSentiment、usSentiment、cnCycle、usCycle全部为null；已发布周修订时保持旧历史数值，不展示且不追溯改写。
-2. valueAnalysis保存估值日期、口径、benchmarks、cases（支持/反证/判断/样本边界/后续条件）、stress和conflicts。研究输入的日期、修订号、估值表须与报告一致。新周不得沿用旧财务数字、旧研究文件或旧情景起始PE。
+2. valueAnalysis保存估值日期、口径、benchmarks、cases（支持/反证/判断/样本边界/后续条件及presentation文字标签）、stance（攻守文字与四项行动）、stress和conflicts。研究输入的日期、修订号、估值表须与报告一致。新周不得沿用旧财务数字、旧研究文件或旧情景起始PE。
 3. 执行npm run weekly -- validate --date YYYY-MM-DD，随后npm run format、npm run weekly -- prepare --date YYYY-MM-DD。prepare生成页面输入、目录、提示词、研究全文和研究输入副本；修改源码、数据或提示词后须重新prepare和构建。
-4. 执行npm run format:check、npm run lint、npm run typecheck、npm test、npm run build、npm run build:pages。检查估值日期、引用、缺失值与情景计算；失败不更新latest。
-5. 浏览器检查首屏直接进入价格与价值、无已删除内容、证据折叠与场景选择有效、20项钟摆筛选与缺失状态、研究/目录/提示词链接和窄屏排版。完成这些已授权的检查并记录实际结果。
+4. 执行npm run format:check、npm run lint、npm run typecheck、npm test、npm run build、npm run build:pages。检查估值日期、引用、缺失值与情景计算；prepare必须从原始输入重算关键结果并核对存储值，任何不一致先修复；失败不更新latest。
+5. 浏览器检查首屏直接进入价格与价值、无已删除内容、双栏样式、文字判断与证据折叠有效、20项钟摆筛选与缺失状态、研究/目录/提示词链接和窄屏排版。完成这些已授权的检查并记录实际结果。
 6. 执行npm run weekly -- archive --date YYYY-MM-DD --repo <发布仓库绝对路径>，同一构建存本地weekly-reports/与仓库market/，核对哈希。冲突时不覆盖，可重跑恢复。
 7. 已发布周的内容修改将revision加一，填写revisedAt、revisionReason，保存至YYYY-MM-DD/revisions/03/等目录。目录只链接本周最新修订。2026-09-04旧版已按用户要求删除，canonicalRevision=2、originalRetained=false；其他周不继承例外，新周清除修订字段。
 8. 核对旧快照与本期资源，只提交相关market/和market-source/。新周提交名Weekly market update: YYYY-MM-DD；修订名Market report revision: YYYY-MM-DD rN。远端有新提交先整合，禁止强推。

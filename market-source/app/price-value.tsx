@@ -1,15 +1,6 @@
-'use client';
-
-/* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- The horizontally scrolling valuation table must be keyboard reachable. */
-
-import { useState } from 'react';
-import { ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronDown } from 'lucide-react';
 import type { Source, ValueAnalysis } from '@/lib/market-types';
-import { valuationScenario } from '@/lib/value-math';
 import { SourceRefs } from './source-refs';
-
-const percent = (value: number) =>
-  `${value > 0 ? '+' : ''}${value.toFixed(1)}%`;
 
 export function PriceValue({
   analysis,
@@ -18,249 +9,155 @@ export function PriceValue({
   analysis: ValueAnalysis;
   sources: Source[];
 }) {
-  const [growth, setGrowth] = useState(analysis.stress.defaultGrowth);
-  const [exitPe, setExitPe] = useState(analysis.stress.defaultExitPe);
-  const result = valuationScenario(
-    analysis.stress.entryPe,
-    exitPe,
-    growth,
-    analysis.stress.years,
-  );
   return (
-    <section
-      id="value"
-      className="mx-auto max-w-[1380px] px-5 py-12 lg:px-8 lg:py-16"
-    >
-      <div className="flex flex-wrap items-end justify-between gap-5">
-        <div>
-          <p className="font-mono text-xs tracking-[0.2em] text-[#6c796c]">
+    <section id="value" className="border-b border-[#26382e]/10">
+      <div className="mx-auto grid max-w-[1380px] gap-10 px-5 py-12 lg:grid-cols-[1.15fr_.85fr] lg:gap-14 lg:px-8 lg:py-16">
+        <div className="min-w-0">
+          <p className="font-mono text-xs tracking-[0.2em] text-[#26382e]/45">
             01 — PRICE / VALUE
           </p>
-          <h1 className="font-display mt-3 text-4xl tracking-[-0.04em] sm:text-5xl">
+          <h1 className="font-display mt-3 text-4xl tracking-[-0.06em] text-[#26382e]">
             价格与价值
           </h1>
-        </div>
-        <a
-          href={analysis.researchFile}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1 text-sm text-[#536f59] underline underline-offset-4"
-        >
-          完整研究与推导 <ArrowUpRight className="size-4" aria-hidden="true" />
-        </a>
-      </div>
-      <p className="mt-6 max-w-4xl text-sm leading-6 text-[#59695d]">
-        {analysis.scopeNote}
-      </p>
-      <section
-        className="mt-5 overflow-x-auto border-y border-[#26382e]/15"
-        aria-label="同日指数估值表"
-        tabIndex={0}
-      >
-        <table className="w-full min-w-[620px] text-left text-sm">
-          <caption className="sr-only">
-            中证指数{analysis.valuationDate}估值参考，股息率单位为百分比
-          </caption>
-          <thead>
-            <tr className="border-b border-[#26382e]/15 text-xs text-[#697568]">
-              <th scope="col" className="py-4 pr-4 font-normal">
-                指数 / 样本
-              </th>
-              <th scope="col" className="px-3 text-right font-normal">
-                PE · TTM
-              </th>
-              <th scope="col" className="px-3 text-right font-normal">
-                PB
-              </th>
-              <th scope="col" className="px-3 text-right font-normal">
-                股息率
-              </th>
-              <th scope="col" className="pl-5 font-normal">
-                比较边界
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {analysis.benchmarks.map((b) => (
-              <tr
-                key={b.code}
-                className="border-b border-[#26382e]/8 last:border-b-0"
-              >
-                <th scope="row" className="py-4 pr-4 font-normal">
-                  <span className="font-medium">{b.name}</span>
-                  <span className="ml-2 font-mono text-xs text-[#748071]">
-                    {b.code} · {b.samples}只
-                  </span>
-                </th>
-                <td className="px-3 text-right font-mono tabular-nums">
-                  {b.pe?.toFixed(2) ?? '—'}
-                </td>
-                <td className="px-3 text-right font-mono tabular-nums">
-                  {b.pb?.toFixed(2) ?? '—'}
-                </td>
-                <td className="px-3 text-right font-mono tabular-nums">
-                  {b.dividendYield?.toFixed(2) ?? '—'}
-                  {b.dividendYield === null ? '' : '%'}
-                </td>
-                <td className="py-4 pl-5 text-xs text-[#637161]">
-                  <span className="mr-2">{b.scope}</span>
-                  <SourceRefs ids={b.refs} sources={sources} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-      <p className="mt-3 text-xs leading-6 text-[#6c776b]">
-        {analysis.methodNote}
-      </p>
+          <div className="mt-3 flex flex-wrap items-center gap-3">
+            <p className="text-xs leading-6 text-[#697767]">
+              确定性不是安全垫。好资产，也可能是坏价格。
+            </p>
+            <SourceRefs ids={['HM-04']} sources={sources} />
+          </div>
 
-      <div className="mt-10 flex items-center justify-between gap-4">
-        <h2 className="font-display text-2xl">五类资产，逐项核验</h2>
-        <span className="text-xs text-[#6c776b]">展开查看依据与反证</span>
-      </div>
-      <div className="mt-4 divide-y divide-[#26382e]/12 border-y border-[#26382e]/12">
-        {analysis.cases.map((item, i) => (
-          <details key={item.id} className="group" open={i === 0}>
-            <summary className="flex cursor-pointer list-none items-center gap-5 py-6 [&::-webkit-details-marker]:hidden">
-              <span className="hidden font-mono text-xs text-[#829080] sm:block">
-                0{i + 1}
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                  <span className="font-display text-xl">{item.title}</span>
-                  <span className="font-mono text-xs text-[#6e7b6d]">
-                    {item.metric}
+          <div className="mt-7 border-t border-[#26382e]/11">
+            {analysis.cases.map((item) => (
+              <details
+                key={item.id}
+                className="group border-b border-[#26382e]/11"
+              >
+                <summary className="grid cursor-pointer list-none gap-x-5 gap-y-3 py-5 sm:grid-cols-[1.1fr_.9fr_.9fr_auto] sm:items-center [&::-webkit-details-marker]:hidden">
+                  <span className="col-span-2 flex items-center justify-between gap-3 sm:col-span-1">
+                    <span className="font-display text-lg leading-7 text-[#26382e]/86">
+                      {item.presentation.name}
+                    </span>
+                    <span className="flex items-center gap-2 text-xs text-[#758d72] sm:hidden">
+                      {item.presentation.posture}
+                      <ChevronDown
+                        className="size-3 group-open:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </span>
                   </span>
-                </span>
-                <span className="mt-2 block text-sm leading-6 text-[#546c58]">
-                  {item.verdict}
-                </span>
-              </span>
-              <ChevronDown
-                className="size-4 shrink-0 text-[#71866e] transition-transform group-open:rotate-180"
-                aria-hidden="true"
-              />
-            </summary>
-            <div className="pb-7 sm:pl-9">
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="border-l-2 border-[#7f9b7e] pl-4">
-                  <h3 className="text-xs font-medium tracking-wider text-[#557154]">
-                    支持证据
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-[#4e5c50]">
+                  <span className="block border-b border-[#7b9278]/45 pb-2">
+                    <span className="block text-xs text-[#788474]">确定性</span>
+                    <span className="mt-2 block text-sm text-[#597456]">
+                      {item.presentation.certainty}
+                    </span>
+                  </span>
+                  <span className="block border-b border-[#26382e]/25 pb-2">
+                    <span className="block text-xs text-[#788474]">安全垫</span>
+                    <span className="mt-2 block text-sm text-[#657061]">
+                      {item.presentation.cushion}
+                    </span>
+                  </span>
+                  <span className="hidden w-14 items-center justify-between gap-2 text-xs text-[#8b7663] sm:flex">
+                    {item.presentation.posture}
+                    <ChevronDown
+                      className="size-3 transition-transform group-open:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </summary>
+                <div className="pb-6 text-sm leading-7 text-[#5f6f5d]">
+                  <p className="font-medium text-[#415c43]">{item.verdict}</p>
+                  <p className="mt-2 text-xs text-[#7a8572]">
+                    价格参照 · {item.metric}（{analysis.valuationDate}）
+                  </p>
+                  <p className="mt-3">
+                    <span className="mr-2 text-[#405b42]">依据</span>
                     {item.support.text}
                   </p>
                   <SourceRefs ids={item.support.refs} sources={sources} />
-                </div>
-                <div className="border-l-2 border-[#b98b77] pl-4">
-                  <h3 className="text-xs font-medium tracking-wider text-[#935e49]">
-                    最强反证
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-[#4e5c50]">
+                  <p className="mt-3">
+                    <span className="mr-2 text-[#946b53]">反证</span>
                     {item.challenge.text}
                   </p>
                   <SourceRefs ids={item.challenge.refs} sources={sources} />
+                  <p className="mt-3">
+                    <span className="mr-2 text-[#405b42]">判断</span>
+                    {item.resolution}
+                  </p>
+                  <p className="mt-3 text-xs leading-6 text-[#768170]">
+                    {item.limitation}
+                  </p>
+                  <p className="mt-2 text-xs leading-6 text-[#768170]">
+                    继续验证 · {item.watch}
+                  </p>
                 </div>
-              </div>
-              <p className="mt-5 text-sm leading-7">
-                <span className="mr-3 text-[#6f7d6c]">判断</span>
-                {item.resolution}
-              </p>
-              <p className="mt-2 text-sm leading-7">
-                <span className="mr-3 text-[#6f7d6c]">继续验证</span>
-                {item.watch}
-              </p>
-              <p className="mt-3 text-xs leading-6 text-[#758071]">
-                样本边界 · {item.limitation}
-              </p>
-            </div>
-          </details>
-        ))}
-      </div>
+              </details>
+            ))}
+          </div>
+          <div className="mt-5 flex flex-wrap items-center justify-between gap-x-5 gap-y-2 text-xs text-[#75816e]">
+            <span>
+              估值参考 {analysis.valuationDate.replaceAll('-', '.')} ·
+              点击行查看依据
+            </span>
+            <a
+              href={analysis.researchFile}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-[#627e5d] underline decoration-[#627e5d]/30 underline-offset-4"
+            >
+              数据与计算依据
+              <ArrowUpRight className="size-3" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
 
-      <div className="mt-9 border border-[#26382e]/12 bg-[#e6eadc]/65 p-5 sm:p-7">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="font-display text-2xl">高增长，能否抵消估值收缩？</h2>
-          <SourceRefs ids={analysis.stress.refs} sources={sources} />
-        </div>
-        <p className="mt-3 text-sm leading-6 text-[#65745f]">
-          以科创50的{analysis.stress.entryPe.toFixed(2)}倍PE为起点，假设持有
-          {analysis.stress.years}年。调整两个假设，查看价格回报。
-        </p>
-        <div className="mt-6 grid items-end gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <label className="text-xs text-[#576d52]">
-            每股盈利年增长
-            <select
-              aria-label="每股盈利年增长"
-              value={growth}
-              onChange={(event) => setGrowth(Number(event.target.value))}
-              className="mt-2 block w-full rounded-none border border-[#26382e]/20 bg-[#f5f2e9] px-3 py-2.5 font-mono text-base text-[#26382e]"
+        <aside
+          aria-labelledby="position-title"
+          className="self-start rounded-[8px_34px_8px_34px] bg-[var(--market-panel)] text-[#26382e]"
+        >
+          <div className="border-b border-[#26382e]/12 px-6 py-6 sm:px-7">
+            <p className="font-mono text-xs tracking-[0.18em] text-[#26382e]/42">
+              OFFENSE / DEFENSE
+            </p>
+            <h2
+              id="position-title"
+              className="font-display mt-2 text-3xl tracking-[-0.06em]"
             >
-              {[-10, 0, 10, 20, 30, 40].map((v) => (
-                <option key={v} value={v}>
-                  {percent(v)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="text-xs text-[#576d52]">
-            三年后PE
-            <select
-              aria-label="三年后PE"
-              value={exitPe}
-              onChange={(event) => setExitPe(Number(event.target.value))}
-              className="mt-2 block w-full rounded-none border border-[#26382e]/20 bg-[#f5f2e9] px-3 py-2.5 font-mono text-base text-[#26382e]"
-            >
-              {[30, 40, 50, 60, 79.82, 100].map((v) => (
-                <option key={v} value={v}>
-                  {v}倍
-                </option>
-              ))}
-            </select>
-          </label>
-          <div>
-            <p className="text-xs text-[#68775f]">三年价格回报</p>
-            <output
-              aria-live="polite"
-              className="mt-2 block font-mono text-3xl tabular-nums"
-            >
-              {percent(result.total)}
-            </output>
+              攻守位置
+            </h2>
           </div>
-          <div>
-            <p className="text-xs text-[#68775f]">折合年化</p>
-            <output
-              aria-live="polite"
-              className="mt-2 block font-mono text-3xl tabular-nums"
-            >
-              {percent(result.annualized)}
-            </output>
-          </div>
-        </div>
-        <p className="mt-5 text-sm leading-6 text-[#586d53]">
-          若退出PE为{exitPe}倍，每股盈利年增长需达到
-          {result.breakEvenGrowth.toFixed(1)}%，才能使三年价格回报为零。
-        </p>
-        <p className="mt-3 text-xs leading-6 text-[#6d7968]">
-          情景计算，不是预测。固定样本、每股盈利口径，不计分红、税费和指数调样；价格回报
-          = (1 + 盈利增速)³ × 退出PE ÷ 起始PE − 1。
-        </p>
-      </div>
-      <details className="mt-6 border-b border-[#26382e]/12 pb-5">
-        <summary className="cursor-pointer text-sm text-[#687563]">
-          口径冲突与未解决的问题
-        </summary>
-        <div className="mt-5 grid gap-5 md:grid-cols-2">
-          {analysis.conflicts.map((c) => (
-            <div key={c.title}>
-              <h3 className="text-sm font-medium">{c.title}</h3>
-              <p className="my-2 text-sm leading-7 text-[#647060]">{c.text}</p>
-              <SourceRefs ids={c.refs} sources={sources} />
+          <div className="px-6 py-2 sm:px-7">
+            <div className="border-b border-[#26382e]/12 py-6">
+              <p className="font-display text-2xl leading-relaxed text-[#26382e]/82">
+                {analysis.stance.label}
+              </p>
+              <p className="mt-4 text-sm leading-7 text-[#687b60]">
+                {analysis.stance.reason}
+              </p>
+              <div className="mt-3">
+                <SourceRefs ids={analysis.stance.refs} sources={sources} />
+              </div>
             </div>
-          ))}
-        </div>
-      </details>
+            {analysis.stance.actions.map(([label, text], index) => (
+              <div
+                key={label}
+                className="grid grid-cols-[24px_1fr_auto] items-center gap-3 border-b border-[#26382e]/12 py-6 last:border-0 sm:grid-cols-[30px_1fr_auto] sm:gap-4"
+              >
+                <span className="font-mono text-xs text-[#26382e]/45">
+                  0{index + 1}
+                </span>
+                <p className="font-display text-base leading-7 text-[#435d42]">
+                  {label}：{text}
+                </p>
+                <ArrowRight
+                  className="size-4 text-[#26382e]/35"
+                  aria-hidden="true"
+                />
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
     </section>
   );
 }

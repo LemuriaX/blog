@@ -1,5 +1,62 @@
 import { valuationScenario } from '../lib/value-math.ts';
 
+export function verifyResearchCalculations(review) {
+  const fact = (scope) => {
+    const matches = review.financialFacts.filter(
+      (f) => f.scope === scope && f.metric === '净利润',
+    );
+    if (
+      matches.length !== 1 ||
+      matches[0].unit !== '亿元' ||
+      !Number.isFinite(matches[0].value)
+    )
+      throw Error('Missing or ambiguous profit input');
+    return matches[0].value;
+  };
+  const dividend = review.valuation.benchmarks.find((b) => b.code === '000922');
+  const broad = review.valuation.benchmarks.find((b) => b.code === '000300');
+  const technology = review.valuation.benchmarks.find(
+    (b) => b.code === '000688',
+  );
+  const weights = review.indexFacts?.find(
+    (f) => f.code === '000922' && f.observedAt === review.valuation.observedAt,
+  )?.sectorWeights;
+  if (!weights) throw Error('Missing sector weight inputs');
+  const scenario = review.calculations.find(
+    (c) => c.name === '科创50三年估值情景',
+  );
+  const computed = [
+    [
+      '长鑫科技占整个科创板当期利润比例',
+      (fact('长鑫科技') / fact('整个科创板')) * 100,
+    ],
+    ['中证红利能源与原材料权重', weights.energy + weights.materials],
+    [
+      '科创50三年估值情景',
+      valuationScenario(
+        technology.pe,
+        scenario.exitPe,
+        scenario.growth * 100,
+        3,
+      ).total / 100,
+    ],
+    [
+      '红利股息率相对沪深300的差值',
+      dividend.dividendYield - broad.dividendYield,
+    ],
+  ];
+  return computed.map(([name, result]) => {
+    const matches = review.calculations.filter((c) => c.name === name);
+    if (
+      matches.length !== 1 ||
+      !Number.isFinite(result) ||
+      Math.abs(matches[0].value - result) > 1e-9
+    )
+      throw Error(`Calculation mismatch: ${name}`);
+    return { ...matches[0], value: result };
+  });
+}
+
 export function renderValueResearch(report, review) {
   const value = report.markets.cn.valueAnalysis;
   if (
@@ -11,6 +68,7 @@ export function renderValueResearch(report, review) {
   ) {
     throw Error('Value research inputs do not match the current report');
   }
+  const verifiedCalculations = verifyResearchCalculations(review);
   const links = (ids) =>
     ids
       .map((id) => {
@@ -47,6 +105,20 @@ ${value.benchmarks.map((b) => `| ${b.name} | ${b.code} / ${b.samples} | ${metric
 估值是价格参照，尚不是价值结论。本期以六份同日中证单张为横截面，以交易所半年报统计、公司原始报表、统计局行业数据检验盈利与现金流，再用不同提供商的股息率说明寻找口径冲突。它们覆盖不同问题，不能互相充当相同口径的独立复证。转载同一公告也不计为第二份独立证据。
 
 未取得覆盖各指数的成分股自由现金流、一致预期及长期估值序列，因此研究只能形成有条件的判断。没有输出目标价、历史低估分位或统一的安全边际分数。
+
+## 计算复核与文字判断
+
+以下结果由原始输入重新计算，存储值不一致则停止生成。它们用于约束结论，不映射成确定性、安全垫或攻守分数。
+
+| 计算 | 算式 | 复算值 | 解释边界 |
+| --- | --- | ---: | --- |
+${verifiedCalculations.map((c) => `| ${c.name} | ${c.formula} | ${c.value.toFixed(c.unit === '小数回报' ? 6 : 2)} ${c.unit} | ${c.limitation ?? '同日指数行业权重之和，不代表未来利润或分红占比。'} |`).join('\n')}
+
+数据来源：${links(['PV-01', 'PV-02', 'PV-04', 'PV-07'])}。
+
+网页的“确定性”描述盈利与现金流证据是否充分，“安全垫”描述价格是否已覆盖可识别风险。前者不等于成功概率，后者不等于账面折价或历史股息率；现有输入不足以计算它们的客观百分比。攻守是依据这些证据形成的文字决策，不从几项比例机械加权。
+
+**${value.stance.label}。** ${value.stance.reason} 来源：${links(value.stance.refs)}。
 
 ## 五类资产的支持证据与反证
 
